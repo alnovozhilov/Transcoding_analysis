@@ -1,0 +1,42 @@
+General
+Unique ID                                : 281797548830576282707442854134644965907 (0xD4003BD75A51D12AA37B7FE12C3F8213)
+Complete name                            : ../.././Samples/bug669-withoutsimplebl.mkv
+Format                                   : Matroska
+Format version                           : Version 1
+File size                                : 2.28 MiB
+Duration                                 : 9 s 144 ms
+Overall bit rate                         : 2 094 kb/s
+Encoded date                             : UTC 2006-12-04 20:48:02
+Writing application                      : mkvmerge v1.8.1 ('Little By Little') built on Dec  3 2006 02:01:19
+Writing library                          : libebml v0.7.7 + libmatroska v0.8.0
+
+Video
+ID                                       : 1
+Format                                   : MPEG-4 Visual
+Codec ID                                 : V_MS/VFW/FOURCC / DIV3
+Codec ID/Hint                            : DivX 3 Low
+Duration                                 : 9 s 142 ms
+Bit rate                                 : 2 052 kb/s
+Width                                    : 576 pixels
+Height                                   : 432 pixels
+Display aspect ratio                     : 4:3
+Frame rate mode                          : Constant
+Frame rate                               : 29.970 (29970/1000) FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.275
+Stream size                              : 2.24 MiB (98%)
+Default                                  : Yes
+Forced                                   : No
+
+Text
+ID                                       : 2
+Format                                   : UTF-8
+Codec ID                                 : S_TEXT/UTF8
+Codec ID/Info                            : UTF-8 Plain Text
+Default                                  : Yes
+Forced                                   : No
+
+

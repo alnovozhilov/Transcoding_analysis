@@ -1,0 +1,86 @@
+General
+Complete name                            : ../.././Samples/esign_2_high.qt
+Format                                   : QuickTime
+Format/Info                              : Original Apple specifications
+File size                                : 72.6 MiB
+Duration                                 : 4 min 1 s
+Overall bit rate                         : 2 526 kb/s
+Encoded date                             : UTC 2005-05-09 18:22:58
+Tagged date                              : UTC 2005-05-09 18:23:08
+Writing library                          : Apple QuickTime
+
+Video
+ID                                       : 2
+Format                                   : MPEG-4 Visual
+Format profile                           : Advanced Simple@L3
+Format settings                          : BVOP
+Format settings, BVOP                    : Yes
+Format settings, QPel                    : No
+Format settings, GMC                     : No warppoints
+Format settings, Matrix                  : Default (H.263)
+Codec ID                                 : mp4v-20
+Duration                                 : 4 min 1 s
+Bit rate mode                            : Constant
+Bit rate                                 : 2 458 kb/s
+Width                                    : 720 pixels
+Height                                   : 404 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 25.000 FPS
+Color space                              : YUV
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.338
+Stream size                              : 67.4 MiB (93%)
+Language                                 : English
+Encoded date                             : UTC 2005-05-09 18:22:51
+Tagged date                              : UTC 2005-05-09 18:23:08
+Transfer characteristics                 : BT.601
+Matrix coefficients                      : BT.601
+
+Audio
+ID                                       : 1
+Format                                   : AAC
+Format/Info                              : Advanced Audio Codec
+Format profile                           : LC
+Codec ID                                 : mp4a-40-2
+Duration                                 : 3 min 58 s
+Bit rate mode                            : Constant
+Bit rate                                 : 112 kb/s
+Channel(s)                               : 2 channels
+Channel positions                        : Front: L R
+Sampling rate                            : 44.1 kHz
+Frame rate                               : 43.066 FPS (1024 SPF)
+Compression mode                         : Lossy
+Stream size                              : 3.18 MiB (4%)
+Language                                 : English
+Encoded date                             : UTC 2005-05-09 18:22:51
+Tagged date                              : UTC 2005-05-09 18:23:08
+
+Other #1
+ID                                       : 3
+Type                                     : Hint
+Format                                   : RTP
+Codec ID                                 : rtp 
+Duration                                 : 4 min 1 s
+Title                                    : Hinted Video Track
+Language                                 : English
+Default                                  : No
+Encoded date                             : UTC 2005-05-09 18:22:52
+Tagged date                              : UTC 2005-05-09 18:23:08
+
+Other #2
+ID                                       : 4
+Type                                     : Hint
+Format                                   : RTP
+Codec ID                                 : rtp 
+Duration                                 : 3 min 58 s
+Title                                    : Hinted Sound Track
+Language                                 : English
+Default                                  : No
+Encoded date                             : UTC 2005-05-09 18:22:56
+Tagged date                              : UTC 2005-05-09 18:23:08
+Bit rate mode                            : VBR
+
+

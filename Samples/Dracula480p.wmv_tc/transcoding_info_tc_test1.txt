@@ -1,0 +1,112 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Guessed Channel Layout for Input Stream #0.0 : stereo
+Input #0, asf, from '../.././Samples/Dracula480p.wmv':
+  Metadata:
+    VBR Peak        : 9000000
+    DeviceConformanceTemplate: AP@L3
+    WMFSDKVersion   : 11.0.6002.18049
+    WMFSDKNeeded    : 0.0.0.0000
+    IsVBR           : 1
+    Buffer Average  : 14461
+    Source          : http://www.redstarstudio.co.uk
+    Stereoscopic    : 1
+    StereoscopicLayout: SideBySideRF
+    StereoscopicSkip: 50000000
+    title           : Dracula
+    artist          : Benjamin Smith
+    copyright       : Copyright (c) Red Star Studio Ltd.
+    comment         : Dracula 4D is the thrilling new 3D/4D show from Red Star 3D, creators of the award winning 'The Curse of Skull Rock'. On holiday in Transylvania, teenager Kevin and his bumbling dad accidentally awaken the undead vampire Dracula who leads Kevin on a despe
+  Duration: 00:00:52.74, start: 0.000000, bitrate: 5682 kb/s
+    Stream #0:0(eng): Audio: wmav2 (a[1][0][0] / 0x0161), 48000 Hz, stereo, fltp, 128 kb/s
+    Stream #0:1(eng): Video: vc1 (Advanced) (WVC1 / 0x31435657), yuv420p, 1440x480, 6000 kb/s, SAR 32:27 DAR 32:9, 30 fps, 30 tbr, 1k tbn, 1k tbc
+Stream mapping:
+  Stream #0:1 -> #0:0 (vc1 (native) -> h264 (libx264))
+  Stream #0:0 -> #0:1 (wmav2 (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x55638c9ec800] using SAR=32/27
+[libx264 @ 0x55638c9ec800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55638c9ec800] profile High, level 3.1
+[libx264 @ 0x55638c9ec800] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/Dracula480p.wmv_tc/output_tc1.mov':
+  Metadata:
+    VBR Peak        : 9000000
+    DeviceConformanceTemplate: AP@L3
+    WMFSDKVersion   : 11.0.6002.18049
+    WMFSDKNeeded    : 0.0.0.0000
+    IsVBR           : 1
+    Buffer Average  : 14461
+    Source          : http://www.redstarstudio.co.uk
+    Stereoscopic    : 1
+    StereoscopicLayout: SideBySideRF
+    StereoscopicSkip: 50000000
+    title           : Dracula
+    artist          : Benjamin Smith
+    copyright       : Copyright (c) Red Star Studio Ltd.
+    comment         : Dracula 4D is the thrilling new 3D/4D show from Red Star 3D, creators of the award winning 'The Curse of Skull Rock'. On holiday in Transylvania, teenager Kevin and his bumbling dad accidentally awaken the undead vampire Dracula who leads Kevin on a despe
+    encoder         : Lavf57.83.100
+    Stream #0:0(eng): Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 1440x480 [SAR 32:27 DAR 32:9], q=-1--1, 30 fps, 15360 tbn, 30 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+[aac @ 0x55638c9ed700] Queue input is backward in time
+[mov @ 0x55638c998600] Non-monotonous DTS in output stream 0:1; previous: 27648, current: 26592; changing to 27649. This may result in incorrect timestamps in the output file.
+[mov @ 0x55638c998600] Non-monotonous DTS in output stream 0:1; previous: 27649, current: 27616; changing to 27650. This may result in incorrect timestamps in the output file.
+frame=  181 fps=0.0 q=29.0 size=       0kB time=00:00:05.97 bitrate=   0.0kbits/s dup=1 drop=0 speed=11.9x    frame=  230 fps=229 q=29.0 size=       0kB time=00:00:07.60 bitrate=   0.0kbits/s dup=1 drop=0 speed=7.57x    frame=  255 fps=168 q=29.0 size=       0kB time=00:00:08.49 bitrate=   0.0kbits/s dup=1 drop=0 speed= 5.6x    frame=  286 fps=142 q=29.0 size=     256kB time=00:00:09.55 bitrate= 219.5kbits/s dup=1 drop=0 speed=4.73x    frame=  315 fps=124 q=29.0 size=     256kB time=00:00:10.58 bitrate= 198.2kbits/s dup=1 drop=0 speed=4.15x    frame=  346 fps=112 q=29.0 size=     512kB time=00:00:11.56 bitrate= 362.8kbits/s dup=1 drop=0 speed=3.75x    frame=  379 fps=106 q=29.0 size=     512kB time=00:00:12.84 bitrate= 326.6kbits/s dup=1 drop=0 speed=3.58x    frame=  420 fps=102 q=29.0 size=     768kB time=00:00:14.12 bitrate= 445.5kbits/s dup=1 drop=0 speed=3.44x    frame=  449 fps= 97 q=29.0 size=     768kB time=00:00:15.15 bitrate= 415.1kbits/s dup=1 drop=0 speed=3.28x    frame=  479 fps= 93 q=29.0 size=    1024kB time=00:00:16.17 bitrate= 518.8kbits/s dup=1 drop=0 speed=3.15x    frame=  510 fps= 91 q=29.0 size=    1024kB time=00:00:17.16 bitrate= 488.8kbits/s dup=1 drop=0 speed=3.05x    frame=  538 fps= 88 q=29.0 size=    1280kB time=00:00:17.91 bitrate= 585.2kbits/s dup=1 drop=0 speed=2.92x    frame=  571 fps= 86 q=29.0 size=    1536kB time=00:00:19.07 bitrate= 659.8kbits/s dup=1 drop=0 speed=2.87x    frame=  602 fps= 84 q=29.0 size=    1792kB time=00:00:20.02 bitrate= 733.2kbits/s dup=1 drop=0 speed=2.81x    frame=  633 fps= 83 q=29.0 size=    2048kB time=00:00:21.03 bitrate= 797.6kbits/s dup=1 drop=0 speed=2.75x    frame=  673 fps= 83 q=29.0 size=    2048kB time=00:00:22.57 bitrate= 743.3kbits/s dup=1 drop=0 speed=2.77x    frame=  698 fps= 81 q=29.0 size=    2304kB time=00:00:23.35 bitrate= 808.2kbits/s dup=1 drop=0 speed= 2.7x    frame=  724 fps= 79 q=29.0 size=    2304kB time=00:00:24.31 bitrate= 776.1kbits/s dup=1 drop=0 speed=2.66x    frame=  749 fps= 78 q=29.0 size=    2560kB time=00:00:25.17 bitrate= 833.1kbits/s dup=1 drop=0 speed=2.61x    frame=  781 fps= 77 q=29.0 size=    2560kB time=00:00:26.15 bitrate= 801.8kbits/s dup=1 drop=0 speed=2.57x    frame=  807 fps= 76 q=29.0 size=    3072kB time=00:00:26.92 bitrate= 934.8kbits/s dup=1 drop=0 speed=2.52x    frame=  840 fps= 75 q=29.0 size=    3072kB time=00:00:28.24 bitrate= 891.0kbits/s dup=1 drop=0 speed=2.53x    frame=  872 fps= 75 q=29.0 size=    3328kB time=00:00:29.01 bitrate= 939.7kbits/s dup=1 drop=0 speed=2.48x    frame=  908 fps= 75 q=29.0 size=    3584kB time=00:00:30.46 bitrate= 963.8kbits/s dup=1 drop=0 speed= 2.5x    frame=  943 fps= 74 q=29.0 size=    3584kB time=00:00:31.65 bitrate= 927.4kbits/s dup=1 drop=0 speed=2.49x    frame=  973 fps= 74 q=29.0 size=    3584kB time=00:00:32.72 bitrate= 897.2kbits/s dup=1 drop=0 speed=2.47x    frame= 1006 fps= 73 q=29.0 size=    3840kB time=00:00:33.49 bitrate= 939.2kbits/s dup=1 drop=0 speed=2.44x    frame= 1030 fps= 72 q=29.0 size=    3840kB time=00:00:34.64 bitrate= 908.0kbits/s dup=1 drop=0 speed=2.43x    frame= 1056 fps= 72 q=29.0 size=    4352kB time=00:00:35.54 bitrate=1003.1kbits/s dup=1 drop=0 speed=2.41x    frame= 1077 fps= 70 q=29.0 size=    4608kB time=00:00:35.92 bitrate=1050.8kbits/s dup=1 drop=0 speed=2.35x    frame= 1091 fps= 69 q=29.0 size=    5120kB time=00:00:36.65 bitrate=1144.4kbits/s dup=1 drop=0 speed=2.31x    frame= 1107 fps= 68 q=29.0 size=    5632kB time=00:00:37.07 bitrate=1244.4kbits/s dup=1 drop=0 speed=2.27x    frame= 1124 fps= 67 q=29.0 size=    5888kB time=00:00:37.75 bitrate=1277.4kbits/s dup=1 drop=0 speed=2.23x    frame= 1145 fps= 66 q=29.0 size=    6144kB time=00:00:38.10 bitrate=1321.0kbits/s dup=1 drop=0 speed=2.19x    frame= 1165 fps= 65 q=29.0 size=    6400kB time=00:00:39.12 bitrate=1340.1kbits/s dup=1 drop=0 speed=2.18x    frame= 1189 fps= 64 q=29.0 size=    6656kB time=00:00:39.89 bitrate=1366.8kbits/s dup=1 drop=0 speed=2.15x    frame= 1206 fps= 63 q=29.0 size=    6912kB time=00:00:40.28 bitrate=1405.5kbits/s dup=1 drop=0 speed=2.12x    frame= 1240 fps= 63 q=29.0 size=    7168kB time=00:00:41.30 bitrate=1421.8kbits/s dup=1 drop=0 speed=2.11x    frame= 1261 fps= 63 q=26.0 size=    7424kB time=00:00:42.06 bitrate=1445.7kbits/s dup=1 drop=0 speed= 2.1x    frame= 1279 fps= 62 q=29.0 size=    7936kB time=00:00:42.79 bitrate=1519.2kbits/s dup=1 drop=0 speed=2.08x    frame= 1301 fps= 62 q=29.0 size=    8192kB time=00:00:43.60 bitrate=1539.0kbits/s dup=1 drop=0 speed=2.07x    frame= 1330 fps= 62 q=29.0 size=    8448kB time=00:00:44.50 bitrate=1555.2kbits/s dup=1 drop=0 speed=2.06x    frame= 1362 fps= 61 q=29.0 size=    8448kB time=00:00:45.48 bitrate=1521.6kbits/s dup=1 drop=0 speed=2.05x    frame= 1389 fps= 61 q=29.0 size=    8704kB time=00:00:46.42 bitrate=1536.0kbits/s dup=1 drop=0 speed=2.04x    frame= 1416 fps= 61 q=29.0 size=    8960kB time=00:00:47.48 bitrate=1545.7kbits/s dup=1 drop=0 speed=2.04x    frame= 1439 fps= 61 q=29.0 size=    9216kB time=00:00:48.06 bitrate=1570.8kbits/s dup=1 drop=0 speed=2.02x    frame= 1470 fps= 61 q=29.0 size=    9216kB time=00:00:49.02 bitrate=1540.0kbits/s dup=1 drop=0 speed=2.02x    frame= 1502 fps= 61 q=29.0 size=    9472kB time=00:00:50.09 bitrate=1549.1kbits/s dup=1 drop=0 speed=2.02x    frame= 1562 fps= 62 q=29.0 size=    9728kB time=00:00:52.65 bitrate=1513.6kbits/s dup=1 drop=0 speed=2.08x    frame= 1582 fps= 62 q=-1.0 Lsize=    9899kB time=00:00:52.73 bitrate=1537.8kbits/s dup=1 drop=0 speed=2.07x    
+video:9089kB audio:751kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.600679%
+[libx264 @ 0x55638c9ec800] frame I:43    Avg QP:17.64  size: 33400
+[libx264 @ 0x55638c9ec800] frame P:503   Avg QP:20.79  size:  9326
+[libx264 @ 0x55638c9ec800] frame B:1036  Avg QP:22.69  size:  3069
+[libx264 @ 0x55638c9ec800] consecutive B-frames:  6.1% 17.8%  6.1% 70.0%
+[libx264 @ 0x55638c9ec800] mb I  I16..4: 28.6% 61.6%  9.8%
+[libx264 @ 0x55638c9ec800] mb P  I16..4:  4.1% 13.3%  1.4%  P16..4: 31.6%  7.4%  4.3%  0.0%  0.0%    skip:38.0%
+[libx264 @ 0x55638c9ec800] mb B  I16..4:  0.7%  1.9%  0.3%  B16..8: 28.7%  2.2%  0.4%  direct: 1.8%  skip:64.0%  L0:40.8% L1:54.1% BI: 5.1%
+[libx264 @ 0x55638c9ec800] 8x8 transform intra:67.5% inter:84.9%
+[libx264 @ 0x55638c9ec800] coded y,uvDC,uvAC intra: 48.3% 59.3% 22.5% inter: 7.6% 11.4% 1.1%
+[libx264 @ 0x55638c9ec800] i16 v,h,dc,p: 52% 17% 10% 20%
+[libx264 @ 0x55638c9ec800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 26% 19% 26%  4%  5%  5%  5%  5%  5%
+[libx264 @ 0x55638c9ec800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 15% 13%  6% 10% 10%  9%  7%  5%
+[libx264 @ 0x55638c9ec800] i8c dc,h,v,p: 55% 18% 20%  6%
+[libx264 @ 0x55638c9ec800] Weighted P-Frames: Y:22.5% UV:14.1%
+[libx264 @ 0x55638c9ec800] ref P L0: 65.4% 14.4% 14.3%  5.2%  0.8%
+[libx264 @ 0x55638c9ec800] ref B L0: 92.8%  5.8%  1.4%
+[libx264 @ 0x55638c9ec800] ref B L1: 98.4%  1.6%
+[libx264 @ 0x55638c9ec800] kb/s:1411.89
+[aac @ 0x55638c9ed700] Qavg: 7550.375
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/Dracula480p.wmv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/Dracula480p.wmv_tc/output_tc1.mov"
+	User time (seconds): 95.85
+	System time (seconds): 0.33
+	Percent of CPU this job got: 376%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 239412
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 12536
+	Voluntary context switches: 14113
+	Involuntary context switches: 6986
+	Swaps: 0
+	File system inputs: 73176
+	File system outputs: 19832
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

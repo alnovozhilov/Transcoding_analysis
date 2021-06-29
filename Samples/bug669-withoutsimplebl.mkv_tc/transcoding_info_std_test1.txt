@@ -1,0 +1,77 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, matroska,webm, from '../.././Samples/bug669-withoutsimplebl.mkv':
+  Metadata:
+    encoder         : libebml v0.7.7 + libmatroska v0.8.0
+    creation_time   : 2006-12-04T20:48:02.000000Z
+  Duration: 00:00:09.14, start: 0.000000, bitrate: 2093 kb/s
+    Stream #0:0: Video: msmpeg4v3 (DIV3 / 0x33564944), yuv420p, 576x432, SAR 1:1 DAR 4:3, 29.97 fps, 29.97 tbr, 1k tbn, 1k tbc (default)
+    Stream #0:1: Subtitle: subrip (default)
+Stream mapping:
+  Stream #0:0 -> #0:0 (msmpeg4v3 (msmpeg4) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x55ba45454b00] using SAR=1/1
+[libx264 @ 0x55ba45454b00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55ba45454b00] profile High, level 3.0
+[libx264 @ 0x55ba45454b00] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/bug669-withoutsimplebl.mkv_tc/output1.mov':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 576x432 [SAR 1:1 DAR 4:3], q=-1--1, 29.97 fps, 11988 tbn, 29.97 tbc (default)
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+frame=  121 fps=0.0 q=29.0 size=       0kB time=00:00:02.26 bitrate=   0.1kbits/s speed=4.45x    frame=  205 fps=201 q=29.0 size=     256kB time=00:00:05.07 bitrate= 413.5kbits/s speed=4.99x    frame=  270 fps=162 q=-1.0 Lsize=     436kB time=00:00:08.90 bitrate= 400.7kbits/s speed=5.33x    
+video:432kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.817356%
+[libx264 @ 0x55ba45454b00] frame I:3     Avg QP:21.88  size: 23901
+[libx264 @ 0x55ba45454b00] frame P:137   Avg QP:21.24  size:  2398
+[libx264 @ 0x55ba45454b00] frame B:130   Avg QP:25.72  size:   321
+[libx264 @ 0x55ba45454b00] consecutive B-frames: 27.8% 20.7% 10.0% 41.5%
+[libx264 @ 0x55ba45454b00] mb I  I16..4:  9.0% 75.3% 15.7%
+[libx264 @ 0x55ba45454b00] mb P  I16..4:  0.6%  2.0%  0.1%  P16..4: 31.4%  6.0%  7.4%  0.0%  0.0%    skip:52.5%
+[libx264 @ 0x55ba45454b00] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8: 25.2%  0.4%  0.0%  direct: 0.2%  skip:74.1%  L0:41.9% L1:57.3% BI: 0.8%
+[libx264 @ 0x55ba45454b00] 8x8 transform intra:75.0% inter:77.3%
+[libx264 @ 0x55ba45454b00] coded y,uvDC,uvAC intra: 67.4% 65.4% 20.5% inter: 8.2% 12.5% 1.4%
+[libx264 @ 0x55ba45454b00] i16 v,h,dc,p: 41% 30% 14% 15%
+[libx264 @ 0x55ba45454b00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 30% 17% 36%  3%  2%  3%  2%  4%  4%
+[libx264 @ 0x55ba45454b00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 42% 13%  8%  5%  7%  9%  6%  6%  4%
+[libx264 @ 0x55ba45454b00] i8c dc,h,v,p: 41% 21% 34%  4%
+[libx264 @ 0x55ba45454b00] Weighted P-Frames: Y:0.7% UV:0.7%
+[libx264 @ 0x55ba45454b00] ref P L0: 67.2%  6.3% 19.1%  7.3%
+[libx264 @ 0x55ba45454b00] ref B L0: 77.7% 18.3%  4.0%
+[libx264 @ 0x55ba45454b00] ref B L1: 94.2%  5.8%
+[libx264 @ 0x55ba45454b00] kb/s:392.46
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/bug669-withoutsimplebl.mkv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/bug669-withoutsimplebl.mkv_tc/output1.mov"
+	User time (seconds): 5.99
+	System time (seconds): 0.09
+	Percent of CPU this job got: 326%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.86
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 110384
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 21011
+	Voluntary context switches: 2480
+	Involuntary context switches: 584
+	Swaps: 0
+	File system inputs: 184
+	File system outputs: 888
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

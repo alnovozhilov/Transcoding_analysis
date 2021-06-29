@@ -1,0 +1,80 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+[mxf @ 0x55df631aa000] OPAtom misinterpreted as OP1a? KLV for edit unit 0 extending into next edit unit is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[mxf @ 0x55df631aa000] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+Guessed Channel Layout for Input Stream #0.0 : 5.1
+Input #0, mxf, from '../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf':
+  Metadata:
+    uid             : e2884a8e-7253-4854-8984-93cf9befd2c0
+    company_name    : Rohde and Schwarz
+    product_name    : Clipster
+    product_version : 6.2.1.10
+    application_platform: Windows 7 Service Pack 1 (64-bit)
+    modification_date: 2018-03-09T04:32:38.000000Z
+    product_uid     : f3dfbee5-c315-5992-846f-8a94fbdf32ae
+    generation_uid  : 84385eff-ea46-4761-a6b1-7dfd58f6f5cf
+    material_package_umid: 0x060A2B340101010501010F20130000006947EAAF14A7493E81924F3B2C33DD94
+    timecode        : 00:00:00:00
+  Duration: 00:11:04.50, start: 0.000000, bitrate: 6912 kb/s
+    Stream #0:0: Audio: pcm_s24le, 48000 Hz, 5.1, s32 (24 bit), 6912 kb/s
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010F20130000008DE0FB34FE6042F4BFE6DB81F050157B
+      track_name      : MP sound track
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s24le (native) -> aac (native))
+Press [q] to stop, [?] for help
+Finishing stream 0:0 without any data written to it.
+Output #0, mov, to '/home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf_tc/output_tc3.mov':
+  Metadata:
+    uid             : e2884a8e-7253-4854-8984-93cf9befd2c0
+    company_name    : Rohde and Schwarz
+    product_name    : Clipster
+    product_version : 6.2.1.10
+    application_platform: Windows 7 Service Pack 1 (64-bit)
+    modification_date: 2018-03-09T04:32:38.000000Z
+    product_uid     : f3dfbee5-c315-5992-846f-8a94fbdf32ae
+    generation_uid  : 84385eff-ea46-4761-a6b1-7dfd58f6f5cf
+    material_package_umid: 0x060A2B340101010501010F20130000006947EAAF14A7493E81924F3B2C33DD94
+    timecode        : 00:00:00:00
+    encoder         : Lavf57.83.100
+    Stream #0:0: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, 5.1, fltp (24 bit), 341 kb/s
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010F20130000008DE0FB34FE6042F4BFE6DB81F050157B
+      track_name      : MP sound track
+      encoder         : Lavc57.107.100 aac
+size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    
+video:0kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+[aac @ 0x55df631c7e00] Qavg: -nan
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf -c:v libx264 -f mov /home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf_tc/output_tc3.mov"
+	User time (seconds): 2.78
+	System time (seconds): 0.07
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.85
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 46016
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4111
+	Voluntary context switches: 10
+	Involuntary context switches: 10
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

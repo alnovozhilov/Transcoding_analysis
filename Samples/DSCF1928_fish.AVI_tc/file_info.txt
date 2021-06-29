@@ -1,0 +1,63 @@
+General
+Complete name                            : ../.././Samples/DSCF1928_fish.AVI
+Format                                   : AVI
+Format/Info                              : Audio Video Interleave
+File size                                : 42.6 MiB
+Duration                                 : 19 s 0 ms
+Overall bit rate                         : 18.8 Mb/s
+
+Video #1
+ID                                       : 0
+Format                                   : JPEG
+Codec ID                                 : MJPG
+Duration                                 : 19 s 0 ms
+Bit rate                                 : 10.1 Mb/s
+Width                                    : 640 pixels
+Height                                   : 480 pixels
+Display aspect ratio                     : 4:3
+Frame rate                               : 30.000 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:2
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 1.099
+Stream size                              : 22.9 MiB (54%)
+Title                                    : FUJIFILM AVI STREAM 0200
+
+Video #2
+ID                                       : 2
+Format                                   : JPEG
+Codec ID                                 : MJPG
+Duration                                 : 19 s 0 ms
+Bit rate                                 : 8 316 kb/s
+Width                                    : 640 pixels
+Height                                   : 480 pixels
+Display aspect ratio                     : 4:3
+Frame rate                               : 30.000 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:2
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.902
+Stream size                              : 18.8 MiB (44%)
+Title                                    : FUJIFILM AVI STREAM 0200
+
+Audio
+ID                                       : 1
+Format                                   : PCM
+Format settings                          : Little / Signed
+Codec ID                                 : 1
+Duration                                 : 19 s 0 ms
+Bit rate mode                            : Constant
+Bit rate                                 : 352.8 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 11.024 kHz
+Bit depth                                : 16 bits
+Stream size                              : 818 KiB (2%)
+Alignment                                : Aligned on interleaves
+Interleave, duration                     : 1000  ms (30.00 video frames)
+Interleave, preload duration             : 1000  ms
+
+

@@ -1,0 +1,54 @@
+General
+Complete name                            : ../.././Samples/SHOT0001.AVI
+Format                                   : AVI
+Format/Info                              : Audio Video Interleave
+File size                                : 34.6 MiB
+Duration                                 : 12 s 12 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 24.1 Mb/s
+Recorded date                            : 2015-01-01
+Writing library                          : AMBAx
+ICRT                                     : 00:02:07
+
+Video
+ID                                       : 0
+Format                                   : AVC
+Format/Info                              : Advanced Video Codec
+Format profile                           : Main@L4.2
+Format settings                          : CABAC / 1 Ref Frames
+Format settings, CABAC                   : Yes
+Format settings, ReFrames                : 1 frame
+Format settings, GOP                     : M=1, N=60
+Codec ID                                 : H264
+Duration                                 : 12 s 12 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 7 936 kb/s
+Maximum bit rate                         : 32.0 Mb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate                               : 29.970 (30000/1001) FPS
+Original frame rate                      : 119.880 (120000/1001) FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Bits/(Pixel*Frame)                       : 0.287
+Stream size                              : 11.4 MiB (33%)
+Color range                              : Full
+
+Audio
+ID                                       : 1
+Format                                   : ADPCM
+Codec ID                                 : 11
+Codec ID/Hint                            : Intel
+Duration                                 : 11 s 926 ms
+Bit rate mode                            : Constant
+Bit rate                                 : 48.1 kb/s
+Channel(s)                               : 1 channel
+Sampling rate                            : 12.0 kHz
+Bit depth                                : 4 bits
+Stream size                              : 68.0 KiB (0%)
+Interleave, duration                     : 353  ms (10.59 video frames)
+
+

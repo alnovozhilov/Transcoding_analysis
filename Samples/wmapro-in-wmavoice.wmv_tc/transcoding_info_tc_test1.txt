@@ -1,0 +1,272 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+[asf @ 0x55b69964c000] Estimating duration from bitrate, this may be inaccurate
+Input #0, asf, from '../.././Samples/wmapro-in-wmavoice.wmv':
+  Metadata:
+    WMFSDKNeeded    : 0.0.0.0000
+    DeviceConformanceTemplate: MP@HL
+    WMFSDKVersion   : 10.00.00.4054
+    IsVBR           : 1
+    VBR Peak        : 283651
+    Buffer Average  : 67846
+  Duration: 00:03:55.47, start: 0.000000, bitrate: 178 kb/s
+    Stream #0:0(eng): Audio: wmavoice ([10][0][0][0] / 0x000A), 22050 Hz, mono, flt, 20 kb/s
+    Stream #0:1(eng): Video: wmv3 (Main) (WMV3 / 0x33564D57), yuv420p, 1024x768, 157 kb/s, SAR 1:1 DAR 4:3, 4 tbr, 1k tbn, 1k tbc
+Stream mapping:
+  Stream #0:1 -> #0:0 (wmv3 (native) -> h264 (libx264))
+  Stream #0:0 -> #0:1 (wmavoice (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x55b699696800] using SAR=1/1
+[libx264 @ 0x55b699696800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55b699696800] profile High, level 3.1
+[libx264 @ 0x55b699696800] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=4 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/wmapro-in-wmavoice.wmv_tc/output_tc1.mov':
+  Metadata:
+    WMFSDKNeeded    : 0.0.0.0000
+    DeviceConformanceTemplate: MP@HL
+    WMFSDKVersion   : 10.00.00.4054
+    IsVBR           : 1
+    VBR Peak        : 283651
+    Buffer Average  : 67846
+    encoder         : Lavf57.83.100
+    Stream #0:0(eng): Video: h264 (libx264) (avc1 / 0x31637661), yuv420p(progressive), 1024x768 [SAR 1:1 DAR 4:3], q=-1--1, 4 fps, 16384 tbn, 4 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 22050 Hz, mono, fltp, 69 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+frame=   87 fps=0.0 q=22.0 size=       0kB time=00:00:19.88 bitrate=   0.0kbits/s dup=26 drop=0 speed=39.6x    [wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[wmavoice @ 0x55b699695900] WMAPro-in-WMAVoice is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[wmavoice @ 0x55b699695900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+frame=  191 fps=191 q=22.0 size=     256kB time=00:00:43.96 bitrate=  47.7kbits/s dup=71 drop=0 speed=43.9x    frame=  262 fps=174 q=22.0 size=     512kB time=00:01:02.77 bitrate=  66.8kbits/s dup=102 drop=0 speed=41.6x    frame=  332 fps=165 q=22.0 size=     768kB time=00:01:22.18 bitrate=  76.6kbits/s dup=129 drop=0 speed=40.9x    frame=  398 fps=158 q=22.0 size=     768kB time=00:01:36.02 bitrate=  65.5kbits/s dup=162 drop=0 speed=38.2x    frame=  478 fps=158 q=22.0 size=    1024kB time=00:01:57.43 bitrate=  71.4kbits/s dup=204 drop=0 speed=38.9x    frame=  559 fps=159 q=22.0 size=    1280kB time=00:02:15.82 bitrate=  77.2kbits/s dup=249 drop=0 speed=38.6x    frame=  643 fps=159 q=22.0 size=    1536kB time=00:02:36.95 bitrate=  80.2kbits/s dup=293 drop=0 speed=38.9x    frame=  726 fps=160 q=22.0 size=    1536kB time=00:02:58.22 bitrate=  70.6kbits/s dup=336 drop=0 speed=39.3x    frame=  812 fps=161 q=22.0 size=    2048kB time=00:03:20.88 bitrate=  83.5kbits/s dup=383 drop=0 speed=39.8x    frame=  901 fps=162 q=22.0 size=    2048kB time=00:03:41.64 bitrate=  75.7kbits/s dup=415 drop=0 speed=  40x    frame=  974 fps=161 q=22.0 size=    2304kB time=00:03:59.75 bitrate=  78.7kbits/s dup=433 drop=0 speed=39.6x    frame= 1047 fps=159 q=22.0 size=    2560kB time=00:04:17.68 bitrate=  81.4kbits/s dup=475 drop=0 speed=39.2x    frame= 1122 fps=159 q=22.0 size=    2816kB time=00:04:36.53 bitrate=  83.4kbits/s dup=517 drop=0 speed=39.1x    frame= 1206 fps=159 q=22.0 size=    3072kB time=00:04:57.38 bitrate=  84.6kbits/s dup=560 drop=0 speed=39.2x    frame= 1283 fps=159 q=22.0 size=    3072kB time=00:05:16.75 bitrate=  79.5kbits/s dup=602 drop=0 speed=39.2x    frame= 1366 fps=159 q=22.0 size=    3328kB time=00:05:36.35 bitrate=  81.1kbits/s dup=641 drop=0 speed=39.2x    frame= 1443 fps=159 q=22.0 size=    3584kB time=00:05:56.78 bitrate=  82.3kbits/s dup=680 drop=0 speed=39.3x    frame= 1530 fps=160 q=22.0 size=    3840kB time=00:06:18.37 bitrate=  83.1kbits/s dup=728 drop=0 speed=39.5x    frame= 1612 fps=160 q=22.0 size=    4096kB time=00:06:37.65 bitrate=  84.4kbits/s dup=773 drop=0 speed=39.4x    frame= 1699 fps=160 q=22.0 size=    4352kB time=00:07:00.50 bitrate=  84.8kbits/s dup=822 drop=0 speed=39.7x    frame= 1778 fps=160 q=22.0 size=    4352kB time=00:07:19.86 bitrate=  81.1kbits/s dup=864 drop=0 speed=39.6x    frame= 1863 fps=161 q=22.0 size=    4608kB time=00:07:41.41 bitrate=  81.8kbits/s dup=911 drop=0 speed=39.8x    frame= 1942 fps=160 q=22.0 size=    4864kB time=00:08:01.10 bitrate=  82.8kbits/s dup=951 drop=0 speed=39.8x    frame= 2022 fps=160 q=22.0 size=    5120kB time=00:08:20.65 bitrate=  83.8kbits/s dup=996 drop=0 speed=39.7x    More than 1000 frames duplicated
+frame= 2099 fps=160 q=22.0 size=    5376kB time=00:08:40.16 bitrate=  84.7kbits/s dup=1039 drop=0 speed=39.6x    frame= 2186 fps=160 q=22.0 size=    5632kB time=00:09:01.56 bitrate=  85.2kbits/s dup=1087 drop=0 speed=39.7x    frame= 2262 fps=160 q=22.0 size=    5632kB time=00:09:21.72 bitrate=  82.1kbits/s dup=1128 drop=0 speed=39.7x    frame= 2342 fps=160 q=22.0 size=    5888kB time=00:09:41.27 bitrate=  83.0kbits/s dup=1173 drop=0 speed=39.7x    frame= 2422 fps=160 q=22.0 size=    6144kB time=00:10:01.38 bitrate=  83.7kbits/s dup=1217 drop=0 speed=39.7x    frame= 2502 fps=160 q=22.0 size=    6400kB time=00:10:21.49 bitrate=  84.4kbits/s dup=1263 drop=0 speed=39.7x    frame= 2579 fps=160 q=22.0 size=    6656kB time=00:10:40.67 bitrate=  85.1kbits/s dup=1306 drop=0 speed=39.7x    frame= 2662 fps=160 q=22.0 size=    6912kB time=00:11:01.24 bitrate=  85.6kbits/s dup=1347 drop=0 speed=39.7x    frame= 2747 fps=160 q=22.0 size=    6912kB time=00:11:23.25 bitrate=  82.9kbits/s dup=1394 drop=0 speed=39.8x    frame= 2808 fps=159 q=22.0 size=    7168kB time=00:11:39.55 bitrate=  83.9kbits/s dup=1423 drop=0 speed=39.6x    frame= 2883 fps=159 q=22.0 size=    7424kB time=00:11:55.76 bitrate=  85.0kbits/s dup=1452 drop=0 speed=39.4x    [wmv3 @ 0x55b699695400] Bits overconsumption: 331248 > 331240
+[wmv3 @ 0x55b699695400] concealing 3072 DC, 3072 AC, 3072 MV errors in I frame
+frame= 2942 fps=157 q=22.0 size=    7680kB time=00:12:13.08 bitrate=  85.8kbits/s dup=1477 drop=0 speed=39.2x    frame= 2943 fps=156 q=-1.0 Lsize=    8026kB time=00:12:15.00 bitrate=  89.5kbits/s dup=1479 drop=0 speed=38.9x    
+video:1436kB audio:6419kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 2.181750%
+[libx264 @ 0x55b699696800] frame I:12    Avg QP: 7.13  size: 72109
+[libx264 @ 0x55b699696800] frame P:748   Avg QP:13.96  size:   623
+[libx264 @ 0x55b699696800] frame B:2183  Avg QP: 7.10  size:    63
+[libx264 @ 0x55b699696800] consecutive B-frames:  0.8%  0.5%  0.8% 97.9%
+[libx264 @ 0x55b699696800] mb I  I16..4: 69.6% 11.6% 18.8%
+[libx264 @ 0x55b699696800] mb P  I16..4:  0.5%  0.3%  0.1%  P16..4:  0.4%  0.0%  0.0%  0.0%  0.0%    skip:98.7%
+[libx264 @ 0x55b699696800] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8:  0.7%  0.0%  0.0%  direct: 0.0%  skip:99.3%  L0:62.1% L1:37.8% BI: 0.1%
+[libx264 @ 0x55b699696800] 8x8 transform intra:18.1% inter:42.5%
+[libx264 @ 0x55b699696800] coded y,uvDC,uvAC intra: 13.6% 13.6% 11.5% inter: 0.0% 0.1% 0.0%
+[libx264 @ 0x55b699696800] i16 v,h,dc,p: 65% 32%  2%  0%
+[libx264 @ 0x55b699696800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 63% 12% 23%  0%  0%  0%  0%  0%  1%
+[libx264 @ 0x55b699696800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 27% 14%  3%  3%  4%  4%  3%  6%
+[libx264 @ 0x55b699696800] i8c dc,h,v,p: 74% 15% 10%  1%
+[libx264 @ 0x55b699696800] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x55b699696800] ref P L0: 78.6%  3.5% 12.4%  5.5%
+[libx264 @ 0x55b699696800] ref B L0: 55.6% 43.4%  1.0%
+[libx264 @ 0x55b699696800] ref B L1: 98.5%  1.5%
+[libx264 @ 0x55b699696800] kb/s:15.98
+[aac @ 0x55b699697700] Qavg: 5281.230
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/wmapro-in-wmavoice.wmv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/wmapro-in-wmavoice.wmv_tc/output_tc1.mov"
+	User time (seconds): 48.14
+	System time (seconds): 0.27
+	Percent of CPU this job got: 251%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.25
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 253420
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 32
+	Minor (reclaiming a frame) page faults: 15176
+	Voluntary context switches: 24701
+	Involuntary context switches: 1843
+	Swaps: 0
+	File system inputs: 12152
+	File system outputs: 16152
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

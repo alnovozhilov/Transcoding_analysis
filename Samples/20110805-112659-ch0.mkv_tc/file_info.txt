@@ -1,0 +1,29 @@
+General
+Unique ID                                : 150068349295283621376990816103385374343 (0x70E61CDDEBEE6CC7FFFB021B90059E87)
+Complete name                            : ../.././Samples/20110805-112659-ch0.mkv
+Format                                   : Matroska
+Format version                           : Version 2
+File size                                : 6.01 MiB
+Duration                                 : 18 s 67 ms
+Overall bit rate                         : 2 792 kb/s
+Writing application                      : Lavf53.6.0
+Writing library                          : Lavf53.6.0
+
+Video
+ID                                       : 1
+Format                                   : AVC
+Format/Info                              : Advanced Video Codec
+Codec ID                                 : V_MPEG4/ISO/AVC
+Duration                                 : 18 s 67 ms
+Bit rate                                 : 2 737 kb/s
+Width                                    : 720 pixels
+Height                                   : 480 pixels
+Display aspect ratio                     : 0.998
+Frame rate mode                          : Constant
+Frame rate                               : 15.000 FPS
+Bits/(Pixel*Frame)                       : 0.528
+Stream size                              : 5.89 MiB (98%)
+Default                                  : Yes
+Forced                                   : No
+
+

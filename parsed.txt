@@ -1,0 +1,1744 @@
+Complete name : ../.././Samples/mancandy_lscm.avi
+Format : AVI
+Format/Info : Audio Video Interleave
+Duration : 42 s 500 ms
+Format : MPEG-4 Visual
+Format settings, BVOP : No
+Format settings, QPel : No
+Format settings, GMC : No warppoints
+Format settings, Matrix : Default (H.263)
+Duration : 42 s 500 ms
+Bit rate : 979 kb/s
+Width : 712 pixels
+Height : 490 pixels
+Frame rate : 10.000 FPS
+
+std
+Test 1
+User time (seconds): 9.51
+System time (seconds): 0.13
+Percent of CPU this job got: 356%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.71
+Test 2
+User time (seconds): 9.45
+System time (seconds): 0.15
+Percent of CPU this job got: 352%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.72
+Test 3
+User time (seconds): 9.57
+System time (seconds): 0.10
+Percent of CPU this job got: 343%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.81
+
+tc_malloc
+Test 1
+User time (seconds): 7.11
+System time (seconds): 0.14
+Percent of CPU this job got: 325%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.23
+Test 2
+User time (seconds): 8.99
+System time (seconds): 0.13
+Percent of CPU this job got: 353%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.58
+Test 3
+User time (seconds): 6.16
+System time (seconds): 0.06
+Percent of CPU this job got: 346%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.79
+
+
+Complete name : ../.././Samples/Chimera_DCI4k2398p_HDR_P3PQ.mp4
+Format : MPEG-4
+Format profile : Base Media
+Duration : 6 min 12 s
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High@L5.1
+Format settings : CABAC / 4 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 4 frames
+Duration : 6 min 12 s
+Bit rate : 54.4 Mb/s
+Width : 4 096 pixels
+Height : 2 160 pixels
+Frame rate mode : Constant
+Frame rate : 23.976 (24000/1001) FPS
+
+std
+Test 1
+User time (seconds): 16258.13
+System time (seconds): 14.26
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:08:44
+Test 2
+User time (seconds): 13542.39
+System time (seconds): 8.13
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 56:55.18
+Test 3
+User time (seconds): 18573.43
+System time (seconds): 13.23
+Percent of CPU this job got: 397%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:17:57
+
+tc_malloc
+Test 1
+User time (seconds): 13778.19
+System time (seconds): 11.59
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 57:54.41
+Test 2
+User time (seconds): 13419.33
+System time (seconds): 11.27
+Percent of CPU this job got: 373%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 59:56.91
+Test 3
+User time (seconds): 13504.96
+System time (seconds): 9.41
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:06.17
+
+
+Complete name : ../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf
+Format : MXF
+Format version : 1.3
+Format profile : OP-1a
+Format settings : Closed / Complete
+Duration : 11 min 4 s
+Format : PCM
+Format settings : Little
+Format settings, wrapping mode : Clip (BWF)
+Duration : 11 min 4 s
+Bit rate mode : Constant
+Bit rate : 6 912 kb/s
+Format : MXF TC
+Format : MXF TC
+
+std
+Test 1
+User time (seconds): 4.52
+System time (seconds): 0.13
+Percent of CPU this job got: 100%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.65
+Test 2
+User time (seconds): 4.48
+System time (seconds): 0.09
+Percent of CPU this job got: 99%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.58
+Test 3
+User time (seconds): 4.36
+System time (seconds): 0.22
+Percent of CPU this job got: 96%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.77
+
+tc_malloc
+Test 1
+User time (seconds): 3.14
+System time (seconds): 0.23
+Percent of CPU this job got: 81%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.14
+Test 2
+User time (seconds): 2.80
+System time (seconds): 0.07
+Percent of CPU this job got: 100%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.87
+Test 3
+User time (seconds): 2.78
+System time (seconds): 0.07
+Percent of CPU this job got: 99%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.85
+
+
+Complete name : ../.././Samples/test_aspect_h263_ext.avi
+Format : AVI
+Format/Info : Audio Video Interleave
+Duration : 4 s 500 ms
+Format : H.263
+Duration : 3 s 960 ms
+Bit rate : 1 220 kb/s
+Width : 704 pixels
+Height : 576 pixels
+Frame rate : 25.000 FPS
+Format : MPEG Audio
+Format version : Version 1
+Format profile : Layer 2
+Duration : 4 s 500 ms
+Bit rate mode : Constant
+Bit rate : 224 kb/s
+
+std
+Test 1
+User time (seconds): 5.16
+System time (seconds): 0.04
+Percent of CPU this job got: 315%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.65
+Test 2
+User time (seconds): 3.89
+System time (seconds): 0.06
+Percent of CPU this job got: 279%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.41
+Test 3
+User time (seconds): 3.83
+System time (seconds): 0.04
+Percent of CPU this job got: 275%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.40
+
+tc_malloc
+Test 1
+User time (seconds): 3.83
+System time (seconds): 0.05
+Percent of CPU this job got: 266%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.45
+Test 2
+User time (seconds): 4.00
+System time (seconds): 0.04
+Percent of CPU this job got: 302%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.33
+Test 3
+User time (seconds): 4.02
+System time (seconds): 0.04
+Percent of CPU this job got: 302%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.34
+
+
+Complete name : ../.././Samples/mpeg_demuxer_crash_NSFW.mpg
+Format : MPEG-PS
+Duration : 11 s 637 ms
+Format : MPEG Video
+Format version : Version 1
+Format settings : BVOP
+Format settings, BVOP : Yes
+Format settings, Matrix : Default
+Format settings, GOP : M=3, N=12
+Duration : 11 s 637 ms
+Bit rate mode : Variable
+Bit rate : 208 kb/s
+Width : 192 pixels
+Height : 144 pixels
+Frame rate : 23.976 (24000/1001) FPS
+Format : MPEG Audio
+Format version : Version 1
+Format profile : Layer 2
+Format settings : Intensity Stereo
+Duration : 11 s 628 ms
+Bit rate mode : Constant
+Bit rate : 64.0 kb/s
+Frame rate : 27.778 FPS (1152 SPF)
+
+std
+Test 1
+User time (seconds): 1.54
+System time (seconds): 0.03
+Percent of CPU this job got: 177%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.88
+Test 2
+User time (seconds): 1.53
+System time (seconds): 0.04
+Percent of CPU this job got: 177%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.88
+Test 3
+User time (seconds): 1.57
+System time (seconds): 0.04
+Percent of CPU this job got: 176%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.91
+
+tc_malloc
+Test 1
+User time (seconds): 1.55
+System time (seconds): 0.05
+Percent of CPU this job got: 156%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.02
+Test 2
+User time (seconds): 1.55
+System time (seconds): 0.03
+Percent of CPU this job got: 180%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.87
+Test 3
+User time (seconds): 1.53
+System time (seconds): 0.04
+Percent of CPU this job got: 180%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.87
+
+
+Complete name : ../.././Samples/audio_codec_problem.wmv
+Format : Windows Media
+Duration : 22 s 670 ms
+Format : WMV1
+Duration : 22 s 638 ms
+Bit rate mode : Constant
+Bit rate : 319 kb/s
+Width : 320 pixels
+Height : 240 pixels
+Frame rate : 14.975 FPS
+Format : WMA
+Format version : Version 2
+Duration : 22 s 670 ms
+Bit rate mode : Constant
+Bit rate : 22.0 kb/s
+
+std
+Test 1
+User time (seconds): 5.39
+System time (seconds): 0.09
+Percent of CPU this job got: 295%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.85
+Test 2
+User time (seconds): 5.38
+System time (seconds): 0.05
+Percent of CPU this job got: 301%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.80
+Test 3
+User time (seconds): 5.39
+System time (seconds): 0.04
+Percent of CPU this job got: 303%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.79
+
+tc_malloc
+Test 1
+User time (seconds): 3.47
+System time (seconds): 0.04
+Percent of CPU this job got: 285%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.23
+Test 2
+User time (seconds): 3.41
+System time (seconds): 0.06
+Percent of CPU this job got: 292%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.19
+Test 3
+User time (seconds): 3.43
+System time (seconds): 0.05
+Percent of CPU this job got: 283%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.23
+
+
+Complete name : ../.././Samples/Sintel.2010.1080p.mkv
+Format : Matroska
+Format version : Version 2
+Duration : 14 min 48 s
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High@L4.1
+Format settings : CABAC / 5 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 5 frames
+Duration : 14 min 48 s
+Bit rate : 10 000 kb/s
+Width : 1 920 pixels
+Height : 818 pixels
+Frame rate mode : Constant
+Frame rate : 24.000 FPS
+Format : AC-3
+Format/Info : Audio Coding 3
+Duration : 14 min 48 s
+Bit rate mode : Constant
+Bit rate : 640 kb/s
+Frame rate : 31.250 FPS (1536 SPF)
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+
+std
+Test 1
+User time (seconds): 4736.99
+System time (seconds): 8.88
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 20:08.67
+Test 2
+User time (seconds): 4744.57
+System time (seconds): 8.81
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 20:12.13
+Test 3
+User time (seconds): 4728.05
+System time (seconds): 11.52
+Percent of CPU this job got: 314%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 25:09.21
+
+tc_malloc
+Test 1
+User time (seconds): 3574.96
+System time (seconds): 7.95
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 15:19.49
+Test 2
+User time (seconds): 3555.61
+System time (seconds): 7.06
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 15:06.82
+Test 3
+User time (seconds): 3558.40
+System time (seconds): 6.78
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 15:07.89
+
+
+Complete name : ../.././Samples/bug669-withoutsimplebl.mkv
+Format : Matroska
+Format version : Version 1
+Duration : 9 s 144 ms
+Format : MPEG-4 Visual
+Duration : 9 s 142 ms
+Bit rate : 2 052 kb/s
+Width : 576 pixels
+Height : 432 pixels
+Frame rate mode : Constant
+Frame rate : 29.970 (29970/1000) FPS
+Format : UTF-8
+
+std
+Test 1
+User time (seconds): 5.98
+System time (seconds): 0.12
+Percent of CPU this job got: 341%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.78
+Test 2
+User time (seconds): 5.94
+System time (seconds): 0.08
+Percent of CPU this job got: 345%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.74
+Test 3
+User time (seconds): 5.99
+System time (seconds): 0.09
+Percent of CPU this job got: 326%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.86
+
+tc_malloc
+Test 1
+User time (seconds): 4.24
+System time (seconds): 0.08
+Percent of CPU this job got: 281%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.53
+Test 2
+User time (seconds): 5.41
+System time (seconds): 0.08
+Percent of CPU this job got: 344%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.59
+Test 3
+User time (seconds): 3.80
+System time (seconds): 0.06
+Percent of CPU this job got: 334%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.15
+
+
+Complete name : ../.././Samples/Plumiferos_persecucion_casting.mpg
+Format : MPEG-PS
+Duration : 3 min 38 s
+Format : MPEG Video
+Format version : Version 1
+Format settings : CustomMatrix / BVOP
+Format settings, BVOP : Yes
+Format settings, Matrix : Custom
+Format settings, GOP : Variable
+Duration : 3 min 38 s
+Bit rate mode : Constant
+Bit rate : 1 150 kb/s
+Width : 352 pixels
+Height : 288 pixels
+Frame rate : 25.000 FPS
+Format : MPEG Audio
+Format version : Version 1
+Format profile : Layer 2
+Duration : 3 min 37 s
+Bit rate mode : Constant
+Bit rate : 224 kb/s
+Frame rate : 38.281 FPS (1152 SPF)
+
+std
+Test 1
+User time (seconds): 56.76
+System time (seconds): 0.85
+Percent of CPU this job got: 301%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.14
+Test 2
+User time (seconds): 57.11
+System time (seconds): 0.75
+Percent of CPU this job got: 293%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.73
+Test 3
+User time (seconds): 57.18
+System time (seconds): 0.75
+Percent of CPU this job got: 299%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.36
+
+tc_malloc
+Test 1
+User time (seconds): 39.08
+System time (seconds): 0.51
+Percent of CPU this job got: 290%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.64
+Test 2
+User time (seconds): 39.20
+System time (seconds): 0.54
+Percent of CPU this job got: 294%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.48
+Test 3
+User time (seconds): 39.20
+System time (seconds): 0.41
+Percent of CPU this job got: 294%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.44
+
+
+Complete name : ../.././Samples/videoplayback.webm
+Format : WebM
+Format version : Version 4 / Version 2
+Duration : 31 min 21 s
+Format : VP9
+Duration : 31 min 21 s
+Bit rate : 14.3 Mb/s
+Width : 3 840 pixels
+Height : 2 026 pixels
+Frame rate mode : Constant
+Frame rate : 23.976 (24000/1001) FPS
+
+std
+Test 1
+User time (seconds): 33058.67
+System time (seconds): 46.41
+Percent of CPU this job got: 379%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:25:29
+Test 2
+User time (seconds): 33097.01
+System time (seconds): 47.91
+Percent of CPU this job got: 381%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:24:48
+Test 3
+User time (seconds): 33046.89
+System time (seconds): 49.02
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:25:38
+
+tc_malloc
+Test 1
+User time (seconds): 33124.56
+System time (seconds): 50.53
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:24:38
+Test 2
+User time (seconds): 33104.77
+System time (seconds): 49.36
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:24:38
+Test 3
+User time (seconds): 33083.44
+System time (seconds): 51.26
+Percent of CPU this job got: 380%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:25:02
+
+
+Complete name : ../.././Samples/DSCF1928_fish.AVI
+Format : AVI
+Format/Info : Audio Video Interleave
+Duration : 19 s 0 ms
+Format : JPEG
+Duration : 19 s 0 ms
+Bit rate : 10.1 Mb/s
+Width : 640 pixels
+Height : 480 pixels
+Frame rate : 30.000 FPS
+Format : JPEG
+Duration : 19 s 0 ms
+Bit rate : 8 316 kb/s
+Width : 640 pixels
+Height : 480 pixels
+Frame rate : 30.000 FPS
+Format : PCM
+Format settings : Little / Signed
+Duration : 19 s 0 ms
+Bit rate mode : Constant
+Bit rate : 352.8 kb/s
+
+std
+Test 1
+User time (seconds): 45.00
+System time (seconds): 0.12
+Percent of CPU this job got: 385%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.70
+Test 2
+User time (seconds): 46.70
+System time (seconds): 0.12
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.21
+Test 3
+User time (seconds): 46.88
+System time (seconds): 0.16
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.41
+
+tc_malloc
+Test 1
+User time (seconds): 44.57
+System time (seconds): 0.14
+Percent of CPU this job got: 376%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.86
+Test 2
+User time (seconds): 43.58
+System time (seconds): 0.12
+Percent of CPU this job got: 385%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.32
+Test 3
+User time (seconds): 43.51
+System time (seconds): 0.11
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.37
+
+
+Complete name : ../.././Samples/videoplayback2.webm
+Format : WebM
+Format version : Version 4 / Version 2
+Duration : 41 min 55 s
+Format : VP9
+Duration : 41 min 55 s
+Bit rate : 2 518 kb/s
+Width : 1 920 pixels
+Height : 1 080 pixels
+Frame rate mode : Constant
+Frame rate : 29.970 (30000/1001) FPS
+
+std
+Test 1
+User time (seconds): 13811.88
+System time (seconds): 25.94
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:55.71
+Test 2
+User time (seconds): 13812.54
+System time (seconds): 25.27
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:53.52
+Test 3
+User time (seconds): 13791.59
+System time (seconds): 25.88
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:54.38
+
+tc_malloc
+Test 1
+User time (seconds): 13825.34
+System time (seconds): 29.33
+Percent of CPU this job got: 388%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 59:24.47
+Test 2
+User time (seconds): 13825.54
+System time (seconds): 27.96
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 59:10.37
+Test 3
+User time (seconds): 14190.68
+System time (seconds): 57.10
+Percent of CPU this job got: 358%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:06:12
+
+
+Complete name : ../.././Samples/CosmosLaundromat_2k24p_HDR_P3PQ.mp4
+Format : MPEG-4
+Format profile : Base Media
+Duration : 12 min 38 s
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High@L4
+Format settings : CABAC / 4 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 4 frames
+Duration : 12 min 38 s
+Bit rate : 7 689 kb/s
+Width : 2 048 pixels
+Height : 858 pixels
+Frame rate mode : Constant
+Frame rate : 23.976 (24000/1001) FPS
+
+std
+Test 1
+User time (seconds): 3302.78
+System time (seconds): 5.40
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 13:57.17
+Test 2
+User time (seconds): 3307.99
+System time (seconds): 5.38
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 13:57.89
+Test 3
+User time (seconds): 3296.67
+System time (seconds): 5.62
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 13:56.14
+
+tc_malloc
+Test 1
+User time (seconds): 3307.44
+System time (seconds): 6.02
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 14:06.23
+Test 2
+User time (seconds): 3318.83
+System time (seconds): 5.87
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 14:04.66
+Test 3
+User time (seconds): 3315.73
+System time (seconds): 5.56
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 14:00.02
+
+
+Complete name : ../.././Samples/Dracula480p.wmv
+Format : Windows Media
+Duration : 52 s 736 ms
+Format : VC-1
+Format profile : Advanced@L3
+Duration : 52 s 733 ms
+Bit rate mode : Variable
+Bit rate : 6 000 kb/s
+Width : 1 440 pixels
+Height : 480 pixels
+Frame rate : 30.000 FPS
+Format : WMA
+Format version : Version 2
+Duration : 52 s 736 ms
+Bit rate mode : Variable
+Bit rate : 129 kb/s
+
+std
+Test 1
+User time (seconds): 95.96
+System time (seconds): 0.23
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.42
+Test 2
+User time (seconds): 95.81
+System time (seconds): 0.27
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.38
+Test 3
+User time (seconds): 95.61
+System time (seconds): 0.25
+Percent of CPU this job got: 377%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.42
+
+tc_malloc
+Test 1
+User time (seconds): 95.85
+System time (seconds): 0.33
+Percent of CPU this job got: 376%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.52
+Test 2
+User time (seconds): 95.91
+System time (seconds): 0.30
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.43
+Test 3
+User time (seconds): 95.83
+System time (seconds): 0.27
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.42
+
+
+Complete name : ../.././Samples/soraya.mkv
+Format : Matroska
+Format version : Version 1
+Duration : 3 min 57 s
+Format : MPEG Video
+Format version : Version 2
+Format profile : Main@Main
+Format settings : CustomMatrix / BVOP
+Format settings, BVOP : Yes
+Format settings, Matrix : Custom
+Format settings, GOP : Variable
+Bit rate mode : Variable
+Width : 544 pixels
+Height : 480 pixels
+Frame rate mode : Variable
+Format : AAC
+Format/Info : Advanced Audio Codec
+Format version : Version 4
+Format profile : HE-AAC / LC
+Format settings : Explicit
+Duration : 3 min 57 s
+Frame rate : 21.533 FPS (1024 SPF)
+
+std
+Test 1
+User time (seconds): 244.34
+System time (seconds): 1.35
+Percent of CPU this job got: 377%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:05.15
+Test 2
+User time (seconds): 244.67
+System time (seconds): 1.71
+Percent of CPU this job got: 356%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09.13
+Test 3
+User time (seconds): 243.78
+System time (seconds): 1.32
+Percent of CPU this job got: 379%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:04.58
+
+tc_malloc
+Test 1
+User time (seconds): 175.57
+System time (seconds): 0.98
+Percent of CPU this job got: 373%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:47.26
+Test 2
+User time (seconds): 179.71
+System time (seconds): 1.12
+Percent of CPU this job got: 375%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:48.11
+Test 3
+User time (seconds): 180.06
+System time (seconds): 0.84
+Percent of CPU this job got: 374%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:48.25
+
+
+Complete name : ../.././Samples/SHOT0001.AVI
+Format : AVI
+Format/Info : Audio Video Interleave
+Duration : 12 s 12 ms
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : Main@L4.2
+Format settings : CABAC / 1 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 1 frame
+Format settings, GOP : M=1, N=60
+Duration : 12 s 12 ms
+Bit rate mode : Variable
+Bit rate : 7 936 kb/s
+Width : 1 280 pixels
+Height : 720 pixels
+Frame rate : 29.970 (30000/1001) FPS
+Format : ADPCM
+Duration : 11 s 926 ms
+Bit rate mode : Constant
+Bit rate : 48.1 kb/s
+
+std
+Test 1
+User time (seconds): 56.91
+System time (seconds): 0.21
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.88
+Test 2
+User time (seconds): 53.94
+System time (seconds): 0.16
+Percent of CPU this job got: 388%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.91
+Test 3
+User time (seconds): 55.29
+System time (seconds): 0.19
+Percent of CPU this job got: 367%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.08
+
+tc_malloc
+Test 1
+User time (seconds): 53.97
+System time (seconds): 0.18
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.11
+Test 2
+User time (seconds): 54.21
+System time (seconds): 0.16
+Percent of CPU this job got: 388%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.99
+Test 3
+User time (seconds): 54.18
+System time (seconds): 0.18
+Percent of CPU this job got: 386%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.05
+
+
+Complete name : ../.././Samples/20110805-112659-ch0.mkv
+Format : Matroska
+Format version : Version 2
+Duration : 18 s 67 ms
+Format : AVC
+Format/Info : Advanced Video Codec
+Duration : 18 s 67 ms
+Bit rate : 2 737 kb/s
+Width : 720 pixels
+Height : 480 pixels
+Frame rate mode : Constant
+Frame rate : 15.000 FPS
+
+std
+Test 1
+User time (seconds): 9.51
+System time (seconds): 0.08
+Percent of CPU this job got: 365%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.62
+Test 2
+User time (seconds): 9.53
+System time (seconds): 0.06
+Percent of CPU this job got: 364%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.63
+Test 3
+User time (seconds): 9.22
+System time (seconds): 0.10
+Percent of CPU this job got: 361%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.58
+
+tc_malloc
+Test 1
+User time (seconds): 9.38
+System time (seconds): 0.13
+Percent of CPU this job got: 348%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.73
+Test 2
+User time (seconds): 9.54
+System time (seconds): 0.09
+Percent of CPU this job got: 366%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.62
+Test 3
+User time (seconds): 9.49
+System time (seconds): 0.09
+Percent of CPU this job got: 364%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.63
+
+
+Complete name : ../.././Samples/divx4b153_badmacroblock.avi
+Format : AVI
+Format/Info : Audio Video Interleave
+Duration : 44 s 0 ms
+Format : MPEG-4 Visual
+Duration : 44 s 0 ms
+Bit rate : 775 kb/s
+Width : 576 pixels
+Height : 312 pixels
+Frame rate : 25.000 FPS
+Format : MPEG Audio
+Format version : Version 1
+Format profile : Layer 3
+Duration : 43 s 990 ms
+Bit rate mode : Variable
+Bit rate : 128 kb/s
+Frame rate : 38.281 FPS (1152 SPF)
+
+std
+Test 1
+User time (seconds): 29.53
+System time (seconds): 0.19
+Percent of CPU this job got: 371%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.00
+Test 2
+User time (seconds): 29.55
+System time (seconds): 0.18
+Percent of CPU this job got: 371%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.01
+Test 3
+User time (seconds): 29.58
+System time (seconds): 0.16
+Percent of CPU this job got: 369%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.06
+
+tc_malloc
+Test 1
+User time (seconds): 23.18
+System time (seconds): 0.20
+Percent of CPU this job got: 359%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.50
+Test 2
+User time (seconds): 21.90
+System time (seconds): 0.12
+Percent of CPU this job got: 366%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.00
+Test 3
+User time (seconds): 22.85
+System time (seconds): 0.15
+Percent of CPU this job got: 364%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.30
+
+
+Complete name : ../.././Samples/Sintel.2010.720p.mkv
+Format : Matroska
+Format version : Version 2
+Duration : 14 min 48 s
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High@L4.1
+Format settings : CABAC / 11 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 11 frames
+Duration : 14 min 48 s
+Bit rate : 5 500 kb/s
+Width : 1 280 pixels
+Height : 544 pixels
+Frame rate mode : Constant
+Frame rate : 24.000 FPS
+Format : AC-3
+Format/Info : Audio Coding 3
+Duration : 14 min 48 s
+Bit rate mode : Constant
+Bit rate : 640 kb/s
+Frame rate : 31.250 FPS (1536 SPF)
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+Format : UTF-8
+
+std
+Test 1
+User time (seconds): 1596.50
+System time (seconds): 4.17
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 6:53.51
+Test 2
+User time (seconds): 1601.18
+System time (seconds): 4.18
+Percent of CPU this job got: 385%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 6:56.71
+Test 3
+User time (seconds): 1593.86
+System time (seconds): 4.70
+Percent of CPU this job got: 385%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 6:54.40
+
+tc_malloc
+Test 1
+User time (seconds): 1604.35
+System time (seconds): 4.95
+Percent of CPU this job got: 386%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 6:56.58
+Test 2
+User time (seconds): 1600.67
+System time (seconds): 4.41
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 6:54.72
+Test 3
+User time (seconds): 1598.82
+System time (seconds): 4.30
+Percent of CPU this job got: 386%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 6:54.29
+
+
+Complete name : ../.././Samples/LMLM4_CIFat30fps.divx
+Format : MPEG-4 Visual
+Format : MPEG-4 Visual
+Format profile : Simple@L3
+Format settings : BVOP
+Format settings, BVOP : Yes
+Format settings, QPel : No
+Format settings, GMC : No warppoints
+Format settings, Matrix : Default (MPEG)
+Width : 320 pixels
+Height : 240 pixels
+
+std
+Test 1
+User time (seconds): 3.33
+System time (seconds): 0.06
+Percent of CPU this job got: 302%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.12
+Test 2
+User time (seconds): 3.35
+System time (seconds): 0.05
+Percent of CPU this job got: 304%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.11
+Test 3
+User time (seconds): 3.45
+System time (seconds): 0.09
+Percent of CPU this job got: 161%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.20
+
+tc_malloc
+Test 1
+User time (seconds): 3.47
+System time (seconds): 0.09
+Percent of CPU this job got: 149%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.39
+Test 2
+User time (seconds): 3.31
+System time (seconds): 0.06
+Percent of CPU this job got: 300%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.12
+Test 3
+User time (seconds): 3.37
+System time (seconds): 0.04
+Percent of CPU this job got: 306%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.11
+
+
+Complete name : ../.././Samples/Netflix_Boat_4096x2160_60fps_10bit_420.y4m
+Format : YUV4MPEG2
+Format : YUV
+Width : 4 096 pixels
+Height : 2 160 pixels
+Frame rate : 60.000 FPS
+
+std
+Test 1
+User time (seconds): 186.16
+System time (seconds): 5.30
+Percent of CPU this job got: 254%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:15.29
+Test 2
+User time (seconds): 186.39
+System time (seconds): 5.38
+Percent of CPU this job got: 251%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:16.36
+Test 3
+User time (seconds): 190.55
+System time (seconds): 5.51
+Percent of CPU this job got: 263%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:14.38
+
+tc_malloc
+Test 1
+User time (seconds): 183.39
+System time (seconds): 6.51
+Percent of CPU this job got: 257%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:13.84
+Test 2
+User time (seconds): 184.97
+System time (seconds): 5.80
+Percent of CPU this job got: 245%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:17.82
+Test 3
+User time (seconds): 180.16
+System time (seconds): 6.31
+Percent of CPU this job got: 234%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19.35
+
+
+Complete name : ../.././Samples/aom_overlay_proxy.mp4
+Format : MPEG-4
+Format profile : Base Media
+Duration : 2 s 167 ms
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High 10@L4.2
+Format settings : CABAC / 4 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 4 frames
+Duration : 2 s 167 ms
+Bit rate : 10.6 Mb/s
+Width : 1 920 pixels
+Height : 1 080 pixels
+Frame rate mode : Constant
+Frame rate : 60.000 FPS
+
+std
+Test 1
+User time (seconds): 24.41
+System time (seconds): 0.13
+Percent of CPU this job got: 366%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.69
+Test 2
+User time (seconds): 24.39
+System time (seconds): 0.13
+Percent of CPU this job got: 367%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.68
+Test 3
+User time (seconds): 23.31
+System time (seconds): 0.16
+Percent of CPU this job got: 323%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.25
+
+tc_malloc
+Test 1
+User time (seconds): 26.14
+System time (seconds): 0.15
+Percent of CPU this job got: 363%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.24
+Test 2
+User time (seconds): 24.77
+System time (seconds): 0.19
+Percent of CPU this job got: 366%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.81
+Test 3
+User time (seconds): 24.28
+System time (seconds): 0.18
+Percent of CPU this job got: 354%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.90
+
+
+Complete name : ../.././Samples/C_V3_9615614724_7445_2397.mp4
+Format : iso6
+Duration : 24 min 49 s
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High@L4
+Format settings : CABAC / 4 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 4 frames
+Duration : 24 min 49 s
+Bit rate mode : Variable
+Bit rate : 7 444 kb/s
+Width : 1 920 pixels
+Height : 1 080 pixels
+Frame rate mode : Constant
+Frame rate : 23.976 (24000/1001) FPS
+
+std
+Test 1
+User time (seconds): 15365.83
+System time (seconds): 17.26
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:04:52
+Test 2
+User time (seconds): 15365.72
+System time (seconds): 17.75
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:04:52
+Test 3
+User time (seconds): 15368.66
+System time (seconds): 18.14
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:04:48
+
+tc_malloc
+Test 1
+User time (seconds): 11504.32
+System time (seconds): 13.47
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:27.35
+Test 2
+User time (seconds): 11515.99
+System time (seconds): 13.14
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:35.10
+Test 3
+User time (seconds): 11546.82
+System time (seconds): 13.13
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:43.35
+
+
+Complete name : ../.././Samples/esign_2_high.qt
+Format : QuickTime
+Format/Info : Original Apple specifications
+Duration : 4 min 1 s
+Format : MPEG-4 Visual
+Format profile : Advanced Simple@L3
+Format settings : BVOP
+Format settings, BVOP : Yes
+Format settings, QPel : No
+Format settings, GMC : No warppoints
+Format settings, Matrix : Default (H.263)
+Duration : 4 min 1 s
+Bit rate mode : Constant
+Bit rate : 2 458 kb/s
+Width : 720 pixels
+Height : 404 pixels
+Frame rate mode : Constant
+Frame rate : 25.000 FPS
+Format : AAC
+Format/Info : Advanced Audio Codec
+Format profile : LC
+Duration : 3 min 58 s
+Bit rate mode : Constant
+Bit rate : 112 kb/s
+Frame rate : 43.066 FPS (1024 SPF)
+Format : RTP
+Duration : 4 min 1 s
+Format : RTP
+Duration : 3 min 58 s
+Bit rate mode : VBR
+
+std
+Test 1
+User time (seconds): 367.12
+System time (seconds): 1.31
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:34.27
+Test 2
+User time (seconds): 367.43
+System time (seconds): 1.35
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:33.81
+Test 3
+User time (seconds): 367.98
+System time (seconds): 1.67
+Percent of CPU this job got: 384%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:36.03
+
+tc_malloc
+Test 1
+User time (seconds): 272.41
+System time (seconds): 0.93
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09.55
+Test 2
+User time (seconds): 272.88
+System time (seconds): 0.93
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:10.13
+Test 3
+User time (seconds): 272.97
+System time (seconds): 0.93
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09.57
+
+
+
+std
+Test 1
+User time (seconds): 0.03
+System time (seconds): 0.00
+Percent of CPU this job got: 97%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.04
+Test 2
+User time (seconds): 0.03
+System time (seconds): 0.00
+Percent of CPU this job got: 100%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.04
+Test 3
+User time (seconds): 0.03
+System time (seconds): 0.01
+Percent of CPU this job got: 97%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.04
+
+tc_malloc
+
+
+Complete name : ../.././Samples/wmapro-in-wmavoice.wmv
+Format : Windows Media
+Duration : 56 min 7 s
+Format : VC-1
+Format profile : MP@HL
+Bit rate mode : Variable
+Bit rate : 158 kb/s
+Width : 1 024 pixels
+Height : 768 pixels
+Frame rate mode : Variable
+Format : WMA
+Format profile : Voice
+Duration : 56 min 7 s
+Bit rate mode : Constant
+Bit rate : 20.0 kb/s
+
+std
+Test 1
+User time (seconds): 48.14
+System time (seconds): 0.25
+Percent of CPU this job got: 255%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:18.91
+Test 2
+User time (seconds): 47.99
+System time (seconds): 0.26
+Percent of CPU this job got: 255%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:18.91
+Test 3
+User time (seconds): 46.30
+System time (seconds): 0.25
+Percent of CPU this job got: 231%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:20.10
+
+tc_malloc
+Test 1
+User time (seconds): 48.14
+System time (seconds): 0.27
+Percent of CPU this job got: 251%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.25
+Test 2
+User time (seconds): 47.97
+System time (seconds): 0.24
+Percent of CPU this job got: 256%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:18.77
+Test 3
+User time (seconds): 48.29
+System time (seconds): 0.24
+Percent of CPU this job got: 256%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:18.90
+
+
+Complete name : ../.././Samples/ton_bug_1999.mpg
+Format : MPEG Video
+Format version : Version 1
+Duration : 12 s 512 ms
+Format : MPEG Video
+Format version : Version 1
+Format settings : BVOP
+Format settings, BVOP : Yes
+Format settings, Matrix : Default
+Format settings, GOP : M=4, N=16
+Duration : 12 s 512 ms
+Bit rate mode : Constant
+Bit rate : 1 418 kb/s
+Width : 320 pixels
+Height : 240 pixels
+Frame rate : 23.976 (24000/1001) FPS
+
+std
+Test 1
+User time (seconds): 1.77
+System time (seconds): 0.05
+Percent of CPU this job got: 266%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.68
+Test 2
+User time (seconds): 1.85
+System time (seconds): 0.09
+Percent of CPU this job got: 279%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.69
+Test 3
+User time (seconds): 1.78
+System time (seconds): 0.04
+Percent of CPU this job got: 262%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.69
+
+tc_malloc
+Test 1
+User time (seconds): 1.84
+System time (seconds): 0.07
+Percent of CPU this job got: 223%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.85
+Test 2
+User time (seconds): 1.83
+System time (seconds): 0.06
+Percent of CPU this job got: 272%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.69
+Test 3
+User time (seconds): 1.87
+System time (seconds): 0.07
+Percent of CPU this job got: 270%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.71
+
+
+Complete name : ../.././Samples/aac-sbr-ffaac-slow.mkv
+Format : Matroska
+Format version : Version 2
+Duration : 20 min 34 s
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High@L3.1
+Format settings : CABAC / 8 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 8 frames
+Duration : 20 min 34 s
+Width : 704 pixels
+Height : 400 pixels
+Frame rate mode : Constant
+Frame rate : 23.976 (24000/1001) FPS
+Format : AAC
+Format/Info : Advanced Audio Codec
+Format profile : HE-AAC / LC
+Format settings : Explicit
+Duration : 20 min 34 s
+Frame rate : 23.438 FPS (1024 SPF)
+Format : ASS
+Format : UTF-8
+
+std
+Test 1
+User time (seconds): 34.24
+System time (seconds): 0.20
+Percent of CPU this job got: 360%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.56
+Test 2
+User time (seconds): 34.23
+System time (seconds): 0.26
+Percent of CPU this job got: 361%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.55
+Test 3
+User time (seconds): 34.18
+System time (seconds): 0.23
+Percent of CPU this job got: 359%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.58
+
+tc_malloc
+Test 1
+User time (seconds): 24.77
+System time (seconds): 0.20
+Percent of CPU this job got: 343%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.27
+Test 2
+User time (seconds): 25.14
+System time (seconds): 0.18
+Percent of CPU this job got: 359%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.04
+Test 3
+User time (seconds): 25.02
+System time (seconds): 0.17
+Percent of CPU this job got: 357%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.04
+
+
+Complete name : ../.././Samples/Boaz_explains_reality.3gp
+Format : MPEG-4
+Format profile : 3GPP Media Release 4
+Duration : 9 s 890 ms
+Format : H.263
+Format profile : BaseLine@1.0
+Duration : 9 s 890 ms
+Bit rate : 62.6 kb/s
+Width : 128 pixels
+Height : 96 pixels
+Frame rate mode : Variable
+Frame rate : 12.032 FPS
+Format : AMR
+Format/Info : Adaptive Multi-Rate
+Format profile : Narrow band
+Duration : 9 s 400 ms
+Bit rate mode : Constant
+Bit rate : 12.8 kb/s
+
+std
+Test 1
+User time (seconds): 0.57
+System time (seconds): 0.03
+Percent of CPU this job got: 177%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.34
+Test 2
+User time (seconds): 0.59
+System time (seconds): 0.01
+Percent of CPU this job got: 174%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.35
+Test 3
+User time (seconds): 0.58
+System time (seconds): 0.05
+Percent of CPU this job got: 160%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.39
+
+tc_malloc
+Test 1
+User time (seconds): 0.97
+System time (seconds): 0.06
+Percent of CPU this job got: 157%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.65
+Test 2
+User time (seconds): 0.39
+System time (seconds): 0.01
+Percent of CPU this job got: 173%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.23
+Test 3
+User time (seconds): 0.37
+System time (seconds): 0.01
+Percent of CPU this job got: 178%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.22
+
+
+Complete name : ../.././Samples/matrixbench_mpeg2.mpg
+Format : MPEG-PS
+Duration : 3 min 7 s
+Format : MPEG Video
+Format version : Version 2
+Format profile : Main@Main
+Format settings : BVOP
+Format settings, BVOP : Yes
+Format settings, Matrix : Default
+Format settings, GOP : M=3, N=15
+Format settings, picture structure : Frame
+Duration : 3 min 7 s
+Bit rate mode : Variable
+Bit rate : 5 138 kb/s
+Width : 720 pixels
+Height : 576 pixels
+Frame rate : 25.000 FPS
+Format : MPEG Audio
+Format version : Version 1
+Format profile : Layer 2
+Duration : 3 min 7 s
+Bit rate mode : Constant
+Bit rate : 384 kb/s
+Frame rate : 41.667 FPS (1152 SPF)
+
+std
+Test 1
+User time (seconds): 165.82
+System time (seconds): 0.84
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:44.03
+Test 2
+User time (seconds): 165.24
+System time (seconds): 0.77
+Percent of CPU this job got: 379%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:43.71
+Test 3
+User time (seconds): 168.60
+System time (seconds): 0.93
+Percent of CPU this job got: 368%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:46.03
+
+tc_malloc
+Test 1
+User time (seconds): 163.90
+System time (seconds): 0.85
+Percent of CPU this job got: 372%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:44.18
+Test 2
+User time (seconds): 164.99
+System time (seconds): 0.80
+Percent of CPU this job got: 381%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:43.51
+Test 3
+User time (seconds): 165.39
+System time (seconds): 0.74
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:43.43
+
+
+Complete name : ../.././Samples/Meridian_UHD4k5994_HDR_P3PQ.mp4
+Format : MPEG-4
+Format profile : Base Media
+Duration : 11 min 58 s
+Format : AVC
+Format/Info : Advanced Video Codec
+Format profile : High@L5.1
+Format settings : CABAC / 4 Ref Frames
+Format settings, CABAC : Yes
+Format settings, ReFrames : 4 frames
+Duration : 11 min 58 s
+Bit rate : 9 462 kb/s
+Width : 3 840 pixels
+Height : 2 160 pixels
+Frame rate mode : Constant
+Frame rate : 59.940 (60000/1001) FPS
+
+std
+Test 1
+User time (seconds): 24393.49
+System time (seconds): 29.74
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:44:34
+Test 2
+User time (seconds): 24392.65
+System time (seconds): 29.48
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:44:31
+Test 3
+User time (seconds): 24496.17
+System time (seconds): 31.40
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:45:23
+
+tc_malloc
+Test 1
+User time (seconds): 18523.77
+System time (seconds): 21.18
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:07
+Test 2
+User time (seconds): 18386.94
+System time (seconds): 19.51
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:18:29
+Test 3
+User time (seconds): 18383.74
+System time (seconds): 20.06
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:18:38
+
+
+Complete name : ../.././Samples/demux-asf-assert-failed.wmv
+Format : Windows Media
+Duration : 5 min 46 s
+Format : MPEG-4 Visual
+Duration : 5 min 46 s
+Bit rate : 186 kb/s
+Width : 320 pixels
+Height : 240 pixels
+Frame rate : 15.000 FPS
+Format : WMA
+Format version : Version 2
+Duration : 5 min 46 s
+Bit rate : 64.0 kb/s
+
+std
+Test 1
+User time (seconds): 39.96
+System time (seconds): 0.34
+Percent of CPU this job got: 303%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.29
+Test 2
+User time (seconds): 39.97
+System time (seconds): 0.30
+Percent of CPU this job got: 302%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.30
+Test 3
+User time (seconds): 39.90
+System time (seconds): 0.34
+Percent of CPU this job got: 301%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.34
+
+tc_malloc
+Test 1
+User time (seconds): 39.88
+System time (seconds): 0.37
+Percent of CPU this job got: 299%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.44
+Test 2
+User time (seconds): 39.85
+System time (seconds): 0.33
+Percent of CPU this job got: 303%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.24
+Test 3
+User time (seconds): 40.61
+System time (seconds): 0.28
+Percent of CPU this job got: 300%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.62
+
+
+Complete name : ../.././Samples/BP_Parade_X_FINAL_Video-Thl.mpeg
+Format : MPEG-PS
+Duration : 3 min 38 s
+Format : MPEG Video
+Format version : Version 2
+Format profile : Main@Main
+Format settings : BVOP
+Format settings, BVOP : Yes
+Format settings, Matrix : Default
+Format settings, GOP : M=3, N=15
+Format settings, picture structure : Frame
+Duration : 3 min 38 s
+Bit rate mode : Variable
+Bit rate : 1 838 kb/s
+Width : 480 pixels
+Height : 576 pixels
+Frame rate : 25.000 FPS
+Format : MPEG Audio
+Format version : Version 1
+Format profile : Layer 2
+Duration : 3 min 38 s
+Bit rate mode : Constant
+Bit rate : 224 kb/s
+Frame rate : 38.281 FPS (1152 SPF)
+
+std
+Test 1
+User time (seconds): 263.52
+System time (seconds): 0.96
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:07.20
+Test 2
+User time (seconds): 263.49
+System time (seconds): 0.97
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:07.24
+Test 3
+User time (seconds): 263.64
+System time (seconds): 0.91
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:07.67
+
+tc_malloc
+Test 1
+User time (seconds): 264.59
+System time (seconds): 1.09
+Percent of CPU this job got: 380%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09.88
+Test 2
+User time (seconds): 263.33
+System time (seconds): 1.01
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:07.26
+Test 3
+User time (seconds): 263.83
+System time (seconds): 1.01
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:07.37
+
+

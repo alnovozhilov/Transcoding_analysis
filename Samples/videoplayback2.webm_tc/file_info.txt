@@ -1,0 +1,33 @@
+General
+Complete name                            : ../.././Samples/videoplayback2.webm
+Format                                   : WebM
+Format version                           : Version 4 / Version 2
+File size                                : 788 MiB
+Duration                                 : 41 min 55 s
+Overall bit rate                         : 2 629 kb/s
+Writing application                      : google/video-file
+Writing library                          : google/video-file
+
+Video
+ID                                       : 1
+Format                                   : VP9
+Codec ID                                 : V_VP9
+Duration                                 : 41 min 55 s
+Bit rate                                 : 2 518 kb/s
+Width                                    : 1 920 pixels
+Height                                   : 1 080 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 29.970 (30000/1001) FPS
+Color space                              : YUV
+Bits/(Pixel*Frame)                       : 0.041
+Stream size                              : 755 MiB (96%)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+Color range                              : Limited
+Color primaries                          : BT.709
+Transfer characteristics                 : BT.709
+Matrix coefficients                      : BT.709
+
+

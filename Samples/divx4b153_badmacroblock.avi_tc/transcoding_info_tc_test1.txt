@@ -1,0 +1,78 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, avi, from '../.././Samples/divx4b153_badmacroblock.avi':
+  Duration: 00:00:44.00, start: 0.000000, bitrate: 917 kb/s
+    Stream #0:0: Video: msmpeg4v3 (DIV3 / 0x33564944), yuv420p, 576x312, 775 kb/s, 25 fps, 25 tbr, 25 tbn, 25 tbc
+    Stream #0:1: Audio: mp3 (U[0][0][0] / 0x0055), 44100 Hz, stereo, s16p, 127 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (msmpeg4v3 (msmpeg4) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (mp3 (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x562431575200] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x562431575200] profile High, level 2.1
+[libx264 @ 0x562431575200] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/divx4b153_badmacroblock.avi_tc/output_tc1.mov':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 576x312, q=-1--1, 25 fps, 12800 tbn, 25 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+frame=  169 fps=0.0 q=28.0 size=       0kB time=00:00:07.17 bitrate=   0.0kbits/s speed=14.2x    frame=  253 fps=251 q=28.0 size=     256kB time=00:00:10.49 bitrate= 199.8kbits/s speed=10.4x    frame=  336 fps=223 q=28.0 size=     512kB time=00:00:13.86 bitrate= 302.6kbits/s speed=9.19x    frame=  397 fps=198 q=28.0 size=     768kB time=00:00:16.27 bitrate= 386.5kbits/s speed=8.11x    frame=  455 fps=181 q=28.0 size=     768kB time=00:00:18.62 bitrate= 337.9kbits/s speed=7.42x    frame=  509 fps=169 q=28.0 size=    1024kB time=00:00:20.75 bitrate= 404.1kbits/s speed= 6.9x    frame=  577 fps=164 q=28.0 size=    1024kB time=00:00:23.47 bitrate= 357.3kbits/s speed=6.69x    frame=  718 fps=179 q=28.0 size=    1280kB time=00:00:29.14 bitrate= 359.8kbits/s speed=7.27x    frame=  790 fps=175 q=28.0 size=    1536kB time=00:00:32.02 bitrate= 393.0kbits/s speed=7.09x    frame=  863 fps=172 q=28.0 size=    1792kB time=00:00:34.92 bitrate= 420.4kbits/s speed=6.96x    frame=  942 fps=171 q=28.0 size=    2304kB time=00:00:38.05 bitrate= 496.0kbits/s speed= 6.9x    frame= 1046 fps=174 q=28.0 size=    2560kB time=00:00:42.26 bitrate= 496.3kbits/s speed=7.02x    frame= 1100 fps=174 q=-1.0 Lsize=    2957kB time=00:00:44.00 bitrate= 550.5kbits/s speed=6.94x    
+video:2232kB audio:693kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.116638%
+[libx264 @ 0x562431575200] frame I:6     Avg QP:15.37  size:  5129
+[libx264 @ 0x562431575200] frame P:769   Avg QP:21.57  size:  2698
+[libx264 @ 0x562431575200] frame B:325   Avg QP:19.91  size:   551
+[libx264 @ 0x562431575200] consecutive B-frames: 58.6%  4.2%  5.2% 32.0%
+[libx264 @ 0x562431575200] mb I  I16..4: 47.6% 49.6%  2.8%
+[libx264 @ 0x562431575200] mb P  I16..4:  1.7%  4.8%  0.1%  P16..4: 48.1% 12.5%  6.1%  0.0%  0.0%    skip:26.7%
+[libx264 @ 0x562431575200] mb B  I16..4:  0.4%  0.8%  0.0%  B16..8: 22.1%  1.4%  0.2%  direct: 2.6%  skip:72.5%  L0:51.4% L1:42.6% BI: 6.0%
+[libx264 @ 0x562431575200] 8x8 transform intra:69.7% inter:86.0%
+[libx264 @ 0x562431575200] coded y,uvDC,uvAC intra: 44.5% 70.7% 21.7% inter: 19.1% 26.9% 1.1%
+[libx264 @ 0x562431575200] i16 v,h,dc,p: 29% 26% 12% 32%
+[libx264 @ 0x562431575200] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 20% 33%  3%  4%  4%  4%  3%  4%
+[libx264 @ 0x562431575200] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 16% 13%  5% 11% 13%  8%  5%  4%
+[libx264 @ 0x562431575200] i8c dc,h,v,p: 53% 24% 17%  7%
+[libx264 @ 0x562431575200] Weighted P-Frames: Y:4.8% UV:3.1%
+[libx264 @ 0x562431575200] ref P L0: 74.0% 12.7%  9.7%  3.4%  0.2%
+[libx264 @ 0x562431575200] ref B L0: 84.0% 13.2%  2.7%
+[libx264 @ 0x562431575200] ref B L1: 96.1%  3.9%
+[libx264 @ 0x562431575200] kb/s:415.40
+[aac @ 0x5624315ba500] Qavg: 602.586
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/divx4b153_badmacroblock.avi -c:v libx264 -f mov /home/aleksandr/Pract/Samples/divx4b153_badmacroblock.avi_tc/output_tc1.mov"
+	User time (seconds): 23.18
+	System time (seconds): 0.20
+	Percent of CPU this job got: 359%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 104088
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 18385
+	Voluntary context switches: 8352
+	Involuntary context switches: 2218
+	Swaps: 0
+	File system inputs: 9880
+	File system outputs: 5936
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

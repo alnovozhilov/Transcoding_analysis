@@ -1,0 +1,73 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, avi, from '../.././Samples/mancandy_lscm.avi':
+  Duration: 00:00:42.50, start: 0.000000, bitrate: 982 kb/s
+    Stream #0:0: Video: mpeg4 (DX50 / 0x30355844), yuv420p, 712x490 [SAR 1:1 DAR 356:245], 981 kb/s, 10 fps, 10 tbr, 10 tbn, 30k tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (mpeg4 (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x55e33ada0300] using SAR=1/1
+[libx264 @ 0x55e33ada0300] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55e33ada0300] profile High, level 2.2
+[libx264 @ 0x55e33ada0300] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=10 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/mancandy_lscm.avi_tc/output_tc3.mov':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 712x490 [SAR 1:1 DAR 356:245], q=-1--1, 10 fps, 10240 tbn, 10 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+frame=  192 fps=0.0 q=25.0 size=       0kB time=00:00:13.90 bitrate=   0.0kbits/s speed=27.5x    frame=  282 fps=280 q=25.0 size=     768kB time=00:00:22.90 bitrate= 274.7kbits/s speed=22.8x    frame=  399 fps=264 q=25.0 size=    1536kB time=00:00:34.60 bitrate= 363.7kbits/s speed=22.9x    frame=  425 fps=244 q=-1.0 Lsize=    1793kB time=00:00:42.20 bitrate= 348.2kbits/s speed=24.2x    
+video:1788kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.321908%
+[libx264 @ 0x55e33ada0300] frame I:2     Avg QP:14.71  size: 76383
+[libx264 @ 0x55e33ada0300] frame P:118   Avg QP:16.97  size:  9570
+[libx264 @ 0x55e33ada0300] frame B:305   Avg QP:18.74  size:  1797
+[libx264 @ 0x55e33ada0300] consecutive B-frames:  1.6%  6.6%  4.2% 87.5%
+[libx264 @ 0x55e33ada0300] mb I  I16..4: 25.5% 42.7% 31.8%
+[libx264 @ 0x55e33ada0300] mb P  I16..4:  0.5%  1.0%  1.2%  P16..4: 12.3%  3.9%  5.9%  0.0%  0.0%    skip:75.1%
+[libx264 @ 0x55e33ada0300] mb B  I16..4:  0.1%  0.3%  0.1%  B16..8:  8.5%  1.7%  1.5%  direct: 0.6%  skip:87.1%  L0:42.5% L1:49.4% BI: 8.1%
+[libx264 @ 0x55e33ada0300] 8x8 transform intra:44.6% inter:37.5%
+[libx264 @ 0x55e33ada0300] coded y,uvDC,uvAC intra: 53.0% 9.8% 7.8% inter: 5.4% 1.6% 1.3%
+[libx264 @ 0x55e33ada0300] i16 v,h,dc,p: 35% 40% 24%  0%
+[libx264 @ 0x55e33ada0300] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 17% 19% 45%  3%  3%  2%  2%  3%  5%
+[libx264 @ 0x55e33ada0300] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 26% 28% 16%  6%  6%  4%  4%  4%  5%
+[libx264 @ 0x55e33ada0300] i8c dc,h,v,p: 85%  7%  7%  1%
+[libx264 @ 0x55e33ada0300] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x55e33ada0300] ref P L0: 70.5%  6.1% 13.8%  9.6%
+[libx264 @ 0x55e33ada0300] ref B L0: 75.4% 20.0%  4.6%
+[libx264 @ 0x55e33ada0300] ref B L1: 93.2%  6.8%
+[libx264 @ 0x55e33ada0300] kb/s:344.46
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/mancandy_lscm.avi -c:v libx264 -f mov /home/aleksandr/Pract/Samples/mancandy_lscm.avi_tc/output_tc3.mov"
+	User time (seconds): 6.16
+	System time (seconds): 0.06
+	Percent of CPU this job got: 346%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.79
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 150388
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 24942
+	Voluntary context switches: 4433
+	Involuntary context switches: 918
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 3608
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

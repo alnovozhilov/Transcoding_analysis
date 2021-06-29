@@ -1,0 +1,83 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '../.././Samples/aom_overlay_proxy.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf58.45.100
+  Duration: 00:00:02.17, start: 0.000000, bitrate: 10562 kb/s
+    Stream #0:0(und): Video: h264 (High 10) (avc1 / 0x31637661), yuv420p10le, 1920x1080, 10555 kb/s, 60 fps, 60 tbr, 15360 tbn, 120 tbc (default)
+    Metadata:
+      handler_name    : VideoHandler
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5649af1eef40] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5649af1eef40] profile High, level 4.2
+[libx264 @ 0x5649af1eef40] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/aom_overlay_proxy.mp4_tc/output3.mov':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf57.83.100
+    Stream #0:0(und): Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 1920x1080, q=-1--1, 60 fps, 15360 tbn, 60 tbc (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+frame=   47 fps=0.0 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    frame=   60 fps= 43 q=31.0 size=       0kB time=00:00:00.11 bitrate=   2.5kbits/s speed=0.0839x    frame=   70 fps= 37 q=31.0 size=     256kB time=00:00:00.28 bitrate=7401.0kbits/s speed=0.148x    frame=   81 fps= 32 q=31.0 size=     256kB time=00:00:00.46 bitrate=4493.9kbits/s speed=0.186x    frame=   92 fps= 31 q=31.0 size=     512kB time=00:00:00.65 bitrate=6452.6kbits/s speed=0.216x    frame=  101 fps= 29 q=31.0 size=     512kB time=00:00:00.80 bitrate=5242.8kbits/s speed=0.227x    frame=  114 fps= 28 q=31.0 size=     768kB time=00:00:01.01 bitrate=6188.2kbits/s speed=0.251x    frame=  124 fps= 27 q=31.0 size=     768kB time=00:00:01.18 bitrate=5316.7kbits/s speed=0.256x    frame=  130 fps= 20 q=-1.0 Lsize=    1699kB time=00:00:02.11 bitrate=6575.0kbits/s speed=0.321x    
+video:1697kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.107952%
+[libx264 @ 0x5649af1eef40] frame I:1     Avg QP:24.82  size:110594
+[libx264 @ 0x5649af1eef40] frame P:88    Avg QP:26.16  size: 15425
+[libx264 @ 0x5649af1eef40] frame B:41    Avg QP:29.02  size:  6564
+[libx264 @ 0x5649af1eef40] consecutive B-frames: 55.4%  6.2%  4.6% 33.8%
+[libx264 @ 0x5649af1eef40] mb I  I16..4:  3.1% 86.4% 10.5%
+[libx264 @ 0x5649af1eef40] mb P  I16..4:  0.2%  2.2%  0.1%  P16..4: 44.6%  6.7%  2.5%  0.0%  0.0%    skip:43.7%
+[libx264 @ 0x5649af1eef40] mb B  I16..4:  0.0%  0.1%  0.0%  B16..8: 45.7%  1.4%  0.2%  direct: 0.3%  skip:52.3%  L0:34.9% L1:64.3% BI: 0.7%
+[libx264 @ 0x5649af1eef40] 8x8 transform intra:88.2% inter:89.3%
+[libx264 @ 0x5649af1eef40] coded y,uvDC,uvAC intra: 69.9% 38.3% 7.0% inter: 10.8% 5.6% 0.1%
+[libx264 @ 0x5649af1eef40] i16 v,h,dc,p: 37% 14%  8% 42%
+[libx264 @ 0x5649af1eef40] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 19% 12% 21%  9%  9%  6%  9%  6%  9%
+[libx264 @ 0x5649af1eef40] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 18% 21% 18%  7%  9%  6%  9%  5%  7%
+[libx264 @ 0x5649af1eef40] i8c dc,h,v,p: 75% 14% 10%  2%
+[libx264 @ 0x5649af1eef40] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x5649af1eef40] ref P L0: 74.4% 16.2%  7.1%  2.3%
+[libx264 @ 0x5649af1eef40] ref B L0: 96.6%  2.6%  0.8%
+[libx264 @ 0x5649af1eef40] ref B L1: 99.2%  0.8%
+[libx264 @ 0x5649af1eef40] kb/s:6413.96
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/aom_overlay_proxy.mp4 -c:v libx264 -f mov /home/aleksandr/Pract/Samples/aom_overlay_proxy.mp4_tc/output3.mov"
+	User time (seconds): 24.39
+	System time (seconds): 0.13
+	Percent of CPU this job got: 367%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.68
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 609880
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 34198
+	Voluntary context switches: 2073
+	Involuntary context switches: 1932
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 3416
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

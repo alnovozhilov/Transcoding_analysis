@@ -1,0 +1,189 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Guessed Channel Layout for Input Stream #0.1 : stereo
+Input #0, avi, from '../.././Samples/DSCF1928_fish.AVI':
+  Duration: 00:00:19.00, start: 0.000000, bitrate: 18816 kb/s
+    Stream #0:0: Video: mjpeg (MJPG / 0x47504A4D), yuvj422p(pc, bt470bg/unknown/unknown), 640x480, 10142 kb/s, 30 fps, 30 tbr, 30 tbn, 30 tbc
+    Metadata:
+      Make            : FUJIFILM
+      Model           : FinePix REAL 3D W1
+      DateTime        : 2010:06:27 04:08:03
+      JPEGInterchangeFormat:     602
+      JPEGInterchangeFormatLength:    7266
+      Copyright       :     
+      DateTimeOriginal: 2010:06:27 04:08:03
+      DateTimeDigitized: 2010:06:27 04:08:03
+      MakerNote       : 
+                      :  70,  85,  74,  73,  70,  73,  76,  77,  12,   0,   0,   0,  23,   0,   0,   0
+                      :   7,   0,   4,   0,   0,   0,  48,  49,  51,  48,  16,   0,   2,   0,  48,   0
+                      :   0,   0,  38,   1,   0,   0,   0,  16,   2,   0,   8,   0,   0,   0,  86,   1
+                      :   0,   0,   1,  16,   3,   0,   1,   0,   0,   0,   3,   0,   0,   0,   2,  16
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  16,  16,   3,   0,   1,   0
+                      :   0,   0,   2,   0,   0,   0,  17,  16,  10,   0,   1,   0,   0,   0,  94,   1
+                      :   0,   0,  32,  16,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  33,  16
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  48,  16,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,  49,  16,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   0,  17,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   0,  18
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   0,  19,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,   1,  19,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   2,  19,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   3,  19
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   1, 177,   4,   0,   1,   0
+                      :   0,   0,   1,   0,   0,   0,   4, 178,   4,   0,   1,   0,   0,   0,   1,   0
+                      :   0,   0,   5, 178,  10,   0,   1,   0,   0,   0, 102,   1,   0,   0,   6, 178
+                      :   5,   0,   1,   0,   0,   0, 110,   1,   0,   0,  19, 178,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,  20, 178,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   0,   0,   0,   0,  70,  67,  32,  32,  65,  54,  49,  52,  55,  49
+                      :  54,  49,  32,  32,  32,  32,  32,  53,  57,  50,  68,  51,  50,  51,  50,  51
+                      :  48,  51,  51,  49,  48,  48,  49,  50,  57,  67,  70,  51,  51,  51,  48,  49
+                      :  49,  50,  65,  49,  66,   0,  78,  79,  82,  77,  65,  76,  32,   0,   0,   0
+                      :   0,   0, 100,   0,   0,   0,   0,   0,   0,   0,   1,   0,   0,   0,  77,   0
+                      :   0,   0, 232,   3,   0,   0
+      title           : FUJIFILM AVI STREAM 0200
+    Stream #0:1: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 11024 Hz, stereo, s16, 352 kb/s
+    Stream #0:2: Video: mjpeg (MJPG / 0x47504A4D), yuvj422p(pc, bt470bg/unknown/unknown), 640x480, 8330 kb/s, 30 fps, 30 tbr, 30 tbn, 30 tbc
+    Metadata:
+      Make            : FUJIFILM
+      Model           : FinePix REAL 3D W1
+      DateTime        : 2010:06:27 04:08:03
+      JPEGInterchangeFormat:     642
+      JPEGInterchangeFormatLength:    7238
+      Copyright       :     
+      DateTimeOriginal: 2010:06:27 04:08:03
+      DateTimeDigitized: 2010:06:27 04:08:03
+      MakerNote       : 
+                      :  70,  85,  74,  73,  70,  73,  76,  77,  12,   0,   0,   0,  25,   0,   0,   0
+                      :   7,   0,   4,   0,   0,   0,  48,  49,  51,  48,  16,   0,   2,   0,  48,   0
+                      :   0,   0,  62,   1,   0,   0,   0,  16,   2,   0,   8,   0,   0,   0, 110,   1
+                      :   0,   0,   1,  16,   3,   0,   1,   0,   0,   0,   3,   0,   0,   0,   2,  16
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  16,  16,   3,   0,   1,   0
+                      :   0,   0,   2,   0,   0,   0,  17,  16,  10,   0,   1,   0,   0,   0, 118,   1
+                      :   0,   0,  32,  16,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  33,  16
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  48,  16,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,  49,  16,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   0,  17,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   0,  18
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   0,  19,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,   1,  19,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   2,  19,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   3,  19
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   1, 177,   4,   0,   1,   0
+                      :   0,   0,   2,   0,   0,   0,   4, 178,   4,   0,   1,   0,   0,   0,   1,   0
+                      :   0,   0,   5, 178,  10,   0,   1,   0,   0,   0, 126,   1,   0,   0,   6, 178
+                      :   5,   0,   1,   0,   0,   0, 134,   1,   0,   0,  17, 178,  10,   0,   1,   0
+                      :   0,   0, 142,   1,   0,   0,  18, 178,  10,   0,   1,   0,   0,   0, 150,   1
+                      :   0,   0,  19, 178,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  20, 178
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,  70,  67
+                      :  32,  32,  65,  54,  49,  52,  55,  49,  54,  49,  32,  32,  32,  32,  32,  53
+                      :  57,  50,  68,  51,  50,  51,  50,  51,  48,  51,  51,  49,  48,  48,  49,  50
+                      :  57,  67,  70,  51,  51,  51,  48,  49,  49,  50,  65,  49,  66,   0,  78,  79
+                      :  82,  77,  65,  76,  32,   0,   0,   0,   0,   0, 100,   0,   0,   0,  22,   0
+                      :   0,   0,  10,   0,   0,   0,  77,   0,   0,   0, 232,   3,   0,   0,  32,  28
+                      :   0,   0, 128,   2,   0,   0,   0,   0,   0,   0, 224,   1,   0,   0
+      title           : FUJIFILM AVI STREAM 0200
+Stream mapping:
+  Stream #0:0 -> #0:0 (mjpeg (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (pcm_s16le (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5630942b8a00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5630942b8a00] profile High 4:2:2, level 3.0, 4:2:2 8-bit
+[libx264 @ 0x5630942b8a00] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[mov @ 0x563094294600] WARNING codec timebase is very high. If duration is too long,
+file may not be playable by quicktime. Specify a shorter timebase
+or choose different container.
+Output #0, mov, to '/home/aleksandr/Pract/Samples/DSCF1928_fish.AVI_tc/output_tc2.mov':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuvj422p(pc), 640x480, q=-1--1, 30 fps, 1000k tbn, 30 tbc
+    Metadata:
+      Make            : FUJIFILM
+      Model           : FinePix REAL 3D W1
+      DateTime        : 2010:06:27 04:08:03
+      JPEGInterchangeFormat:     602
+      JPEGInterchangeFormatLength:    7266
+      Copyright       :     
+      DateTimeOriginal: 2010:06:27 04:08:03
+      DateTimeDigitized: 2010:06:27 04:08:03
+      MakerNote       : 
+                      :  70,  85,  74,  73,  70,  73,  76,  77,  12,   0,   0,   0,  23,   0,   0,   0
+                      :   7,   0,   4,   0,   0,   0,  48,  49,  51,  48,  16,   0,   2,   0,  48,   0
+                      :   0,   0,  38,   1,   0,   0,   0,  16,   2,   0,   8,   0,   0,   0,  86,   1
+                      :   0,   0,   1,  16,   3,   0,   1,   0,   0,   0,   3,   0,   0,   0,   2,  16
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  16,  16,   3,   0,   1,   0
+                      :   0,   0,   2,   0,   0,   0,  17,  16,  10,   0,   1,   0,   0,   0,  94,   1
+                      :   0,   0,  32,  16,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  33,  16
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,  48,  16,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,  49,  16,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   0,  17,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   0,  18
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   0,  19,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,   1,  19,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   2,  19,   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   3,  19
+                      :   3,   0,   1,   0,   0,   0,   0,   0,   0,   0,   1, 177,   4,   0,   1,   0
+                      :   0,   0,   1,   0,   0,   0,   4, 178,   4,   0,   1,   0,   0,   0,   1,   0
+                      :   0,   0,   5, 178,  10,   0,   1,   0,   0,   0, 102,   1,   0,   0,   6, 178
+                      :   5,   0,   1,   0,   0,   0, 110,   1,   0,   0,  19, 178,   3,   0,   1,   0
+                      :   0,   0,   0,   0,   0,   0,  20, 178,   3,   0,   1,   0,   0,   0,   0,   0
+                      :   0,   0,   0,   0,   0,   0,  70,  67,  32,  32,  65,  54,  49,  52,  55,  49
+                      :  54,  49,  32,  32,  32,  32,  32,  53,  57,  50,  68,  51,  50,  51,  50,  51
+                      :  48,  51,  51,  49,  48,  48,  49,  50,  57,  67,  70,  51,  51,  51,  48,  49
+                      :  49,  50,  65,  49,  66,   0,  78,  79,  82,  77,  65,  76,  32,   0,   0,   0
+                      :   0,   0, 100,   0,   0,   0,   0,   0,   0,   0,   1,   0,   0,   0,  77,   0
+                      :   0,   0, 232,   3,   0,   0
+      title           : FUJIFILM AVI STREAM 0200
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 11025 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+frame=   66 fps=0.0 q=29.0 size=     256kB time=00:00:02.78 bitrate= 752.7kbits/s speed=5.53x    frame=   93 fps= 91 q=29.0 size=    1024kB time=00:00:03.80 bitrate=2202.9kbits/s speed=3.73x    frame=  120 fps= 78 q=29.0 size=    1792kB time=00:00:03.80 bitrate=3855.1kbits/s speed=2.46x    frame=  146 fps= 70 q=29.0 size=    2560kB time=00:00:04.73 bitrate=4427.4kbits/s speed=2.29x    frame=  173 fps= 66 q=29.0 size=    3328kB time=00:00:05.75 bitrate=4734.4kbits/s speed=2.21x    frame=  199 fps= 64 q=29.0 size=    3840kB time=00:00:06.78 bitrate=4639.6kbits/s speed=2.17x    frame=  225 fps= 61 q=29.0 size=    4608kB time=00:00:07.80 bitrate=4838.4kbits/s speed=2.13x    frame=  251 fps= 60 q=29.0 size=    5376kB time=00:00:08.73 bitrate=5044.3kbits/s speed=2.09x    frame=  277 fps= 59 q=29.0 size=    6144kB time=00:00:09.75 bitrate=5161.0kbits/s speed=2.07x    frame=  301 fps= 58 q=29.0 size=    6656kB time=00:00:10.77 bitrate=5060.9kbits/s speed=2.07x    frame=  329 fps= 58 q=29.0 size=    7424kB time=00:00:10.77 bitrate=5644.8kbits/s speed=1.89x    frame=  355 fps= 57 q=29.0 size=    8192kB time=00:00:11.79 bitrate=5689.3kbits/s speed=1.89x    frame=  379 fps= 56 q=29.0 size=    8960kB time=00:00:12.72 bitrate=5768.4kbits/s speed=1.89x    frame=  404 fps= 56 q=29.0 size=    9728kB time=00:00:13.74 bitrate=5797.4kbits/s speed=1.89x    frame=  431 fps= 56 q=29.0 size=   10496kB time=00:00:14.76 bitrate=5822.3kbits/s speed= 1.9x    frame=  456 fps= 55 q=29.0 size=   11008kB time=00:00:15.78 bitrate=5711.2kbits/s speed=1.91x    frame=  483 fps= 55 q=29.0 size=   11776kB time=00:00:16.81 bitrate=5738.4kbits/s speed=1.92x    frame=  510 fps= 55 q=29.0 size=   12544kB time=00:00:16.90 bitrate=6079.0kbits/s speed=1.82x    frame=  539 fps= 55 q=29.0 size=   13312kB time=00:00:17.74 bitrate=6147.2kbits/s speed=1.81x    frame=  565 fps= 55 q=29.0 size=   13824kB time=00:00:18.76 bitrate=6036.0kbits/s speed=1.82x    frame=  570 fps= 51 q=-1.0 Lsize=   15346kB time=00:00:19.04 bitrate=6602.6kbits/s speed=1.69x    
+video:15096kB audio:238kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.075363%
+[libx264 @ 0x5630942b8a00] frame I:3     Avg QP:25.16  size: 47257
+[libx264 @ 0x5630942b8a00] frame P:144   Avg QP:27.51  size: 41681
+[libx264 @ 0x5630942b8a00] frame B:423   Avg QP:30.40  size: 22019
+[libx264 @ 0x5630942b8a00] consecutive B-frames:  1.1%  0.0%  0.0% 98.9%
+[libx264 @ 0x5630942b8a00] mb I  I16..4:  3.3% 96.6%  0.2%
+[libx264 @ 0x5630942b8a00] mb P  I16..4:  0.2% 54.7%  2.3%  P16..4: 13.2% 17.1% 12.5%  0.0%  0.0%    skip: 0.0%
+[libx264 @ 0x5630942b8a00] mb B  I16..4:  0.2% 21.7%  0.1%  B16..8: 24.6% 11.3%  4.7%  direct:35.5%  skip: 2.0%  L0:25.4% L1:18.3% BI:56.3%
+[libx264 @ 0x5630942b8a00] 8x8 transform intra:97.3% inter:81.6%
+[libx264 @ 0x5630942b8a00] coded y,uvDC,uvAC intra: 91.2% 100.0% 76.1% inter: 74.0% 97.8% 80.5%
+[libx264 @ 0x5630942b8a00] i16 v,h,dc,p: 15% 18% 45% 21%
+[libx264 @ 0x5630942b8a00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 15% 19% 46%  3%  3%  3%  4%  3%  5%
+[libx264 @ 0x5630942b8a00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 10% 20% 12%  7% 11%  9% 12%  7% 12%
+[libx264 @ 0x5630942b8a00] i8c dc,h,v,p: 66% 12% 17%  5%
+[libx264 @ 0x5630942b8a00] Weighted P-Frames: Y:4.2% UV:2.1%
+[libx264 @ 0x5630942b8a00] ref P L0: 29.7% 10.3% 39.7% 19.7%  0.6%
+[libx264 @ 0x5630942b8a00] ref B L0: 79.7% 15.9%  4.3%
+[libx264 @ 0x5630942b8a00] ref B L1: 95.5%  4.5%
+[libx264 @ 0x5630942b8a00] kb/s:6508.64
+[aac @ 0x5630942b9900] Qavg: 62883.664
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/DSCF1928_fish.AVI -c:v libx264 -f mov /home/aleksandr/Pract/Samples/DSCF1928_fish.AVI_tc/output_tc2.mov"
+	User time (seconds): 43.58
+	System time (seconds): 0.12
+	Percent of CPU this job got: 385%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.32
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 139996
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 22309
+	Voluntary context switches: 4131
+	Involuntary context switches: 3633
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 30728
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
