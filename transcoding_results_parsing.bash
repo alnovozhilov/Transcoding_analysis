@@ -14,7 +14,7 @@ do
 while read line
 do 
 echo $line | grep "Complete name" 
-echo $line | grep "Format"
+echo $line | grep "Codec ID"
 echo $line | grep "Duration"
 echo $line | grep "Bit rate"
 echo $line | grep "Width"
@@ -22,7 +22,7 @@ echo $line | grep "Height"
 echo $line | grep "Frame rate"
 done < ${file:2}
 done
-f=`find -name "transcoding_info_test*"`
+f=`find -name "transcoding_info_std*"`
 echo -e "\nstd"
 let "i=0"
 for file in $f

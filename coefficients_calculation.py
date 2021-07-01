@@ -142,14 +142,14 @@ def calculate_coefficientes(urls, average_user_time_array_std, average_user_time
 """
 def prepare_outputs(list_user_time, list_system_time, list_elapsed_time):
 
-    output_count = 10
+    output_count = 30
 
     if len(list_user_time) < output_count:
         count = len(list_user_time)
     else:
         count = output_count
 
-    print("User Time\n")
+    print("\nUser Time\n")
     print_result(output_count, list_user_time, list(reversed(list_user_time)))
     print("\nSystem Time\n")
     print_result(output_count, list_system_time, list(reversed(list_elapsed_time)))

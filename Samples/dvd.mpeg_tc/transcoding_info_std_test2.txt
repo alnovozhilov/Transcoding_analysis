@@ -1,0 +1,85 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, mpeg, from '../.././Samples/dvd.mpeg':
+  Duration: 00:00:29.06, start: 0.280000, bitrate: 8183 kb/s
+    Stream #0:0[0x1e0]: Video: mpeg2video (Main), yuv420p(tv, bt470bg, top first), 720x576 [SAR 16:15 DAR 4:3], 25 fps, 25 tbr, 90k tbn, 50 tbc
+    Stream #0:1[0x8a]: Audio: dts (DTS), 48000 Hz, 5.1(side), fltp, 768 kb/s
+    Stream #0:2[0x81]: Audio: ac3, 48000 Hz, 5.1(side), fltp, 448 kb/s
+    Stream #0:3[0x80]: Audio: ac3, 48000 Hz, 5.1(side), fltp, 448 kb/s
+    Stream #0:4[0x20]: Subtitle: dvd_subtitle
+Stream mapping:
+  Stream #0:0 -> #0:0 (mpeg2video (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (dts (dca) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5613a4676780] using SAR=64/45
+[libx264 @ 0x5613a4676780] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5613a4676780] profile High, level 3.0
+[libx264 @ 0x5613a4676780] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/dvd.mpeg_tc/output_std2.mov':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 720x576 [SAR 64:45 DAR 16:9], q=-1--1, 25 fps, 12800 tbn, 25 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, 5.1(side), fltp, 341 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+frame=   78 fps=0.0 q=28.0 size=       0kB time=00:00:02.80 bitrate=   0.1kbits/s dup=15 drop=0 speed=5.62x    frame=  144 fps=144 q=28.0 size=       0kB time=00:00:05.36 bitrate=   0.1kbits/s dup=15 drop=0 speed=5.35x    frame=  208 fps=138 q=28.0 size=     256kB time=00:00:08.05 bitrate= 260.3kbits/s dup=15 drop=0 speed=5.35x    frame=  276 fps=137 q=28.0 size=     256kB time=00:00:10.76 bitrate= 194.8kbits/s dup=15 drop=0 speed=5.36x    frame=  354 fps=141 q=28.0 size=     512kB time=00:00:13.92 bitrate= 301.3kbits/s dup=15 drop=0 speed=5.55x    frame=  417 fps=138 q=28.0 size=     768kB time=00:00:16.48 bitrate= 381.7kbits/s dup=15 drop=0 speed=5.46x    frame=  477 fps=136 q=28.0 size=    1024kB time=00:00:18.91 bitrate= 443.5kbits/s dup=15 drop=0 speed=5.38x    frame=  539 fps=134 q=28.0 size=    1280kB time=00:00:21.36 bitrate= 490.7kbits/s dup=15 drop=0 speed=5.31x    frame=  602 fps=133 q=28.0 size=    1792kB time=00:00:23.88 bitrate= 614.6kbits/s dup=15 drop=0 speed=5.27x    frame=  679 fps=135 q=28.0 size=    2048kB time=00:00:26.91 bitrate= 623.3kbits/s dup=15 drop=0 speed=5.35x    [mpeg2video @ 0x5613a4706e80] ac-tex damaged at 30 21
+[mpeg2video @ 0x5613a4706e80] Warning MVs not available
+[mpeg2video @ 0x5613a4706e80] concealing 675 DC, 675 AC, 675 MV errors in P frame
+frame=  733 fps=131 q=-1.0 Lsize=    2454kB time=00:00:29.20 bitrate= 688.6kbits/s dup=15 drop=0 speed=5.23x    
+video:1238kB audio:1194kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.940766%
+[libx264 @ 0x5613a4676780] frame I:9     Avg QP:15.48  size: 26889
+[libx264 @ 0x5613a4676780] frame P:209   Avg QP:19.95  size:  3729
+[libx264 @ 0x5613a4676780] frame B:515   Avg QP:21.89  size:   477
+[libx264 @ 0x5613a4676780] consecutive B-frames:  4.4%  4.1%  5.3% 86.2%
+[libx264 @ 0x5613a4676780] mb I  I16..4: 52.5% 38.5%  9.0%
+[libx264 @ 0x5613a4676780] mb P  I16..4:  4.2%  3.1%  0.3%  P16..4: 21.4%  5.7%  5.1%  0.0%  0.0%    skip:60.1%
+[libx264 @ 0x5613a4676780] mb B  I16..4:  0.3%  0.1%  0.0%  B16..8: 18.3%  0.5%  0.0%  direct: 0.3%  skip:80.4%  L0:42.7% L1:54.4% BI: 2.9%
+[libx264 @ 0x5613a4676780] 8x8 transform intra:38.6% inter:77.5%
+[libx264 @ 0x5613a4676780] coded y,uvDC,uvAC intra: 22.6% 31.2% 7.1% inter: 4.6% 4.3% 0.0%
+[libx264 @ 0x5613a4676780] i16 v,h,dc,p: 61% 32%  4%  3%
+[libx264 @ 0x5613a4676780] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 12% 15% 54%  2%  3%  3%  3%  3%  5%
+[libx264 @ 0x5613a4676780] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 41% 16%  3%  4%  4%  3%  4%  4%
+[libx264 @ 0x5613a4676780] i8c dc,h,v,p: 66% 20% 13%  1%
+[libx264 @ 0x5613a4676780] Weighted P-Frames: Y:19.1% UV:3.8%
+[libx264 @ 0x5613a4676780] ref P L0: 55.6% 13.5% 23.7%  6.4%  0.7%
+[libx264 @ 0x5613a4676780] ref B L0: 73.7% 21.1%  5.3%
+[libx264 @ 0x5613a4676780] ref B L1: 93.0%  7.0%
+[libx264 @ 0x5613a4676780] kb/s:345.72
+[aac @ 0x5613a474be00] Qavg: 333.787
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/dvd.mpeg -c:v libx264 -f mov /home/aleksandr/Pract/Samples/dvd.mpeg_tc/output_std2.mov"
+	User time (seconds): 17.99
+	System time (seconds): 0.13
+	Percent of CPU this job got: 321%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.63
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 159268
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 28281
+	Voluntary context switches: 9343
+	Involuntary context switches: 3624
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 4928
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
