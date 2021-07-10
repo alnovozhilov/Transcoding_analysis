@@ -92,10 +92,10 @@ Stream mapping:
   Stream #0:0 -> #0:0 (mjpeg (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (pcm_s16le (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x559e54828a00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x559e54828a00] profile High 4:2:2, level 3.0, 4:2:2 8-bit
-[libx264 @ 0x559e54828a00] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-[mov @ 0x559e54804600] WARNING codec timebase is very high. If duration is too long,
+[libx264 @ 0x564e314fca00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x564e314fca00] profile High 4:2:2, level 3.0, 4:2:2 8-bit
+[libx264 @ 0x564e314fca00] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[mov @ 0x564e314d8600] WARNING codec timebase is very high. If duration is too long,
 file may not be playable by quicktime. Specify a shorter timebase
 or choose different container.
 Output #0, mov, to '/home/aleksandr/Pract/Samples/DSCF1928_fish.AVI_tc/output_tc3.mov':
@@ -143,42 +143,42 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/DSCF1928_fish.AVI_tc/output_tc
     Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 11025 Hz, stereo, fltp, 128 kb/s
     Metadata:
       encoder         : Lavc57.107.100 aac
-frame=   67 fps=0.0 q=29.0 size=     256kB time=00:00:02.78 bitrate= 752.7kbits/s speed=5.48x    frame=   93 fps= 92 q=29.0 size=    1024kB time=00:00:03.80 bitrate=2202.9kbits/s speed=3.76x    frame=  118 fps= 77 q=29.0 size=    1792kB time=00:00:03.80 bitrate=3855.1kbits/s speed= 2.5x    frame=  145 fps= 71 q=29.0 size=    2560kB time=00:00:04.73 bitrate=4427.4kbits/s speed=2.32x    frame=  172 fps= 67 q=29.0 size=    3072kB time=00:00:05.75 bitrate=4370.2kbits/s speed=2.26x    frame=  196 fps= 64 q=29.0 size=    3840kB time=00:00:06.78 bitrate=4639.6kbits/s speed=2.21x    frame=  219 fps= 61 q=29.0 size=    4608kB time=00:00:07.80 bitrate=4838.4kbits/s speed=2.19x    frame=  247 fps= 60 q=29.0 size=    5376kB time=00:00:08.73 bitrate=5044.3kbits/s speed=2.14x    frame=  270 fps= 59 q=29.0 size=    5888kB time=00:00:09.00 bitrate=5353.9kbits/s speed=1.96x    frame=  297 fps= 58 q=29.0 size=    6656kB time=00:00:09.75 bitrate=5591.1kbits/s speed=1.91x    frame=  323 fps= 57 q=29.0 size=    7424kB time=00:00:10.77 bitrate=5644.8kbits/s speed=1.92x    frame=  350 fps= 57 q=29.0 size=    8192kB time=00:00:11.79 bitrate=5689.3kbits/s speed=1.92x    frame=  375 fps= 56 q=29.0 size=    8704kB time=00:00:12.72 bitrate=5603.6kbits/s speed= 1.9x    frame=  401 fps= 56 q=29.0 size=    9472kB time=00:00:13.74 bitrate=5644.8kbits/s speed=1.91x    frame=  427 fps= 55 q=29.0 size=   10240kB time=00:00:14.76 bitrate=5680.3kbits/s speed=1.91x    frame=  455 fps= 55 q=29.0 size=   11008kB time=00:00:15.78 bitrate=5711.2kbits/s speed=1.91x    frame=  480 fps= 55 q=29.0 size=   11776kB time=00:00:16.53 bitrate=5835.1kbits/s speed=1.89x    frame=  510 fps= 55 q=29.0 size=   12544kB time=00:00:16.81 bitrate=6112.6kbits/s speed=1.81x    frame=  535 fps= 55 q=29.0 size=   13056kB time=00:00:17.74 bitrate=6029.0kbits/s speed=1.81x    frame=  562 fps= 55 q=29.0 size=   13824kB time=00:00:18.76 bitrate=6036.0kbits/s speed=1.82x    frame=  570 fps= 50 q=-1.0 Lsize=   15346kB time=00:00:19.04 bitrate=6602.6kbits/s speed=1.68x    
+frame=   65 fps=0.0 q=29.0 size=     256kB time=00:00:02.78 bitrate= 752.7kbits/s speed=5.51x    frame=   90 fps= 89 q=29.0 size=    1024kB time=00:00:02.78 bitrate=3010.7kbits/s speed=2.76x    frame=  117 fps= 77 q=29.0 size=    1792kB time=00:00:03.80 bitrate=3855.1kbits/s speed= 2.5x    frame=  142 fps= 70 q=29.0 size=    2304kB time=00:00:04.73 bitrate=3984.6kbits/s speed=2.32x    frame=  169 fps= 65 q=29.0 size=    3072kB time=00:00:05.75 bitrate=4370.2kbits/s speed=2.22x    frame=  195 fps= 63 q=29.0 size=    3840kB time=00:00:06.78 bitrate=4639.6kbits/s speed=2.19x    frame=  218 fps= 60 q=29.0 size=    4352kB time=00:00:07.80 bitrate=4569.6kbits/s speed=2.16x    frame=  247 fps= 59 q=29.0 size=    5376kB time=00:00:08.73 bitrate=5044.3kbits/s speed= 2.1x    frame=  270 fps= 58 q=29.0 size=    5888kB time=00:00:08.82 bitrate=5466.6kbits/s speed=1.89x    frame=  295 fps= 57 q=29.0 size=    6656kB time=00:00:09.75 bitrate=5591.1kbits/s speed=1.89x    frame=  322 fps= 57 q=29.0 size=    7424kB time=00:00:10.77 bitrate=5644.8kbits/s speed=1.89x    frame=  347 fps= 56 q=29.0 size=    7936kB time=00:00:11.79 bitrate=5511.5kbits/s speed= 1.9x    frame=  373 fps= 56 q=29.0 size=    8704kB time=00:00:12.72 bitrate=5603.6kbits/s speed= 1.9x    frame=  397 fps= 55 q=29.0 size=    9472kB time=00:00:13.74 bitrate=5644.8kbits/s speed=1.91x    frame=  420 fps= 54 q=29.0 size=    9984kB time=00:00:14.48 bitrate=5644.8kbits/s speed=1.88x    frame=  449 fps= 55 q=29.0 size=   11008kB time=00:00:14.76 bitrate=6106.3kbits/s speed= 1.8x    frame=  474 fps= 54 q=29.0 size=   11520kB time=00:00:15.78 bitrate=5976.9kbits/s speed=1.81x    frame=  500 fps= 54 q=29.0 size=   12288kB time=00:00:16.81 bitrate=5987.9kbits/s speed=1.82x    frame=  527 fps= 54 q=29.0 size=   12800kB time=00:00:17.74 bitrate=5910.8kbits/s speed=1.82x    frame=  553 fps= 54 q=29.0 size=   13568kB time=00:00:18.76 bitrate=5924.3kbits/s speed=1.83x    frame=  570 fps= 50 q=-1.0 Lsize=   15346kB time=00:00:19.04 bitrate=6602.6kbits/s speed=1.67x    
 video:15096kB audio:238kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.075363%
-[libx264 @ 0x559e54828a00] frame I:3     Avg QP:25.16  size: 47257
-[libx264 @ 0x559e54828a00] frame P:144   Avg QP:27.51  size: 41681
-[libx264 @ 0x559e54828a00] frame B:423   Avg QP:30.40  size: 22019
-[libx264 @ 0x559e54828a00] consecutive B-frames:  1.1%  0.0%  0.0% 98.9%
-[libx264 @ 0x559e54828a00] mb I  I16..4:  3.3% 96.6%  0.2%
-[libx264 @ 0x559e54828a00] mb P  I16..4:  0.2% 54.7%  2.3%  P16..4: 13.2% 17.1% 12.5%  0.0%  0.0%    skip: 0.0%
-[libx264 @ 0x559e54828a00] mb B  I16..4:  0.2% 21.7%  0.1%  B16..8: 24.6% 11.3%  4.7%  direct:35.5%  skip: 2.0%  L0:25.4% L1:18.3% BI:56.3%
-[libx264 @ 0x559e54828a00] 8x8 transform intra:97.3% inter:81.6%
-[libx264 @ 0x559e54828a00] coded y,uvDC,uvAC intra: 91.2% 100.0% 76.1% inter: 74.0% 97.8% 80.5%
-[libx264 @ 0x559e54828a00] i16 v,h,dc,p: 15% 18% 45% 21%
-[libx264 @ 0x559e54828a00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 15% 19% 46%  3%  3%  3%  4%  3%  5%
-[libx264 @ 0x559e54828a00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 10% 20% 12%  7% 11%  9% 12%  7% 12%
-[libx264 @ 0x559e54828a00] i8c dc,h,v,p: 66% 12% 17%  5%
-[libx264 @ 0x559e54828a00] Weighted P-Frames: Y:4.2% UV:2.1%
-[libx264 @ 0x559e54828a00] ref P L0: 29.7% 10.3% 39.7% 19.7%  0.6%
-[libx264 @ 0x559e54828a00] ref B L0: 79.7% 15.9%  4.3%
-[libx264 @ 0x559e54828a00] ref B L1: 95.5%  4.5%
-[libx264 @ 0x559e54828a00] kb/s:6508.64
-[aac @ 0x559e54829900] Qavg: 62883.664
+[libx264 @ 0x564e314fca00] frame I:3     Avg QP:25.16  size: 47257
+[libx264 @ 0x564e314fca00] frame P:144   Avg QP:27.51  size: 41681
+[libx264 @ 0x564e314fca00] frame B:423   Avg QP:30.40  size: 22019
+[libx264 @ 0x564e314fca00] consecutive B-frames:  1.1%  0.0%  0.0% 98.9%
+[libx264 @ 0x564e314fca00] mb I  I16..4:  3.3% 96.6%  0.2%
+[libx264 @ 0x564e314fca00] mb P  I16..4:  0.2% 54.7%  2.3%  P16..4: 13.2% 17.1% 12.5%  0.0%  0.0%    skip: 0.0%
+[libx264 @ 0x564e314fca00] mb B  I16..4:  0.2% 21.7%  0.1%  B16..8: 24.6% 11.3%  4.7%  direct:35.5%  skip: 2.0%  L0:25.4% L1:18.3% BI:56.3%
+[libx264 @ 0x564e314fca00] 8x8 transform intra:97.3% inter:81.6%
+[libx264 @ 0x564e314fca00] coded y,uvDC,uvAC intra: 91.2% 100.0% 76.1% inter: 74.0% 97.8% 80.5%
+[libx264 @ 0x564e314fca00] i16 v,h,dc,p: 15% 18% 45% 21%
+[libx264 @ 0x564e314fca00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 15% 19% 46%  3%  3%  3%  4%  3%  5%
+[libx264 @ 0x564e314fca00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 10% 20% 12%  7% 11%  9% 12%  7% 12%
+[libx264 @ 0x564e314fca00] i8c dc,h,v,p: 66% 12% 17%  5%
+[libx264 @ 0x564e314fca00] Weighted P-Frames: Y:4.2% UV:2.1%
+[libx264 @ 0x564e314fca00] ref P L0: 29.7% 10.3% 39.7% 19.7%  0.6%
+[libx264 @ 0x564e314fca00] ref B L0: 79.7% 15.9%  4.3%
+[libx264 @ 0x564e314fca00] ref B L1: 95.5%  4.5%
+[libx264 @ 0x564e314fca00] kb/s:6508.64
+[aac @ 0x564e314fd900] Qavg: 62883.664
 	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/DSCF1928_fish.AVI -c:v libx264 -f mov /home/aleksandr/Pract/Samples/DSCF1928_fish.AVI_tc/output_tc3.mov"
-	User time (seconds): 43.51
-	System time (seconds): 0.11
-	Percent of CPU this job got: 383%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.37
+	User time (seconds): 43.73
+	System time (seconds): 0.12
+	Percent of CPU this job got: 382%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.46
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 140200
+	Maximum resident set size (kbytes): 138620
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 22309
-	Voluntary context switches: 4173
-	Involuntary context switches: 3610
+	Minor (reclaiming a frame) page faults: 22316
+	Voluntary context switches: 4124
+	Involuntary context switches: 4065
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 30728

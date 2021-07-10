@@ -18,10 +18,10 @@ Stream mapping:
   Stream #0:0 -> #0:0 (msmpeg4v3 (msmpeg4) -> h264 (libx264))
   Stream #0:1 -> #0:1 (mp3 (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x558c229e8920] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x558c229e8920] profile High, level 2.1
-[libx264 @ 0x558c229e8920] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mov, to '/home/aleksandr/Pract/Samples/divx4b153_badmacroblock.avi_tc/output2.mov':
+[libx264 @ 0x55f71bef1920] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55f71bef1920] profile High, level 2.1
+[libx264 @ 0x55f71bef1920] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/divx4b153_badmacroblock.avi_tc/output_std2.mov':
   Metadata:
     encoder         : Lavf57.83.100
     Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 576x312, q=-1--1, 25 fps, 12800 tbn, 25 tbc
@@ -32,42 +32,42 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/divx4b153_badmacroblock.avi_tc
     Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s
     Metadata:
       encoder         : Lavc57.107.100 aac
-frame=  147 fps=0.0 q=28.0 size=       0kB time=00:00:06.29 bitrate=   0.0kbits/s speed=12.5x    frame=  205 fps=203 q=28.0 size=     256kB time=00:00:08.61 bitrate= 243.5kbits/s speed=8.53x    frame=  258 fps=171 q=28.0 size=     256kB time=00:00:10.72 bitrate= 195.5kbits/s speed= 7.1x    frame=  318 fps=158 q=28.0 size=     512kB time=00:00:13.14 bitrate= 319.2kbits/s speed=6.53x    frame=  380 fps=151 q=28.0 size=     512kB time=00:00:15.58 bitrate= 269.2kbits/s speed= 6.2x    frame=  439 fps=145 q=28.0 size=     768kB time=00:00:17.97 bitrate= 350.1kbits/s speed=5.93x    frame=  496 fps=140 q=28.0 size=    1024kB time=00:00:20.24 bitrate= 414.3kbits/s speed=5.72x    frame=  559 fps=138 q=28.0 size=    1024kB time=00:00:22.77 bitrate= 368.3kbits/s speed=5.63x    frame=  677 fps=149 q=28.0 size=    1280kB time=00:00:27.46 bitrate= 381.7kbits/s speed=6.04x    frame=  777 fps=154 q=28.0 size=    1536kB time=00:00:31.50 bitrate= 399.3kbits/s speed=6.24x    frame=  827 fps=149 q=28.0 size=    1536kB time=00:00:33.50 bitrate= 375.5kbits/s speed=6.04x    frame=  873 fps=144 q=28.0 size=    1792kB time=00:00:35.34 bitrate= 415.4kbits/s speed=5.84x    frame=  925 fps=141 q=28.0 size=    2304kB time=00:00:37.40 bitrate= 504.6kbits/s speed=5.71x    frame=  985 fps=140 q=28.0 size=    2304kB time=00:00:39.79 bitrate= 474.2kbits/s speed=5.64x    frame= 1062 fps=140 q=28.0 size=    2560kB time=00:00:42.88 bitrate= 489.0kbits/s speed=5.67x    frame= 1100 fps=139 q=-1.0 Lsize=    2957kB time=00:00:44.00 bitrate= 550.5kbits/s speed=5.55x    
+frame=  159 fps=0.0 q=28.0 size=       0kB time=00:00:06.73 bitrate=   0.0kbits/s speed=13.5x    frame=  218 fps=217 q=28.0 size=     256kB time=00:00:09.14 bitrate= 229.3kbits/s speed= 9.1x    frame=  280 fps=186 q=28.0 size=     256kB time=00:00:11.60 bitrate= 180.7kbits/s speed= 7.7x    frame=  347 fps=172 q=28.0 size=     512kB time=00:00:14.28 bitrate= 293.7kbits/s speed=7.09x    frame=  415 fps=165 q=28.0 size=     768kB time=00:00:16.99 bitrate= 370.2kbits/s speed=6.75x    frame=  469 fps=155 q=28.0 size=     768kB time=00:00:19.20 bitrate= 327.6kbits/s speed=6.36x    frame=  529 fps=150 q=28.0 size=    1024kB time=00:00:21.57 bitrate= 388.9kbits/s speed=6.11x    frame=  616 fps=153 q=28.0 size=    1280kB time=00:00:25.05 bitrate= 418.5kbits/s speed= 6.2x    frame=  765 fps=169 q=28.0 size=    1280kB time=00:00:30.99 bitrate= 338.3kbits/s speed=6.83x    frame=  819 fps=163 q=28.0 size=    1536kB time=00:00:33.20 bitrate= 379.0kbits/s speed=6.59x    frame=  870 fps=157 q=28.0 size=    1792kB time=00:00:35.20 bitrate= 417.0kbits/s speed=6.34x    frame=  928 fps=153 q=28.0 size=    2304kB time=00:00:37.52 bitrate= 503.0kbits/s speed= 6.2x    frame=  996 fps=152 q=28.0 size=    2560kB time=00:00:40.24 bitrate= 521.2kbits/s speed=6.13x    frame= 1091 fps=154 q=28.0 size=    2816kB time=00:00:43.93 bitrate= 525.1kbits/s speed=6.21x    frame= 1100 fps=151 q=-1.0 Lsize=    2957kB time=00:00:44.00 bitrate= 550.5kbits/s speed=6.04x    
 video:2232kB audio:693kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.116638%
-[libx264 @ 0x558c229e8920] frame I:6     Avg QP:15.37  size:  5129
-[libx264 @ 0x558c229e8920] frame P:769   Avg QP:21.57  size:  2698
-[libx264 @ 0x558c229e8920] frame B:325   Avg QP:19.91  size:   551
-[libx264 @ 0x558c229e8920] consecutive B-frames: 58.6%  4.2%  5.2% 32.0%
-[libx264 @ 0x558c229e8920] mb I  I16..4: 47.6% 49.6%  2.8%
-[libx264 @ 0x558c229e8920] mb P  I16..4:  1.7%  4.8%  0.1%  P16..4: 48.1% 12.5%  6.1%  0.0%  0.0%    skip:26.7%
-[libx264 @ 0x558c229e8920] mb B  I16..4:  0.4%  0.8%  0.0%  B16..8: 22.1%  1.4%  0.2%  direct: 2.6%  skip:72.5%  L0:51.4% L1:42.6% BI: 6.0%
-[libx264 @ 0x558c229e8920] 8x8 transform intra:69.7% inter:86.0%
-[libx264 @ 0x558c229e8920] coded y,uvDC,uvAC intra: 44.5% 70.7% 21.7% inter: 19.1% 26.9% 1.1%
-[libx264 @ 0x558c229e8920] i16 v,h,dc,p: 29% 26% 12% 32%
-[libx264 @ 0x558c229e8920] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 20% 33%  3%  4%  4%  4%  3%  4%
-[libx264 @ 0x558c229e8920] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 16% 13%  5% 11% 13%  8%  5%  4%
-[libx264 @ 0x558c229e8920] i8c dc,h,v,p: 53% 24% 17%  7%
-[libx264 @ 0x558c229e8920] Weighted P-Frames: Y:4.8% UV:3.1%
-[libx264 @ 0x558c229e8920] ref P L0: 74.0% 12.7%  9.7%  3.4%  0.2%
-[libx264 @ 0x558c229e8920] ref B L0: 84.0% 13.2%  2.7%
-[libx264 @ 0x558c229e8920] ref B L1: 96.1%  3.9%
-[libx264 @ 0x558c229e8920] kb/s:415.40
-[aac @ 0x558c229f2cc0] Qavg: 602.586
-	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/divx4b153_badmacroblock.avi -c:v libx264 -f mov /home/aleksandr/Pract/Samples/divx4b153_badmacroblock.avi_tc/output2.mov"
-	User time (seconds): 29.53
-	System time (seconds): 0.19
-	Percent of CPU this job got: 371%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.00
+[libx264 @ 0x55f71bef1920] frame I:6     Avg QP:15.37  size:  5129
+[libx264 @ 0x55f71bef1920] frame P:769   Avg QP:21.57  size:  2698
+[libx264 @ 0x55f71bef1920] frame B:325   Avg QP:19.91  size:   551
+[libx264 @ 0x55f71bef1920] consecutive B-frames: 58.6%  4.2%  5.2% 32.0%
+[libx264 @ 0x55f71bef1920] mb I  I16..4: 47.6% 49.6%  2.8%
+[libx264 @ 0x55f71bef1920] mb P  I16..4:  1.7%  4.8%  0.1%  P16..4: 48.1% 12.5%  6.1%  0.0%  0.0%    skip:26.7%
+[libx264 @ 0x55f71bef1920] mb B  I16..4:  0.4%  0.8%  0.0%  B16..8: 22.1%  1.4%  0.2%  direct: 2.6%  skip:72.5%  L0:51.4% L1:42.6% BI: 6.0%
+[libx264 @ 0x55f71bef1920] 8x8 transform intra:69.7% inter:86.0%
+[libx264 @ 0x55f71bef1920] coded y,uvDC,uvAC intra: 44.5% 70.7% 21.7% inter: 19.1% 26.9% 1.1%
+[libx264 @ 0x55f71bef1920] i16 v,h,dc,p: 29% 26% 12% 32%
+[libx264 @ 0x55f71bef1920] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 20% 33%  3%  4%  4%  4%  3%  4%
+[libx264 @ 0x55f71bef1920] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 16% 13%  5% 11% 13%  8%  5%  4%
+[libx264 @ 0x55f71bef1920] i8c dc,h,v,p: 53% 24% 17%  7%
+[libx264 @ 0x55f71bef1920] Weighted P-Frames: Y:4.8% UV:3.1%
+[libx264 @ 0x55f71bef1920] ref P L0: 74.0% 12.7%  9.7%  3.4%  0.2%
+[libx264 @ 0x55f71bef1920] ref B L0: 84.0% 13.2%  2.7%
+[libx264 @ 0x55f71bef1920] ref B L1: 96.1%  3.9%
+[libx264 @ 0x55f71bef1920] kb/s:415.40
+[aac @ 0x55f71befbcc0] Qavg: 602.586
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/divx4b153_badmacroblock.avi -c:v libx264 -f mov /home/aleksandr/Pract/Samples/divx4b153_badmacroblock.avi_tc/output_std2.mov"
+	User time (seconds): 23.16
+	System time (seconds): 0.26
+	Percent of CPU this job got: 319%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.34
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 99144
+	Maximum resident set size (kbytes): 98304
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 18050
-	Voluntary context switches: 8581
-	Involuntary context switches: 2582
+	Minor (reclaiming a frame) page faults: 18047
+	Voluntary context switches: 8943
+	Involuntary context switches: 13171
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 5936

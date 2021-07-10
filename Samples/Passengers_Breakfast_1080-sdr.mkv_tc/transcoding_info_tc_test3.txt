@@ -1,0 +1,226 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+[matroska,webm @ 0x5600ab234000] Could not find codec parameters for stream 2 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+[matroska,webm @ 0x5600ab234000] Could not find codec parameters for stream 3 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+[matroska,webm @ 0x5600ab234000] Could not find codec parameters for stream 4 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+[matroska,webm @ 0x5600ab234000] Could not find codec parameters for stream 5 (Subtitle: hdmv_pgs_subtitle (pgssub)): unspecified size
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+Input #0, matroska,webm, from '../.././Samples/Passengers_Breakfast_1080-sdr.mkv':
+  Metadata:
+    title           : Passengers
+    encoder         : libebml v1.3.5 + libmatroska v1.4.8
+    creation_time   : 2017-10-29T15:55:29.000000Z
+  Duration: 00:00:30.29, start: 0.000000, bitrate: 28918 kb/s
+    Chapter #0:0: start 0.000000, end 30.285000
+    Metadata:
+      title           :  Chapter 6
+    Stream #0:0(eng): Video: h264 (High), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 1k tbn, 47.95 tbc (default)
+    Metadata:
+      title           : MPEG-4 AVC Video / 26866 kbps / 1080p / 23.976 fps / 16:9 / High Profile 4.1
+      BPS             : 26694461
+      BPS-eng         : 26694461
+      DURATION        : 00:00:30.281000000
+      DURATION-eng    : 00:00:30.281000000
+      NUMBER_OF_FRAMES: 726
+      NUMBER_OF_FRAMES-eng: 726
+      NUMBER_OF_BYTES : 101041872
+      NUMBER_OF_BYTES-eng: 101041872
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+    Stream #0:1(eng): Audio: dts (DTS-HD MA), 48000 Hz, 5.1(side), s16p (default)
+    Metadata:
+      title           : DTS-HD Master Audio / 5.1 / 48 kHz / 2119 kbps / 16-bit
+      BPS             : 2031501
+      BPS-eng         : 2031501
+      DURATION        : 00:00:30.283000000
+      DURATION-eng    : 00:00:30.283000000
+      NUMBER_OF_FRAMES: 2839
+      NUMBER_OF_FRAMES-eng: 2839
+      NUMBER_OF_BYTES : 7689996
+      NUMBER_OF_BYTES-eng: 7689996
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+    Stream #0:2(eng): Subtitle: hdmv_pgs_subtitle
+    Metadata:
+      BPS             : 120967
+      BPS-eng         : 120967
+      DURATION        : 00:00:26.277000000
+      DURATION-eng    : 00:00:26.277000000
+      NUMBER_OF_FRAMES: 26
+      NUMBER_OF_FRAMES-eng: 26
+      NUMBER_OF_BYTES : 397333
+      NUMBER_OF_BYTES-eng: 397333
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+    Stream #0:3(eng): Subtitle: hdmv_pgs_subtitle
+    Metadata:
+      title           : SDH
+      BPS             : 119805
+      BPS-eng         : 119805
+      DURATION        : 00:00:27.695000000
+      DURATION-eng    : 00:00:27.695000000
+      NUMBER_OF_FRAMES: 28
+      NUMBER_OF_FRAMES-eng: 28
+      NUMBER_OF_BYTES : 414752
+      NUMBER_OF_BYTES-eng: 414752
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+    Stream #0:4(fre): Subtitle: hdmv_pgs_subtitle
+    Metadata:
+      BPS             : 89772
+      BPS-eng         : 89772
+      DURATION        : 00:00:24.608000000
+      DURATION-eng    : 00:00:24.608000000
+      NUMBER_OF_FRAMES: 20
+      NUMBER_OF_FRAMES-eng: 20
+      NUMBER_OF_BYTES : 276139
+      NUMBER_OF_BYTES-eng: 276139
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+    Stream #0:5(spa): Subtitle: hdmv_pgs_subtitle
+    Metadata:
+      title           : Latin American
+      BPS             : 101287
+      BPS-eng         : 101287
+      DURATION        : 00:00:26.067000000
+      DURATION-eng    : 00:00:26.067000000
+      NUMBER_OF_FRAMES: 22
+      NUMBER_OF_FRAMES-eng: 22
+      NUMBER_OF_BYTES : 330033
+      NUMBER_OF_BYTES-eng: 330033
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (dts (dca) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5600ac280800] using SAR=1/1
+[libx264 @ 0x5600ac280800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5600ac280800] profile High, level 4.0
+[libx264 @ 0x5600ac280800] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=23 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/Passengers_Breakfast_1080-sdr.mkv_tc/output_tc3.mov':
+  Metadata:
+    title           : Passengers
+    encoder         : Lavf57.83.100
+    Chapter #0:0: start 0.000000, end 30.285000
+    Metadata:
+      title           :  Chapter 6
+    Stream #0:0(eng): Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 1920x1080 [SAR 1:1 DAR 16:9], q=-1--1, 23.98 fps, 24k tbn, 23.98 tbc (default)
+    Metadata:
+      title           : MPEG-4 AVC Video / 26866 kbps / 1080p / 23.976 fps / 16:9 / High Profile 4.1
+      BPS             : 26694461
+      BPS-eng         : 26694461
+      DURATION        : 00:00:30.281000000
+      DURATION-eng    : 00:00:30.281000000
+      NUMBER_OF_FRAMES: 726
+      NUMBER_OF_FRAMES-eng: 726
+      NUMBER_OF_BYTES : 101041872
+      NUMBER_OF_BYTES-eng: 101041872
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, 5.1(side), fltp (16 bit), 341 kb/s (default)
+    Metadata:
+      title           : DTS-HD Master Audio / 5.1 / 48 kHz / 2119 kbps / 16-bit
+      BPS             : 2031501
+      BPS-eng         : 2031501
+      DURATION        : 00:00:30.283000000
+      DURATION-eng    : 00:00:30.283000000
+      NUMBER_OF_FRAMES: 2839
+      NUMBER_OF_FRAMES-eng: 2839
+      NUMBER_OF_BYTES : 7689996
+      NUMBER_OF_BYTES-eng: 7689996
+      _STATISTICS_WRITING_APP: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_APP-eng: mkvmerge v16.0.0 ('Protest') 64-bit
+      _STATISTICS_WRITING_DATE_UTC: 2017-10-29 15:55:29
+      _STATISTICS_WRITING_DATE_UTC-eng: 2017-10-29 15:55:29
+      _STATISTICS_TAGS: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES
+      encoder         : Lavc57.107.100 aac
+frame=   28 fps=0.0 q=0.0 size=       0kB time=00:00:01.34 bitrate=   0.0kbits/s speed=2.67x    frame=   46 fps= 32 q=0.0 size=       0kB time=00:00:02.04 bitrate=   0.0kbits/s speed=1.45x    frame=   56 fps= 29 q=28.0 size=       0kB time=00:00:02.49 bitrate=   0.2kbits/s speed= 1.3x    frame=   64 fps= 26 q=28.0 size=       0kB time=00:00:02.79 bitrate=   0.2kbits/s speed=1.15x    frame=   72 fps= 24 q=28.0 size=     256kB time=00:00:03.13 bitrate= 668.6kbits/s speed=1.04x    frame=   80 fps= 22 q=28.0 size=     256kB time=00:00:03.47 bitrate= 603.0kbits/s speed=0.977x    frame=   90 fps= 22 q=28.0 size=     256kB time=00:00:03.90 bitrate= 537.1kbits/s speed=0.939x    frame=   98 fps= 21 q=28.0 size=     256kB time=00:00:04.28 bitrate= 489.0kbits/s speed=0.92x    frame=  104 fps= 20 q=28.0 size=     512kB time=00:00:04.48 bitrate= 936.0kbits/s speed=0.866x    frame=  112 fps= 20 q=28.0 size=     512kB time=00:00:04.80 bitrate= 873.6kbits/s speed=0.84x    frame=  120 fps= 19 q=28.0 size=     512kB time=00:00:05.14 bitrate= 815.6kbits/s speed=0.822x    frame=  128 fps= 19 q=28.0 size=     768kB time=00:00:05.48 bitrate=1147.4kbits/s speed=0.807x    frame=  136 fps= 18 q=28.0 size=     768kB time=00:00:05.80 bitrate=1084.0kbits/s speed=0.787x    frame=  144 fps= 18 q=28.0 size=    1024kB time=00:00:06.12 bitrate=1369.8kbits/s speed=0.777x    frame=  152 fps= 18 q=28.0 size=    1024kB time=00:00:06.46 bitrate=1297.5kbits/s speed=0.771x    frame=  159 fps= 18 q=28.0 size=    1024kB time=00:00:06.76 bitrate=1240.2kbits/s speed=0.761x    frame=  167 fps= 18 q=28.0 size=    1280kB time=00:00:07.08 bitrate=1480.2kbits/s speed=0.747x    frame=  174 fps= 17 q=28.0 size=    1280kB time=00:00:07.42 bitrate=1412.2kbits/s speed=0.743x    frame=  181 fps= 17 q=28.0 size=    1280kB time=00:00:07.68 bitrate=1365.1kbits/s speed=0.731x    frame=  189 fps= 17 q=28.0 size=    1536kB time=00:00:08.02 bitrate=1568.4kbits/s speed=0.725x    frame=  197 fps= 17 q=28.0 size=    1536kB time=00:00:08.34 bitrate=1508.3kbits/s speed=0.721x    frame=  203 fps= 17 q=25.0 size=    1536kB time=00:00:08.64 bitrate=1456.2kbits/s speed=0.715x    frame=  213 fps= 17 q=28.0 size=    1792kB time=00:00:09.02 bitrate=1626.5kbits/s speed=0.712x    frame=  223 fps= 17 q=28.0 size=    1792kB time=00:00:09.43 bitrate=1556.6kbits/s speed=0.716x    frame=  233 fps= 17 q=28.0 size=    1792kB time=00:00:09.85 bitrate=1489.3kbits/s speed=0.714x    frame=  243 fps= 17 q=28.0 size=    2048kB time=00:00:10.26 bitrate=1634.8kbits/s speed=0.717x    frame=  251 fps= 17 q=28.0 size=    2048kB time=00:00:10.60 bitrate=1582.1kbits/s speed=0.714x    frame=  259 fps= 17 q=28.0 size=    2048kB time=00:00:10.94 bitrate=1532.8kbits/s speed=0.711x    frame=  267 fps= 17 q=28.0 size=    2048kB time=00:00:11.28 bitrate=1486.5kbits/s speed=0.71x    frame=  279 fps= 17 q=28.0 size=    2304kB time=00:00:11.75 bitrate=1605.5kbits/s speed=0.713x    frame=  285 fps= 17 q=25.0 size=    2304kB time=00:00:12.03 bitrate=1568.5kbits/s speed=0.707x    frame=  295 fps= 17 q=28.0 size=    2304kB time=00:00:12.43 bitrate=1517.3kbits/s speed=0.709x    frame=  305 fps= 17 q=28.0 size=    2560kB time=00:00:12.84 bitrate=1632.8kbits/s speed=0.711x    frame=  315 fps= 17 q=28.0 size=    2560kB time=00:00:13.27 bitrate=1580.3kbits/s speed=0.715x    frame=  325 fps= 17 q=28.0 size=    2560kB time=00:00:13.69 bitrate=1531.0kbits/s speed=0.716x    frame=  335 fps= 17 q=28.0 size=    2560kB time=00:00:14.10 bitrate=1487.0kbits/s speed=0.715x    frame=  343 fps= 17 q=28.0 size=    2816kB time=00:00:14.52 bitrate=1587.7kbits/s speed=0.719x    frame=  355 fps= 17 q=28.0 size=    2816kB time=00:00:14.93 bitrate=1544.7kbits/s speed=0.715x    frame=  365 fps= 17 q=28.0 size=    3072kB time=00:00:15.36 bitrate=1638.2kbits/s speed=0.716x    frame=  375 fps= 17 q=28.0 size=    3072kB time=00:00:15.76 bitrate=1596.2kbits/s speed=0.718x    frame=  384 fps= 17 q=28.0 size=    3072kB time=00:00:16.15 bitrate=1558.2kbits/s speed=0.719x    frame=  395 fps= 17 q=28.0 size=    3328kB time=00:00:16.61 bitrate=1640.4kbits/s speed=0.719x    frame=  405 fps= 17 q=28.0 size=    3328kB time=00:00:17.02 bitrate=1601.3kbits/s speed=0.72x    frame=  416 fps= 17 q=28.0 size=    3328kB time=00:00:17.51 bitrate=1556.4kbits/s speed=0.725x    frame=  425 fps= 17 q=28.0 size=    3328kB time=00:00:17.85 bitrate=1526.7kbits/s speed=0.724x    frame=  435 fps= 17 q=25.0 size=    3584kB time=00:00:18.26 bitrate=1607.7kbits/s speed=0.717x    frame=  447 fps= 17 q=28.0 size=    3584kB time=00:00:18.77 bitrate=1563.8kbits/s speed=0.721x    frame=  455 fps= 17 q=28.0 size=    3584kB time=00:00:19.09 bitrate=1537.6kbits/s speed=0.718x    frame=  465 fps= 17 q=28.0 size=    3840kB time=00:00:19.52 bitrate=1611.4kbits/s speed=0.72x    frame=  475 fps= 17 q=28.0 size=    3840kB time=00:00:19.94 bitrate=1576.9kbits/s speed=0.722x    frame=  483 fps= 17 q=28.0 size=    3840kB time=00:00:20.28 bitrate=1550.4kbits/s speed=0.721x    frame=  493 fps= 17 q=28.0 size=    4096kB time=00:00:20.69 bitrate=1621.4kbits/s speed=0.721x    frame=  503 fps= 17 q=28.0 size=    4096kB time=00:00:21.12 bitrate=1588.6kbits/s speed=0.723x    frame=  513 fps= 17 q=28.0 size=    4096kB time=00:00:21.52 bitrate=1558.7kbits/s speed=0.722x    frame=  525 fps= 17 q=28.0 size=    4352kB time=00:00:22.03 bitrate=1617.7kbits/s speed=0.727x    frame=  535 fps= 17 q=28.0 size=    4352kB time=00:00:22.44 bitrate=1588.5kbits/s speed=0.727x    frame=  547 fps= 17 q=28.0 size=    4352kB time=00:00:22.95 bitrate=1553.1kbits/s speed=0.73x    frame=  559 fps= 17 q=28.0 size=    4352kB time=00:00:23.44 bitrate=1520.5kbits/s speed=0.734x    frame=  569 fps= 18 q=28.0 size=    4608kB time=00:00:23.85 bitrate=1582.6kbits/s speed=0.735x    frame=  579 fps= 18 q=28.0 size=    4608kB time=00:00:24.27 bitrate=1554.8kbits/s speed=0.736x    frame=  591 fps= 18 q=28.0 size=    4608kB time=00:00:24.79 bitrate=1522.7kbits/s speed=0.74x    frame=  601 fps= 18 q=28.0 size=    4864kB time=00:00:25.19 bitrate=1581.4kbits/s speed=0.741x    frame=  611 fps= 18 q=28.0 size=    4864kB time=00:00:25.62 bitrate=1555.1kbits/s speed=0.742x    frame=  623 fps= 18 q=28.0 size=    4864kB time=00:00:26.11 bitrate=1525.9kbits/s speed=0.744x    frame=  633 fps= 18 q=28.0 size=    4864kB time=00:00:26.51 bitrate=1502.6kbits/s speed=0.744x    frame=  643 fps= 18 q=28.0 size=    5120kB time=00:00:26.96 bitrate=1555.4kbits/s speed=0.746x    frame=  653 fps= 18 q=28.0 size=    5120kB time=00:00:27.37 bitrate=1532.3kbits/s speed=0.746x    frame=  661 fps= 18 q=25.0 size=    5376kB time=00:00:27.71 bitrate=1589.1kbits/s speed=0.744x    frame=  673 fps= 18 q=28.0 size=    5376kB time=00:00:28.20 bitrate=1561.5kbits/s speed=0.747x    frame=  681 fps= 18 q=28.0 size=    5632kB time=00:00:28.54 bitrate=1616.3kbits/s speed=0.745x    frame=  693 fps= 18 q=28.0 size=    5632kB time=00:00:29.05 bitrate=1587.8kbits/s speed=0.748x    frame=  701 fps= 18 q=28.0 size=    5888kB time=00:00:29.44 bitrate=1638.3kbits/s speed=0.748x    frame=  711 fps= 18 q=28.0 size=    5888kB time=00:00:29.80 bitrate=1618.4kbits/s speed=0.747x    frame=  721 fps= 18 q=28.0 size=    5888kB time=00:00:30.20 bitrate=1596.7kbits/s speed=0.748x    frame=  726 fps= 17 q=-1.0 Lsize=    6382kB time=00:00:30.29 bitrate=1725.6kbits/s speed=0.723x    
+video:5092kB audio:1261kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.444656%
+[libx264 @ 0x5600ac280800] frame I:12    Avg QP:16.32  size: 65333
+[libx264 @ 0x5600ac280800] frame P:188   Avg QP:20.21  size: 13049
+[libx264 @ 0x5600ac280800] frame B:526   Avg QP:23.49  size:  3758
+[libx264 @ 0x5600ac280800] consecutive B-frames:  2.3%  2.5%  2.1% 93.1%
+[libx264 @ 0x5600ac280800] mb I  I16..4: 45.3% 46.2%  8.5%
+[libx264 @ 0x5600ac280800] mb P  I16..4:  1.0%  2.1%  0.2%  P16..4: 24.8%  5.8%  3.3%  0.0%  0.0%    skip:62.8%
+[libx264 @ 0x5600ac280800] mb B  I16..4:  0.1%  0.1%  0.0%  B16..8: 25.8%  1.0%  0.1%  direct: 0.2%  skip:72.7%  L0:42.0% L1:55.6% BI: 2.4%
+[libx264 @ 0x5600ac280800] 8x8 transform intra:52.7% inter:88.5%
+[libx264 @ 0x5600ac280800] coded y,uvDC,uvAC intra: 46.5% 52.7% 17.3% inter: 3.9% 4.2% 0.0%
+[libx264 @ 0x5600ac280800] i16 v,h,dc,p: 42% 23%  4% 32%
+[libx264 @ 0x5600ac280800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 17% 21% 10%  6% 10% 10% 10%  8%  8%
+[libx264 @ 0x5600ac280800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 19% 23% 11%  5% 13% 11%  9%  5%  4%
+[libx264 @ 0x5600ac280800] i8c dc,h,v,p: 54% 24% 15%  7%
+[libx264 @ 0x5600ac280800] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x5600ac280800] ref P L0: 62.5% 14.6% 16.7%  6.2%
+[libx264 @ 0x5600ac280800] ref B L0: 92.9%  5.6%  1.4%
+[libx264 @ 0x5600ac280800] ref B L1: 97.3%  2.7%
+[libx264 @ 0x5600ac280800] kb/s:1377.46
+[aac @ 0x5600ac281700] Qavg: 349.242
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/Passengers_Breakfast_1080-sdr.mkv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/Passengers_Breakfast_1080-sdr.mkv_tc/output_tc3.mov"
+	User time (seconds): 124.23
+	System time (seconds): 1.12
+	Percent of CPU this job got: 298%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:42.03
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 609360
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 30765
+	Voluntary context switches: 13582
+	Involuntary context switches: 81778
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 12832
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

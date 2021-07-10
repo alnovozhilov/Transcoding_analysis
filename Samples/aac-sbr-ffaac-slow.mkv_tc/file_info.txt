@@ -85,3 +85,90 @@ Menu
 00:09:17.266                             : en:Part B
 
 
+General
+Unique ID                                : 195828947910287415005579100862596260282 (0x93534891DF2E7E2689E5F46BAD8021BA)
+Complete name                            : ../.././Samples/aac-sbr-ffaac-slow.mkv
+Format                                   : Matroska
+Format version                           : Version 2
+File size                                : 15.0 MiB
+Duration                                 : 20 min 34 s
+Overall bit rate                         : 102 kb/s
+Movie name                               : [moo-shi] Natsume Yuujinchou - 01 - The Cat and The Book of Friends
+Encoded date                             : UTC 2009-07-16 16:01:01
+Writing application                      : mkvmerge v2.9.7 ('Tenderness') built on Jul  1 2009 18:43:35
+Writing library                          : libebml v0.7.7 + libmatroska v0.8.1
+IsTruncated                              : Yes
+Attachments                              : BAARS___.TTF / HGRGY.TTC
+
+Video
+ID                                       : 1
+Format                                   : AVC
+Format/Info                              : Advanced Video Codec
+Format profile                           : High@L3.1
+Format settings                          : CABAC / 8 Ref Frames
+Format settings, CABAC                   : Yes
+Format settings, ReFrames                : 8 frames
+Codec ID                                 : V_MPEG4/ISO/AVC
+Duration                                 : 20 min 34 s
+Nominal bit rate                         : 1 483 kb/s
+Width                                    : 704 pixels
+Height                                   : 400 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 23.976 (24000/1001) FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Bits/(Pixel*Frame)                       : 0.220
+Title                                    : NY - 01 (H264)
+Writing library                          : x264 core 68 r1179M 96e2229
+Encoding settings                        : cabac=1 / ref=8 / deblock=1:1:1 / analyse=0x3:0x113 / me=umh / subme=8 / psy_rd=0.6:0.0 / mixed_ref=1 / me_range=16 / chroma_me=1 / trellis=2 / 8x8dct=1 / cqm=0 / deadzone=21,11 / chroma_qp_offset=0 / threads=3 / nr=0 / decimate=1 / mbaff=0 / bframes=16 / b_pyramid=1 / b_adapt=1 / b_bias=0 / direct=3 / wpredb=0 / keyint=239 / keyint_min=24 / scenecut=40 / rc=2pass / bitrate=1483 / ratetol=1.0 / qcomp=0.60 / qpmin=10 / qpmax=51 / qpstep=4 / cplxblur=20.0 / qblur=0.5 / ip_ratio=1.40 / pb_ratio=1.30 / aq=0
+Language                                 : Japanese
+Default                                  : Yes
+Forced                                   : No
+
+Audio
+ID                                       : 2
+Format                                   : AAC
+Format/Info                              : Advanced Audio Codec
+Format profile                           : HE-AAC / LC
+Format settings                          : Explicit
+Codec ID                                 : A_AAC-2
+Duration                                 : 20 min 34 s
+Channel(s)                               : 2 channels
+Channel positions                        : Front: L R
+Sampling rate                            : 48.0 kHz / 24.0 kHz
+Frame rate                               : 23.438 FPS (1024 SPF)
+Compression mode                         : Lossy
+Title                                    : NY - 01 (AAC 2.0)
+Language                                 : Japanese
+Default                                  : Yes
+Forced                                   : No
+
+Text #1
+ID                                       : 3
+Format                                   : ASS
+Codec ID                                 : S_TEXT/ASS
+Codec ID/Info                            : Advanced Sub Station Alpha
+Compression mode                         : Lossless
+Title                                    : NY - 01 (ASS styled)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+Text #2
+ID                                       : 4
+Format                                   : UTF-8
+Codec ID                                 : S_TEXT/UTF8
+Codec ID/Info                            : UTF-8 Plain Text
+Title                                    : NY - 01 (SRT unstyled)
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+Menu
+00:00:00.000                             : en:Opening / en:Part A / en:Ending
+00:09:17.266                             : en:Part B
+
+

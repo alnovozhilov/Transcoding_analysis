@@ -58,3 +58,63 @@ Stream size                              : 832 KiB (2%)
 Language                                 : English (United States)
 
 
+General
+Complete name                            : ../.././Samples/Dracula480p.wmv
+Format                                   : Windows Media
+File size                                : 35.7 MiB
+Duration                                 : 52 s 736 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 5 682 kb/s
+Maximum Overall bit rate                 : 9 189 kb/s
+Movie name                               : Dracula
+Performer                                : Benjamin Smith
+Encoded date                             : UTC 2010-04-05 10:56:43.101
+Copyright                                : Copyright (c) Red Star Studio Ltd.
+Comment                                  : Dracula 4D is the thrilling new 3D/4D show from Red Star 3D, creators of the award winning 'The Curse of Skull Rock'. On holiday in Transylvania, teenager Kevin and his bumbling dad accidentally awaken the undead vampire Dracula who leads Kevin on a desperate chase through the creepy castle catacombs, forcing Kevin to choose whether to keep running or face his darkest fears to defeat Dracula and rescue his dad!
+Source                                   : http://www.redstarstudio.co.uk
+Stereoscopic                             : Yes
+StereoscopicLayout                       : SideBySideRF
+StereoscopicSkip                         : 50000000
+StereoscopicPreview                      : (Binary)
+
+Video
+ID                                       : 2
+Format                                   : VC-1
+Format profile                           : Advanced@L3
+Codec ID                                 : WVC1
+Codec ID/Hint                            : Microsoft
+Description of the codec                 : Windows Media Video 9 Advanced Profile
+Duration                                 : 52 s 733 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 6 000 kb/s
+Width                                    : 1 440 pixels
+Height                                   : 480 pixels
+Display aspect ratio                     : 3.555
+Original display aspect ratio            : 3.000
+Frame rate                               : 30.000 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.289
+Stream size                              : 37.7 MiB
+Language                                 : English (United States)
+
+Audio
+ID                                       : 1
+Format                                   : WMA
+Format version                           : Version 2
+Codec ID                                 : 161
+Codec ID/Info                            : Windows Media Audio
+Description of the codec                 : Windows Media Audio 9.2 - 128 kbps, 48 kHz, stereo 2-pass VBR
+Duration                                 : 52 s 736 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 129 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 48.0 kHz
+Bit depth                                : 16 bits
+Stream size                              : 832 KiB (2%)
+Language                                 : English (United States)
+
+

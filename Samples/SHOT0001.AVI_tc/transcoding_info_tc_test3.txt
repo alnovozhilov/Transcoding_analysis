@@ -22,10 +22,10 @@ Stream mapping:
   Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (adpcm_ima_wav (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x55e2ddc89200] using SAR=1/1
-[libx264 @ 0x55e2ddc89200] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x55e2ddc89200] profile High, level 3.1
-[libx264 @ 0x55e2ddc89200] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x5569761e3200] using SAR=1/1
+[libx264 @ 0x5569761e3200] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5569761e3200] profile High, level 3.1
+[libx264 @ 0x5569761e3200] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
 Past duration 0.999992 too large
 Output #0, mov, to '/home/aleksandr/Pract/Samples/SHOT0001.AVI_tc/output_tc3.mov':
   Metadata:
@@ -42,86 +42,86 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/SHOT0001.AVI_tc/output_tc3.mov
       encoder         : Lavc57.107.100 aac
 Past duration 0.999992 too large
     Last message repeated 49 times
-frame=   53 fps=0.0 q=29.0 size=     256kB time=00:00:01.45 bitrate=1445.8kbits/s dup=1 drop=0 speed=2.74x    Past duration 0.999992 too large
-    Last message repeated 15 times
-frame=   69 fps= 61 q=29.0 size=    1280kB time=00:00:02.13 bitrate=4915.3kbits/s dup=1 drop=0 speed=1.88x    Past duration 0.999992 too large
+frame=   53 fps=0.0 q=29.0 size=     256kB time=00:00:01.45 bitrate=1445.8kbits/s dup=1 drop=0 speed=2.83x    Past duration 0.999992 too large
     Last message repeated 12 times
-frame=   82 fps= 50 q=29.0 size=    2048kB time=00:00:02.47 bitrate=6779.7kbits/s dup=1 drop=0 speed= 1.5x    Past duration 0.999992 too large
-    Last message repeated 11 times
-frame=   94 fps= 43 q=29.0 size=    2560kB time=00:00:02.81 bitrate=7447.4kbits/s dup=1 drop=0 speed=1.29x    Past duration 0.999992 too large
-    Last message repeated 12 times
-frame=  107 fps= 40 q=29.0 size=    3328kB time=00:00:03.49 bitrate=7792.5kbits/s dup=1 drop=0 speed=1.29x    Past duration 0.999992 too large
+frame=   66 fps= 63 q=29.0 size=    1024kB time=00:00:02.13 bitrate=3932.3kbits/s dup=1 drop=0 speed=2.05x    Past duration 0.999992 too large
+    Last message repeated 14 times
+frame=   81 fps= 50 q=29.0 size=    1792kB time=00:00:02.47 bitrate=5932.3kbits/s dup=1 drop=0 speed=1.52x    Past duration 0.999992 too large
     Last message repeated 13 times
-frame=  121 fps= 37 q=29.0 size=    4352kB time=00:00:03.84 bitrate=9284.3kbits/s dup=1 drop=0 speed=1.17x    Past duration 0.999992 too large
-    Last message repeated 12 times
-frame=  134 fps= 35 q=29.0 size=    5120kB time=00:00:04.18 bitrate=10031.1kbits/s dup=1 drop=0 speed= 1.1x    Past duration 0.999992 too large
+frame=   95 fps= 45 q=29.0 size=    2560kB time=00:00:03.15 bitrate=6642.3kbits/s dup=1 drop=0 speed=1.48x    Past duration 0.999992 too large
+    Last message repeated 9 times
+frame=  105 fps= 40 q=29.0 size=    3328kB time=00:00:03.49 bitrate=7792.5kbits/s dup=1 drop=0 speed=1.33x    Past duration 0.999992 too large
+    Last message repeated 14 times
+frame=  120 fps= 38 q=29.0 size=    4352kB time=00:00:03.84 bitrate=9284.3kbits/s dup=1 drop=0 speed=1.22x    Past duration 0.999992 too large
     Last message repeated 10 times
-frame=  145 fps= 34 q=29.0 size=    5888kB time=00:00:04.52 bitrate=10665.1kbits/s dup=1 drop=0 speed=1.05x    Past duration 0.999992 too large
+frame=  131 fps= 36 q=29.0 size=    4864kB time=00:00:04.18 bitrate=9529.5kbits/s dup=1 drop=0 speed=1.14x    Past duration 0.999992 too large
+    Last message repeated 13 times
+frame=  145 fps= 34 q=29.0 size=    5888kB time=00:00:04.52 bitrate=10665.1kbits/s dup=1 drop=0 speed=1.06x    Past duration 0.999992 too large
     Last message repeated 13 times
 frame=  159 fps= 33 q=29.0 size=    6656kB time=00:00:05.20 bitrate=10475.1kbits/s dup=1 drop=0 speed=1.08x    Past duration 0.999992 too large
     Last message repeated 13 times
 frame=  173 fps= 32 q=29.0 size=    7680kB time=00:00:05.54 bitrate=11342.8kbits/s dup=1 drop=0 speed=1.01x    Past duration 0.999992 too large
-    Last message repeated 14 times
-frame=  188 fps= 31 q=29.0 size=    8448kB time=00:00:06.22 bitrate=11109.7kbits/s dup=1 drop=0 speed=1.04x    Past duration 0.999992 too large
+    Last message repeated 13 times
+frame=  187 fps= 31 q=29.0 size=    8448kB time=00:00:06.22 bitrate=11109.7kbits/s dup=1 drop=0 speed=1.04x    Past duration 0.999992 too large
+    Last message repeated 13 times
+frame=  201 fps= 31 q=29.0 size=    9472kB time=00:00:06.57 bitrate=11809.3kbits/s dup=1 drop=0 speed=   1x    Past duration 0.999992 too large
     Last message repeated 11 times
-frame=  200 fps= 31 q=29.0 size=    9216kB time=00:00:06.57 bitrate=11490.1kbits/s dup=1 drop=0 speed=1.01x    Past duration 0.999992 too large
-    Last message repeated 12 times
 frame=  213 fps= 30 q=29.0 size=   10240kB time=00:00:06.91 bitrate=12136.3kbits/s dup=1 drop=0 speed=0.975x    Past duration 0.999992 too large
     Last message repeated 13 times
-frame=  227 fps= 30 q=29.0 size=   11264kB time=00:00:07.59 bitrate=12150.0kbits/s dup=1 drop=0 speed=0.999x    Past duration 0.999992 too large
+frame=  227 fps= 30 q=29.0 size=   11264kB time=00:00:07.25 bitrate=12721.7kbits/s dup=1 drop=0 speed=0.955x    Past duration 0.999992 too large
     Last message repeated 12 times
-frame=  240 fps= 30 q=29.0 size=   12032kB time=00:00:07.93 bitrate=12420.2kbits/s dup=1 drop=0 speed=0.976x    Past duration 0.999992 too large
-    Last message repeated 17 times
-frame=  258 fps= 30 q=29.0 size=   13056kB time=00:00:08.27 bitrate=12921.4kbits/s dup=1 drop=0 speed=0.956x    Past duration 0.999992 too large
-    Last message repeated 14 times
-frame=  273 fps= 30 q=29.0 size=   14080kB time=00:00:08.96 bitrate=12873.2kbits/s dup=1 drop=0 speed=0.974x    Past duration 0.999992 too large
-    Last message repeated 13 times
-frame=  287 fps= 30 q=26.0 size=   15104kB time=00:00:09.30 bitrate=13302.6kbits/s dup=1 drop=0 speed=0.959x    Past duration 0.999992 too large
+frame=  240 fps= 29 q=29.0 size=   12032kB time=00:00:07.93 bitrate=12420.2kbits/s dup=1 drop=0 speed=0.973x    Past duration 0.999992 too large
     Last message repeated 16 times
-frame=  304 fps= 30 q=29.0 size=   15872kB time=00:00:09.98 bitrate=13023.2kbits/s dup=1 drop=0 speed=0.977x    Past duration 0.999992 too large
-    Last message repeated 14 times
-frame=  319 fps= 30 q=29.0 size=   16896kB time=00:00:10.32 bitrate=13405.1kbits/s dup=1 drop=0 speed=0.961x    Past duration 0.999992 too large
+frame=  257 fps= 30 q=29.0 size=   13056kB time=00:00:08.27 bitrate=12921.4kbits/s dup=1 drop=0 speed=0.956x    Past duration 0.999992 too large
     Last message repeated 13 times
-frame=  333 fps= 29 q=29.0 size=   17920kB time=00:00:11.00 bitrate=13335.8kbits/s dup=1 drop=0 speed=0.974x    Past duration 0.999992 too large
+frame=  271 fps= 30 q=29.0 size=   14080kB time=00:00:08.96 bitrate=12873.2kbits/s dup=1 drop=0 speed=0.977x    Past duration 0.999992 too large
     Last message repeated 15 times
-frame=  349 fps= 29 q=29.0 size=   19200kB time=00:00:11.34 bitrate=13858.7kbits/s dup=1 drop=0 speed=0.956x    Past duration 0.999992 too large
-    Last message repeated 11 times
-frame=  361 fps= 26 q=-1.0 Lsize=   21855kB time=00:00:11.94 bitrate=14986.0kbits/s dup=1 drop=0 speed=0.857x    
+frame=  287 fps= 29 q=26.0 size=   15104kB time=00:00:09.30 bitrate=13302.6kbits/s dup=1 drop=0 speed=0.956x    Past duration 0.999992 too large
+    Last message repeated 17 times
+frame=  305 fps= 30 q=29.0 size=   15872kB time=00:00:09.98 bitrate=13023.2kbits/s dup=1 drop=0 speed=0.974x    Past duration 0.999992 too large
+    Last message repeated 13 times
+frame=  319 fps= 30 q=29.0 size=   16896kB time=00:00:10.32 bitrate=13405.1kbits/s dup=1 drop=0 speed=0.96x    Past duration 0.999992 too large
+    Last message repeated 12 times
+frame=  332 fps= 29 q=29.0 size=   17920kB time=00:00:11.00 bitrate=13335.8kbits/s dup=1 drop=0 speed=0.976x    Past duration 0.999992 too large
+    Last message repeated 13 times
+frame=  346 fps= 29 q=29.0 size=   18944kB time=00:00:11.34 bitrate=13673.9kbits/s dup=1 drop=0 speed=0.96x    Past duration 0.999992 too large
+    Last message repeated 14 times
+frame=  361 fps= 29 q=29.0 size=   19968kB time=00:00:11.69 bitrate=13992.2kbits/s dup=1 drop=0 speed=0.946x    frame=  361 fps= 26 q=-1.0 Lsize=   21855kB time=00:00:11.94 bitrate=14986.0kbits/s dup=1 drop=0 speed=0.854x    
 video:21791kB audio:56kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.038502%
-[libx264 @ 0x55e2ddc89200] frame I:2     Avg QP:25.13  size:168982
-[libx264 @ 0x55e2ddc89200] frame P:143   Avg QP:26.08  size: 93876
-[libx264 @ 0x55e2ddc89200] frame B:216   Avg QP:30.67  size: 39586
-[libx264 @ 0x55e2ddc89200] consecutive B-frames: 15.0% 13.3%  7.5% 64.3%
-[libx264 @ 0x55e2ddc89200] mb I  I16..4: 50.3%  6.4% 43.3%
-[libx264 @ 0x55e2ddc89200] mb P  I16..4:  6.6%  3.9%  1.9%  P16..4: 37.6% 20.0% 19.7%  0.0%  0.0%    skip:10.3%
-[libx264 @ 0x55e2ddc89200] mb B  I16..4:  0.2%  0.1%  0.1%  B16..8: 39.5% 11.0% 13.1%  direct:18.7%  skip:17.3%  L0:63.4% L1:21.4% BI:15.3%
-[libx264 @ 0x55e2ddc89200] 8x8 transform intra:28.7% inter:9.0%
-[libx264 @ 0x55e2ddc89200] coded y,uvDC,uvAC intra: 66.5% 36.6% 3.4% inter: 47.1% 7.7% 0.2%
-[libx264 @ 0x55e2ddc89200] i16 v,h,dc,p: 17% 16% 57% 10%
-[libx264 @ 0x55e2ddc89200] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 24% 19% 43%  2%  2%  2%  2%  2%  3%
-[libx264 @ 0x55e2ddc89200] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 14% 33%  5%  5%  6%  4%  5%  6%
-[libx264 @ 0x55e2ddc89200] i8c dc,h,v,p: 70% 15% 13%  1%
-[libx264 @ 0x55e2ddc89200] Weighted P-Frames: Y:11.9% UV:3.5%
-[libx264 @ 0x55e2ddc89200] ref P L0: 68.7% 11.8% 14.6%  4.3%  0.6%
-[libx264 @ 0x55e2ddc89200] ref B L0: 97.7%  1.9%  0.3%
-[libx264 @ 0x55e2ddc89200] ref B L1: 99.0%  1.0%
-[libx264 @ 0x55e2ddc89200] kb/s:14819.19
-[aac @ 0x55e2ddc8a500] Qavg: 63982.211
+[libx264 @ 0x5569761e3200] frame I:2     Avg QP:25.13  size:168982
+[libx264 @ 0x5569761e3200] frame P:143   Avg QP:26.08  size: 93876
+[libx264 @ 0x5569761e3200] frame B:216   Avg QP:30.67  size: 39586
+[libx264 @ 0x5569761e3200] consecutive B-frames: 15.0% 13.3%  7.5% 64.3%
+[libx264 @ 0x5569761e3200] mb I  I16..4: 50.3%  6.4% 43.3%
+[libx264 @ 0x5569761e3200] mb P  I16..4:  6.6%  3.9%  1.9%  P16..4: 37.6% 20.0% 19.7%  0.0%  0.0%    skip:10.3%
+[libx264 @ 0x5569761e3200] mb B  I16..4:  0.2%  0.1%  0.1%  B16..8: 39.5% 11.0% 13.1%  direct:18.7%  skip:17.3%  L0:63.4% L1:21.4% BI:15.3%
+[libx264 @ 0x5569761e3200] 8x8 transform intra:28.7% inter:9.0%
+[libx264 @ 0x5569761e3200] coded y,uvDC,uvAC intra: 66.5% 36.6% 3.4% inter: 47.1% 7.7% 0.2%
+[libx264 @ 0x5569761e3200] i16 v,h,dc,p: 17% 16% 57% 10%
+[libx264 @ 0x5569761e3200] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 24% 19% 43%  2%  2%  2%  2%  2%  3%
+[libx264 @ 0x5569761e3200] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 14% 33%  5%  5%  6%  4%  5%  6%
+[libx264 @ 0x5569761e3200] i8c dc,h,v,p: 70% 15% 13%  1%
+[libx264 @ 0x5569761e3200] Weighted P-Frames: Y:11.9% UV:3.5%
+[libx264 @ 0x5569761e3200] ref P L0: 68.7% 11.8% 14.6%  4.3%  0.6%
+[libx264 @ 0x5569761e3200] ref B L0: 97.7%  1.9%  0.3%
+[libx264 @ 0x5569761e3200] ref B L1: 99.0%  1.0%
+[libx264 @ 0x5569761e3200] kb/s:14819.19
+[aac @ 0x5569761e4500] Qavg: 63982.211
 	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/SHOT0001.AVI -c:v libx264 -f mov /home/aleksandr/Pract/Samples/SHOT0001.AVI_tc/output_tc3.mov"
-	User time (seconds): 54.18
+	User time (seconds): 54.29
 	System time (seconds): 0.18
 	Percent of CPU this job got: 386%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.05
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.10
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 305160
+	Maximum resident set size (kbytes): 303964
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 28074
-	Voluntary context switches: 5065
-	Involuntary context switches: 4406
+	Minor (reclaiming a frame) page faults: 28018
+	Voluntary context switches: 4977
+	Involuntary context switches: 5043
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 43736

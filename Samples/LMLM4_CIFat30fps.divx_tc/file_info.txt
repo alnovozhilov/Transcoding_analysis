@@ -21,3 +21,26 @@ Scan type                                : Progressive
 Compression mode                         : Lossy
 
 
+General
+Complete name                            : ../.././Samples/LMLM4_CIFat30fps.divx
+Format                                   : MPEG-4 Visual
+File size                                : 1.22 MiB
+FileExtension_Invalid                    : m4v mp4v
+
+Video
+Format                                   : MPEG-4 Visual
+Format profile                           : Simple@L3
+Format settings                          : BVOP
+Format settings, BVOP                    : Yes
+Format settings, QPel                    : No
+Format settings, GMC                     : No warppoints
+Format settings, Matrix                  : Default (MPEG)
+Width                                    : 320 pixels
+Height                                   : 240 pixels
+Display aspect ratio                     : 4:3
+Color space                              : YUV
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+
+

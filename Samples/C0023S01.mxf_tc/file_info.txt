@@ -102,3 +102,107 @@ Muxing mode                              : System scheme 1
 Time code of first frame                 : 01:43:48:21
 
 
+General
+Complete name                            : ../.././Samples/C0023S01.mxf
+Format                                   : MXF
+Format version                           : 1.2
+Format settings                          : Closed / Complete
+File size                                : 1.12 MiB
+Duration                                 : 3 s 800 ms
+Overall bit rate                         : 2 483 kb/s
+Encoded date                             : 2006-06-25 23:09:48.000
+Writing application                      : SONY Opt 1.40
+
+Video
+ID                                       : 2
+Format                                   : MPEG-4 Visual
+Format settings                          : BVOP
+Format settings, BVOP                    : Yes
+Format settings, QPel                    : No
+Format settings, GMC                     : No warppoints
+Format settings, Matrix                  : Default (H.263)
+Format settings, wrapping mode           : Custom: Closed GOP
+Codec ID                                 : 0D01030102046107-0401020201200204
+Duration                                 : 3 s 800 ms
+Width                                    : 352 pixels
+Height                                   : 288 pixels
+Display aspect ratio                     : 16:9
+Frame rate                               : 25.000 FPS
+Standard                                 : PAL
+Color space                              : YUV
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Scan order                               : Top Field First
+Compression mode                         : Lossy
+
+Audio #1
+ID                                       : 3
+Format                                   : Alaw
+Format settings, wrapping mode           : ?
+Codec ID                                 : 0D010301020A0300-0402020203010100
+Duration                                 : 3 s 800 ms
+Channel(s)                               : 2 channels
+Sampling rate                            : 8 000 Hz
+Frame rate                               : 25.000 FPS (320 SPF)
+Bit depth                                : 8 bits
+Locked                                   : Yes
+
+Audio #2
+ID                                       : 4
+Format                                   : Alaw
+Format settings, wrapping mode           : ?
+Codec ID                                 : 0D010301020A0300-0402020203010100
+Duration                                 : 3 s 800 ms
+Channel(s)                               : 2 channels
+Sampling rate                            : 8 000 Hz
+Frame rate                               : 25.000 FPS (320 SPF)
+Bit depth                                : 8 bits
+Locked                                   : Yes
+
+Audio #3
+ID                                       : 5
+Format                                   : Alaw
+Format settings, wrapping mode           : ?
+Codec ID                                 : 0D010301020A0300-0402020203010100
+Duration                                 : 3 s 800 ms
+Channel(s)                               : 2 channels
+Sampling rate                            : 8 000 Hz
+Frame rate                               : 25.000 FPS (320 SPF)
+Bit depth                                : 8 bits
+Locked                                   : Yes
+
+Audio #4
+ID                                       : 6
+Format                                   : Alaw
+Format settings, wrapping mode           : ?
+Codec ID                                 : 0D010301020A0300-0402020203010100
+Duration                                 : 3 s 800 ms
+Channel(s)                               : 2 channels
+Sampling rate                            : 8 000 Hz
+Frame rate                               : 25.000 FPS (320 SPF)
+Bit depth                                : 8 bits
+Locked                                   : Yes
+
+Other #1
+ID                                       : 1-Material
+Type                                     : Time code
+Format                                   : MXF TC
+Time code of first frame                 : 01:43:48:21
+Time code settings                       : Material Package
+Time code, striped                       : Yes
+
+Other #2
+ID                                       : 1-Source
+Type                                     : Time code
+Format                                   : MXF TC
+Time code of first frame                 : 01:43:48:21
+Time code settings                       : Source Package
+Time code, striped                       : Yes
+
+Other #3
+Type                                     : Time code
+Format                                   : SMPTE TC
+Muxing mode                              : System scheme 1
+Time code of first frame                 : 01:43:48:21
+
+

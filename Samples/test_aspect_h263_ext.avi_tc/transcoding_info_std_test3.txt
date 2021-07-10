@@ -20,11 +20,11 @@ Stream mapping:
   Stream #0:0 -> #0:0 (h263 (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (mp2 (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x563ea67cd020] using SAR=12/11
-[libx264 @ 0x563ea67cd020] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x563ea67cd020] profile High, level 3.0
-[libx264 @ 0x563ea67cd020] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mov, to '/home/aleksandr/Pract/Samples/test_aspect_h263_ext.avi_tc/output3.mov':
+[libx264 @ 0x55e4682b3020] using SAR=12/11
+[libx264 @ 0x55e4682b3020] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55e4682b3020] profile High, level 3.0
+[libx264 @ 0x55e4682b3020] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/test_aspect_h263_ext.avi_tc/output_std3.mov':
   Metadata:
     encoder         : Lavf57.83.100
     Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 704x576 [SAR 12:11 DAR 4:3], q=-1--1, 25 fps, 12800 tbn, 25 tbc
@@ -35,48 +35,48 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/test_aspect_h263_ext.avi_tc/ou
     Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s
     Metadata:
       encoder         : Lavc57.107.100 aac
-[h263 @ 0x563ea67c28e0] cbpy damaged at 5 4
-[h263 @ 0x563ea67c28e0] Error at MB: 185
-[h263 @ 0x563ea67c28e0] concealing 1584 DC, 1584 AC, 1584 MV errors in P frame
-[h263 @ 0x563ea67c28e0] cbpc damaged at 4 4
-[h263 @ 0x563ea67c28e0] Error at MB: 184
-[h263 @ 0x563ea67c28e0] concealing 1584 DC, 1584 AC, 1584 MV errors in P frame
-frame=   58 fps=0.0 q=28.0 size=       0kB time=00:00:02.92 bitrate=   0.1kbits/s speed=5.57x    frame=   99 fps= 73 q=-1.0 Lsize=     674kB time=00:00:04.52 bitrate=1220.0kbits/s speed=3.36x    
+[h263 @ 0x55e4682a88e0] cbpy damaged at 5 4
+[h263 @ 0x55e4682a88e0] Error at MB: 185
+[h263 @ 0x55e4682a88e0] concealing 1584 DC, 1584 AC, 1584 MV errors in P frame
+[h263 @ 0x55e4682a88e0] cbpc damaged at 4 4
+[h263 @ 0x55e4682a88e0] Error at MB: 184
+[h263 @ 0x55e4682a88e0] concealing 1584 DC, 1584 AC, 1584 MV errors in P frame
+frame=   70 fps=0.0 q=28.0 size=       0kB time=00:00:03.41 bitrate=   0.1kbits/s speed=6.45x    frame=   99 fps= 76 q=-1.0 Lsize=     674kB time=00:00:04.52 bitrate=1220.0kbits/s speed=3.48x    
 video:598kB audio:71kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.802369%
-[libx264 @ 0x563ea67cd020] frame I:1     Avg QP:19.06  size: 13397
-[libx264 @ 0x563ea67cd020] frame P:70    Avg QP:21.17  size:  5784
-[libx264 @ 0x563ea67cd020] frame B:28    Avg QP:24.12  size:  6921
-[libx264 @ 0x563ea67cd020] consecutive B-frames: 61.6%  2.0%  0.0% 36.4%
-[libx264 @ 0x563ea67cd020] mb I  I16..4: 51.8% 46.1%  2.1%
-[libx264 @ 0x563ea67cd020] mb P  I16..4:  5.1% 11.1%  0.5%  P16..4: 32.2%  6.3%  3.0%  0.0%  0.0%    skip:41.9%
-[libx264 @ 0x563ea67cd020] mb B  I16..4:  6.3% 22.5%  0.6%  B16..8: 19.7%  6.6%  2.1%  direct: 3.9%  skip:38.2%  L0:54.0% L1:38.5% BI: 7.6%
-[libx264 @ 0x563ea67cd020] 8x8 transform intra:69.1% inter:82.5%
-[libx264 @ 0x563ea67cd020] coded y,uvDC,uvAC intra: 52.1% 79.1% 10.4% inter: 13.1% 11.8% 1.0%
-[libx264 @ 0x563ea67cd020] i16 v,h,dc,p: 40% 31% 29%  1%
-[libx264 @ 0x563ea67cd020] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 17% 47%  4%  3%  1%  2%  1%  4%
-[libx264 @ 0x563ea67cd020] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 25% 18%  2%  5%  3%  5%  2%  2%
-[libx264 @ 0x563ea67cd020] i8c dc,h,v,p: 39% 27% 30%  3%
-[libx264 @ 0x563ea67cd020] Weighted P-Frames: Y:0.0% UV:0.0%
-[libx264 @ 0x563ea67cd020] ref P L0: 82.1%  8.0%  7.0%  3.0%
-[libx264 @ 0x563ea67cd020] ref B L0: 86.0% 11.5%  2.5%
-[libx264 @ 0x563ea67cd020] ref B L1: 93.5%  6.5%
-[libx264 @ 0x563ea67cd020] kb/s:1236.47
-[aac @ 0x563ea67ce4c0] Qavg: 192.479
-	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/test_aspect_h263_ext.avi -c:v libx264 -f mov /home/aleksandr/Pract/Samples/test_aspect_h263_ext.avi_tc/output3.mov"
-	User time (seconds): 3.89
-	System time (seconds): 0.06
-	Percent of CPU this job got: 279%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.41
+[libx264 @ 0x55e4682b3020] frame I:1     Avg QP:19.06  size: 13397
+[libx264 @ 0x55e4682b3020] frame P:70    Avg QP:21.17  size:  5784
+[libx264 @ 0x55e4682b3020] frame B:28    Avg QP:24.12  size:  6921
+[libx264 @ 0x55e4682b3020] consecutive B-frames: 61.6%  2.0%  0.0% 36.4%
+[libx264 @ 0x55e4682b3020] mb I  I16..4: 51.8% 46.1%  2.1%
+[libx264 @ 0x55e4682b3020] mb P  I16..4:  5.1% 11.1%  0.5%  P16..4: 32.2%  6.3%  3.0%  0.0%  0.0%    skip:41.9%
+[libx264 @ 0x55e4682b3020] mb B  I16..4:  6.3% 22.5%  0.6%  B16..8: 19.7%  6.6%  2.1%  direct: 3.9%  skip:38.2%  L0:54.0% L1:38.5% BI: 7.6%
+[libx264 @ 0x55e4682b3020] 8x8 transform intra:69.1% inter:82.5%
+[libx264 @ 0x55e4682b3020] coded y,uvDC,uvAC intra: 52.1% 79.1% 10.4% inter: 13.1% 11.8% 1.0%
+[libx264 @ 0x55e4682b3020] i16 v,h,dc,p: 40% 31% 29%  1%
+[libx264 @ 0x55e4682b3020] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 17% 47%  4%  3%  1%  2%  1%  4%
+[libx264 @ 0x55e4682b3020] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 25% 18%  2%  5%  3%  5%  2%  2%
+[libx264 @ 0x55e4682b3020] i8c dc,h,v,p: 39% 27% 30%  3%
+[libx264 @ 0x55e4682b3020] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x55e4682b3020] ref P L0: 82.1%  8.0%  7.0%  3.0%
+[libx264 @ 0x55e4682b3020] ref B L0: 86.0% 11.5%  2.5%
+[libx264 @ 0x55e4682b3020] ref B L1: 93.5%  6.5%
+[libx264 @ 0x55e4682b3020] kb/s:1236.47
+[aac @ 0x55e4682b44c0] Qavg: 192.479
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/test_aspect_h263_ext.avi -c:v libx264 -f mov /home/aleksandr/Pract/Samples/test_aspect_h263_ext.avi_tc/output_std3.mov"
+	User time (seconds): 4.10
+	System time (seconds): 0.04
+	Percent of CPU this job got: 307%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.34
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 144564
+	Maximum resident set size (kbytes): 144284
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 24571
-	Voluntary context switches: 819
-	Involuntary context switches: 263
+	Minor (reclaiming a frame) page faults: 24586
+	Voluntary context switches: 766
+	Involuntary context switches: 365
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 1368

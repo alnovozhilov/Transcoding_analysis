@@ -60,3 +60,65 @@ Default                                  : Yes
 Forced                                   : No
 
 
+General
+Unique ID                                : 316862749945980869072758857424309437823 (0xEE618BBC0D214AC57C2D1C4C5061C57F)
+Complete name                            : ../.././Samples/soraya.mkv
+Format                                   : Matroska
+Format version                           : Version 1
+File size                                : 61.4 MiB
+Duration                                 : 3 min 57 s
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 2 164 kb/s
+Encoded date                             : UTC 2004-01-14 21:57:51
+Writing application                      : mkvmerge v0.8.1
+Writing library                          : libebml v0.6.3 + libmatroska v0.6.3
+
+Video
+ID                                       : 1
+Format                                   : MPEG Video
+Format version                           : Version 2
+Format profile                           : Main@Main
+Format settings                          : CustomMatrix / BVOP
+Format settings, BVOP                    : Yes
+Format settings, Matrix                  : Custom
+Format settings, GOP                     : Variable
+Codec ID                                 : V_MPEG2
+Codec ID/Info                            : MPEG 1 or 2 Video
+Bit rate mode                            : Variable
+Maximum bit rate                         : 15.0 Mb/s
+Width                                    : 544 pixels
+Height                                   : 480 pixels
+Display aspect ratio                     : 1.133
+Original display aspect ratio            : 4:3
+Frame rate mode                          : Variable
+Original frame rate                      : 29.970 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Compression mode                         : Lossy
+Time code of first frame                 : 06:15:40;12
+Time code source                         : Group of pictures header
+GOP, Open/Closed                         : Open
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+Audio
+ID                                       : 2
+Format                                   : AAC
+Format/Info                              : Advanced Audio Codec
+Format version                           : Version 4
+Format profile                           : HE-AAC / LC
+Format settings                          : Explicit
+Codec ID                                 : A_AAC/MPEG4/LC/SBR
+Duration                                 : 3 min 57 s
+Channel(s)                               : 2 channels
+Sampling rate                            : 44.1 kHz / 22.05 kHz
+Frame rate                               : 21.533 FPS (1024 SPF)
+Compression mode                         : Lossy
+Delay relative to video                  : -870 ms
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+

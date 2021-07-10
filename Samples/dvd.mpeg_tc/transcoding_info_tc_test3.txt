@@ -21,10 +21,10 @@ Stream mapping:
   Stream #0:0 -> #0:0 (mpeg2video (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (dts (dca) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x555729283900] using SAR=64/45
-[libx264 @ 0x555729283900] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x555729283900] profile High, level 3.0
-[libx264 @ 0x555729283900] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x564332d33900] using SAR=64/45
+[libx264 @ 0x564332d33900] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x564332d33900] profile High, level 3.0
+[libx264 @ 0x564332d33900] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
 Output #0, mov, to '/home/aleksandr/Pract/Samples/dvd.mpeg_tc/output_tc3.mov':
   Metadata:
     encoder         : Lavf57.83.100
@@ -36,45 +36,45 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/dvd.mpeg_tc/output_tc3.mov':
     Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, 5.1(side), fltp, 341 kb/s
     Metadata:
       encoder         : Lavc57.107.100 aac
-frame=   75 fps=0.0 q=28.0 size=       0kB time=00:00:02.76 bitrate=   0.1kbits/s dup=15 drop=0 speed=5.51x    frame=  142 fps=141 q=28.0 size=       0kB time=00:00:05.32 bitrate=   0.1kbits/s dup=15 drop=0 speed= 5.3x    frame=  207 fps=138 q=28.0 size=     256kB time=00:00:07.95 bitrate= 263.8kbits/s dup=15 drop=0 speed=5.28x    frame=  274 fps=137 q=28.0 size=     256kB time=00:00:10.70 bitrate= 196.0kbits/s dup=15 drop=0 speed=5.34x    frame=  349 fps=139 q=28.0 size=     512kB time=00:00:13.73 bitrate= 305.5kbits/s dup=15 drop=0 speed=5.47x    frame=  413 fps=136 q=28.0 size=     768kB time=00:00:16.27 bitrate= 386.7kbits/s dup=15 drop=0 speed=5.37x    frame=  467 fps=132 q=28.0 size=    1024kB time=00:00:18.48 bitrate= 453.7kbits/s dup=15 drop=0 speed=5.21x    frame=  520 fps=128 q=28.0 size=    1280kB time=00:00:20.55 bitrate= 510.1kbits/s dup=15 drop=0 speed=5.07x    frame=  571 fps=125 q=28.0 size=    1536kB time=00:00:22.64 bitrate= 555.6kbits/s dup=15 drop=0 speed=4.94x    frame=  630 fps=124 q=28.0 size=    1792kB time=00:00:24.93 bitrate= 588.8kbits/s dup=15 drop=0 speed= 4.9x    frame=  692 fps=124 q=28.0 size=    2048kB time=00:00:27.44 bitrate= 611.2kbits/s dup=15 drop=0 speed=4.91x    [mpeg2video @ 0x555728e89700] ac-tex damaged at 30 21
-[mpeg2video @ 0x555728e89700] Warning MVs not available
-[mpeg2video @ 0x555728e89700] concealing 675 DC, 675 AC, 675 MV errors in P frame
-frame=  733 fps=119 q=-1.0 Lsize=    2454kB time=00:00:29.20 bitrate= 688.6kbits/s dup=15 drop=0 speed=4.74x    
+frame=   74 fps=0.0 q=28.0 size=       0kB time=00:00:02.72 bitrate=   0.1kbits/s dup=15 drop=0 speed=5.44x    frame=  133 fps=133 q=28.0 size=       0kB time=00:00:04.94 bitrate=   0.1kbits/s dup=15 drop=0 speed=4.93x    frame=  193 fps=128 q=28.0 size=     256kB time=00:00:07.45 bitrate= 281.2kbits/s dup=15 drop=0 speed=4.96x    frame=  259 fps=129 q=28.0 size=     256kB time=00:00:10.10 bitrate= 207.6kbits/s dup=15 drop=0 speed=5.04x    frame=  327 fps=130 q=28.0 size=     512kB time=00:00:12.87 bitrate= 325.7kbits/s dup=15 drop=0 speed=5.14x    frame=  387 fps=129 q=28.0 size=     768kB time=00:00:15.28 bitrate= 411.5kbits/s dup=15 drop=0 speed=5.08x    frame=  437 fps=124 q=28.0 size=     768kB time=00:00:17.25 bitrate= 364.7kbits/s dup=15 drop=0 speed= 4.9x    frame=  492 fps=122 q=28.0 size=    1024kB time=00:00:19.51 bitrate= 429.9kbits/s dup=15 drop=0 speed=4.86x    frame=  545 fps=121 q=28.0 size=    1280kB time=00:00:21.58 bitrate= 485.9kbits/s dup=15 drop=0 speed=4.77x    frame=  596 fps=119 q=28.0 size=    1792kB time=00:00:23.65 bitrate= 620.7kbits/s dup=15 drop=0 speed=4.71x    frame=  664 fps=120 q=28.0 size=    1792kB time=00:00:26.31 bitrate= 557.8kbits/s dup=15 drop=0 speed=4.77x    frame=  726 fps=121 q=28.0 size=    2048kB time=00:00:28.79 bitrate= 582.7kbits/s dup=15 drop=0 speed=4.78x    [mpeg2video @ 0x564332939700] ac-tex damaged at 30 21
+[mpeg2video @ 0x564332939700] Warning MVs not available
+[mpeg2video @ 0x564332939700] concealing 675 DC, 675 AC, 675 MV errors in P frame
+frame=  733 fps=116 q=-1.0 Lsize=    2454kB time=00:00:29.20 bitrate= 688.6kbits/s dup=15 drop=0 speed=4.61x    
 video:1238kB audio:1194kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.940766%
-[libx264 @ 0x555729283900] frame I:9     Avg QP:15.48  size: 26889
-[libx264 @ 0x555729283900] frame P:209   Avg QP:19.95  size:  3729
-[libx264 @ 0x555729283900] frame B:515   Avg QP:21.89  size:   477
-[libx264 @ 0x555729283900] consecutive B-frames:  4.4%  4.1%  5.3% 86.2%
-[libx264 @ 0x555729283900] mb I  I16..4: 52.5% 38.5%  9.0%
-[libx264 @ 0x555729283900] mb P  I16..4:  4.2%  3.1%  0.3%  P16..4: 21.4%  5.7%  5.1%  0.0%  0.0%    skip:60.1%
-[libx264 @ 0x555729283900] mb B  I16..4:  0.3%  0.1%  0.0%  B16..8: 18.3%  0.5%  0.0%  direct: 0.3%  skip:80.4%  L0:42.7% L1:54.4% BI: 2.9%
-[libx264 @ 0x555729283900] 8x8 transform intra:38.6% inter:77.5%
-[libx264 @ 0x555729283900] coded y,uvDC,uvAC intra: 22.6% 31.2% 7.1% inter: 4.6% 4.3% 0.0%
-[libx264 @ 0x555729283900] i16 v,h,dc,p: 61% 32%  4%  3%
-[libx264 @ 0x555729283900] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 12% 15% 54%  2%  3%  3%  3%  3%  5%
-[libx264 @ 0x555729283900] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 41% 16%  3%  4%  4%  3%  4%  4%
-[libx264 @ 0x555729283900] i8c dc,h,v,p: 66% 20% 13%  1%
-[libx264 @ 0x555729283900] Weighted P-Frames: Y:19.1% UV:3.8%
-[libx264 @ 0x555729283900] ref P L0: 55.6% 13.5% 23.7%  6.4%  0.7%
-[libx264 @ 0x555729283900] ref B L0: 73.7% 21.1%  5.3%
-[libx264 @ 0x555729283900] ref B L1: 93.0%  7.0%
-[libx264 @ 0x555729283900] kb/s:345.72
-[aac @ 0x555729284800] Qavg: 333.787
+[libx264 @ 0x564332d33900] frame I:9     Avg QP:15.48  size: 26889
+[libx264 @ 0x564332d33900] frame P:209   Avg QP:19.95  size:  3729
+[libx264 @ 0x564332d33900] frame B:515   Avg QP:21.89  size:   477
+[libx264 @ 0x564332d33900] consecutive B-frames:  4.4%  4.1%  5.3% 86.2%
+[libx264 @ 0x564332d33900] mb I  I16..4: 52.5% 38.5%  9.0%
+[libx264 @ 0x564332d33900] mb P  I16..4:  4.2%  3.1%  0.3%  P16..4: 21.4%  5.7%  5.1%  0.0%  0.0%    skip:60.1%
+[libx264 @ 0x564332d33900] mb B  I16..4:  0.3%  0.1%  0.0%  B16..8: 18.3%  0.5%  0.0%  direct: 0.3%  skip:80.4%  L0:42.7% L1:54.4% BI: 2.9%
+[libx264 @ 0x564332d33900] 8x8 transform intra:38.6% inter:77.5%
+[libx264 @ 0x564332d33900] coded y,uvDC,uvAC intra: 22.6% 31.2% 7.1% inter: 4.6% 4.3% 0.0%
+[libx264 @ 0x564332d33900] i16 v,h,dc,p: 61% 32%  4%  3%
+[libx264 @ 0x564332d33900] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 12% 15% 54%  2%  3%  3%  3%  3%  5%
+[libx264 @ 0x564332d33900] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 41% 16%  3%  4%  4%  3%  4%  4%
+[libx264 @ 0x564332d33900] i8c dc,h,v,p: 66% 20% 13%  1%
+[libx264 @ 0x564332d33900] Weighted P-Frames: Y:19.1% UV:3.8%
+[libx264 @ 0x564332d33900] ref P L0: 55.6% 13.5% 23.7%  6.4%  0.7%
+[libx264 @ 0x564332d33900] ref B L0: 73.7% 21.1%  5.3%
+[libx264 @ 0x564332d33900] ref B L1: 93.0%  7.0%
+[libx264 @ 0x564332d33900] kb/s:345.72
+[aac @ 0x564332d34800] Qavg: 333.787
 	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/dvd.mpeg -c:v libx264 -f mov /home/aleksandr/Pract/Samples/dvd.mpeg_tc/output_tc3.mov"
-	User time (seconds): 19.37
-	System time (seconds): 0.16
-	Percent of CPU this job got: 313%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.22
+	User time (seconds): 19.79
+	System time (seconds): 0.30
+	Percent of CPU this job got: 314%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.39
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 168260
+	Maximum resident set size (kbytes): 166368
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 28948
-	Voluntary context switches: 9556
-	Involuntary context switches: 7059
+	Minor (reclaiming a frame) page faults: 28995
+	Voluntary context switches: 9507
+	Involuntary context switches: 7138
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 4928

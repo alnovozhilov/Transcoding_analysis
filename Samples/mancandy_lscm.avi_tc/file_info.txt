@@ -32,3 +32,37 @@ Stream size                              : 4.96 MiB (100%)
 Writing library                          : DivX 5.2.1 Beta (UTC 2004-09-08)
 
 
+General
+Complete name                            : ../.././Samples/mancandy_lscm.avi
+Format                                   : AVI
+Format/Info                              : Audio Video Interleave
+File size                                : 4.98 MiB
+Duration                                 : 42 s 500 ms
+Overall bit rate                         : 982 kb/s
+
+Video
+ID                                       : 0
+Format                                   : MPEG-4 Visual
+Format settings, BVOP                    : No
+Format settings, QPel                    : No
+Format settings, GMC                     : No warppoints
+Format settings, Matrix                  : Default (H.263)
+Codec ID                                 : DX50
+Codec ID/Hint                            : DivX 5
+Duration                                 : 42 s 500 ms
+Bit rate                                 : 979 kb/s
+Nominal bit rate                         : 6 951 kb/s
+Width                                    : 712 pixels
+Height                                   : 490 pixels
+Display aspect ratio                     : 3:2
+Frame rate                               : 10.000 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.281
+Stream size                              : 4.96 MiB (100%)
+Writing library                          : DivX 5.2.1 Beta (UTC 2004-09-08)
+
+

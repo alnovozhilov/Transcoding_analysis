@@ -10,8 +10,8 @@ ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
   libswscale      4.  8.100 /  4.  8.100
   libswresample   2.  9.100 /  2.  9.100
   libpostproc    54.  7.100 / 54.  7.100
-[mxf @ 0x561dbe3ab900] OPAtom misinterpreted as OP1a? KLV for edit unit 0 extending into next edit unit is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
-[mxf @ 0x561dbe3ab900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[mxf @ 0x5568e9bcf900] OPAtom misinterpreted as OP1a? KLV for edit unit 0 extending into next edit unit is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[mxf @ 0x5568e9bcf900] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
 Guessed Channel Layout for Input Stream #0.0 : 5.1
 Input #0, mxf, from '../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf':
   Metadata:
@@ -34,7 +34,7 @@ Stream mapping:
   Stream #0:0 -> #0:0 (pcm_s24le (native) -> aac (native))
 Press [q] to stop, [?] for help
 Finishing stream 0:0 without any data written to it.
-Output #0, mov, to '/home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf_tc/output3.mov':
+Output #0, mov, to '/home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf_tc/output_std3.mov':
   Metadata:
     uid             : e2884a8e-7253-4854-8984-93cf9befd2c0
     company_name    : Rohde and Schwarz
@@ -54,22 +54,22 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_
       encoder         : Lavc57.107.100 aac
 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    
 video:0kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
-[aac @ 0x561dbe3b3b40] Qavg: -nan
-	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf -c:v libx264 -f mov /home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf_tc/output3.mov"
-	User time (seconds): 4.48
-	System time (seconds): 0.09
+[aac @ 0x5568e9bd7b40] Qavg: -nan
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf -c:v libx264 -f mov /home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf_tc/output_std3.mov"
+	User time (seconds): 3.01
+	System time (seconds): 0.08
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.58
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.11
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 42628
+	Maximum resident set size (kbytes): 41820
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 3815
-	Voluntary context switches: 10
-	Involuntary context switches: 681
+	Minor (reclaiming a frame) page faults: 3819
+	Voluntary context switches: 12
+	Involuntary context switches: 688
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 24

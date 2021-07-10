@@ -1,0 +1,74 @@
+General
+Complete name                            : ../.././Samples/asf+wmv1+wmav2++anti-theft.wmv
+Format                                   : Windows Media
+File size                                : 2.13 MiB
+Duration                                 : 31 s 673 ms
+Overall bit rate                         : 565 kb/s
+Maximum Overall bit rate                 : 1 491 kb/s
+Performer                                : Nathan Malachowski
+
+Video
+ID                                       : 2
+Format                                   : WMV1
+Codec ID                                 : WMV1
+Codec ID/Info                            : Windows Media Video 7
+Description of the codec                 : Windows Media Video V7         -     
+Bit rate                                 : 518 kb/s
+Width                                    : 320 pixels
+Height                                   : 240 pixels
+Display aspect ratio                     : 4:3
+Frame rate mode                          : Variable
+Bit depth                                : 8 bits
+
+Audio
+ID                                       : 1
+Format                                   : WMA
+Format version                           : Version 2
+Codec ID                                 : 161
+Codec ID/Info                            : Windows Media Audio
+Description of the codec                 : Windows Media Audio V7 -  16 kbps, 16 kHz, stereo
+Duration                                 : 31 s 673 ms
+Bit rate                                 : 16.0 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 16.0 kHz
+Bit depth                                : 16 bits
+Stream size                              : 61.9 KiB (3%)
+
+
+General
+Complete name                            : ../.././Samples/asf+wmv1+wmav2++anti-theft.wmv
+Format                                   : Windows Media
+File size                                : 2.13 MiB
+Duration                                 : 31 s 673 ms
+Overall bit rate                         : 565 kb/s
+Maximum Overall bit rate                 : 1 491 kb/s
+Performer                                : Nathan Malachowski
+
+Video
+ID                                       : 2
+Format                                   : WMV1
+Codec ID                                 : WMV1
+Codec ID/Info                            : Windows Media Video 7
+Description of the codec                 : Windows Media Video V7         -     
+Bit rate                                 : 518 kb/s
+Width                                    : 320 pixels
+Height                                   : 240 pixels
+Display aspect ratio                     : 4:3
+Frame rate mode                          : Variable
+Bit depth                                : 8 bits
+
+Audio
+ID                                       : 1
+Format                                   : WMA
+Format version                           : Version 2
+Codec ID                                 : 161
+Codec ID/Info                            : Windows Media Audio
+Description of the codec                 : Windows Media Audio V7 -  16 kbps, 16 kHz, stereo
+Duration                                 : 31 s 673 ms
+Bit rate                                 : 16.0 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 16.0 kHz
+Bit depth                                : 16 bits
+Stream size                              : 61.9 KiB (3%)
+
+

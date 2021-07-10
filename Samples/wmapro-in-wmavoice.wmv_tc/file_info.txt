@@ -47,3 +47,52 @@ Stream size                              : 8.03 MiB
 Language                                 : English (United States)
 
 
+General
+Complete name                            : ../.././Samples/wmapro-in-wmavoice.wmv
+Format                                   : Windows Media
+File size                                : 5.00 MiB
+Duration                                 : 56 min 7 s
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 12.5 kb/s
+Maximum Overall bit rate                 : 315 kb/s
+Encoded date                             : UTC 2007-05-02 15:41:14.696
+
+Video
+ID                                       : 2
+Format                                   : VC-1
+Format profile                           : MP@HL
+Codec ID                                 : WMV3
+Codec ID/Info                            : Windows Media Video 9
+Codec ID/Hint                            : WMV3
+Description of the codec                 : Windows Media Video 9
+Bit rate mode                            : Variable
+Bit rate                                 : 158 kb/s
+Width                                    : 1 024 pixels
+Height                                   : 768 pixels
+Display aspect ratio                     : 4:3
+Frame rate mode                          : Variable
+Nominal frame rate                       : 15.000 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Compression mode                         : Lossy
+Language                                 : English (United States)
+
+Audio
+ID                                       : 1
+Format                                   : WMA
+Format profile                           : Voice
+Codec ID                                 : A
+Codec ID/Info                            : Windows Media Audio
+Description of the codec                 : Windows Media Audio 9 Voice -  20 kbps, 22 kHz, mono
+Duration                                 : 56 min 7 s
+Bit rate mode                            : Constant
+Bit rate                                 : 20.0 kb/s
+Channel(s)                               : 1 channel
+Sampling rate                            : 22.05 kHz
+Bit depth                                : 16 bits
+Stream size                              : 8.03 MiB
+Language                                 : English (United States)
+
+

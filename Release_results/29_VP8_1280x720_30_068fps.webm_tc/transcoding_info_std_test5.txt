@@ -1,0 +1,40 @@
+ffmpeg version N-102852-g758e2da289 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/home/aleksandr/ffmpeg_debug_build --pkg-config-flags=--static --extra-cflags=-I/home/aleksandr/ffmpeg_debug_build/include --extra-ldflags=-L/home/aleksandr/ffmpeg_debug_build/lib --extra-libs='-lpthread -lm' --bindir=/home/aleksandr/bin_debug --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree
+  libavutil      57.  0.100 / 57.  0.100
+  libavcodec     59.  3.101 / 59.  3.101
+  libavformat    59.  4.100 / 59.  4.100
+  libavdevice    59.  0.100 / 59.  0.100
+  libavfilter     8.  0.103 /  8.  0.103
+  libswscale      6.  0.100 /  6.  0.100
+  libswresample   4.  0.100 /  4.  0.100
+  libpostproc    56.  0.100 / 56.  0.100
+Input #0, matroska,webm, from '../.././Samples/29_VP8_1280x720_30_068fps.webm':
+  Metadata:
+    encoder         : libwebm-0.2.1.0
+  Duration: 00:00:16.67, start: 0.000000, bitrate: 873 kb/s
+  Stream #0:0(eng): Video: vp8, yuv420p(progressive), 1280x720, SAR 1:1 DAR 16:9, 30 fps, 30 tbr, 1k tbn (default)
+File '/home/aleksandr/Debug-release_tests/Debug/Samples/29_VP8_1280x720_30_068fps.webm_tc/output_std5.mov' already exists. Overwrite? [y/N] Command terminated by signal 2
+	Command being timed: "/home/aleksandr/bin_debug/ffmpeg -i ../.././Samples/29_VP8_1280x720_30_068fps.webm -c:v libx264 -f mov /home/aleksandr/Debug-release_tests/Debug/Samples/29_VP8_1280x720_30_068fps.webm_tc/output_std5.mov"
+	User time (seconds): 0.01
+	System time (seconds): 0.00
+	Percent of CPU this job got: 0%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 17572
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 5
+	Minor (reclaiming a frame) page faults: 1048
+	Voluntary context switches: 7
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 56
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

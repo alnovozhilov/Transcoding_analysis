@@ -1,0 +1,123 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, matroska,webm, from '../.././Samples/aac-sbr-ffaac-slow.mkv':
+  Metadata:
+    title           : [moo-shi] Natsume Yuujinchou - 01 - The Cat and The Book of Friends
+    encoder         : libebml v0.7.7 + libmatroska v0.8.1
+    creation_time   : 2009-07-16T16:01:01.000000Z
+  Duration: 00:20:34.94, start: 0.000000, bitrate: 101 kb/s
+    Chapter #0:0: start 0.000000, end 90.006000
+    Metadata:
+      title           : Opening
+    Chapter #0:1: start 0.000000, end 557.266000
+    Metadata:
+      title           : Part A
+    Chapter #0:2: start 557.266000, end 1234.943000
+    Metadata:
+      title           : Part B
+    Stream #0:0(jpn): Video: h264 (High), yuv420p(progressive), 704x400 [SAR 1:1 DAR 44:25], 23.98 fps, 23.98 tbr, 1k tbn, 47.95 tbc (default)
+    Metadata:
+      title           : NY - 01 (H264)
+    Stream #0:1(jpn): Audio: aac (HE-AAC), 48000 Hz, stereo, fltp (default)
+    Metadata:
+      title           : NY - 01 (AAC 2.0)
+    Stream #0:2(eng): Subtitle: ass (default)
+    Metadata:
+      title           : NY - 01 (ASS styled)
+    Stream #0:3(eng): Subtitle: subrip
+    Metadata:
+      title           : NY - 01 (SRT unstyled)
+    Stream #0:4: Attachment: ttf
+    Metadata:
+      filename        : BAARS___.TTF
+      mimetype        : application/x-truetype-font
+    Stream #0:5: Attachment: ttf
+    Metadata:
+      filename        : HGRGY.TTC
+      mimetype        : application/x-truetype-font
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x55e1e6e5a180] using SAR=1/1
+[libx264 @ 0x55e1e6e5a180] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55e1e6e5a180] profile High, level 3.0
+[libx264 @ 0x55e1e6e5a180] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=23 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/aac-sbr-ffaac-slow.mkv_tc/output_std1.mov':
+  Metadata:
+    title           : [moo-shi] Natsume Yuujinchou - 01 - The Cat and The Book of Friends
+    encoder         : Lavf57.83.100
+    Chapter #0:0: start 0.000000, end 90.006000
+    Metadata:
+      title           : Opening
+    Chapter #0:1: start 0.000000, end 557.266000
+    Metadata:
+      title           : Part A
+    Chapter #0:2: start 557.266000, end 1234.943000
+    Metadata:
+      title           : Part B
+    Stream #0:0(jpn): Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 704x400 [SAR 1:1 DAR 44:25], q=-1--1, 23.98 fps, 24k tbn, 23.98 tbc (default)
+    Metadata:
+      title           : NY - 01 (H264)
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1(jpn): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      title           : NY - 01 (AAC 2.0)
+      encoder         : Lavc57.107.100 aac
+frame=  127 fps=0.0 q=28.0 size=       0kB time=00:00:05.67 bitrate=   0.1kbits/s speed=11.3x    frame=  235 fps=233 q=28.0 size=       0kB time=00:00:09.98 bitrate=   0.1kbits/s speed=9.89x    frame=  288 fps=189 q=28.0 size=     256kB time=00:00:12.33 bitrate= 170.1kbits/s speed=8.08x    frame=  322 fps=157 q=25.0 size=     256kB time=00:00:13.69 bitrate= 153.2kbits/s speed= 6.7x    frame=  356 fps=140 q=28.0 size=     512kB time=00:00:15.06 bitrate= 278.5kbits/s speed=5.91x    frame=  383 fps=124 q=28.0 size=     768kB time=00:00:16.34 bitrate= 385.1kbits/s speed=5.29x    frame=  407 fps=113 q=28.0 size=     768kB time=00:00:17.36 bitrate= 362.3kbits/s speed=4.83x    frame=  438 fps=106 q=28.0 size=    1024kB time=00:00:18.68 bitrate= 448.9kbits/s speed=4.53x    frame=  472 fps=102 q=28.0 size=    1280kB time=00:00:20.01 bitrate= 524.1kbits/s speed=4.32x    frame=  511 fps=100 q=28.0 size=    1536kB time=00:00:22.35 bitrate= 562.8kbits/s speed=4.35x    frame=  586 fps=104 q=28.0 size=    1536kB time=00:00:24.87 bitrate= 505.9kbits/s speed=4.41x    frame=  690 fps=112 q=28.0 size=    1792kB time=00:00:29.39 bitrate= 499.4kbits/s speed=4.79x    frame=  787 fps=119 q=28.0 size=    1792kB time=00:00:33.36 bitrate= 440.0kbits/s speed=5.03x    frame=  873 fps=122 q=28.0 size=    2048kB time=00:00:36.73 bitrate= 456.7kbits/s speed=5.15x    frame=  949 fps=124 q=28.0 size=    2048kB time=00:00:39.76 bitrate= 421.9kbits/s speed= 5.2x    frame= 1019 fps=125 q=28.0 size=    2304kB time=00:00:42.79 bitrate= 441.1kbits/s speed=5.25x    frame= 1094 fps=127 q=28.0 size=    2560kB time=00:00:46.25 bitrate= 453.5kbits/s speed=5.35x    [matroska,webm @ 0x55e1e6dee900] Read error
+frame= 1175 fps=128 q=28.0 size=    2560kB time=00:00:49.45 bitrate= 424.1kbits/s speed=5.41x    frame= 1198 fps=125 q=-1.0 Lsize=    2855kB time=00:00:50.13 bitrate= 466.5kbits/s dup=4 drop=0 speed=5.21x    
+video:2026kB audio:791kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.340333%
+[libx264 @ 0x55e1e6e5a180] frame I:43    Avg QP:20.58  size: 12726
+[libx264 @ 0x55e1e6e5a180] frame P:404   Avg QP:20.64  size:  2946
+[libx264 @ 0x55e1e6e5a180] frame B:751   Avg QP:23.45  size:   448
+[libx264 @ 0x55e1e6e5a180] consecutive B-frames: 13.5%  7.2%  4.5% 74.8%
+[libx264 @ 0x55e1e6e5a180] mb I  I16..4: 14.7% 70.0% 15.2%
+[libx264 @ 0x55e1e6e5a180] mb P  I16..4:  3.9% 21.4%  1.4%  P16..4: 14.0%  3.7%  2.3%  0.0%  0.0%    skip:53.3%
+[libx264 @ 0x55e1e6e5a180] mb B  I16..4:  0.4%  1.1%  0.1%  B16..8: 11.2%  0.9%  0.2%  direct: 0.6%  skip:85.6%  L0:45.7% L1:51.2% BI: 3.0%
+[libx264 @ 0x55e1e6e5a180] 8x8 transform intra:76.9% inter:83.1%
+[libx264 @ 0x55e1e6e5a180] coded y,uvDC,uvAC intra: 54.1% 55.3% 9.9% inter: 3.6% 3.5% 0.0%
+[libx264 @ 0x55e1e6e5a180] i16 v,h,dc,p: 21% 25%  5% 50%
+[libx264 @ 0x55e1e6e5a180] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 22% 19% 13%  7%  8%  8%  7%  8%  7%
+[libx264 @ 0x55e1e6e5a180] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 16% 13%  8% 11% 10%  7%  8%  4%
+[libx264 @ 0x55e1e6e5a180] i8c dc,h,v,p: 59% 17% 20%  4%
+[libx264 @ 0x55e1e6e5a180] Weighted P-Frames: Y:2.2% UV:1.7%
+[libx264 @ 0x55e1e6e5a180] ref P L0: 62.6%  9.8% 18.3%  8.9%  0.4%
+[libx264 @ 0x55e1e6e5a180] ref B L0: 86.6% 10.4%  3.0%
+[libx264 @ 0x55e1e6e5a180] ref B L1: 96.2%  3.8%
+[libx264 @ 0x55e1e6e5a180] kb/s:332.09
+[aac @ 0x55e1e6e21dc0] Qavg: 899.940
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/aac-sbr-ffaac-slow.mkv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/aac-sbr-ffaac-slow.mkv_tc/output_std1.mov"
+	User time (seconds): 27.56
+	System time (seconds): 0.41
+	Percent of CPU this job got: 272%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.27
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 163908
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 43
+	Minor (reclaiming a frame) page faults: 37666
+	Voluntary context switches: 12171
+	Involuntary context switches: 20821
+	Swaps: 0
+	File system inputs: 4712
+	File system outputs: 5736
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

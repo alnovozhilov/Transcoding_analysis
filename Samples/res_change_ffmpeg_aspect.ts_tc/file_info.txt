@@ -73,3 +73,78 @@ Service provider                         : en:SW Television Oy - fi:SW Televisio
 Service type                             : digital television
 
 
+General
+ID                                       : 8193 (0x2001)
+Complete name                            : ../.././Samples/res_change_ffmpeg_aspect.ts
+Format                                   : MPEG-TS
+File size                                : 1.60 MiB
+Duration                                 : 3 s 413 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 3 833 kb/s
+
+Video
+ID                                       : 512 (0x200)
+Menu ID                                  : 65 (0x41)
+Format                                   : MPEG Video
+Format version                           : Version 2
+Format profile                           : Main@Main
+Format settings                          : CustomMatrix / BVOP
+Format settings, BVOP                    : Yes
+Format settings, Matrix                  : Custom
+Format settings, GOP                     : M=3, N=12
+Format settings, picture structure       : Frame
+Codec ID                                 : 2
+Duration                                 : 2 s 920 ms
+Bit rate mode                            : Variable
+Maximum bit rate                         : 5 000 kb/s
+Width                                    : 704 pixels
+Height                                   : 576 pixels
+Display aspect ratio                     : 4:3
+Frame rate                               : 25.000 FPS
+Standard                                 : PAL
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Interlaced
+Scan order                               : Top Field First
+Compression mode                         : Lossy
+Time code of first frame                 : 00:00:24:22
+Time code source                         : Group of pictures header
+GOP, Open/Closed                         : Open
+Writing library                          : MediaRig v. 2.0.0.33
+Color primaries                          : BT.709
+Transfer characteristics                 : BT.709
+Matrix coefficients                      : BT.709
+
+Audio
+ID                                       : 650 (0x28A)
+Menu ID                                  : 65 (0x41)
+Format                                   : MPEG Audio
+Format version                           : Version 1
+Format profile                           : Layer 2
+Codec ID                                 : 4
+Duration                                 : 3 s 400 ms
+Bit rate mode                            : Variable
+Channel(s)                               : 2 channels
+Sampling rate                            : 48.0 kHz
+Compression mode                         : Lossy
+Delay relative to video                  : -348 ms
+Language                                 : Finnish
+
+Other
+ID                                       : 576 (0x240)-100
+Menu ID                                  : 65 (0x41)
+Format                                   : Teletext
+Language                                 : Finnish
+
+Menu
+ID                                       : 258 (0x102)
+Menu ID                                  : 65 (0x41)
+Duration                                 : 3 s 413 ms
+List                                     : 512 (0x200) (MPEG Video) / 650 (0x28A) (MPEG Audio, Finnish) / 3500 (0xDAC) () / 3501 (0xDAD) () / 3502 (0xDAE) () / 3503 (0xDAF) () / 576 (0x240)-100 (Teletext, fi)
+Language                                 :  / Finnish /  /  /  /  / Finnish
+Service name                             : en:Nelonen - fi:Nelonen - sv:Nelonen
+Service provider                         : en:SW Television Oy - fi:SW Television Oy - sv:SW Television Oy
+Service type                             : digital television
+
+

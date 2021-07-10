@@ -1,0 +1,62 @@
+General
+Unique ID                                : 104476288254617770049488375604679827814 (0x4E9966B53A096AE9AF7B6658424C6166)
+Complete name                            : ../.././Samples/theora.mkv
+Format                                   : Matroska
+Format version                           : Version 1
+File size                                : 9.66 MiB
+Duration                                 : 6 s 382 ms
+Overall bit rate                         : 12.7 Mb/s
+Encoded date                             : UTC 2007-03-23 00:51:49
+Writing application                      : mkvmerge v2.0.0 ('After The Rain Has Fallen') built on Jan 15 2007 20:21:30
+Writing library                          : libebml v0.7.7 + libmatroska v0.8.0
+
+Video
+ID                                       : 1
+Format                                   : Theora
+Codec ID                                 : V_THEORA
+Duration                                 : 6 s 381 ms
+Bit rate                                 : 12.4 Mb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 23.976 (24000/1001) FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.563
+Stream size                              : 9.47 MiB (98%)
+Writing library                          : libTheora 3.2.0 (UTC 2006-05-26)
+Default                                  : Yes
+Forced                                   : No
+
+
+General
+Unique ID                                : 104476288254617770049488375604679827814 (0x4E9966B53A096AE9AF7B6658424C6166)
+Complete name                            : ../.././Samples/theora.mkv
+Format                                   : Matroska
+Format version                           : Version 1
+File size                                : 9.66 MiB
+Duration                                 : 6 s 382 ms
+Overall bit rate                         : 12.7 Mb/s
+Encoded date                             : UTC 2007-03-23 00:51:49
+Writing application                      : mkvmerge v2.0.0 ('After The Rain Has Fallen') built on Jan 15 2007 20:21:30
+Writing library                          : libebml v0.7.7 + libmatroska v0.8.0
+
+Video
+ID                                       : 1
+Format                                   : Theora
+Codec ID                                 : V_THEORA
+Duration                                 : 6 s 381 ms
+Bit rate                                 : 12.4 Mb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 23.976 (24000/1001) FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.563
+Stream size                              : 9.47 MiB (98%)
+Writing library                          : libTheora 3.2.0 (UTC 2006-05-26)
+Default                                  : Yes
+Forced                                   : No
+
+

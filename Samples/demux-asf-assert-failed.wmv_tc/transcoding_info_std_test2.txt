@@ -10,36 +10,36 @@ ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
   libswscale      4.  8.100 /  4.  8.100
   libswresample   2.  9.100 /  2.  9.100
   libpostproc    54.  7.100 / 54.  7.100
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
     Last message repeated 1 times
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
     Last message repeated 2 times
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
     Last message repeated 1 times
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
 Guessed Channel Layout for Input Stream #0.0 : stereo
 Input #0, asf, from '../.././Samples/demux-asf-assert-failed.wmv':
   Duration: 00:05:46.94, start: 0.000000, bitrate: 269 kb/s
@@ -49,10 +49,10 @@ Stream mapping:
   Stream #0:1 -> #0:0 (msmpeg4v3 (msmpeg4) -> h264 (libx264))
   Stream #0:0 -> #0:1 (wmav2 (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x555a075fb940] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x555a075fb940] profile High, level 1.2
-[libx264 @ 0x555a075fb940] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=15 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mov, to '/home/aleksandr/Pract/Samples/demux-asf-assert-failed.wmv_tc/output2.mov':
+[libx264 @ 0x5615be466940] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5615be466940] profile High, level 1.2
+[libx264 @ 0x5615be466940] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=15 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/demux-asf-assert-failed.wmv_tc/output_std2.mov':
   Metadata:
     encoder         : Lavf57.83.100
     Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 320x240, q=-1--1, 15 fps, 15360 tbn, 15 tbc
@@ -63,56 +63,56 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/demux-asf-assert-failed.wmv_tc
     Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s
     Metadata:
       encoder         : Lavc57.107.100 aac
-[aac @ 0x555a075fd380] Queue input is backward in time
-[mov @ 0x555a075d13c0] Non-monotonous DTS in output stream 0:1; previous: 5120, current: 4057; changing to 5121. This may result in incorrect timestamps in the output file.
-[mov @ 0x555a075d13c0] Non-monotonous DTS in output stream 0:1; previous: 5121, current: 5081; changing to 5122. This may result in incorrect timestamps in the output file.
-frame=  264 fps=0.0 q=27.0 size=     256kB time=00:00:17.66 bitrate= 118.7kbits/s dup=40 drop=0 speed=35.3x    frame=  453 fps=452 q=27.0 size=     768kB time=00:00:30.32 bitrate= 207.5kbits/s dup=40 drop=0 speed=30.3x    frame=  659 fps=439 q=27.0 size=    1280kB time=00:00:44.07 bitrate= 237.9kbits/s dup=40 drop=0 speed=29.3x    frame=  862 fps=430 q=27.0 size=    1792kB time=00:00:57.63 bitrate= 254.7kbits/s dup=40 drop=0 speed=28.8x    frame= 1082 fps=431 q=27.0 size=    2304kB time=00:01:12.30 bitrate= 261.0kbits/s dup=40 drop=0 speed=28.8x    frame= 1296 fps=431 q=27.0 size=    2816kB time=00:01:26.42 bitrate= 266.9kbits/s dup=40 drop=0 speed=28.7x    frame= 1490 fps=424 q=27.0 size=    3328kB time=00:01:39.42 bitrate= 274.2kbits/s dup=40 drop=0 speed=28.3x    frame= 1678 fps=418 q=27.0 size=    3840kB time=00:01:52.05 bitrate= 280.7kbits/s dup=40 drop=0 speed=27.9x    frame= 1869 fps=414 q=27.0 size=    4352kB time=00:02:04.71 bitrate= 285.9kbits/s dup=40 drop=0 speed=27.6x    frame= 2080 fps=414 q=27.0 size=    4864kB time=00:02:18.80 bitrate= 287.1kbits/s dup=40 drop=0 speed=27.6x    frame= 2273 fps=412 q=27.0 size=    5376kB time=00:02:31.76 bitrate= 290.2kbits/s dup=40 drop=0 speed=27.5x    frame= 2471 fps=410 q=27.0 size=    5888kB time=00:02:44.82 bitrate= 292.6kbits/s dup=40 drop=0 speed=27.4x    frame= 2681 fps=411 q=27.0 size=    6400kB time=00:02:58.93 bitrate= 293.0kbits/s dup=40 drop=0 speed=27.4x    frame= 2873 fps=409 q=27.0 size=    6912kB time=00:03:11.70 bitrate= 295.4kbits/s dup=40 drop=0 speed=27.3x    frame= 3072 fps=408 q=27.0 size=    7424kB time=00:03:24.75 bitrate= 297.0kbits/s dup=40 drop=0 speed=27.2x    frame= 3256 fps=405 q=27.0 size=    7936kB time=00:03:37.15 bitrate= 299.4kbits/s dup=40 drop=0 speed=  27x    frame= 3428 fps=401 q=27.0 size=    8448kB time=00:03:48.68 bitrate= 302.6kbits/s dup=40 drop=0 speed=26.8x    frame= 3598 fps=398 q=27.0 size=    8960kB time=00:04:00.00 bitrate= 305.8kbits/s dup=40 drop=0 speed=26.5x    frame= 3799 fps=398 q=27.0 size=    9472kB time=00:04:13.42 bitrate= 306.2kbits/s dup=40 drop=0 speed=26.6x    frame= 3983 fps=397 q=27.0 size=   10240kB time=00:04:25.49 bitrate= 316.0kbits/s dup=40 drop=0 speed=26.4x    frame= 4179 fps=396 q=27.0 size=   10752kB time=00:04:38.68 bitrate= 316.1kbits/s dup=40 drop=0 speed=26.4x    frame= 4350 fps=394 q=27.0 size=   11264kB time=00:04:50.20 bitrate= 318.0kbits/s dup=40 drop=0 speed=26.3x    frame= 4528 fps=392 q=27.0 size=   11776kB time=00:05:01.99 bitrate= 319.4kbits/s dup=40 drop=0 speed=26.2x    frame= 4721 fps=392 q=27.0 size=   12288kB time=00:05:14.90 bitrate= 319.7kbits/s dup=40 drop=0 speed=26.1x    frame= 4930 fps=393 q=27.0 size=   12800kB time=00:05:28.76 bitrate= 318.9kbits/s dup=40 drop=0 speed=26.2x    frame= 5134 fps=393 q=27.0 size=   13312kB time=00:05:42.40 bitrate= 318.5kbits/s dup=40 drop=0 speed=26.2x    [asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-[asf @ 0x555a075cd900] Skip due to FRAME_HEADER_SIZE
-[asf @ 0x555a075cd900] packet fragment position invalid 0,0 not in 0
-frame= 5178 fps=391 q=-1.0 Lsize=   13814kB time=00:05:46.25 bitrate= 326.8kbits/s dup=40 drop=0 speed=26.1x    
+[aac @ 0x5615be468380] Queue input is backward in time
+[mov @ 0x5615be43c3c0] Non-monotonous DTS in output stream 0:1; previous: 5120, current: 4057; changing to 5121. This may result in incorrect timestamps in the output file.
+[mov @ 0x5615be43c3c0] Non-monotonous DTS in output stream 0:1; previous: 5121, current: 5081; changing to 5122. This may result in incorrect timestamps in the output file.
+frame=  260 fps=0.0 q=27.0 size=     256kB time=00:00:17.50 bitrate= 119.8kbits/s dup=40 drop=0 speed=34.7x    frame=  449 fps=446 q=27.0 size=     768kB time=00:00:30.13 bitrate= 208.8kbits/s dup=40 drop=0 speed=29.9x    frame=  653 fps=433 q=27.0 size=    1280kB time=00:00:43.51 bitrate= 241.0kbits/s dup=40 drop=0 speed=28.9x    frame=  852 fps=424 q=27.0 size=    1792kB time=00:00:56.88 bitrate= 258.1kbits/s dup=40 drop=0 speed=28.3x    frame= 1069 fps=426 q=27.0 size=    2048kB time=00:01:11.37 bitrate= 235.1kbits/s dup=40 drop=0 speed=28.4x    frame= 1277 fps=424 q=27.0 size=    2560kB time=00:01:25.30 bitrate= 245.8kbits/s dup=40 drop=0 speed=28.3x    frame= 1463 fps=417 q=27.0 size=    3072kB time=00:01:37.75 bitrate= 257.4kbits/s dup=40 drop=0 speed=27.8x    frame= 1656 fps=413 q=27.0 size=    3584kB time=00:01:50.38 bitrate= 266.0kbits/s dup=40 drop=0 speed=27.5x    frame= 1839 fps=407 q=27.0 size=    4096kB time=00:02:02.64 bitrate= 273.6kbits/s dup=40 drop=0 speed=27.1x    frame= 2055 fps=409 q=27.0 size=    4864kB time=00:02:17.09 bitrate= 290.7kbits/s dup=40 drop=0 speed=27.3x    frame= 2248 fps=407 q=27.0 size=    5376kB time=00:02:30.01 bitrate= 293.6kbits/s dup=40 drop=0 speed=27.1x    frame= 2440 fps=405 q=27.0 size=    5888kB time=00:02:42.77 bitrate= 296.3kbits/s dup=40 drop=0 speed=  27x    frame= 2648 fps=405 q=27.0 size=    6400kB time=00:02:56.70 bitrate= 296.7kbits/s dup=40 drop=0 speed=  27x    frame= 2846 fps=404 q=27.0 size=    6912kB time=00:03:09.89 bitrate= 298.2kbits/s dup=40 drop=0 speed=  27x    frame= 3035 fps=402 q=27.0 size=    7424kB time=00:03:22.47 bitrate= 300.4kbits/s dup=40 drop=0 speed=26.8x    frame= 3220 fps=400 q=27.0 size=    7936kB time=00:03:34.78 bitrate= 302.7kbits/s dup=40 drop=0 speed=26.7x    frame= 3400 fps=398 q=27.0 size=    8448kB time=00:03:46.87 bitrate= 305.0kbits/s dup=40 drop=0 speed=26.5x    frame= 3575 fps=395 q=27.0 size=    8960kB time=00:03:58.51 bitrate= 307.7kbits/s dup=40 drop=0 speed=26.3x    frame= 3767 fps=394 q=27.0 size=    9472kB time=00:04:11.19 bitrate= 308.9kbits/s dup=40 drop=0 speed=26.3x    frame= 3946 fps=392 q=27.0 size=    9984kB time=00:04:23.26 bitrate= 310.7kbits/s dup=40 drop=0 speed=26.2x    frame= 4138 fps=392 q=27.0 size=   10496kB time=00:04:35.89 bitrate= 311.6kbits/s dup=40 drop=0 speed=26.1x    frame= 4307 fps=389 q=27.0 size=   11008kB time=00:04:47.32 bitrate= 313.9kbits/s dup=40 drop=0 speed=  26x    frame= 4487 fps=388 q=27.0 size=   11776kB time=00:04:59.30 bitrate= 322.3kbits/s dup=40 drop=0 speed=25.9x    frame= 4672 fps=387 q=27.0 size=   12288kB time=00:05:11.37 bitrate= 323.3kbits/s dup=40 drop=0 speed=25.8x    frame= 4874 fps=388 q=27.0 size=   12544kB time=00:05:25.12 bitrate= 316.1kbits/s dup=40 drop=0 speed=25.9x    frame= 5073 fps=388 q=27.0 size=   13056kB time=00:05:38.31 bitrate= 316.1kbits/s dup=40 drop=0 speed=25.9x    [asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+[asf @ 0x5615be438900] Skip due to FRAME_HEADER_SIZE
+[asf @ 0x5615be438900] packet fragment position invalid 0,0 not in 0
+frame= 5178 fps=386 q=-1.0 Lsize=   13814kB time=00:05:46.25 bitrate= 326.8kbits/s dup=40 drop=0 speed=25.8x    
 video:8336kB audio:5320kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.152483%
-[libx264 @ 0x555a075fb940] frame I:23    Avg QP:16.25  size:  8764
-[libx264 @ 0x555a075fb940] frame P:4577  Avg QP:21.47  size:  1768
-[libx264 @ 0x555a075fb940] frame B:578   Avg QP:25.94  size:   415
-[libx264 @ 0x555a075fb940] consecutive B-frames: 82.3%  7.3%  3.4%  7.0%
-[libx264 @ 0x555a075fb940] mb I  I16..4: 14.0% 65.7% 20.3%
-[libx264 @ 0x555a075fb940] mb P  I16..4:  0.3%  2.5%  0.4%  P16..4: 26.8% 10.7%  9.4%  0.0%  0.0%    skip:50.0%
-[libx264 @ 0x555a075fb940] mb B  I16..4:  0.3%  0.8%  0.1%  B16..8: 27.8%  4.3%  1.1%  direct: 1.6%  skip:64.1%  L0:48.8% L1:35.7% BI:15.5%
-[libx264 @ 0x555a075fb940] 8x8 transform intra:77.2% inter:76.7%
-[libx264 @ 0x555a075fb940] coded y,uvDC,uvAC intra: 78.3% 42.8% 15.3% inter: 20.3% 9.0% 1.7%
-[libx264 @ 0x555a075fb940] i16 v,h,dc,p: 61% 22% 14%  3%
-[libx264 @ 0x555a075fb940] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 56% 13% 22%  2%  1%  1%  1%  1%  2%
-[libx264 @ 0x555a075fb940] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 57% 12%  9%  3%  4%  4%  3%  4%  3%
-[libx264 @ 0x555a075fb940] i8c dc,h,v,p: 49% 25% 23%  3%
-[libx264 @ 0x555a075fb940] Weighted P-Frames: Y:0.4% UV:0.2%
-[libx264 @ 0x555a075fb940] ref P L0: 75.4% 12.5%  8.2%  3.8%  0.0%
-[libx264 @ 0x555a075fb940] ref B L0: 85.0% 13.0%  2.0%
-[libx264 @ 0x555a075fb940] ref B L1: 97.5%  2.5%
-[libx264 @ 0x555a075fb940] kb/s:197.82
-[aac @ 0x555a075fd380] Qavg: 2782.938
-	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/demux-asf-assert-failed.wmv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/demux-asf-assert-failed.wmv_tc/output2.mov"
-	User time (seconds): 39.96
-	System time (seconds): 0.34
-	Percent of CPU this job got: 303%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.29
+[libx264 @ 0x5615be466940] frame I:23    Avg QP:16.25  size:  8764
+[libx264 @ 0x5615be466940] frame P:4577  Avg QP:21.47  size:  1768
+[libx264 @ 0x5615be466940] frame B:578   Avg QP:25.94  size:   415
+[libx264 @ 0x5615be466940] consecutive B-frames: 82.3%  7.3%  3.4%  7.0%
+[libx264 @ 0x5615be466940] mb I  I16..4: 14.0% 65.7% 20.3%
+[libx264 @ 0x5615be466940] mb P  I16..4:  0.3%  2.5%  0.4%  P16..4: 26.8% 10.7%  9.4%  0.0%  0.0%    skip:50.0%
+[libx264 @ 0x5615be466940] mb B  I16..4:  0.3%  0.8%  0.1%  B16..8: 27.8%  4.3%  1.1%  direct: 1.6%  skip:64.1%  L0:48.8% L1:35.7% BI:15.5%
+[libx264 @ 0x5615be466940] 8x8 transform intra:77.2% inter:76.7%
+[libx264 @ 0x5615be466940] coded y,uvDC,uvAC intra: 78.3% 42.8% 15.3% inter: 20.3% 9.0% 1.7%
+[libx264 @ 0x5615be466940] i16 v,h,dc,p: 61% 22% 14%  3%
+[libx264 @ 0x5615be466940] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 56% 13% 22%  2%  1%  1%  1%  1%  2%
+[libx264 @ 0x5615be466940] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 57% 12%  9%  3%  4%  4%  3%  4%  3%
+[libx264 @ 0x5615be466940] i8c dc,h,v,p: 49% 25% 23%  3%
+[libx264 @ 0x5615be466940] Weighted P-Frames: Y:0.4% UV:0.2%
+[libx264 @ 0x5615be466940] ref P L0: 75.4% 12.5%  8.2%  3.8%  0.0%
+[libx264 @ 0x5615be466940] ref B L0: 85.0% 13.0%  2.0%
+[libx264 @ 0x5615be466940] ref B L1: 97.5%  2.5%
+[libx264 @ 0x5615be466940] kb/s:197.82
+[aac @ 0x5615be468380] Qavg: 2782.938
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/demux-asf-assert-failed.wmv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/demux-asf-assert-failed.wmv_tc/output_std2.mov"
+	User time (seconds): 40.22
+	System time (seconds): 0.30
+	Percent of CPU this job got: 300%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.47
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 71308
+	Maximum resident set size (kbytes): 71264
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11386
-	Voluntary context switches: 39630
-	Involuntary context switches: 1631
+	Minor (reclaiming a frame) page faults: 11393
+	Voluntary context switches: 39997
+	Involuntary context switches: 2083
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 27656

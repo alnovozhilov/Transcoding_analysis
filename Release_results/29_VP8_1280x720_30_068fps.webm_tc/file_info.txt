@@ -1,0 +1,174 @@
+General
+Complete name                            : ../.././Samples/29_VP8_1280x720_30_068fps.webm
+Format                                   : WebM
+Format version                           : Version 4 / Version 2
+File size                                : 1.74 MiB
+Duration                                 : 16 s 666 ms
+Overall bit rate                         : 874 kb/s
+Writing application                      : vpxenc v1.6.1-716-gff42e04
+Writing library                          : libwebm-0.2.1.0
+
+Video
+ID                                       : 1
+Format                                   : VP8
+Codec ID                                 : V_VP8
+Duration                                 : 16 s 662 ms
+Bit rate                                 : 832 kb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 30.068 FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.030
+Stream size                              : 1.65 MiB (95%)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+
+General
+Complete name                            : ../.././Samples/29_VP8_1280x720_30_068fps.webm
+Format                                   : WebM
+Format version                           : Version 4 / Version 2
+File size                                : 1.74 MiB
+Duration                                 : 16 s 666 ms
+Overall bit rate                         : 874 kb/s
+Writing application                      : vpxenc v1.6.1-716-gff42e04
+Writing library                          : libwebm-0.2.1.0
+
+Video
+ID                                       : 1
+Format                                   : VP8
+Codec ID                                 : V_VP8
+Duration                                 : 16 s 662 ms
+Bit rate                                 : 832 kb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 30.068 FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.030
+Stream size                              : 1.65 MiB (95%)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+
+General
+Complete name                            : ../.././Samples/29_VP8_1280x720_30_068fps.webm
+Format                                   : WebM
+Format version                           : Version 4 / Version 2
+File size                                : 1.74 MiB
+Duration                                 : 16 s 666 ms
+Overall bit rate                         : 874 kb/s
+Writing application                      : vpxenc v1.6.1-716-gff42e04
+Writing library                          : libwebm-0.2.1.0
+
+Video
+ID                                       : 1
+Format                                   : VP8
+Codec ID                                 : V_VP8
+Duration                                 : 16 s 662 ms
+Bit rate                                 : 832 kb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 30.068 FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.030
+Stream size                              : 1.65 MiB (95%)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+
+General
+Complete name                            : ../.././Samples/29_VP8_1280x720_30_068fps.webm
+Format                                   : WebM
+Format version                           : Version 4 / Version 2
+File size                                : 1.74 MiB
+Duration                                 : 16 s 666 ms
+Overall bit rate                         : 874 kb/s
+Writing application                      : vpxenc v1.6.1-716-gff42e04
+Writing library                          : libwebm-0.2.1.0
+
+Video
+ID                                       : 1
+Format                                   : VP8
+Codec ID                                 : V_VP8
+Duration                                 : 16 s 662 ms
+Bit rate                                 : 832 kb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 30.068 FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.030
+Stream size                              : 1.65 MiB (95%)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+
+General
+Complete name                            : ../.././Samples/29_VP8_1280x720_30_068fps.webm
+Format                                   : WebM
+Format version                           : Version 4 / Version 2
+File size                                : 1.74 MiB
+Duration                                 : 16 s 666 ms
+Overall bit rate                         : 874 kb/s
+Writing application                      : vpxenc v1.6.1-716-gff42e04
+Writing library                          : libwebm-0.2.1.0
+
+Video
+ID                                       : 1
+Format                                   : VP8
+Codec ID                                 : V_VP8
+Duration                                 : 16 s 662 ms
+Bit rate                                 : 832 kb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 30.068 FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.030
+Stream size                              : 1.65 MiB (95%)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+
+General
+Complete name                            : ../.././Samples/29_VP8_1280x720_30_068fps.webm
+Format                                   : WebM
+Format version                           : Version 4 / Version 2
+File size                                : 1.74 MiB
+Duration                                 : 16 s 666 ms
+Overall bit rate                         : 874 kb/s
+Writing application                      : vpxenc v1.6.1-716-gff42e04
+Writing library                          : libwebm-0.2.1.0
+
+Video
+ID                                       : 1
+Format                                   : VP8
+Codec ID                                 : V_VP8
+Duration                                 : 16 s 662 ms
+Bit rate                                 : 832 kb/s
+Width                                    : 1 280 pixels
+Height                                   : 720 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 30.068 FPS
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.030
+Stream size                              : 1.65 MiB (95%)
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+

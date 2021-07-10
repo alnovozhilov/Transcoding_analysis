@@ -51,3 +51,56 @@ Encoded date                             : UTC 2004-08-24 17:08:58
 Tagged date                              : UTC 2004-08-24 17:08:58
 
 
+General
+Complete name                            : ../.././Samples/Boaz_explains_reality.3gp
+Format                                   : MPEG-4
+Format profile                           : 3GPP Media Release 4
+Codec ID                                 : 3gp4 (3gp5/3gp4/isom)
+File size                                : 94.5 KiB
+Duration                                 : 9 s 890 ms
+Overall bit rate                         : 78.3 kb/s
+Encoded date                             : UTC 2004-08-24 17:08:58
+Tagged date                              : UTC 2004-08-24 17:08:58
+
+Video
+ID                                       : 1
+Format                                   : H.263
+Format profile                           : BaseLine@1.0
+Codec ID                                 : s263
+Duration                                 : 9 s 890 ms
+Bit rate                                 : 62.6 kb/s
+Width                                    : 128 pixels
+Height                                   : 96 pixels
+Display aspect ratio                     : 3:2
+Frame rate mode                          : Variable
+Frame rate                               : 12.032 FPS
+Minimum frame rate                       : 4.274 FPS
+Maximum frame rate                       : 21.277 FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.424
+Stream size                              : 75.6 KiB (80%)
+Writing library                          : emuz
+Encoded date                             : UTC 2004-08-24 17:08:58
+Tagged date                              : UTC 2004-08-24 17:08:58
+
+Audio
+ID                                       : 2
+Format                                   : AMR
+Format/Info                              : Adaptive Multi-Rate
+Format profile                           : Narrow band
+Codec ID                                 : samr
+Duration                                 : 9 s 400 ms
+Bit rate mode                            : Constant
+Bit rate                                 : 12.8 kb/s
+Channel(s)                               : 1 channel
+Sampling rate                            : 8 000 Hz
+Bit depth                                : 13 bits
+Stream size                              : 14.7 KiB (16%)
+Writing library                          : emuz
+Encoded date                             : UTC 2004-08-24 17:08:58
+Tagged date                              : UTC 2004-08-24 17:08:58
+
+

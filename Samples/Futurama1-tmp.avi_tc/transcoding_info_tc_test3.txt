@@ -20,10 +20,10 @@ Stream mapping:
   Stream #0:0 -> #0:0 (mpeg2video (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (ac3 (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x562c5752b200] using SAR=4/3
-[libx264 @ 0x562c5752b200] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x562c5752b200] profile High, level 3.0
-[libx264 @ 0x562c5752b200] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=23 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x56363846f200] using SAR=4/3
+[libx264 @ 0x56363846f200] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x56363846f200] profile High, level 3.0
+[libx264 @ 0x56363846f200] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=23 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
 Output #0, mov, to '/home/aleksandr/Pract/Samples/Futurama1-tmp.avi_tc/output_tc3.mov':
   Metadata:
     encoder         : Lavf57.83.100
@@ -35,45 +35,45 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/Futurama1-tmp.avi_tc/output_tc
     Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 128 kb/s
     Metadata:
       encoder         : Lavc57.107.100 aac
-[mpeg2video @ 0x562c57529e00] ac-tex damaged at 1 24
-[mpeg2video @ 0x562c57529e00] Warning MVs not available
-[mpeg2video @ 0x562c57529e00] concealing 180 DC, 180 AC, 180 MV errors in P frame
-frame=   76 fps=0.0 q=-1.0 Lsize=     100kB time=00:00:04.01 bitrate= 204.7kbits/s dup=3 drop=0 speed=  12x    
+[mpeg2video @ 0x56363846de00] ac-tex damaged at 1 24
+[mpeg2video @ 0x56363846de00] Warning MVs not available
+[mpeg2video @ 0x56363846de00] concealing 180 DC, 180 AC, 180 MV errors in P frame
+frame=   76 fps=0.0 q=-1.0 Lsize=     100kB time=00:00:04.01 bitrate= 204.7kbits/s dup=3 drop=0 speed=12.7x    
 video:56kB audio:41kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 3.923197%
-[libx264 @ 0x562c5752b200] frame I:2     Avg QP: 8.71  size:  1266
-[libx264 @ 0x562c5752b200] frame P:25    Avg QP:17.47  size:  1710
-[libx264 @ 0x562c5752b200] frame B:49    Avg QP:15.36  size:   223
-[libx264 @ 0x562c5752b200] consecutive B-frames: 11.8%  5.3%  3.9% 78.9%
-[libx264 @ 0x562c5752b200] mb I  I16..4: 94.0%  5.5%  0.5%
-[libx264 @ 0x562c5752b200] mb P  I16..4:  5.3% 18.7%  0.4%  P16..4:  3.3%  1.6%  0.4%  0.0%  0.0%    skip:70.3%
-[libx264 @ 0x562c5752b200] mb B  I16..4:  0.2%  0.3%  0.0%  B16..8:  3.1%  0.9%  0.2%  direct: 0.2%  skip:95.1%  L0:40.9% L1:48.5% BI:10.6%
-[libx264 @ 0x562c5752b200] 8x8 transform intra:59.1% inter:89.4%
-[libx264 @ 0x562c5752b200] coded y,uvDC,uvAC intra: 32.8% 68.6% 39.5% inter: 1.2% 2.5% 0.3%
-[libx264 @ 0x562c5752b200] i16 v,h,dc,p: 79%  3%  3% 15%
-[libx264 @ 0x562c5752b200] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 44%  4% 18%  3%  4% 11%  2% 12%  1%
-[libx264 @ 0x562c5752b200] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 13% 16%  4%  9%  9%  4% 11%  1%
-[libx264 @ 0x562c5752b200] i8c dc,h,v,p: 45%  5% 36% 14%
-[libx264 @ 0x562c5752b200] Weighted P-Frames: Y:0.0% UV:0.0%
-[libx264 @ 0x562c5752b200] ref P L0: 65.7% 16.3% 12.4%  5.5%
-[libx264 @ 0x562c5752b200] ref B L0: 90.9%  7.2%  1.9%
-[libx264 @ 0x562c5752b200] ref B L1: 98.8%  1.2%
-[libx264 @ 0x562c5752b200] kb/s:141.81
-[aac @ 0x562c57518500] Qavg: 32104.939
+[libx264 @ 0x56363846f200] frame I:2     Avg QP: 8.71  size:  1266
+[libx264 @ 0x56363846f200] frame P:25    Avg QP:17.47  size:  1710
+[libx264 @ 0x56363846f200] frame B:49    Avg QP:15.36  size:   223
+[libx264 @ 0x56363846f200] consecutive B-frames: 11.8%  5.3%  3.9% 78.9%
+[libx264 @ 0x56363846f200] mb I  I16..4: 94.0%  5.5%  0.5%
+[libx264 @ 0x56363846f200] mb P  I16..4:  5.3% 18.7%  0.4%  P16..4:  3.3%  1.6%  0.4%  0.0%  0.0%    skip:70.3%
+[libx264 @ 0x56363846f200] mb B  I16..4:  0.2%  0.3%  0.0%  B16..8:  3.1%  0.9%  0.2%  direct: 0.2%  skip:95.1%  L0:40.9% L1:48.5% BI:10.6%
+[libx264 @ 0x56363846f200] 8x8 transform intra:59.1% inter:89.4%
+[libx264 @ 0x56363846f200] coded y,uvDC,uvAC intra: 32.8% 68.6% 39.5% inter: 1.2% 2.5% 0.3%
+[libx264 @ 0x56363846f200] i16 v,h,dc,p: 79%  3%  3% 15%
+[libx264 @ 0x56363846f200] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 44%  4% 18%  3%  4% 11%  2% 12%  1%
+[libx264 @ 0x56363846f200] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 13% 16%  4%  9%  9%  4% 11%  1%
+[libx264 @ 0x56363846f200] i8c dc,h,v,p: 45%  5% 36% 14%
+[libx264 @ 0x56363846f200] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x56363846f200] ref P L0: 65.7% 16.3% 12.4%  5.5%
+[libx264 @ 0x56363846f200] ref B L0: 90.9%  7.2%  1.9%
+[libx264 @ 0x56363846f200] ref B L1: 98.8%  1.2%
+[libx264 @ 0x56363846f200] kb/s:141.81
+[aac @ 0x56363845c500] Qavg: 32104.939
 	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/Futurama1-tmp.avi -c:v libx264 -f mov /home/aleksandr/Pract/Samples/Futurama1-tmp.avi_tc/output_tc3.mov"
 	User time (seconds): 0.65
-	System time (seconds): 0.03
-	Percent of CPU this job got: 180%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.38
+	System time (seconds): 0.02
+	Percent of CPU this job got: 187%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.36
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 114088
+	Maximum resident set size (kbytes): 112104
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 20566
-	Voluntary context switches: 1321
-	Involuntary context switches: 193
+	Minor (reclaiming a frame) page faults: 20564
+	Voluntary context switches: 1185
+	Involuntary context switches: 122
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 224

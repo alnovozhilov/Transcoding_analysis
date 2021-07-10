@@ -1,0 +1,256 @@
+General
+Unique ID                                : 78513706439394668390417939922292938474 (0x3B1130988B6B13420A31EC412B9196EA)
+Complete name                            : ../.././Samples/Passengers_Breakfast_1080-sdr.mkv
+Format                                   : Matroska
+Format version                           : Version 4 / Version 2
+File size                                : 104 MiB
+Duration                                 : 30 s 285 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 28.9 Mb/s
+Movie name                               : Passengers
+Encoded date                             : UTC 2017-10-29 15:55:29
+Writing application                      : mkvmerge v16.0.0 ('Protest') 64-bit
+Writing library                          : libebml v1.3.5 + libmatroska v1.4.8
+
+Video
+ID                                       : 1
+Format                                   : AVC
+Format/Info                              : Advanced Video Codec
+Format profile                           : High@L4.1
+Format settings                          : CABAC / 2 Ref Frames
+Format settings, CABAC                   : Yes
+Format settings, ReFrames                : 2 frames
+Format settings, GOP                     : M=1, N=10
+Codec ID                                 : V_MPEG4/ISO/AVC
+Duration                                 : 30 s 281 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 26.7 Mb/s
+Width                                    : 1 920 pixels
+Height                                   : 1 080 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 23.976 (23976/1000) FPS
+Original frame rate                      : 23.976 (24000/1001) FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Bits/(Pixel*Frame)                       : 0.537
+Stream size                              : 96.4 MiB (92%)
+Title                                    : MPEG-4 AVC Video / 26866 kbps / 1080p / 23.976 fps / 16:9 / High Profile 4.1
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+Audio
+ID                                       : 2
+Format                                   : DTS
+Format/Info                              : Digital Theater Systems
+Format profile                           : MA / Core
+Codec ID                                 : A_DTS
+Duration                                 : 30 s 283 ms
+Bit rate mode                            : Variable / Constant
+Bit rate                                 : 2 048 kb/s / 1 509 kb/s
+Channel(s)                               : 6 channels
+Channel positions                        : Front: L C R, Side: L R, LFE
+Sampling rate                            : 48.0 kHz
+Frame rate                               : 93.750 FPS (512 SPF)
+Bit depth                                : 16 bits
+Compression mode                         : Lossless / Lossy
+Delay relative to video                  : 2 ms
+Stream size                              : 7.33 MiB (7%)
+Title                                    : DTS-HD Master Audio / 5.1 / 48 kHz / 2119 kbps / 16-bit
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+Text #1
+ID                                       : 3
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 26 s 277 ms
+Bit rate                                 : 121 kb/s
+Count of elements                        : 26
+Stream size                              : 388 KiB (0%)
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+Text #2
+ID                                       : 4
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 27 s 695 ms
+Bit rate                                 : 120 kb/s
+Count of elements                        : 28
+Stream size                              : 405 KiB (0%)
+Title                                    : SDH
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+Text #3
+ID                                       : 5
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 24 s 608 ms
+Bit rate                                 : 89.8 kb/s
+Count of elements                        : 20
+Stream size                              : 270 KiB (0%)
+Language                                 : French
+Default                                  : No
+Forced                                   : No
+
+Text #4
+ID                                       : 6
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 26 s 67 ms
+Bit rate                                 : 101 kb/s
+Count of elements                        : 22
+Stream size                              : 322 KiB (0%)
+Title                                    : Latin American
+Language                                 : Spanish
+Default                                  : No
+Forced                                   : No
+
+Menu
+00:00:00.000                             : en: Chapter 6
+
+
+General
+Unique ID                                : 78513706439394668390417939922292938474 (0x3B1130988B6B13420A31EC412B9196EA)
+Complete name                            : ../.././Samples/Passengers_Breakfast_1080-sdr.mkv
+Format                                   : Matroska
+Format version                           : Version 4 / Version 2
+File size                                : 104 MiB
+Duration                                 : 30 s 285 ms
+Overall bit rate mode                    : Variable
+Overall bit rate                         : 28.9 Mb/s
+Movie name                               : Passengers
+Encoded date                             : UTC 2017-10-29 15:55:29
+Writing application                      : mkvmerge v16.0.0 ('Protest') 64-bit
+Writing library                          : libebml v1.3.5 + libmatroska v1.4.8
+
+Video
+ID                                       : 1
+Format                                   : AVC
+Format/Info                              : Advanced Video Codec
+Format profile                           : High@L4.1
+Format settings                          : CABAC / 2 Ref Frames
+Format settings, CABAC                   : Yes
+Format settings, ReFrames                : 2 frames
+Format settings, GOP                     : M=1, N=10
+Codec ID                                 : V_MPEG4/ISO/AVC
+Duration                                 : 30 s 281 ms
+Bit rate mode                            : Variable
+Bit rate                                 : 26.7 Mb/s
+Width                                    : 1 920 pixels
+Height                                   : 1 080 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 23.976 (23976/1000) FPS
+Original frame rate                      : 23.976 (24000/1001) FPS
+Color space                              : YUV
+Chroma subsampling                       : 4:2:0
+Bit depth                                : 8 bits
+Scan type                                : Progressive
+Bits/(Pixel*Frame)                       : 0.537
+Stream size                              : 96.4 MiB (92%)
+Title                                    : MPEG-4 AVC Video / 26866 kbps / 1080p / 23.976 fps / 16:9 / High Profile 4.1
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+Audio
+ID                                       : 2
+Format                                   : DTS
+Format/Info                              : Digital Theater Systems
+Format profile                           : MA / Core
+Codec ID                                 : A_DTS
+Duration                                 : 30 s 283 ms
+Bit rate mode                            : Variable / Constant
+Bit rate                                 : 2 048 kb/s / 1 509 kb/s
+Channel(s)                               : 6 channels
+Channel positions                        : Front: L C R, Side: L R, LFE
+Sampling rate                            : 48.0 kHz
+Frame rate                               : 93.750 FPS (512 SPF)
+Bit depth                                : 16 bits
+Compression mode                         : Lossless / Lossy
+Delay relative to video                  : 2 ms
+Stream size                              : 7.33 MiB (7%)
+Title                                    : DTS-HD Master Audio / 5.1 / 48 kHz / 2119 kbps / 16-bit
+Language                                 : English
+Default                                  : Yes
+Forced                                   : No
+
+Text #1
+ID                                       : 3
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 26 s 277 ms
+Bit rate                                 : 121 kb/s
+Count of elements                        : 26
+Stream size                              : 388 KiB (0%)
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+Text #2
+ID                                       : 4
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 27 s 695 ms
+Bit rate                                 : 120 kb/s
+Count of elements                        : 28
+Stream size                              : 405 KiB (0%)
+Title                                    : SDH
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+Text #3
+ID                                       : 5
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 24 s 608 ms
+Bit rate                                 : 89.8 kb/s
+Count of elements                        : 20
+Stream size                              : 270 KiB (0%)
+Language                                 : French
+Default                                  : No
+Forced                                   : No
+
+Text #4
+ID                                       : 6
+Format                                   : PGS
+Muxing mode                              : zlib
+Codec ID                                 : S_HDMV/PGS
+Codec ID/Info                            : Picture based subtitle format used on BDs/HD-DVDs
+Duration                                 : 26 s 67 ms
+Bit rate                                 : 101 kb/s
+Count of elements                        : 22
+Stream size                              : 322 KiB (0%)
+Title                                    : Latin American
+Language                                 : Spanish
+Default                                  : No
+Forced                                   : No
+
+Menu
+00:00:00.000                             : en: Chapter 6
+
+

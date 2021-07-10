@@ -18,11 +18,11 @@ Stream mapping:
   Stream #0:0 -> #0:0 (mpeg1video (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (mp2 (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x555a41ff4480] using SAR=178/163
-[libx264 @ 0x555a41ff4480] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x555a41ff4480] profile High, level 1.3
-[libx264 @ 0x555a41ff4480] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mov, to '/home/aleksandr/Pract/Samples/Plumiferos_persecucion_casting.mpg_tc/output2.mov':
+[libx264 @ 0x560696203480] using SAR=178/163
+[libx264 @ 0x560696203480] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x560696203480] profile High, level 1.3
+[libx264 @ 0x560696203480] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/Plumiferos_persecucion_casting.mpg_tc/output_std2.mov':
   Metadata:
     encoder         : Lavf57.83.100
     Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p(progressive), 352x288 [SAR 178:163 DAR 1958:1467], q=-1--1, 25 fps, 12800 tbn, 25 tbc
@@ -33,42 +33,42 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/Plumiferos_persecucion_casting
     Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s
     Metadata:
       encoder         : Lavc57.107.100 aac
-frame=  199 fps=0.0 q=28.0 size=       0kB time=00:00:07.70 bitrate=   0.0kbits/s speed=15.4x    frame=  356 fps=355 q=28.0 size=     256kB time=00:00:14.04 bitrate= 149.3kbits/s speed=  14x    frame=  447 fps=297 q=28.0 size=     512kB time=00:00:17.67 bitrate= 237.4kbits/s speed=11.7x    frame=  545 fps=271 q=28.0 size=    1024kB time=00:00:21.50 bitrate= 390.2kbits/s speed=10.7x    frame=  645 fps=256 q=28.0 size=    1280kB time=00:00:25.56 bitrate= 410.2kbits/s speed=10.2x    frame=  746 fps=247 q=28.0 size=    1536kB time=00:00:29.74 bitrate= 423.0kbits/s speed=9.87x    frame=  850 fps=241 q=28.0 size=    1792kB time=00:00:33.71 bitrate= 435.4kbits/s speed=9.58x    frame=  958 fps=238 q=28.0 size=    2048kB time=00:00:38.12 bitrate= 440.0kbits/s speed=9.48x    frame= 1047 fps=231 q=28.0 size=    2304kB time=00:00:41.77 bitrate= 451.8kbits/s speed=9.23x    frame= 1143 fps=227 q=28.0 size=    2560kB time=00:00:45.44 bitrate= 461.5kbits/s speed=9.04x    frame= 1247 fps=226 q=28.0 size=    2816kB time=00:00:49.57 bitrate= 465.3kbits/s speed=8.97x    frame= 1349 fps=224 q=28.0 size=    3072kB time=00:00:53.73 bitrate= 468.4kbits/s speed=8.91x    frame= 1619 fps=248 q=28.0 size=    3328kB time=00:01:04.52 bitrate= 422.5kbits/s speed=9.88x    frame= 1776 fps=252 q=28.0 size=    3328kB time=00:01:10.75 bitrate= 385.3kbits/s speed=10.1x    frame= 1896 fps=252 q=28.0 size=    3584kB time=00:01:15.53 bitrate= 388.7kbits/s speed=  10x    frame= 2028 fps=252 q=28.0 size=    3840kB time=00:01:20.92 bitrate= 388.7kbits/s speed=10.1x    frame= 2148 fps=252 q=28.0 size=    3840kB time=00:01:25.65 bitrate= 367.2kbits/s speed=  10x    frame= 2268 fps=251 q=28.0 size=    4096kB time=00:01:30.44 bitrate= 371.0kbits/s speed=  10x    frame= 2394 fps=251 q=28.0 size=    4352kB time=00:01:35.48 bitrate= 373.4kbits/s speed=  10x    frame= 2526 fps=252 q=28.0 size=    4608kB time=00:01:40.79 bitrate= 374.5kbits/s speed=  10x    frame= 2676 fps=254 q=28.0 size=    4864kB time=00:01:46.83 bitrate= 373.0kbits/s speed=10.1x    frame= 2850 fps=258 q=28.0 size=    4864kB time=00:01:53.80 bitrate= 350.1kbits/s speed=10.3x    frame= 3015 fps=261 q=28.0 size=    5120kB time=00:02:00.39 bitrate= 348.4kbits/s speed=10.4x    frame= 3178 fps=264 q=28.0 size=    5376kB time=00:02:06.92 bitrate= 347.0kbits/s speed=10.5x    frame= 3327 fps=265 q=28.0 size=    5632kB time=00:02:12.86 bitrate= 347.3kbits/s speed=10.6x    frame= 3495 fps=268 q=28.0 size=    5888kB time=00:02:19.50 bitrate= 345.8kbits/s speed=10.7x    frame= 3638 fps=268 q=28.0 size=    6144kB time=00:02:25.31 bitrate= 346.4kbits/s speed=10.7x    frame= 3803 fps=271 q=28.0 size=    6400kB time=00:02:31.97 bitrate= 345.0kbits/s speed=10.8x    frame= 3957 fps=272 q=28.0 size=    6400kB time=00:02:38.08 bitrate= 331.7kbits/s speed=10.9x    frame= 4127 fps=274 q=28.0 size=    6656kB time=00:02:44.83 bitrate= 330.8kbits/s speed=  11x    frame= 4284 fps=275 q=28.0 size=    6912kB time=00:02:51.13 bitrate= 330.9kbits/s speed=  11x    frame= 4427 fps=276 q=28.0 size=    7168kB time=00:02:56.84 bitrate= 332.0kbits/s speed=  11x    frame= 4581 fps=277 q=28.0 size=    7424kB time=00:03:03.01 bitrate= 332.3kbits/s speed=11.1x    frame= 4752 fps=279 q=28.0 size=    7680kB time=00:03:09.82 bitrate= 331.4kbits/s speed=11.1x    frame= 4938 fps=281 q=28.0 size=    7936kB time=00:03:17.25 bitrate= 329.6kbits/s speed=11.2x    frame= 5113 fps=283 q=28.0 size=    8192kB time=00:03:24.24 bitrate= 328.6kbits/s speed=11.3x    frame= 5269 fps=284 q=28.0 size=    8448kB time=00:03:30.48 bitrate= 328.8kbits/s speed=11.3x    frame= 5450 fps=286 q=-1.0 Lsize=    8981kB time=00:03:38.01 bitrate= 337.5kbits/s speed=11.4x    
+frame=  233 fps=0.0 q=28.0 size=       0kB time=00:00:09.07 bitrate=   0.0kbits/s speed=18.1x    frame=  385 fps=384 q=28.0 size=     256kB time=00:00:15.16 bitrate= 138.3kbits/s speed=15.1x    frame=  479 fps=318 q=28.0 size=     768kB time=00:00:18.90 bitrate= 332.9kbits/s speed=12.6x    frame=  588 fps=293 q=28.0 size=    1024kB time=00:00:23.38 bitrate= 358.8kbits/s speed=11.7x    frame=  703 fps=281 q=28.0 size=    1536kB time=00:00:27.95 bitrate= 450.1kbits/s speed=11.2x    frame=  827 fps=274 q=28.0 size=    1792kB time=00:00:32.85 bitrate= 446.8kbits/s speed=10.9x    frame=  950 fps=270 q=28.0 size=    2048kB time=00:00:37.84 bitrate= 443.3kbits/s speed=10.8x    frame= 1066 fps=265 q=28.0 size=    2304kB time=00:00:42.49 bitrate= 444.2kbits/s speed=10.6x    frame= 1187 fps=263 q=28.0 size=    2560kB time=00:00:47.25 bitrate= 443.8kbits/s speed=10.5x    frame= 1304 fps=260 q=28.0 size=    2816kB time=00:00:51.94 bitrate= 444.1kbits/s speed=10.3x    frame= 1583 fps=287 q=28.0 size=    3072kB time=00:01:03.08 bitrate= 398.9kbits/s speed=11.4x    frame= 1780 fps=296 q=28.0 size=    3328kB time=00:01:11.00 bitrate= 384.0kbits/s speed=11.8x    frame= 1932 fps=296 q=28.0 size=    3584kB time=00:01:16.99 bitrate= 381.3kbits/s speed=11.8x    frame= 2072 fps=295 q=28.0 size=    3840kB time=00:01:22.61 bitrate= 380.8kbits/s speed=11.8x    frame= 2202 fps=293 q=28.0 size=    4096kB time=00:01:27.84 bitrate= 382.0kbits/s speed=11.7x    frame= 2346 fps=292 q=28.0 size=    4352kB time=00:01:33.59 bitrate= 380.9kbits/s speed=11.7x    frame= 2496 fps=293 q=28.0 size=    4608kB time=00:01:39.56 bitrate= 379.1kbits/s speed=11.7x    frame= 2671 fps=296 q=28.0 size=    4864kB time=00:01:46.60 bitrate= 373.8kbits/s speed=11.8x    frame= 2871 fps=301 q=28.0 size=    4864kB time=00:01:54.59 bitrate= 347.7kbits/s speed=  12x    frame= 3071 fps=306 q=28.0 size=    5120kB time=00:02:02.67 bitrate= 341.9kbits/s speed=12.2x    frame= 3254 fps=309 q=28.0 size=    5376kB time=00:02:09.89 bitrate= 339.1kbits/s speed=12.3x    frame= 3424 fps=311 q=28.0 size=    5632kB time=00:02:16.71 bitrate= 337.5kbits/s speed=12.4x    frame= 3585 fps=311 q=28.0 size=    5888kB time=00:02:23.15 bitrate= 337.0kbits/s speed=12.4x    frame= 3756 fps=312 q=28.0 size=    6144kB time=00:02:29.95 bitrate= 335.6kbits/s speed=12.5x    frame= 3933 fps=314 q=28.0 size=    6400kB time=00:02:37.01 bitrate= 333.9kbits/s speed=12.5x    frame= 4119 fps=316 q=28.0 size=    6656kB time=00:02:44.51 bitrate= 331.4kbits/s speed=12.6x    frame= 4288 fps=317 q=28.0 size=    6912kB time=00:02:51.34 bitrate= 330.5kbits/s speed=12.7x    frame= 4448 fps=317 q=28.0 size=    7168kB time=00:02:57.79 bitrate= 330.3kbits/s speed=12.7x    frame= 4619 fps=318 q=28.0 size=    7424kB time=00:03:04.48 bitrate= 329.7kbits/s speed=12.7x    frame= 4820 fps=321 q=28.0 size=    7680kB time=00:03:12.58 bitrate= 326.7kbits/s speed=12.8x    frame= 5017 fps=323 q=28.0 size=    8192kB time=00:03:20.48 bitrate= 334.7kbits/s speed=12.9x    frame= 5203 fps=324 q=28.0 size=    8448kB time=00:03:27.88 bitrate= 332.9kbits/s speed=  13x    frame= 5365 fps=324 q=28.0 size=    8704kB time=00:03:34.38 bitrate= 332.6kbits/s speed=  13x    frame= 5450 fps=326 q=-1.0 Lsize=    8981kB time=00:03:38.01 bitrate= 337.5kbits/s speed=13.1x    
 video:5538kB audio:3268kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.990901%
-[libx264 @ 0x555a41ff4480] frame I:37    Avg QP:17.09  size:  8014
-[libx264 @ 0x555a41ff4480] frame P:1890  Avg QP:21.40  size:  1907
-[libx264 @ 0x555a41ff4480] frame B:3523  Avg QP:23.01  size:   502
-[libx264 @ 0x555a41ff4480] consecutive B-frames:  7.3% 11.4% 24.1% 57.2%
-[libx264 @ 0x555a41ff4480] mb I  I16..4: 37.3% 44.3% 18.3%
-[libx264 @ 0x555a41ff4480] mb P  I16..4:  1.1%  5.3%  1.3%  P16..4: 19.0% 10.1%  6.8%  0.0%  0.0%    skip:56.4%
-[libx264 @ 0x555a41ff4480] mb B  I16..4:  0.4%  1.2%  0.2%  B16..8: 14.5%  3.6%  0.9%  direct: 1.1%  skip:78.1%  L0:36.0% L1:47.9% BI:16.2%
-[libx264 @ 0x555a41ff4480] 8x8 transform intra:64.2% inter:63.7%
-[libx264 @ 0x555a41ff4480] coded y,uvDC,uvAC intra: 60.2% 59.2% 22.7% inter: 8.2% 7.3% 1.6%
-[libx264 @ 0x555a41ff4480] i16 v,h,dc,p: 52% 30%  8% 11%
-[libx264 @ 0x555a41ff4480] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 18% 25% 22%  4%  5%  5%  7%  6% 10%
-[libx264 @ 0x555a41ff4480] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 29% 21%  4%  5%  5%  7%  4%  5%
-[libx264 @ 0x555a41ff4480] i8c dc,h,v,p: 51% 28% 17%  4%
-[libx264 @ 0x555a41ff4480] Weighted P-Frames: Y:1.5% UV:0.5%
-[libx264 @ 0x555a41ff4480] ref P L0: 67.4% 13.9% 13.0%  5.7%  0.0%
-[libx264 @ 0x555a41ff4480] ref B L0: 88.6%  8.8%  2.6%
-[libx264 @ 0x555a41ff4480] ref B L1: 97.4%  2.6%
-[libx264 @ 0x555a41ff4480] kb/s:208.07
-[aac @ 0x555a4200bd40] Qavg: 5405.062
-	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/Plumiferos_persecucion_casting.mpg -c:v libx264 -f mov /home/aleksandr/Pract/Samples/Plumiferos_persecucion_casting.mpg_tc/output2.mov"
-	User time (seconds): 56.76
-	System time (seconds): 0.85
-	Percent of CPU this job got: 301%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.14
+[libx264 @ 0x560696203480] frame I:37    Avg QP:17.09  size:  8014
+[libx264 @ 0x560696203480] frame P:1890  Avg QP:21.40  size:  1907
+[libx264 @ 0x560696203480] frame B:3523  Avg QP:23.01  size:   502
+[libx264 @ 0x560696203480] consecutive B-frames:  7.3% 11.4% 24.1% 57.2%
+[libx264 @ 0x560696203480] mb I  I16..4: 37.3% 44.3% 18.3%
+[libx264 @ 0x560696203480] mb P  I16..4:  1.1%  5.3%  1.3%  P16..4: 19.0% 10.1%  6.8%  0.0%  0.0%    skip:56.4%
+[libx264 @ 0x560696203480] mb B  I16..4:  0.4%  1.2%  0.2%  B16..8: 14.5%  3.6%  0.9%  direct: 1.1%  skip:78.1%  L0:36.0% L1:47.9% BI:16.2%
+[libx264 @ 0x560696203480] 8x8 transform intra:64.2% inter:63.7%
+[libx264 @ 0x560696203480] coded y,uvDC,uvAC intra: 60.2% 59.2% 22.7% inter: 8.2% 7.3% 1.6%
+[libx264 @ 0x560696203480] i16 v,h,dc,p: 52% 30%  8% 11%
+[libx264 @ 0x560696203480] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 18% 25% 22%  4%  5%  5%  7%  6% 10%
+[libx264 @ 0x560696203480] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 29% 21%  4%  5%  5%  7%  4%  5%
+[libx264 @ 0x560696203480] i8c dc,h,v,p: 51% 28% 17%  4%
+[libx264 @ 0x560696203480] Weighted P-Frames: Y:1.5% UV:0.5%
+[libx264 @ 0x560696203480] ref P L0: 67.4% 13.9% 13.0%  5.7%  0.0%
+[libx264 @ 0x560696203480] ref B L0: 88.6%  8.8%  2.6%
+[libx264 @ 0x560696203480] ref B L1: 97.4%  2.6%
+[libx264 @ 0x560696203480] kb/s:208.07
+[aac @ 0x56069621ad40] Qavg: 5405.062
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/Plumiferos_persecucion_casting.mpg -c:v libx264 -f mov /home/aleksandr/Pract/Samples/Plumiferos_persecucion_casting.mpg_tc/output_std2.mov"
+	User time (seconds): 42.84
+	System time (seconds): 0.71
+	Percent of CPU this job got: 259%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:16.75
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 78764
+	Maximum resident set size (kbytes): 77868
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 13144
-	Voluntary context switches: 71451
-	Involuntary context switches: 23512
+	Minor (reclaiming a frame) page faults: 13152
+	Voluntary context switches: 70046
+	Involuntary context switches: 32808
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 17992

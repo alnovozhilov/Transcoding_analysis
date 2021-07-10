@@ -10,9 +10,9 @@ ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
   libswscale      4.  8.100 /  4.  8.100
   libswresample   2.  9.100 /  2.  9.100
   libpostproc    54.  7.100 / 54.  7.100
-[mxf @ 0x556b29b20900] invalid KAGSize 0 - guessing 512
-[mxf @ 0x556b29b20900] invalid KAGSize 0 - guessing 512
-[mxf @ 0x556b29b20900] failed to find absolute offset of 100000 in BodySID 2 - partial file?
+[mxf @ 0x562583454900] invalid KAGSize 0 - guessing 512
+[mxf @ 0x562583454900] invalid KAGSize 0 - guessing 512
+[mxf @ 0x562583454900] failed to find absolute offset of 100000 in BodySID 2 - partial file?
 Guessed Channel Layout for Input Stream #0.1 : stereo
 Guessed Channel Layout for Input Stream #0.2 : stereo
 Guessed Channel Layout for Input Stream #0.3 : stereo
@@ -48,19 +48,19 @@ Stream mapping:
   Stream #0:0 -> #0:0 (mpeg4 (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (pcm_alaw (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x556b29bad660] using SAR=16/11
-[libx264 @ 0x556b29bad660] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x556b29bad660] profile High, level 1.3
-[libx264 @ 0x556b29bad660] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (266035 left 6FEFEF, score= -3)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (257708 left 77F7F7, score= -11)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (227856 left 7F7F7F, score= -19)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (245238 left 7DFDFD, score= -27)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[aac @ 0x556b29badf60] Too many bits 16384.000000 > 12288 per frame requested, clamping to max
+[libx264 @ 0x5625834e1660] using SAR=16/11
+[libx264 @ 0x5625834e1660] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5625834e1660] profile High, level 1.3
+[libx264 @ 0x5625834e1660] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (266035 left 6FEFEF, score= -3)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (257708 left 77F7F7, score= -11)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (227856 left 7F7F7F, score= -19)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (245238 left 7DFDFD, score= -27)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[aac @ 0x5625834e1f60] Too many bits 16384.000000 > 12288 per frame requested, clamping to max
 Output #0, mov, to '/home/aleksandr/Pract/Samples/C0023S01.mxf_tc/output_std2.mov':
   Metadata:
     uid             : 89721e00-1139-05c1-00f1-080046020222
@@ -83,55 +83,55 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/C0023S01.mxf_tc/output_std2.mo
     Metadata:
       file_package_umid: 0x060A2B340101010501010D4313FF0000B46F1E00113905A508004602022200F1
       encoder         : Lavc57.107.100 aac
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (231474 left 5FDFDF, score= -35)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (248586 left 5FDFDF, score= -42)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (234925 left 7BFBFB, score= -49)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (255728 left 7F7F7F, score= -57)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (249366 left 7DFDFD, score= -64)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-[mxf @ 0x556b29b20900] failed to find absolute offset of 100000 in BodySID 2 - partial file?
-[mpeg4 @ 0x556b29bab180] slice end not reached but screenspace end (363866 left 5FDFDF, score= -65)
-[mpeg4 @ 0x556b29bab180] concealing 396 DC, 396 AC, 396 MV errors in P frame
-frame=   96 fps=0.0 q=-1.0 Lsize=      78kB time=00:00:04.09 bitrate= 156.0kbits/s dup=1 drop=0 speed=16.1x    
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (231474 left 5FDFDF, score= -35)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (248586 left 5FDFDF, score= -42)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (234925 left 7BFBFB, score= -50)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (255728 left 7F7F7F, score= -57)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (249366 left 7DFDFD, score= -65)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+[mxf @ 0x562583454900] failed to find absolute offset of 100000 in BodySID 2 - partial file?
+[mpeg4 @ 0x5625834df180] slice end not reached but screenspace end (363866 left 5FDFDF, score= -69)
+[mpeg4 @ 0x5625834df180] concealing 396 DC, 396 AC, 396 MV errors in P frame
+frame=   96 fps=0.0 q=-1.0 Lsize=      78kB time=00:00:04.09 bitrate= 156.0kbits/s dup=1 drop=0 speed=15.9x    
 video:50kB audio:24kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 5.031893%
-[libx264 @ 0x556b29bad660] frame I:1     Avg QP:16.72  size:  4532
-[libx264 @ 0x556b29bad660] frame P:29    Avg QP:19.20  size:  1033
-[libx264 @ 0x556b29bad660] frame B:66    Avg QP:20.03  size:   240
-[libx264 @ 0x556b29bad660] consecutive B-frames:  6.2%  4.2%  6.2% 83.3%
-[libx264 @ 0x556b29bad660] mb I  I16..4: 45.7% 48.5%  5.8%
-[libx264 @ 0x556b29bad660] mb P  I16..4:  3.2% 12.2%  0.0%  P16..4: 30.2%  8.2%  5.1%  0.0%  0.0%    skip:41.0%
-[libx264 @ 0x556b29bad660] mb B  I16..4:  0.6%  0.8%  0.0%  B16..8: 25.8%  2.3%  0.0%  direct: 4.3%  skip:66.3%  L0:50.0% L1:46.8% BI: 3.2%
-[libx264 @ 0x556b29bad660] 8x8 transform intra:71.2% inter:74.9%
-[libx264 @ 0x556b29bad660] coded y,uvDC,uvAC intra: 20.1% 17.6% 2.1% inter: 3.5% 9.4% 0.3%
-[libx264 @ 0x556b29bad660] i16 v,h,dc,p: 29% 46% 19%  6%
-[libx264 @ 0x556b29bad660] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 24% 52%  1%  0%  0%  0%  1%  1%
-[libx264 @ 0x556b29bad660] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 17% 16% 15%  8%  9% 12%  6% 11%  5%
-[libx264 @ 0x556b29bad660] i8c dc,h,v,p: 59% 21% 19%  1%
-[libx264 @ 0x556b29bad660] Weighted P-Frames: Y:0.0% UV:0.0%
-[libx264 @ 0x556b29bad660] ref P L0: 50.8%  4.3% 28.7% 16.3%
-[libx264 @ 0x556b29bad660] ref B L0: 73.3% 18.1%  8.6%
-[libx264 @ 0x556b29bad660] ref B L1: 93.0%  7.0%
-[libx264 @ 0x556b29bad660] kb/s:104.82
-[aac @ 0x556b29badf60] Qavg: 60341.176
+[libx264 @ 0x5625834e1660] frame I:1     Avg QP:16.72  size:  4532
+[libx264 @ 0x5625834e1660] frame P:29    Avg QP:19.20  size:  1033
+[libx264 @ 0x5625834e1660] frame B:66    Avg QP:20.03  size:   240
+[libx264 @ 0x5625834e1660] consecutive B-frames:  6.2%  4.2%  6.2% 83.3%
+[libx264 @ 0x5625834e1660] mb I  I16..4: 45.7% 48.5%  5.8%
+[libx264 @ 0x5625834e1660] mb P  I16..4:  3.2% 12.2%  0.0%  P16..4: 30.2%  8.2%  5.1%  0.0%  0.0%    skip:41.0%
+[libx264 @ 0x5625834e1660] mb B  I16..4:  0.6%  0.8%  0.0%  B16..8: 25.8%  2.3%  0.0%  direct: 4.3%  skip:66.3%  L0:50.0% L1:46.8% BI: 3.2%
+[libx264 @ 0x5625834e1660] 8x8 transform intra:71.2% inter:74.9%
+[libx264 @ 0x5625834e1660] coded y,uvDC,uvAC intra: 20.1% 17.6% 2.1% inter: 3.5% 9.4% 0.3%
+[libx264 @ 0x5625834e1660] i16 v,h,dc,p: 29% 46% 19%  6%
+[libx264 @ 0x5625834e1660] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 24% 52%  1%  0%  0%  0%  1%  1%
+[libx264 @ 0x5625834e1660] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 17% 16% 15%  8%  9% 12%  6% 11%  5%
+[libx264 @ 0x5625834e1660] i8c dc,h,v,p: 59% 21% 19%  1%
+[libx264 @ 0x5625834e1660] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x5625834e1660] ref P L0: 50.8%  4.3% 28.7% 16.3%
+[libx264 @ 0x5625834e1660] ref B L0: 73.3% 18.1%  8.6%
+[libx264 @ 0x5625834e1660] ref B L1: 93.0%  7.0%
+[libx264 @ 0x5625834e1660] kb/s:104.82
+[aac @ 0x5625834e1f60] Qavg: 60341.176
 	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/C0023S01.mxf -c:v libx264 -f mov /home/aleksandr/Pract/Samples/C0023S01.mxf_tc/output_std2.mov"
-	User time (seconds): 0.66
-	System time (seconds): 0.01
-	Percent of CPU this job got: 224%
+	User time (seconds): 0.65
+	System time (seconds): 0.03
+	Percent of CPU this job got: 226%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.30
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 80208
+	Maximum resident set size (kbytes): 78408
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 13206
-	Voluntary context switches: 970
-	Involuntary context switches: 99
+	Minor (reclaiming a frame) page faults: 13207
+	Voluntary context switches: 951
+	Involuntary context switches: 159
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 184

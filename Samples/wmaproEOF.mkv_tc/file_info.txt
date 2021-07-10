@@ -1,0 +1,98 @@
+General
+Unique ID                                : 223021423639729817629032509882537007110 (0xA7C85D222D87FF571D7EC8FEF6A2D806)
+Complete name                            : ../.././Samples/wmaproEOF.mkv
+Format                                   : Matroska
+Format version                           : Version 1
+File size                                : 10.0 MiB
+Duration                                 : 25 min 20 s
+Overall bit rate                         : 55.2 kb/s
+Encoded date                             : UTC 2008-08-26 13:59:28
+Writing application                      : GraphEdt.exe
+Writing library                          : Haali DirectShow Matroska Muxer 1.7.401.3
+IsTruncated                              : Yes
+ErrorDetectionType                       : Per level 1
+
+Video
+ID                                       : 2
+Format                                   : VC-1
+Codec ID                                 : V_MS/VFW/FOURCC / WMV3
+Codec ID/Info                            : Windows Media Video 9
+Codec ID/Hint                            : WMV3
+Duration                                 : 25 min 20 s
+Width                                    : 704 pixels
+Height                                   : 396 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 24.000 FPS
+Bit depth                                : 8 bits
+Compression mode                         : Lossy
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+Audio
+ID                                       : 1
+Format                                   : WMA
+Format profile                           : Pro
+Codec ID                                 : A_MS/ACM / 162
+Codec ID/Info                            : Windows Media Audio
+Duration                                 : 25 min 20 s
+Bit rate                                 : 192 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 48.0 kHz
+Bit depth                                : 24 bits
+Stream size                              : 34.7 MiB
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+
+General
+Unique ID                                : 223021423639729817629032509882537007110 (0xA7C85D222D87FF571D7EC8FEF6A2D806)
+Complete name                            : ../.././Samples/wmaproEOF.mkv
+Format                                   : Matroska
+Format version                           : Version 1
+File size                                : 10.0 MiB
+Duration                                 : 25 min 20 s
+Overall bit rate                         : 55.2 kb/s
+Encoded date                             : UTC 2008-08-26 13:59:28
+Writing application                      : GraphEdt.exe
+Writing library                          : Haali DirectShow Matroska Muxer 1.7.401.3
+IsTruncated                              : Yes
+ErrorDetectionType                       : Per level 1
+
+Video
+ID                                       : 2
+Format                                   : VC-1
+Codec ID                                 : V_MS/VFW/FOURCC / WMV3
+Codec ID/Info                            : Windows Media Video 9
+Codec ID/Hint                            : WMV3
+Duration                                 : 25 min 20 s
+Width                                    : 704 pixels
+Height                                   : 396 pixels
+Display aspect ratio                     : 16:9
+Frame rate mode                          : Constant
+Frame rate                               : 24.000 FPS
+Bit depth                                : 8 bits
+Compression mode                         : Lossy
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+Audio
+ID                                       : 1
+Format                                   : WMA
+Format profile                           : Pro
+Codec ID                                 : A_MS/ACM / 162
+Codec ID/Info                            : Windows Media Audio
+Duration                                 : 25 min 20 s
+Bit rate                                 : 192 kb/s
+Channel(s)                               : 2 channels
+Sampling rate                            : 48.0 kHz
+Bit depth                                : 24 bits
+Stream size                              : 34.7 MiB
+Language                                 : English
+Default                                  : No
+Forced                                   : No
+
+

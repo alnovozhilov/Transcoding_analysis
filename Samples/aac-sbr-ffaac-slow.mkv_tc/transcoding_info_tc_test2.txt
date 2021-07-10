@@ -49,10 +49,10 @@ Stream mapping:
   Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
   Stream #0:1 -> #0:1 (aac (native) -> aac (native))
 Press [q] to stop, [?] for help
-[libx264 @ 0x5560e56c4800] using SAR=1/1
-[libx264 @ 0x5560e56c4800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0x5560e56c4800] profile High, level 3.0
-[libx264 @ 0x5560e56c4800] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=23 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x55d8654be800] using SAR=1/1
+[libx264 @ 0x55d8654be800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55d8654be800] profile High, level 3.0
+[libx264 @ 0x55d8654be800] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=23 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
 Output #0, mov, to '/home/aleksandr/Pract/Samples/aac-sbr-ffaac-slow.mkv_tc/output_tc2.mov':
   Metadata:
     title           : [moo-shi] Natsume Yuujinchou - 01 - The Cat and The Book of Friends
@@ -76,43 +76,43 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/aac-sbr-ffaac-slow.mkv_tc/outp
     Metadata:
       title           : NY - 01 (AAC 2.0)
       encoder         : Lavc57.107.100 aac
-frame=  161 fps=0.0 q=28.0 size=       0kB time=00:00:06.99 bitrate=   0.1kbits/s speed=  14x    frame=  268 fps=267 q=28.0 size=       0kB time=00:00:11.69 bitrate=   0.1kbits/s speed=11.7x    frame=  320 fps=212 q=28.0 size=     256kB time=00:00:13.69 bitrate= 153.2kbits/s speed=9.09x    frame=  367 fps=182 q=28.0 size=     512kB time=00:00:15.70 bitrate= 267.2kbits/s speed= 7.8x    frame=  397 fps=158 q=28.0 size=     768kB time=00:00:17.02 bitrate= 369.6kbits/s speed=6.77x    frame=  439 fps=145 q=28.0 size=    1024kB time=00:00:18.68 bitrate= 448.9kbits/s speed=6.18x    frame=  489 fps=138 q=28.0 size=    1280kB time=00:00:20.69 bitrate= 506.8kbits/s speed=5.84x    frame=  565 fps=140 q=28.0 size=    1536kB time=00:00:24.36 bitrate= 516.5kbits/s speed=6.03x    frame=  714 fps=157 q=28.0 size=    1792kB time=00:00:30.03 bitrate= 488.8kbits/s speed=6.61x    frame=  843 fps=167 q=28.0 size=    1792kB time=00:00:35.41 bitrate= 414.6kbits/s speed=7.02x    frame=  949 fps=171 q=28.0 size=    2048kB time=00:00:39.76 bitrate= 421.9kbits/s speed=7.17x    frame= 1047 fps=173 q=28.0 size=    2304kB time=00:00:44.07 bitrate= 428.3kbits/s speed=7.28x    [matroska,webm @ 0x5560e4292000] Read error
-frame= 1161 fps=177 q=28.0 size=    2560kB time=00:00:48.76 bitrate= 430.0kbits/s speed=7.44x    frame= 1198 fps=172 q=-1.0 Lsize=    2855kB time=00:00:50.13 bitrate= 466.5kbits/s dup=4 drop=0 speed= 7.2x    
+frame=  161 fps=0.0 q=28.0 size=       0kB time=00:00:06.99 bitrate=   0.1kbits/s speed=13.9x    frame=  268 fps=267 q=28.0 size=       0kB time=00:00:11.56 bitrate=   0.1kbits/s speed=11.5x    frame=  318 fps=210 q=28.0 size=     256kB time=00:00:13.69 bitrate= 153.2kbits/s speed=9.06x    frame=  367 fps=181 q=28.0 size=     512kB time=00:00:15.70 bitrate= 267.2kbits/s speed=7.75x    frame=  396 fps=157 q=28.0 size=     768kB time=00:00:16.85 bitrate= 373.4kbits/s speed=6.67x    frame=  438 fps=145 q=28.0 size=    1024kB time=00:00:18.68 bitrate= 448.9kbits/s speed=6.17x    frame=  487 fps=137 q=28.0 size=    1280kB time=00:00:20.69 bitrate= 506.8kbits/s speed=5.84x    frame=  558 fps=138 q=28.0 size=    1536kB time=00:00:23.80 bitrate= 528.6kbits/s speed=5.89x    frame=  708 fps=156 q=28.0 size=    1792kB time=00:00:29.82 bitrate= 492.3kbits/s speed=6.56x    frame=  834 fps=165 q=25.0 size=    1792kB time=00:00:35.37 bitrate= 415.1kbits/s speed=7.01x    frame=  941 fps=169 q=28.0 size=    2048kB time=00:00:39.76 bitrate= 421.9kbits/s speed=7.16x    frame= 1044 fps=172 q=28.0 size=    2304kB time=00:00:44.07 bitrate= 428.3kbits/s speed=7.28x    [matroska,webm @ 0x55d86408c000] Read error
+frame= 1155 fps=176 q=28.0 size=    2560kB time=00:00:48.42 bitrate= 433.1kbits/s speed=7.38x    frame= 1198 fps=171 q=-1.0 Lsize=    2855kB time=00:00:50.13 bitrate= 466.5kbits/s dup=4 drop=0 speed=7.15x    
 video:2026kB audio:791kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.340333%
-[libx264 @ 0x5560e56c4800] frame I:43    Avg QP:20.58  size: 12726
-[libx264 @ 0x5560e56c4800] frame P:404   Avg QP:20.64  size:  2946
-[libx264 @ 0x5560e56c4800] frame B:751   Avg QP:23.45  size:   448
-[libx264 @ 0x5560e56c4800] consecutive B-frames: 13.5%  7.2%  4.5% 74.8%
-[libx264 @ 0x5560e56c4800] mb I  I16..4: 14.7% 70.0% 15.2%
-[libx264 @ 0x5560e56c4800] mb P  I16..4:  3.9% 21.4%  1.4%  P16..4: 14.0%  3.7%  2.3%  0.0%  0.0%    skip:53.3%
-[libx264 @ 0x5560e56c4800] mb B  I16..4:  0.4%  1.1%  0.1%  B16..8: 11.2%  0.9%  0.2%  direct: 0.6%  skip:85.6%  L0:45.7% L1:51.2% BI: 3.0%
-[libx264 @ 0x5560e56c4800] 8x8 transform intra:76.9% inter:83.1%
-[libx264 @ 0x5560e56c4800] coded y,uvDC,uvAC intra: 54.1% 55.3% 9.9% inter: 3.6% 3.5% 0.0%
-[libx264 @ 0x5560e56c4800] i16 v,h,dc,p: 21% 25%  5% 50%
-[libx264 @ 0x5560e56c4800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 22% 19% 13%  7%  8%  8%  7%  8%  7%
-[libx264 @ 0x5560e56c4800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 16% 13%  8% 11% 10%  7%  8%  4%
-[libx264 @ 0x5560e56c4800] i8c dc,h,v,p: 59% 17% 20%  4%
-[libx264 @ 0x5560e56c4800] Weighted P-Frames: Y:2.2% UV:1.7%
-[libx264 @ 0x5560e56c4800] ref P L0: 62.6%  9.8% 18.3%  8.9%  0.4%
-[libx264 @ 0x5560e56c4800] ref B L0: 86.6% 10.4%  3.0%
-[libx264 @ 0x5560e56c4800] ref B L1: 96.2%  3.8%
-[libx264 @ 0x5560e56c4800] kb/s:332.09
-[aac @ 0x5560e56c5700] Qavg: 899.940
+[libx264 @ 0x55d8654be800] frame I:43    Avg QP:20.58  size: 12726
+[libx264 @ 0x55d8654be800] frame P:404   Avg QP:20.64  size:  2946
+[libx264 @ 0x55d8654be800] frame B:751   Avg QP:23.45  size:   448
+[libx264 @ 0x55d8654be800] consecutive B-frames: 13.5%  7.2%  4.5% 74.8%
+[libx264 @ 0x55d8654be800] mb I  I16..4: 14.7% 70.0% 15.2%
+[libx264 @ 0x55d8654be800] mb P  I16..4:  3.9% 21.4%  1.4%  P16..4: 14.0%  3.7%  2.3%  0.0%  0.0%    skip:53.3%
+[libx264 @ 0x55d8654be800] mb B  I16..4:  0.4%  1.1%  0.1%  B16..8: 11.2%  0.9%  0.2%  direct: 0.6%  skip:85.6%  L0:45.7% L1:51.2% BI: 3.0%
+[libx264 @ 0x55d8654be800] 8x8 transform intra:76.9% inter:83.1%
+[libx264 @ 0x55d8654be800] coded y,uvDC,uvAC intra: 54.1% 55.3% 9.9% inter: 3.6% 3.5% 0.0%
+[libx264 @ 0x55d8654be800] i16 v,h,dc,p: 21% 25%  5% 50%
+[libx264 @ 0x55d8654be800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 22% 19% 13%  7%  8%  8%  7%  8%  7%
+[libx264 @ 0x55d8654be800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 16% 13%  8% 11% 10%  7%  8%  4%
+[libx264 @ 0x55d8654be800] i8c dc,h,v,p: 59% 17% 20%  4%
+[libx264 @ 0x55d8654be800] Weighted P-Frames: Y:2.2% UV:1.7%
+[libx264 @ 0x55d8654be800] ref P L0: 62.6%  9.8% 18.3%  8.9%  0.4%
+[libx264 @ 0x55d8654be800] ref B L0: 86.6% 10.4%  3.0%
+[libx264 @ 0x55d8654be800] ref B L1: 96.2%  3.8%
+[libx264 @ 0x55d8654be800] kb/s:332.09
+[aac @ 0x55d8654bf700] Qavg: 899.940
 	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/aac-sbr-ffaac-slow.mkv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/aac-sbr-ffaac-slow.mkv_tc/output_tc2.mov"
-	User time (seconds): 25.14
-	System time (seconds): 0.18
-	Percent of CPU this job got: 359%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.04
+	User time (seconds): 25.12
+	System time (seconds): 0.17
+	Percent of CPU this job got: 357%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.08
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 169964
+	Maximum resident set size (kbytes): 169376
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 34602
-	Voluntary context switches: 11347
-	Involuntary context switches: 3381
+	Minor (reclaiming a frame) page faults: 34619
+	Voluntary context switches: 10952
+	Involuntary context switches: 3483
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 5728

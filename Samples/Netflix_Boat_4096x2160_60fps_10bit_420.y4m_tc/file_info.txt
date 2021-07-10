@@ -14,3 +14,19 @@ Scan type                                : Progressive
 Compression mode                         : Lossless
 
 
+General
+Complete name                            : ../.././Samples/Netflix_Boat_4096x2160_60fps_10bit_420.y4m
+Format                                   : YUV4MPEG2
+File size                                : 7.42 GiB
+
+Video
+Format                                   : YUV
+Width                                    : 4 096 pixels
+Height                                   : 2 160 pixels
+Display aspect ratio                     : 1.896
+Frame rate                               : 60.000 FPS
+Color space                              : YUV
+Scan type                                : Progressive
+Compression mode                         : Lossless
+
+

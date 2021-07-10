@@ -1,0 +1,84 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+[asf @ 0x55f1ac06a900] packet fragment position invalid 0,0 not in 0
+Guessed Channel Layout for Input Stream #0.0 : stereo
+Input #0, asf, from '../.././Samples/asf+wmv1+wmav2++anti-theft.wmv':
+  Metadata:
+    artist          : Nathan Malachowski
+  Duration: 00:00:31.67, start: 0.000000, bitrate: 564 kb/s
+    Stream #0:0: Audio: wmav2 (a[1][0][0] / 0x0161), 16000 Hz, stereo, fltp, 16 kb/s
+    Stream #0:1: Video: wmv1 (WMV1 / 0x31564D57), yuv420p, 320x240, 15 tbr, 1k tbn, 1k tbc
+Stream mapping:
+  Stream #0:1 -> #0:0 (wmv1 (native) -> h264 (libx264))
+  Stream #0:0 -> #0:1 (wmav2 (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x55f1ac092020] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55f1ac092020] profile High, level 1.2
+[libx264 @ 0x55f1ac092020] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=15 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/asf+wmv1+wmav2++anti-theft.wmv_tc/output_std2.mov':
+  Metadata:
+    artist          : Nathan Malachowski
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 320x240, q=-1--1, 15 fps, 15360 tbn, 15 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 16000 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+frame=  164 fps=0.0 q=27.0 size=     256kB time=00:00:10.97 bitrate= 191.1kbits/s dup=1 drop=0 speed=21.8x    frame=  284 fps=278 q=24.0 size=     512kB time=00:00:18.97 bitrate= 221.0kbits/s dup=1 drop=0 speed=18.6x    frame=  397 fps=260 q=27.0 size=     768kB time=00:00:26.02 bitrate= 241.7kbits/s dup=1 drop=0 speed=  17x    [asf @ 0x55f1ac06a900] packet fragment position invalid 0,0 not in 0
+frame=  458 fps=249 q=-1.0 Lsize=    1082kB time=00:00:30.56 bitrate= 290.0kbits/s dup=2 drop=0 speed=16.6x    
+video:707kB audio:363kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.111989%
+[libx264 @ 0x55f1ac092020] frame I:12    Avg QP:17.48  size:  7148
+[libx264 @ 0x55f1ac092020] frame P:304   Avg QP:21.69  size:  1766
+[libx264 @ 0x55f1ac092020] frame B:142   Avg QP:25.90  size:   709
+[libx264 @ 0x55f1ac092020] consecutive B-frames: 52.4% 15.7%  9.2% 22.7%
+[libx264 @ 0x55f1ac092020] mb I  I16..4: 23.4% 65.2% 11.4%
+[libx264 @ 0x55f1ac092020] mb P  I16..4:  1.7%  5.0%  1.0%  P16..4: 31.8% 11.5%  8.2%  0.0%  0.0%    skip:40.8%
+[libx264 @ 0x55f1ac092020] mb B  I16..4:  0.9%  2.4%  0.5%  B16..8: 29.3%  6.7%  1.6%  direct: 2.9%  skip:55.6%  L0:44.4% L1:42.6% BI:13.0%
+[libx264 @ 0x55f1ac092020] 8x8 transform intra:64.8% inter:63.1%
+[libx264 @ 0x55f1ac092020] coded y,uvDC,uvAC intra: 61.6% 67.1% 17.1% inter: 20.7% 21.0% 1.2%
+[libx264 @ 0x55f1ac092020] i16 v,h,dc,p: 41% 39% 11%  9%
+[libx264 @ 0x55f1ac092020] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 16% 31% 27%  4%  4%  4%  4%  4%  6%
+[libx264 @ 0x55f1ac092020] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 23% 14%  5%  9%  8%  8%  5%  6%
+[libx264 @ 0x55f1ac092020] i8c dc,h,v,p: 55% 25% 15%  6%
+[libx264 @ 0x55f1ac092020] Weighted P-Frames: Y:3.3% UV:2.3%
+[libx264 @ 0x55f1ac092020] ref P L0: 75.3% 13.4%  8.1%  3.2%  0.0%
+[libx264 @ 0x55f1ac092020] ref B L0: 90.5%  7.6%  1.9%
+[libx264 @ 0x55f1ac092020] ref B L1: 98.3%  1.7%
+[libx264 @ 0x55f1ac092020] kb/s:189.48
+[aac @ 0x55f1ac093880] Qavg: 63982.105
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/asf+wmv1+wmav2++anti-theft.wmv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/asf+wmv1+wmav2++anti-theft.wmv_tc/output_std2.mov"
+	User time (seconds): 4.28
+	System time (seconds): 0.04
+	Percent of CPU this job got: 228%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.88
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 70372
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 11098
+	Voluntary context switches: 4265
+	Involuntary context switches: 220
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 2184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

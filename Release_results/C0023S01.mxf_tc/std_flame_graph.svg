@@ -1,0 +1,1044 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="582" onload="init(evt)" viewBox="0 0 1200 582" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
+<!-- NOTES:  -->
+<defs>
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
+		<stop stop-color="#eeeeee" offset="5%" />
+		<stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	text { font-family:Verdana; font-size:12px; fill:rgb(0,0,0); }
+	#search, #ignorecase { opacity:0.1; cursor:pointer; }
+	#search:hover, #search.show, #ignorecase:hover, #ignorecase.show { opacity:1; }
+	#subtitle { text-anchor:middle; font-color:rgb(160,160,160); }
+	#title { text-anchor:middle; font-size:17px}
+	#unzoom { cursor:pointer; }
+	#frames > *:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+	.hide { display:none; }
+	.parent { opacity:0.5; }
+</style>
+<script type="text/ecmascript">
+<![CDATA[
+	"use strict";
+	var details, searchbtn, unzoombtn, matchedtxt, svg, searching, currentSearchTerm, ignorecase, ignorecaseBtn;
+	function init(evt) {
+		details = document.getElementById("details").firstChild;
+		searchbtn = document.getElementById("search");
+		ignorecaseBtn = document.getElementById("ignorecase");
+		unzoombtn = document.getElementById("unzoom");
+		matchedtxt = document.getElementById("matched");
+		svg = document.getElementsByTagName("svg")[0];
+		searching = 0;
+		currentSearchTerm = null;
+	}
+
+	window.addEventListener("click", function(e) {
+		var target = find_group(e.target);
+		if (target) {
+			if (target.nodeName == "a") {
+				if (e.ctrlKey === false) return;
+				e.preventDefault();
+			}
+			if (target.classList.contains("parent")) unzoom();
+			zoom(target);
+		}
+		else if (e.target.id == "unzoom") unzoom();
+		else if (e.target.id == "search") search_prompt();
+		else if (e.target.id == "ignorecase") toggle_ignorecase();
+	}, false)
+
+	// mouse-over for info
+	// show
+	window.addEventListener("mouseover", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = "Function: " + g_to_text(target);
+	}, false)
+
+	// clear
+	window.addEventListener("mouseout", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = ' ';
+	}, false)
+
+	// ctrl-F for search
+	window.addEventListener("keydown",function (e) {
+		if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+			e.preventDefault();
+			search_prompt();
+		}
+	}, false)
+
+	// ctrl-I to toggle case-sensitive search
+	window.addEventListener("keydown",function (e) {
+		if (e.ctrlKey && e.keyCode === 73) {
+			e.preventDefault();
+			toggle_ignorecase();
+		}
+	}, false)
+
+	// functions
+	function find_child(node, selector) {
+		var children = node.querySelectorAll(selector);
+		if (children.length) return children[0];
+		return;
+	}
+	function find_group(node) {
+		var parent = node.parentElement;
+		if (!parent) return;
+		if (parent.id == "frames") return node;
+		return find_group(parent);
+	}
+	function orig_save(e, attr, val) {
+		if (e.attributes["_orig_" + attr] != undefined) return;
+		if (e.attributes[attr] == undefined) return;
+		if (val == undefined) val = e.attributes[attr].value;
+		e.setAttribute("_orig_" + attr, val);
+	}
+	function orig_load(e, attr) {
+		if (e.attributes["_orig_"+attr] == undefined) return;
+		e.attributes[attr].value = e.attributes["_orig_" + attr].value;
+		e.removeAttribute("_orig_"+attr);
+	}
+	function g_to_text(e) {
+		var text = find_child(e, "title").firstChild.nodeValue;
+		return (text)
+	}
+	function g_to_func(e) {
+		var func = g_to_text(e);
+		// if there's any manipulation we want to do to the function
+		// name before it's searched, do it here before returning.
+		return (func);
+	}
+	function update_text(e) {
+		var r = find_child(e, "rect");
+		var t = find_child(e, "text");
+		var w = parseFloat(r.attributes.width.value) -3;
+		var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+		t.attributes.x.value = parseFloat(r.attributes.x.value) + 3;
+
+		// Smaller than this size won't fit anything
+		if (w < 2 * 12 * 0.59) {
+			t.textContent = "";
+			return;
+		}
+
+		t.textContent = txt;
+		// Fit in full text width
+		if (/^ *$/.test(txt) || t.getSubStringLength(0, txt.length) < w)
+			return;
+
+		for (var x = txt.length - 2; x > 0; x--) {
+			if (t.getSubStringLength(0, x + 2) <= w) {
+				t.textContent = txt.substring(0, x) + "..";
+				return;
+			}
+		}
+		t.textContent = "";
+	}
+
+	// zoom
+	function zoom_reset(e) {
+		if (e.attributes != undefined) {
+			orig_load(e, "x");
+			orig_load(e, "width");
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_reset(c[i]);
+		}
+	}
+	function zoom_child(e, x, ratio) {
+		if (e.attributes != undefined) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = (parseFloat(e.attributes.x.value) - x - 10) * ratio + 10;
+				if (e.tagName == "text")
+					e.attributes.x.value = find_child(e.parentNode, "rect[x]").attributes.x.value + 3;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseFloat(e.attributes.width.value) * ratio;
+			}
+		}
+
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_child(c[i], x - 10, ratio);
+		}
+	}
+	function zoom_parent(e) {
+		if (e.attributes) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = 10;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseInt(svg.width.baseVal.value) - (10 * 2);
+			}
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_parent(c[i]);
+		}
+	}
+	function zoom(node) {
+		var attr = find_child(node, "rect").attributes;
+		var width = parseFloat(attr.width.value);
+		var xmin = parseFloat(attr.x.value);
+		var xmax = parseFloat(xmin + width);
+		var ymin = parseFloat(attr.y.value);
+		var ratio = (svg.width.baseVal.value - 2 * 10) / width;
+
+		// XXX: Workaround for JavaScript float issues (fix me)
+		var fudge = 0.0001;
+
+		unzoombtn.classList.remove("hide");
+
+		var el = document.getElementById("frames").children;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var a = find_child(e, "rect").attributes;
+			var ex = parseFloat(a.x.value);
+			var ew = parseFloat(a.width.value);
+			var upstack;
+			// Is it an ancestor
+			if (0 == 0) {
+				upstack = parseFloat(a.y.value) > ymin;
+			} else {
+				upstack = parseFloat(a.y.value) < ymin;
+			}
+			if (upstack) {
+				// Direct ancestor
+				if (ex <= xmin && (ex+ew+fudge) >= xmax) {
+					e.classList.add("parent");
+					zoom_parent(e);
+					update_text(e);
+				}
+				// not in current path
+				else
+					e.classList.add("hide");
+			}
+			// Children maybe
+			else {
+				// no common path
+				if (ex < xmin || ex + fudge >= xmax) {
+					e.classList.add("hide");
+				}
+				else {
+					zoom_child(e, xmin, ratio);
+					update_text(e);
+				}
+			}
+		}
+		search();
+	}
+	function unzoom() {
+		unzoombtn.classList.add("hide");
+		var el = document.getElementById("frames").children;
+		for(var i = 0; i < el.length; i++) {
+			el[i].classList.remove("parent");
+			el[i].classList.remove("hide");
+			zoom_reset(el[i]);
+			update_text(el[i]);
+		}
+		search();
+	}
+
+	// search
+	function toggle_ignorecase() {
+		ignorecase = !ignorecase;
+		if (ignorecase) {
+			ignorecaseBtn.classList.add("show");
+		} else {
+			ignorecaseBtn.classList.remove("show");
+		}
+		reset_search();
+		search();
+	}
+	function reset_search() {
+		var el = document.querySelectorAll("#frames rect");
+		for (var i = 0; i < el.length; i++) {
+			orig_load(el[i], "fill")
+		}
+	}
+	function search_prompt() {
+		if (!searching) {
+			var term = prompt("Enter a search term (regexp " +
+			    "allowed, eg: ^ext4_)"
+			    + (ignorecase ? ", ignoring case" : "")
+			    + "\nPress Ctrl-i to toggle case sensitivity", "");
+			if (term != null) {
+				currentSearchTerm = term;
+				search();
+			}
+		} else {
+			reset_search();
+			searching = 0;
+			currentSearchTerm = null;
+			searchbtn.classList.remove("show");
+			searchbtn.firstChild.nodeValue = "Search"
+			matchedtxt.classList.add("hide");
+			matchedtxt.firstChild.nodeValue = ""
+		}
+	}
+	function search(term) {
+		if (currentSearchTerm === null) return;
+		var term = currentSearchTerm;
+
+		var re = new RegExp(term, ignorecase ? 'i' : '');
+		var el = document.getElementById("frames").children;
+		var matches = new Object();
+		var maxwidth = 0;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var func = g_to_func(e);
+			var rect = find_child(e, "rect");
+			if (func == null || rect == null)
+				continue;
+
+			// Save max width. Only works as we have a root frame
+			var w = parseFloat(rect.attributes.width.value);
+			if (w > maxwidth)
+				maxwidth = w;
+
+			if (func.match(re)) {
+				// highlight
+				var x = parseFloat(rect.attributes.x.value);
+				orig_save(rect, "fill");
+				rect.attributes.fill.value = "rgb(230,0,230)";
+
+				// remember matches
+				if (matches[x] == undefined) {
+					matches[x] = w;
+				} else {
+					if (w > matches[x]) {
+						// overwrite with parent
+						matches[x] = w;
+					}
+				}
+				searching = 1;
+			}
+		}
+		if (!searching)
+			return;
+
+		searchbtn.classList.add("show");
+		searchbtn.firstChild.nodeValue = "Reset Search";
+
+		// calculate percent matched, excluding vertical overlap
+		var count = 0;
+		var lastx = -1;
+		var lastw = 0;
+		var keys = Array();
+		for (k in matches) {
+			if (matches.hasOwnProperty(k))
+				keys.push(k);
+		}
+		// sort the matched frames by their x location
+		// ascending, then width descending
+		keys.sort(function(a, b){
+			return a - b;
+		});
+		// Step through frames saving only the biggest bottom-up frames
+		// thanks to the sort order. This relies on the tree property
+		// where children are always smaller than their parents.
+		var fudge = 0.0001;	// JavaScript floating point
+		for (var k in keys) {
+			var x = parseFloat(keys[k]);
+			var w = matches[keys[k]];
+			if (x >= lastx + lastw - fudge) {
+				count += w;
+				lastx = x;
+				lastw = w;
+			}
+		}
+		// display matched percent
+		matchedtxt.classList.remove("hide");
+		var pct = 100 * count / maxwidth;
+		if (pct != 100) pct = pct.toFixed(1)
+		matchedtxt.firstChild.nodeValue = "Matched: " + pct + "%";
+	}
+]]>
+</script>
+<rect x="0.0" y="0" width="1200.0" height="582.0" fill="url(#background)"  />
+<text id="title" x="600.00" y="24" >Flame Graph</text>
+<text id="details" x="10.00" y="565" > </text>
+<text id="unzoom" x="10.00" y="24" class="hide">Reset Zoom</text>
+<text id="search" x="1090.00" y="24" >Search</text>
+<text id="ignorecase" x="1174.00" y="24" >ic</text>
+<text id="matched" x="1090.00" y="565" > </text>
+<g id="frames">
+<g >
+<title>__intel_pmu_enable_all.constprop.31 (4 samples, 3.96%)</title><rect x="851.2" y="53" width="46.7" height="15.0" fill="rgb(244,4,36)" rx="2" ry="2" />
+<text  x="854.19" y="63.5" >__in..</text>
+</g>
+<g >
+<title>pollwake (1 samples, 0.99%)</title><rect x="804.5" y="277" width="11.6" height="15.0" fill="rgb(250,11,3)" rx="2" ry="2" />
+<text  x="807.46" y="287.5" ></text>
+</g>
+<g >
+<title>try_to_wake_up (1 samples, 0.99%)</title><rect x="804.5" y="245" width="11.6" height="15.0" fill="rgb(245,170,30)" rx="2" ry="2" />
+<text  x="807.46" y="255.5" ></text>
+</g>
+<g >
+<title>start_secondary (16 samples, 15.84%)</title><rect x="909.6" y="485" width="186.9" height="15.0" fill="rgb(232,194,32)" rx="2" ry="2" />
+<text  x="912.60" y="495.5" >start_secondary</text>
+</g>
+<g >
+<title>x264_quant_4x4_trellis (1 samples, 0.99%)</title><rect x="781.1" y="501" width="11.7" height="15.0" fill="rgb(247,99,8)" rx="2" ry="2" />
+<text  x="784.09" y="511.5" ></text>
+</g>
+<g >
+<title>gnome-shell (1 samples, 0.99%)</title><rect x="816.1" y="517" width="11.7" height="15.0" fill="rgb(250,94,44)" rx="2" ry="2" />
+<text  x="819.14" y="527.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (1 samples, 0.99%)</title><rect x="232.0" y="405" width="11.7" height="15.0" fill="rgb(228,205,53)" rx="2" ry="2" />
+<text  x="234.98" y="415.5" ></text>
+</g>
+<g >
+<title>intel_tfa_pmu_enable_all (8 samples, 7.92%)</title><rect x="909.6" y="245" width="93.5" height="15.0" fill="rgb(219,206,39)" rx="2" ry="2" />
+<text  x="912.60" y="255.5" >intel_tfa_p..</text>
+</g>
+<g >
+<title>flush_smp_call_function_queue (8 samples, 7.92%)</title><rect x="909.6" y="341" width="93.5" height="15.0" fill="rgb(250,38,27)" rx="2" ry="2" />
+<text  x="912.60" y="351.5" >flush_smp_c..</text>
+</g>
+<g >
+<title>do_idle (16 samples, 15.84%)</title><rect x="909.6" y="453" width="186.9" height="15.0" fill="rgb(206,52,16)" rx="2" ry="2" />
+<text  x="912.60" y="463.5" >do_idle</text>
+</g>
+<g >
+<title>call_function_single_interrupt (8 samples, 7.92%)</title><rect x="909.6" y="389" width="93.5" height="15.0" fill="rgb(236,142,50)" rx="2" ry="2" />
+<text  x="912.60" y="399.5" >call_functi..</text>
+</g>
+<g >
+<title>seq_read (1 samples, 0.99%)</title><rect x="839.5" y="341" width="11.7" height="15.0" fill="rgb(212,11,36)" rx="2" ry="2" />
+<text  x="842.50" y="351.5" ></text>
+</g>
+<g >
+<title>secondary_startup_64 (24 samples, 23.76%)</title><rect x="909.6" y="501" width="280.4" height="15.0" fill="rgb(241,81,32)" rx="2" ry="2" />
+<text  x="912.60" y="511.5" >secondary_startup_64</text>
+</g>
+<g >
+<title>default_wake_function (1 samples, 0.99%)</title><rect x="804.5" y="261" width="11.6" height="15.0" fill="rgb(225,174,25)" rx="2" ry="2" />
+<text  x="807.46" y="271.5" ></text>
+</g>
+<g >
+<title>x264_frame_deblock_row (1 samples, 0.99%)</title><rect x="687.6" y="501" width="11.7" height="15.0" fill="rgb(240,83,38)" rx="2" ry="2" />
+<text  x="690.62" y="511.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx.skip_prologue (7 samples, 6.93%)</title><rect x="418.9" y="501" width="81.8" height="15.0" fill="rgb(235,4,44)" rx="2" ry="2" />
+<text  x="421.91" y="511.5" >x264_add8..</text>
+</g>
+<g >
+<title>perf_ioctl (4 samples, 3.96%)</title><rect x="851.2" y="261" width="46.7" height="15.0" fill="rgb(237,102,23)" rx="2" ry="2" />
+<text  x="854.19" y="271.5" >perf..</text>
+</g>
+<g >
+<title>vmacache_update (1 samples, 0.99%)</title><rect x="897.9" y="245" width="11.7" height="15.0" fill="rgb(216,53,10)" rx="2" ry="2" />
+<text  x="900.92" y="255.5" ></text>
+</g>
+<g >
+<title>__libc_start_main (1 samples, 0.99%)</title><rect x="897.9" y="501" width="11.7" height="15.0" fill="rgb(215,48,50)" rx="2" ry="2" />
+<text  x="900.92" y="511.5" ></text>
+</g>
+<g >
+<title>event_function (4 samples, 3.96%)</title><rect x="1096.5" y="245" width="46.8" height="15.0" fill="rgb(248,148,12)" rx="2" ry="2" />
+<text  x="1099.53" y="255.5" >even..</text>
+</g>
+<g >
+<title>__wake_up_common (1 samples, 0.99%)</title><rect x="804.5" y="293" width="11.6" height="15.0" fill="rgb(220,54,4)" rx="2" ry="2" />
+<text  x="807.46" y="303.5" ></text>
+</g>
+<g >
+<title>cpuidle_enter_state (8 samples, 7.92%)</title><rect x="1096.5" y="341" width="93.5" height="15.0" fill="rgb(247,189,37)" rx="2" ry="2" />
+<text  x="1099.53" y="351.5" >cpuidle_ent..</text>
+</g>
+<g >
+<title>_perf_event_enable (4 samples, 3.96%)</title><rect x="851.2" y="213" width="46.7" height="15.0" fill="rgb(213,112,39)" rx="2" ry="2" />
+<text  x="854.19" y="223.5" >_per..</text>
+</g>
+<g >
+<title>call_cpuidle (16 samples, 15.84%)</title><rect x="909.6" y="437" width="186.9" height="15.0" fill="rgb(252,137,50)" rx="2" ry="2" />
+<text  x="912.60" y="447.5" >call_cpuidle</text>
+</g>
+<g >
+<title>[ffmpeg] (1 samples, 0.99%)</title><rect x="243.7" y="453" width="11.6" height="15.0" fill="rgb(242,94,0)" rx="2" ry="2" />
+<text  x="246.66" y="463.5" ></text>
+</g>
+<g >
+<title>[unknown] (1 samples, 0.99%)</title><rect x="839.5" y="485" width="11.7" height="15.0" fill="rgb(227,154,44)" rx="2" ry="2" />
+<text  x="842.50" y="495.5" ></text>
+</g>
+<g >
+<title>x86_pmu_enable (4 samples, 3.96%)</title><rect x="1096.5" y="197" width="46.8" height="15.0" fill="rgb(215,227,33)" rx="2" ry="2" />
+<text  x="1099.53" y="207.5" >x86_..</text>
+</g>
+<g >
+<title>ctx_resched (8 samples, 7.92%)</title><rect x="909.6" y="277" width="93.5" height="15.0" fill="rgb(233,165,47)" rx="2" ry="2" />
+<text  x="912.60" y="287.5" >ctx_resched</text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1 samples, 0.99%)</title><rect x="804.5" y="469" width="11.6" height="15.0" fill="rgb(245,27,53)" rx="2" ry="2" />
+<text  x="807.46" y="479.5" ></text>
+</g>
+<g >
+<title>__x64_sys_ioctl (4 samples, 3.96%)</title><rect x="851.2" y="309" width="46.7" height="15.0" fill="rgb(250,55,22)" rx="2" ry="2" />
+<text  x="854.19" y="319.5" >__x6..</text>
+</g>
+<g >
+<title>__sys_sendmsg (1 samples, 0.99%)</title><rect x="804.5" y="421" width="11.6" height="15.0" fill="rgb(229,148,39)" rx="2" ry="2" />
+<text  x="807.46" y="431.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (1 samples, 0.99%)</title><rect x="839.5" y="421" width="11.7" height="15.0" fill="rgb(229,10,0)" rx="2" ry="2" />
+<text  x="842.50" y="431.5" ></text>
+</g>
+<g >
+<title>sock_def_readable (1 samples, 0.99%)</title><rect x="804.5" y="341" width="11.6" height="15.0" fill="rgb(224,68,51)" rx="2" ry="2" />
+<text  x="807.46" y="351.5" ></text>
+</g>
+<g >
+<title>vfs_read (1 samples, 0.99%)</title><rect x="839.5" y="373" width="11.7" height="15.0" fill="rgb(219,123,54)" rx="2" ry="2" />
+<text  x="842.50" y="383.5" ></text>
+</g>
+<g >
+<title>ctx_resched (4 samples, 3.96%)</title><rect x="851.2" y="101" width="46.7" height="15.0" fill="rgb(247,52,50)" rx="2" ry="2" />
+<text  x="854.19" y="111.5" >ctx_..</text>
+</g>
+<g >
+<title>[i965_dri.so] (1 samples, 0.99%)</title><rect x="816.1" y="501" width="11.7" height="15.0" fill="rgb(229,196,24)" rx="2" ry="2" />
+<text  x="819.14" y="511.5" ></text>
+</g>
+<g >
+<title>event_function_call (4 samples, 3.96%)</title><rect x="851.2" y="197" width="46.7" height="15.0" fill="rgb(241,69,7)" rx="2" ry="2" />
+<text  x="854.19" y="207.5" >even..</text>
+</g>
+<g >
+<title>_perf_ioctl (4 samples, 3.96%)</title><rect x="851.2" y="245" width="46.7" height="15.0" fill="rgb(254,138,33)" rx="2" ry="2" />
+<text  x="854.19" y="255.5" >_per..</text>
+</g>
+<g >
+<title>__perf_event_enable (8 samples, 7.92%)</title><rect x="909.6" y="293" width="93.5" height="15.0" fill="rgb(211,167,24)" rx="2" ry="2" />
+<text  x="912.60" y="303.5" >__perf_even..</text>
+</g>
+<g >
+<title>remote_function (4 samples, 3.96%)</title><rect x="1096.5" y="261" width="46.8" height="15.0" fill="rgb(231,30,24)" rx="2" ry="2" />
+<text  x="1099.53" y="271.5" >remo..</text>
+</g>
+<g >
+<title>perf_event_for_each_child (4 samples, 3.96%)</title><rect x="851.2" y="229" width="46.7" height="15.0" fill="rgb(229,54,18)" rx="2" ry="2" />
+<text  x="854.19" y="239.5" >perf..</text>
+</g>
+<g >
+<title>cpuidle_enter (16 samples, 15.84%)</title><rect x="909.6" y="421" width="186.9" height="15.0" fill="rgb(229,228,32)" rx="2" ry="2" />
+<text  x="912.60" y="431.5" >cpuidle_enter</text>
+</g>
+<g >
+<title>do_idle (8 samples, 7.92%)</title><rect x="1096.5" y="389" width="93.5" height="15.0" fill="rgb(244,60,24)" rx="2" ry="2" />
+<text  x="1099.53" y="399.5" >do_idle</text>
+</g>
+<g >
+<title>copy_strings_kernel (1 samples, 0.99%)</title><rect x="897.9" y="325" width="11.7" height="15.0" fill="rgb(207,107,51)" rx="2" ry="2" />
+<text  x="900.92" y="335.5" ></text>
+</g>
+<g >
+<title>__intel_pmu_enable_all.constprop.31 (8 samples, 7.92%)</title><rect x="909.6" y="229" width="93.5" height="15.0" fill="rgb(223,59,37)" rx="2" ry="2" />
+<text  x="912.60" y="239.5" >__intel_pmu..</text>
+</g>
+<g >
+<title>event_function (8 samples, 7.92%)</title><rect x="909.6" y="309" width="93.5" height="15.0" fill="rgb(219,16,8)" rx="2" ry="2" />
+<text  x="912.60" y="319.5" >event_funct..</text>
+</g>
+<g >
+<title>generic_smp_call_function_single_interrupt (4 samples, 3.96%)</title><rect x="1096.5" y="293" width="46.8" height="15.0" fill="rgb(247,33,54)" rx="2" ry="2" />
+<text  x="1099.53" y="303.5" >gene..</text>
+</g>
+<g >
+<title>cpu_startup_entry (16 samples, 15.84%)</title><rect x="909.6" y="469" width="186.9" height="15.0" fill="rgb(227,174,37)" rx="2" ry="2" />
+<text  x="912.60" y="479.5" >cpu_startup_entry</text>
+</g>
+<g >
+<title>evsel__enable (4 samples, 3.96%)</title><rect x="851.2" y="389" width="46.7" height="15.0" fill="rgb(239,76,33)" rx="2" ry="2" />
+<text  x="854.19" y="399.5" >evse..</text>
+</g>
+<g >
+<title>x264_macroblock_cache_load_progressive (1 samples, 0.99%)</title><rect x="711.0" y="501" width="11.7" height="15.0" fill="rgb(238,224,46)" rx="2" ry="2" />
+<text  x="713.99" y="511.5" ></text>
+</g>
+<g >
+<title>[unknown] (21 samples, 20.79%)</title><rect x="173.6" y="501" width="245.3" height="15.0" fill="rgb(241,175,51)" rx="2" ry="2" />
+<text  x="176.56" y="511.5" >[unknown]</text>
+</g>
+<g >
+<title>[libx264.so.152] (7 samples, 6.93%)</title><rect x="91.8" y="501" width="81.8" height="15.0" fill="rgb(222,105,37)" rx="2" ry="2" />
+<text  x="94.78" y="511.5" >[libx264...</text>
+</g>
+<g >
+<title>perf_evsel__enable (4 samples, 3.96%)</title><rect x="851.2" y="373" width="46.7" height="15.0" fill="rgb(223,11,52)" rx="2" ry="2" />
+<text  x="854.19" y="383.5" >perf..</text>
+</g>
+<g >
+<title>__fput (1 samples, 0.99%)</title><rect x="232.0" y="341" width="11.7" height="15.0" fill="rgb(208,177,27)" rx="2" ry="2" />
+<text  x="234.98" y="351.5" ></text>
+</g>
+<g >
+<title>[unknown] (1 samples, 0.99%)</title><rect x="839.5" y="469" width="11.7" height="15.0" fill="rgb(233,173,24)" rx="2" ry="2" />
+<text  x="842.50" y="479.5" ></text>
+</g>
+<g >
+<title>event_function (4 samples, 3.96%)</title><rect x="851.2" y="133" width="46.7" height="15.0" fill="rgb(210,191,26)" rx="2" ry="2" />
+<text  x="854.19" y="143.5" >even..</text>
+</g>
+<g >
+<title>gdbus (1 samples, 0.99%)</title><rect x="804.5" y="517" width="11.6" height="15.0" fill="rgb(241,88,47)" rx="2" ry="2" />
+<text  x="807.46" y="527.5" ></text>
+</g>
+<g >
+<title>check_preempt_curr (1 samples, 0.99%)</title><rect x="804.5" y="197" width="11.6" height="15.0" fill="rgb(248,62,54)" rx="2" ry="2" />
+<text  x="807.46" y="207.5" ></text>
+</g>
+<g >
+<title>cmd_record (4 samples, 3.96%)</title><rect x="851.2" y="421" width="46.7" height="15.0" fill="rgb(240,45,9)" rx="2" ry="2" />
+<text  x="854.19" y="431.5" >cmd_..</text>
+</g>
+<g >
+<title>native_write_msr (8 samples, 7.92%)</title><rect x="909.6" y="213" width="93.5" height="15.0" fill="rgb(223,149,10)" rx="2" ry="2" />
+<text  x="912.60" y="223.5" >native_writ..</text>
+</g>
+<g >
+<title>__libc_start_main (4 samples, 3.96%)</title><rect x="851.2" y="485" width="46.7" height="15.0" fill="rgb(234,202,44)" rx="2" ry="2" />
+<text  x="854.19" y="495.5" >__li..</text>
+</g>
+<g >
+<title>x86_pmu_enable (4 samples, 3.96%)</title><rect x="851.2" y="85" width="46.7" height="15.0" fill="rgb(235,154,17)" rx="2" ry="2" />
+<text  x="854.19" y="95.5" >x86_..</text>
+</g>
+<g >
+<title>x264_trellis_coef1 (1 samples, 0.99%)</title><rect x="792.8" y="501" width="11.7" height="15.0" fill="rgb(208,78,0)" rx="2" ry="2" />
+<text  x="795.77" y="511.5" ></text>
+</g>
+<g >
+<title>exit_to_usermode_loop (1 samples, 0.99%)</title><rect x="232.0" y="389" width="11.7" height="15.0" fill="rgb(253,57,8)" rx="2" ry="2" />
+<text  x="234.98" y="399.5" ></text>
+</g>
+<g >
+<title>[libx264.so.152] (1 samples, 0.99%)</title><rect x="255.3" y="485" width="11.7" height="15.0" fill="rgb(248,123,46)" rx="2" ry="2" />
+<text  x="258.35" y="495.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv (1 samples, 0.99%)</title><rect x="383.9" y="485" width="11.6" height="15.0" fill="rgb(208,217,44)" rx="2" ry="2" />
+<text  x="386.86" y="495.5" ></text>
+</g>
+<g >
+<title>cpuidle_enter_state (16 samples, 15.84%)</title><rect x="909.6" y="405" width="186.9" height="15.0" fill="rgb(213,47,40)" rx="2" ry="2" />
+<text  x="912.60" y="415.5" >cpuidle_enter_state</text>
+</g>
+<g >
+<title>intel_idle (8 samples, 7.92%)</title><rect x="1003.1" y="389" width="93.4" height="15.0" fill="rgb(242,147,1)" rx="2" ry="2" />
+<text  x="1006.07" y="399.5" >intel_idle</text>
+</g>
+<g >
+<title>swapper (24 samples, 23.76%)</title><rect x="909.6" y="517" width="280.4" height="15.0" fill="rgb(208,137,42)" rx="2" ry="2" />
+<text  x="912.60" y="527.5" >swapper</text>
+</g>
+<g >
+<title>x264_me_search_ref (2 samples, 1.98%)</title><rect x="395.5" y="485" width="23.4" height="15.0" fill="rgb(230,64,14)" rx="2" ry="2" />
+<text  x="398.54" y="495.5" >x..</text>
+</g>
+<g >
+<title>native_write_msr (4 samples, 3.96%)</title><rect x="851.2" y="37" width="46.7" height="15.0" fill="rgb(236,80,10)" rx="2" ry="2" />
+<text  x="854.19" y="47.5" >nati..</text>
+</g>
+<g >
+<title>perf_evlist__prepare_workload (1 samples, 0.99%)</title><rect x="897.9" y="421" width="11.7" height="15.0" fill="rgb(212,114,23)" rx="2" ry="2" />
+<text  x="900.92" y="431.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_analyse (1 samples, 0.99%)</title><rect x="699.3" y="501" width="11.7" height="15.0" fill="rgb(219,109,9)" rx="2" ry="2" />
+<text  x="702.31" y="511.5" ></text>
+</g>
+<g >
+<title>ctx_resched (4 samples, 3.96%)</title><rect x="1096.5" y="213" width="46.8" height="15.0" fill="rgb(213,140,23)" rx="2" ry="2" />
+<text  x="1099.53" y="223.5" >ctx_..</text>
+</g>
+<g >
+<title>____fput (1 samples, 0.99%)</title><rect x="232.0" y="357" width="11.7" height="15.0" fill="rgb(240,45,3)" rx="2" ry="2" />
+<text  x="234.98" y="367.5" ></text>
+</g>
+<g >
+<title>remote_function (4 samples, 3.96%)</title><rect x="851.2" y="149" width="46.7" height="15.0" fill="rgb(246,183,20)" rx="2" ry="2" />
+<text  x="854.19" y="159.5" >remo..</text>
+</g>
+<g >
+<title>__perf_event_enable (4 samples, 3.96%)</title><rect x="851.2" y="117" width="46.7" height="15.0" fill="rgb(205,1,41)" rx="2" ry="2" />
+<text  x="854.19" y="127.5" >__pe..</text>
+</g>
+<g >
+<title>__libc_sendmsg (1 samples, 0.99%)</title><rect x="804.5" y="485" width="11.6" height="15.0" fill="rgb(246,133,30)" rx="2" ry="2" />
+<text  x="807.46" y="495.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx.skip_prologue (3 samples, 2.97%)</title><rect x="290.4" y="485" width="35.0" height="15.0" fill="rgb(236,121,50)" rx="2" ry="2" />
+<text  x="293.40" y="495.5" >x2..</text>
+</g>
+<g >
+<title>x86_64_start_kernel (8 samples, 7.92%)</title><rect x="1096.5" y="485" width="93.5" height="15.0" fill="rgb(241,37,52)" rx="2" ry="2" />
+<text  x="1099.53" y="495.5" >x86_64_star..</text>
+</g>
+<g >
+<title>x264_macroblock_cache_save (1 samples, 0.99%)</title><rect x="722.7" y="501" width="11.7" height="15.0" fill="rgb(217,161,16)" rx="2" ry="2" />
+<text  x="725.67" y="511.5" ></text>
+</g>
+<g >
+<title>__close (1 samples, 0.99%)</title><rect x="232.0" y="437" width="11.7" height="15.0" fill="rgb(226,105,38)" rx="2" ry="2" />
+<text  x="234.98" y="447.5" ></text>
+</g>
+<g >
+<title>sock_sendmsg (1 samples, 0.99%)</title><rect x="804.5" y="373" width="11.6" height="15.0" fill="rgb(219,35,49)" rx="2" ry="2" />
+<text  x="807.46" y="383.5" ></text>
+</g>
+<g >
+<title>native_write_msr (4 samples, 3.96%)</title><rect x="1096.5" y="149" width="46.8" height="15.0" fill="rgb(215,184,26)" rx="2" ry="2" />
+<text  x="1099.53" y="159.5" >nati..</text>
+</g>
+<g >
+<title>smp_call_function_single_interrupt (4 samples, 3.96%)</title><rect x="1096.5" y="309" width="46.8" height="15.0" fill="rgb(210,136,53)" rx="2" ry="2" />
+<text  x="1099.53" y="319.5" >smp_..</text>
+</g>
+<g >
+<title>intel_tfa_pmu_enable_all (4 samples, 3.96%)</title><rect x="1096.5" y="181" width="46.8" height="15.0" fill="rgb(209,86,18)" rx="2" ry="2" />
+<text  x="1099.53" y="191.5" >inte..</text>
+</g>
+<g >
+<title>[unknown] (1 samples, 0.99%)</title><rect x="827.8" y="501" width="11.7" height="15.0" fill="rgb(208,227,50)" rx="2" ry="2" />
+<text  x="830.82" y="511.5" ></text>
+</g>
+<g >
+<title>[libcairo.so.2.11510.0] (1 samples, 0.99%)</title><rect x="827.8" y="485" width="11.7" height="15.0" fill="rgb(206,186,1)" rx="2" ry="2" />
+<text  x="830.82" y="495.5" ></text>
+</g>
+<g >
+<title>__wake_up_common_lock (1 samples, 0.99%)</title><rect x="804.5" y="309" width="11.6" height="15.0" fill="rgb(221,45,29)" rx="2" ry="2" />
+<text  x="807.46" y="319.5" ></text>
+</g>
+<g >
+<title>arch_call_rest_init (8 samples, 7.92%)</title><rect x="1096.5" y="437" width="93.5" height="15.0" fill="rgb(235,153,24)" rx="2" ry="2" />
+<text  x="1099.53" y="447.5" >arch_call_r..</text>
+</g>
+<g >
+<title>x86_pmu_enable (8 samples, 7.92%)</title><rect x="909.6" y="261" width="93.5" height="15.0" fill="rgb(207,19,40)" rx="2" ry="2" />
+<text  x="912.60" y="271.5" >x86_pmu_ena..</text>
+</g>
+<g >
+<title>call_cpuidle (8 samples, 7.92%)</title><rect x="1096.5" y="373" width="93.5" height="15.0" fill="rgb(223,21,11)" rx="2" ry="2" />
+<text  x="1099.53" y="383.5" >call_cpuidle</text>
+</g>
+<g >
+<title>proc_single_show (1 samples, 0.99%)</title><rect x="839.5" y="325" width="11.7" height="15.0" fill="rgb(236,167,23)" rx="2" ry="2" />
+<text  x="842.50" y="335.5" ></text>
+</g>
+<g >
+<title>cmd_record (1 samples, 0.99%)</title><rect x="897.9" y="437" width="11.7" height="15.0" fill="rgb(243,106,47)" rx="2" ry="2" />
+<text  x="900.92" y="447.5" ></text>
+</g>
+<g >
+<title>[unknown] (5 samples, 4.95%)</title><rect x="839.5" y="501" width="58.4" height="15.0" fill="rgb(254,66,52)" rx="2" ry="2" />
+<text  x="842.50" y="511.5" >[unkno..</text>
+</g>
+<g >
+<title>[unknown] (2 samples, 1.98%)</title><rect x="267.0" y="485" width="23.4" height="15.0" fill="rgb(235,36,15)" rx="2" ry="2" />
+<text  x="270.03" y="495.5" >[..</text>
+</g>
+<g >
+<title>check_preempt_wakeup (1 samples, 0.99%)</title><rect x="804.5" y="181" width="11.6" height="15.0" fill="rgb(242,42,40)" rx="2" ry="2" />
+<text  x="807.46" y="191.5" ></text>
+</g>
+<g >
+<title>[libx264.so.152] (2 samples, 1.98%)</title><rect x="267.0" y="469" width="23.4" height="15.0" fill="rgb(254,136,17)" rx="2" ry="2" />
+<text  x="270.03" y="479.5" >[..</text>
+</g>
+<g >
+<title>generic_exec_single (4 samples, 3.96%)</title><rect x="851.2" y="165" width="46.7" height="15.0" fill="rgb(226,21,20)" rx="2" ry="2" />
+<text  x="854.19" y="175.5" >gene..</text>
+</g>
+<g >
+<title>__get_user_pages (1 samples, 0.99%)</title><rect x="897.9" y="277" width="11.7" height="15.0" fill="rgb(229,210,14)" rx="2" ry="2" />
+<text  x="900.92" y="287.5" ></text>
+</g>
+<g >
+<title>handle_internal_command (4 samples, 3.96%)</title><rect x="851.2" y="453" width="46.7" height="15.0" fill="rgb(236,103,42)" rx="2" ry="2" />
+<text  x="854.19" y="463.5" >hand..</text>
+</g>
+<g >
+<title>ttwu_do_wakeup (1 samples, 0.99%)</title><rect x="804.5" y="213" width="11.6" height="15.0" fill="rgb(211,35,11)" rx="2" ry="2" />
+<text  x="807.46" y="223.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1 samples, 0.99%)</title><rect x="839.5" y="437" width="11.7" height="15.0" fill="rgb(210,167,3)" rx="2" ry="2" />
+<text  x="842.50" y="447.5" ></text>
+</g>
+<g >
+<title>x264_me_search_ref (4 samples, 3.96%)</title><rect x="734.4" y="501" width="46.7" height="15.0" fill="rgb(249,88,41)" rx="2" ry="2" />
+<text  x="737.36" y="511.5" >x264..</text>
+</g>
+<g >
+<title>smp_call_function_single (4 samples, 3.96%)</title><rect x="851.2" y="181" width="46.7" height="15.0" fill="rgb(249,184,7)" rx="2" ry="2" />
+<text  x="854.19" y="191.5" >smp_..</text>
+</g>
+<g >
+<title>intel_tfa_pmu_enable_all (4 samples, 3.96%)</title><rect x="851.2" y="69" width="46.7" height="15.0" fill="rgb(211,210,33)" rx="2" ry="2" />
+<text  x="854.19" y="79.5" >inte..</text>
+</g>
+<g >
+<title>proc_pid_status (1 samples, 0.99%)</title><rect x="839.5" y="309" width="11.7" height="15.0" fill="rgb(219,127,29)" rx="2" ry="2" />
+<text  x="842.50" y="319.5" ></text>
+</g>
+<g >
+<title>run_builtin (1 samples, 0.99%)</title><rect x="897.9" y="453" width="11.7" height="15.0" fill="rgb(224,26,34)" rx="2" ry="2" />
+<text  x="900.92" y="463.5" ></text>
+</g>
+<g >
+<title>generic_smp_call_function_single_interrupt (8 samples, 7.92%)</title><rect x="909.6" y="357" width="93.5" height="15.0" fill="rgb(221,224,39)" rx="2" ry="2" />
+<text  x="912.60" y="367.5" >generic_smp..</text>
+</g>
+<g >
+<title>ffmpeg (68 samples, 67.33%)</title><rect x="10.0" y="517" width="794.5" height="15.0" fill="rgb(228,201,42)" rx="2" ry="2" />
+<text  x="13.00" y="527.5" >ffmpeg</text>
+</g>
+<g >
+<title>__GI___ioctl (4 samples, 3.96%)</title><rect x="851.2" y="357" width="46.7" height="15.0" fill="rgb(223,42,1)" rx="2" ry="2" />
+<text  x="854.19" y="367.5" >__GI..</text>
+</g>
+<g >
+<title>task_work_run (1 samples, 0.99%)</title><rect x="232.0" y="373" width="11.7" height="15.0" fill="rgb(239,130,19)" rx="2" ry="2" />
+<text  x="234.98" y="383.5" ></text>
+</g>
+<g >
+<title>____sys_sendmsg (1 samples, 0.99%)</title><rect x="804.5" y="389" width="11.6" height="15.0" fill="rgb(221,114,47)" rx="2" ry="2" />
+<text  x="807.46" y="399.5" ></text>
+</g>
+<g >
+<title>main (1 samples, 0.99%)</title><rect x="897.9" y="485" width="11.7" height="15.0" fill="rgb(230,192,52)" rx="2" ry="2" />
+<text  x="900.92" y="495.5" ></text>
+</g>
+<g >
+<title>[unknown] (1 samples, 0.99%)</title><rect x="804.5" y="501" width="11.6" height="15.0" fill="rgb(218,63,24)" rx="2" ry="2" />
+<text  x="807.46" y="511.5" ></text>
+</g>
+<g >
+<title>do_vfs_ioctl (4 samples, 3.96%)</title><rect x="851.2" y="277" width="46.7" height="15.0" fill="rgb(232,38,17)" rx="2" ry="2" />
+<text  x="854.19" y="287.5" >do_v..</text>
+</g>
+<g >
+<title>seq_put_decimal_ull_width (1 samples, 0.99%)</title><rect x="839.5" y="277" width="11.7" height="15.0" fill="rgb(227,136,6)" rx="2" ry="2" />
+<text  x="842.50" y="287.5" ></text>
+</g>
+<g >
+<title>run_builtin (4 samples, 3.96%)</title><rect x="851.2" y="437" width="46.7" height="15.0" fill="rgb(250,10,53)" rx="2" ry="2" />
+<text  x="854.19" y="447.5" >run_..</text>
+</g>
+<g >
+<title>ttwu_do_activate (1 samples, 0.99%)</title><rect x="804.5" y="229" width="11.6" height="15.0" fill="rgb(218,100,4)" rx="2" ry="2" />
+<text  x="807.46" y="239.5" ></text>
+</g>
+<g >
+<title>find_extend_vma (1 samples, 0.99%)</title><rect x="897.9" y="261" width="11.7" height="15.0" fill="rgb(207,168,48)" rx="2" ry="2" />
+<text  x="900.92" y="271.5" ></text>
+</g>
+<g >
+<title>__vfs_read (1 samples, 0.99%)</title><rect x="839.5" y="357" width="11.7" height="15.0" fill="rgb(227,68,40)" rx="2" ry="2" />
+<text  x="842.50" y="367.5" ></text>
+</g>
+<g >
+<title>__perf_event_enable (4 samples, 3.96%)</title><rect x="1096.5" y="229" width="46.8" height="15.0" fill="rgb(206,132,44)" rx="2" ry="2" />
+<text  x="1099.53" y="239.5" >__pe..</text>
+</g>
+<g >
+<title>start_kernel (8 samples, 7.92%)</title><rect x="1096.5" y="453" width="93.5" height="15.0" fill="rgb(248,13,43)" rx="2" ry="2" />
+<text  x="1099.53" y="463.5" >start_kernel</text>
+</g>
+<g >
+<title>__do_execve_file.isra.39 (1 samples, 0.99%)</title><rect x="897.9" y="341" width="11.7" height="15.0" fill="rgb(229,194,6)" rx="2" ry="2" />
+<text  x="900.92" y="351.5" ></text>
+</g>
+<g >
+<title>x86_64_start_reservations (8 samples, 7.92%)</title><rect x="1096.5" y="469" width="93.5" height="15.0" fill="rgb(205,207,9)" rx="2" ry="2" />
+<text  x="1099.53" y="479.5" >x86_64_star..</text>
+</g>
+<g >
+<title>intel_idle (4 samples, 3.96%)</title><rect x="1143.3" y="325" width="46.7" height="15.0" fill="rgb(230,169,18)" rx="2" ry="2" />
+<text  x="1146.27" y="335.5" >inte..</text>
+</g>
+<g >
+<title>do_syscall_64 (1 samples, 0.99%)</title><rect x="804.5" y="453" width="11.6" height="15.0" fill="rgb(219,167,20)" rx="2" ry="2" />
+<text  x="807.46" y="463.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (1 samples, 0.99%)</title><rect x="897.9" y="373" width="11.7" height="15.0" fill="rgb(244,213,21)" rx="2" ry="2" />
+<text  x="900.92" y="383.5" ></text>
+</g>
+<g >
+<title>handle_internal_command (1 samples, 0.99%)</title><rect x="897.9" y="469" width="11.7" height="15.0" fill="rgb(228,166,51)" rx="2" ry="2" />
+<text  x="900.92" y="479.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx2.skip_prologue (16 samples, 15.84%)</title><rect x="500.7" y="501" width="186.9" height="15.0" fill="rgb(223,72,34)" rx="2" ry="2" />
+<text  x="503.69" y="511.5" >x264_add8x8_idct_avx2.sk..</text>
+</g>
+<g >
+<title>__x64_sys_sendmsg (1 samples, 0.99%)</title><rect x="804.5" y="437" width="11.6" height="15.0" fill="rgb(225,48,51)" rx="2" ry="2" />
+<text  x="807.46" y="447.5" ></text>
+</g>
+<g >
+<title>ksys_read (1 samples, 0.99%)</title><rect x="839.5" y="389" width="11.7" height="15.0" fill="rgb(206,216,33)" rx="2" ry="2" />
+<text  x="842.50" y="399.5" ></text>
+</g>
+<g >
+<title>flush_smp_call_function_queue (4 samples, 3.96%)</title><rect x="1096.5" y="277" width="46.8" height="15.0" fill="rgb(213,96,6)" rx="2" ry="2" />
+<text  x="1099.53" y="287.5" >flus..</text>
+</g>
+<g >
+<title>__libc_read (1 samples, 0.99%)</title><rect x="839.5" y="453" width="11.7" height="15.0" fill="rgb(234,68,53)" rx="2" ry="2" />
+<text  x="842.50" y="463.5" ></text>
+</g>
+<g >
+<title>gnome-terminal- (1 samples, 0.99%)</title><rect x="827.8" y="517" width="11.7" height="15.0" fill="rgb(222,39,7)" rx="2" ry="2" />
+<text  x="830.82" y="527.5" ></text>
+</g>
+<g >
+<title>__wake_up_sync_key (1 samples, 0.99%)</title><rect x="804.5" y="325" width="11.6" height="15.0" fill="rgb(209,228,49)" rx="2" ry="2" />
+<text  x="807.46" y="335.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (7 samples, 6.93%)</title><rect x="173.6" y="485" width="81.7" height="15.0" fill="rgb(222,191,29)" rx="2" ry="2" />
+<text  x="176.56" y="495.5" >[ffmpeg]</text>
+</g>
+<g >
+<title>unix_stream_sendmsg (1 samples, 0.99%)</title><rect x="804.5" y="357" width="11.6" height="15.0" fill="rgb(208,51,17)" rx="2" ry="2" />
+<text  x="807.46" y="367.5" ></text>
+</g>
+<g >
+<title>__GI___execve (1 samples, 0.99%)</title><rect x="897.9" y="405" width="11.7" height="15.0" fill="rgb(215,76,6)" rx="2" ry="2" />
+<text  x="900.92" y="415.5" ></text>
+</g>
+<g >
+<title>__x64_sys_execve (1 samples, 0.99%)</title><rect x="897.9" y="357" width="11.7" height="15.0" fill="rgb(246,57,29)" rx="2" ry="2" />
+<text  x="900.92" y="367.5" ></text>
+</g>
+<g >
+<title>get_user_pages_remote (1 samples, 0.99%)</title><rect x="897.9" y="293" width="11.7" height="15.0" fill="rgb(234,88,27)" rx="2" ry="2" />
+<text  x="900.92" y="303.5" ></text>
+</g>
+<g >
+<title>task_mem (1 samples, 0.99%)</title><rect x="839.5" y="293" width="11.7" height="15.0" fill="rgb(222,149,29)" rx="2" ry="2" />
+<text  x="842.50" y="303.5" ></text>
+</g>
+<g >
+<title>memcpy_erms (1 samples, 0.99%)</title><rect x="839.5" y="261" width="11.7" height="15.0" fill="rgb(222,33,38)" rx="2" ry="2" />
+<text  x="842.50" y="271.5" ></text>
+</g>
+<g >
+<title>evlist__enable (4 samples, 3.96%)</title><rect x="851.2" y="405" width="46.7" height="15.0" fill="rgb(241,23,4)" rx="2" ry="2" />
+<text  x="854.19" y="415.5" >evli..</text>
+</g>
+<g >
+<title>perf (6 samples, 5.94%)</title><rect x="839.5" y="517" width="70.1" height="15.0" fill="rgb(243,196,9)" rx="2" ry="2" />
+<text  x="842.50" y="527.5" >perf</text>
+</g>
+<g >
+<title>[ffmpeg] (1 samples, 0.99%)</title><rect x="232.0" y="453" width="11.7" height="15.0" fill="rgb(233,38,21)" rx="2" ry="2" />
+<text  x="234.98" y="463.5" ></text>
+</g>
+<g >
+<title>rest_init (8 samples, 7.92%)</title><rect x="1096.5" y="421" width="93.5" height="15.0" fill="rgb(225,116,26)" rx="2" ry="2" />
+<text  x="1099.53" y="431.5" >rest_init</text>
+</g>
+<g >
+<title>copy_strings.isra.32 (1 samples, 0.99%)</title><rect x="897.9" y="309" width="11.7" height="15.0" fill="rgb(243,129,27)" rx="2" ry="2" />
+<text  x="900.92" y="319.5" ></text>
+</g>
+<g >
+<title>___sys_sendmsg (1 samples, 0.99%)</title><rect x="804.5" y="405" width="11.6" height="15.0" fill="rgb(230,214,30)" rx="2" ry="2" />
+<text  x="807.46" y="415.5" ></text>
+</g>
+<g >
+<title>__x64_sys_read (1 samples, 0.99%)</title><rect x="839.5" y="405" width="11.7" height="15.0" fill="rgb(218,170,9)" rx="2" ry="2" />
+<text  x="842.50" y="415.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1 samples, 0.99%)</title><rect x="897.9" y="389" width="11.7" height="15.0" fill="rgb(241,160,2)" rx="2" ry="2" />
+<text  x="900.92" y="399.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (7 samples, 6.93%)</title><rect x="10.0" y="501" width="81.8" height="15.0" fill="rgb(241,66,7)" rx="2" ry="2" />
+<text  x="13.00" y="511.5" >[ffmpeg]</text>
+</g>
+<g >
+<title>call_function_single_interrupt (4 samples, 3.96%)</title><rect x="1096.5" y="325" width="46.8" height="15.0" fill="rgb(232,31,21)" rx="2" ry="2" />
+<text  x="1099.53" y="335.5" >call..</text>
+</g>
+<g >
+<title>cpuidle_enter (8 samples, 7.92%)</title><rect x="1096.5" y="357" width="93.5" height="15.0" fill="rgb(210,117,23)" rx="2" ry="2" />
+<text  x="1099.53" y="367.5" >cpuidle_enter</text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (1 samples, 0.99%)</title><rect x="232.0" y="421" width="11.7" height="15.0" fill="rgb(237,189,25)" rx="2" ry="2" />
+<text  x="234.98" y="431.5" ></text>
+</g>
+<g >
+<title>remote_function (8 samples, 7.92%)</title><rect x="909.6" y="325" width="93.5" height="15.0" fill="rgb(232,202,21)" rx="2" ry="2" />
+<text  x="912.60" y="335.5" >remote_func..</text>
+</g>
+<g >
+<title>ksys_ioctl (4 samples, 3.96%)</title><rect x="851.2" y="293" width="46.7" height="15.0" fill="rgb(219,37,26)" rx="2" ry="2" />
+<text  x="854.19" y="303.5" >ksys..</text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx2.skip_prologue (5 samples, 4.95%)</title><rect x="325.4" y="485" width="58.5" height="15.0" fill="rgb(219,112,15)" rx="2" ry="2" />
+<text  x="328.45" y="495.5" >x264_a..</text>
+</g>
+<g >
+<title>main (4 samples, 3.96%)</title><rect x="851.2" y="469" width="46.7" height="15.0" fill="rgb(232,111,33)" rx="2" ry="2" />
+<text  x="854.19" y="479.5" >main</text>
+</g>
+<g >
+<title>do_syscall_64 (4 samples, 3.96%)</title><rect x="851.2" y="325" width="46.7" height="15.0" fill="rgb(234,38,30)" rx="2" ry="2" />
+<text  x="854.19" y="335.5" >do_s..</text>
+</g>
+<g >
+<title>cpu_startup_entry (8 samples, 7.92%)</title><rect x="1096.5" y="405" width="93.5" height="15.0" fill="rgb(223,125,10)" rx="2" ry="2" />
+<text  x="1099.53" y="415.5" >cpu_startup..</text>
+</g>
+<g >
+<title>smp_call_function_single_interrupt (8 samples, 7.92%)</title><rect x="909.6" y="373" width="93.5" height="15.0" fill="rgb(226,111,4)" rx="2" ry="2" />
+<text  x="912.60" y="383.5" >smp_call_fu..</text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (4 samples, 3.96%)</title><rect x="851.2" y="341" width="46.7" height="15.0" fill="rgb(243,5,52)" rx="2" ry="2" />
+<text  x="854.19" y="351.5" >entr..</text>
+</g>
+<g >
+<title>__intel_pmu_enable_all.constprop.31 (4 samples, 3.96%)</title><rect x="1096.5" y="165" width="46.8" height="15.0" fill="rgb(212,105,25)" rx="2" ry="2" />
+<text  x="1099.53" y="175.5" >__in..</text>
+</g>
+<g >
+<title>[unknown] (1 samples, 0.99%)</title><rect x="243.7" y="469" width="11.6" height="15.0" fill="rgb(223,86,9)" rx="2" ry="2" />
+<text  x="246.66" y="479.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (1 samples, 0.99%)</title><rect x="232.0" y="469" width="11.7" height="15.0" fill="rgb(233,83,40)" rx="2" ry="2" />
+<text  x="234.98" y="479.5" ></text>
+</g>
+<g >
+<title>all (101 samples, 100%)</title><rect x="10.0" y="533" width="1180.0" height="15.0" fill="rgb(253,101,17)" rx="2" ry="2" />
+<text  x="13.00" y="543.5" ></text>
+</g>
+</g>
+</svg>

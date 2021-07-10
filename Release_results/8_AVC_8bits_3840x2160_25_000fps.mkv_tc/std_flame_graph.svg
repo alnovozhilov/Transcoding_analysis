@@ -1,0 +1,3276 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="2086" onload="init(evt)" viewBox="0 0 1200 2086" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
+<!-- NOTES:  -->
+<defs>
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
+		<stop stop-color="#eeeeee" offset="5%" />
+		<stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	text { font-family:Verdana; font-size:12px; fill:rgb(0,0,0); }
+	#search, #ignorecase { opacity:0.1; cursor:pointer; }
+	#search:hover, #search.show, #ignorecase:hover, #ignorecase.show { opacity:1; }
+	#subtitle { text-anchor:middle; font-color:rgb(160,160,160); }
+	#title { text-anchor:middle; font-size:17px}
+	#unzoom { cursor:pointer; }
+	#frames > *:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+	.hide { display:none; }
+	.parent { opacity:0.5; }
+</style>
+<script type="text/ecmascript">
+<![CDATA[
+	"use strict";
+	var details, searchbtn, unzoombtn, matchedtxt, svg, searching, currentSearchTerm, ignorecase, ignorecaseBtn;
+	function init(evt) {
+		details = document.getElementById("details").firstChild;
+		searchbtn = document.getElementById("search");
+		ignorecaseBtn = document.getElementById("ignorecase");
+		unzoombtn = document.getElementById("unzoom");
+		matchedtxt = document.getElementById("matched");
+		svg = document.getElementsByTagName("svg")[0];
+		searching = 0;
+		currentSearchTerm = null;
+	}
+
+	window.addEventListener("click", function(e) {
+		var target = find_group(e.target);
+		if (target) {
+			if (target.nodeName == "a") {
+				if (e.ctrlKey === false) return;
+				e.preventDefault();
+			}
+			if (target.classList.contains("parent")) unzoom();
+			zoom(target);
+		}
+		else if (e.target.id == "unzoom") unzoom();
+		else if (e.target.id == "search") search_prompt();
+		else if (e.target.id == "ignorecase") toggle_ignorecase();
+	}, false)
+
+	// mouse-over for info
+	// show
+	window.addEventListener("mouseover", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = "Function: " + g_to_text(target);
+	}, false)
+
+	// clear
+	window.addEventListener("mouseout", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = ' ';
+	}, false)
+
+	// ctrl-F for search
+	window.addEventListener("keydown",function (e) {
+		if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+			e.preventDefault();
+			search_prompt();
+		}
+	}, false)
+
+	// ctrl-I to toggle case-sensitive search
+	window.addEventListener("keydown",function (e) {
+		if (e.ctrlKey && e.keyCode === 73) {
+			e.preventDefault();
+			toggle_ignorecase();
+		}
+	}, false)
+
+	// functions
+	function find_child(node, selector) {
+		var children = node.querySelectorAll(selector);
+		if (children.length) return children[0];
+		return;
+	}
+	function find_group(node) {
+		var parent = node.parentElement;
+		if (!parent) return;
+		if (parent.id == "frames") return node;
+		return find_group(parent);
+	}
+	function orig_save(e, attr, val) {
+		if (e.attributes["_orig_" + attr] != undefined) return;
+		if (e.attributes[attr] == undefined) return;
+		if (val == undefined) val = e.attributes[attr].value;
+		e.setAttribute("_orig_" + attr, val);
+	}
+	function orig_load(e, attr) {
+		if (e.attributes["_orig_"+attr] == undefined) return;
+		e.attributes[attr].value = e.attributes["_orig_" + attr].value;
+		e.removeAttribute("_orig_"+attr);
+	}
+	function g_to_text(e) {
+		var text = find_child(e, "title").firstChild.nodeValue;
+		return (text)
+	}
+	function g_to_func(e) {
+		var func = g_to_text(e);
+		// if there's any manipulation we want to do to the function
+		// name before it's searched, do it here before returning.
+		return (func);
+	}
+	function update_text(e) {
+		var r = find_child(e, "rect");
+		var t = find_child(e, "text");
+		var w = parseFloat(r.attributes.width.value) -3;
+		var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+		t.attributes.x.value = parseFloat(r.attributes.x.value) + 3;
+
+		// Smaller than this size won't fit anything
+		if (w < 2 * 12 * 0.59) {
+			t.textContent = "";
+			return;
+		}
+
+		t.textContent = txt;
+		// Fit in full text width
+		if (/^ *$/.test(txt) || t.getSubStringLength(0, txt.length) < w)
+			return;
+
+		for (var x = txt.length - 2; x > 0; x--) {
+			if (t.getSubStringLength(0, x + 2) <= w) {
+				t.textContent = txt.substring(0, x) + "..";
+				return;
+			}
+		}
+		t.textContent = "";
+	}
+
+	// zoom
+	function zoom_reset(e) {
+		if (e.attributes != undefined) {
+			orig_load(e, "x");
+			orig_load(e, "width");
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_reset(c[i]);
+		}
+	}
+	function zoom_child(e, x, ratio) {
+		if (e.attributes != undefined) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = (parseFloat(e.attributes.x.value) - x - 10) * ratio + 10;
+				if (e.tagName == "text")
+					e.attributes.x.value = find_child(e.parentNode, "rect[x]").attributes.x.value + 3;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseFloat(e.attributes.width.value) * ratio;
+			}
+		}
+
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_child(c[i], x - 10, ratio);
+		}
+	}
+	function zoom_parent(e) {
+		if (e.attributes) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = 10;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseInt(svg.width.baseVal.value) - (10 * 2);
+			}
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_parent(c[i]);
+		}
+	}
+	function zoom(node) {
+		var attr = find_child(node, "rect").attributes;
+		var width = parseFloat(attr.width.value);
+		var xmin = parseFloat(attr.x.value);
+		var xmax = parseFloat(xmin + width);
+		var ymin = parseFloat(attr.y.value);
+		var ratio = (svg.width.baseVal.value - 2 * 10) / width;
+
+		// XXX: Workaround for JavaScript float issues (fix me)
+		var fudge = 0.0001;
+
+		unzoombtn.classList.remove("hide");
+
+		var el = document.getElementById("frames").children;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var a = find_child(e, "rect").attributes;
+			var ex = parseFloat(a.x.value);
+			var ew = parseFloat(a.width.value);
+			var upstack;
+			// Is it an ancestor
+			if (0 == 0) {
+				upstack = parseFloat(a.y.value) > ymin;
+			} else {
+				upstack = parseFloat(a.y.value) < ymin;
+			}
+			if (upstack) {
+				// Direct ancestor
+				if (ex <= xmin && (ex+ew+fudge) >= xmax) {
+					e.classList.add("parent");
+					zoom_parent(e);
+					update_text(e);
+				}
+				// not in current path
+				else
+					e.classList.add("hide");
+			}
+			// Children maybe
+			else {
+				// no common path
+				if (ex < xmin || ex + fudge >= xmax) {
+					e.classList.add("hide");
+				}
+				else {
+					zoom_child(e, xmin, ratio);
+					update_text(e);
+				}
+			}
+		}
+		search();
+	}
+	function unzoom() {
+		unzoombtn.classList.add("hide");
+		var el = document.getElementById("frames").children;
+		for(var i = 0; i < el.length; i++) {
+			el[i].classList.remove("parent");
+			el[i].classList.remove("hide");
+			zoom_reset(el[i]);
+			update_text(el[i]);
+		}
+		search();
+	}
+
+	// search
+	function toggle_ignorecase() {
+		ignorecase = !ignorecase;
+		if (ignorecase) {
+			ignorecaseBtn.classList.add("show");
+		} else {
+			ignorecaseBtn.classList.remove("show");
+		}
+		reset_search();
+		search();
+	}
+	function reset_search() {
+		var el = document.querySelectorAll("#frames rect");
+		for (var i = 0; i < el.length; i++) {
+			orig_load(el[i], "fill")
+		}
+	}
+	function search_prompt() {
+		if (!searching) {
+			var term = prompt("Enter a search term (regexp " +
+			    "allowed, eg: ^ext4_)"
+			    + (ignorecase ? ", ignoring case" : "")
+			    + "\nPress Ctrl-i to toggle case sensitivity", "");
+			if (term != null) {
+				currentSearchTerm = term;
+				search();
+			}
+		} else {
+			reset_search();
+			searching = 0;
+			currentSearchTerm = null;
+			searchbtn.classList.remove("show");
+			searchbtn.firstChild.nodeValue = "Search"
+			matchedtxt.classList.add("hide");
+			matchedtxt.firstChild.nodeValue = ""
+		}
+	}
+	function search(term) {
+		if (currentSearchTerm === null) return;
+		var term = currentSearchTerm;
+
+		var re = new RegExp(term, ignorecase ? 'i' : '');
+		var el = document.getElementById("frames").children;
+		var matches = new Object();
+		var maxwidth = 0;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var func = g_to_func(e);
+			var rect = find_child(e, "rect");
+			if (func == null || rect == null)
+				continue;
+
+			// Save max width. Only works as we have a root frame
+			var w = parseFloat(rect.attributes.width.value);
+			if (w > maxwidth)
+				maxwidth = w;
+
+			if (func.match(re)) {
+				// highlight
+				var x = parseFloat(rect.attributes.x.value);
+				orig_save(rect, "fill");
+				rect.attributes.fill.value = "rgb(230,0,230)";
+
+				// remember matches
+				if (matches[x] == undefined) {
+					matches[x] = w;
+				} else {
+					if (w > matches[x]) {
+						// overwrite with parent
+						matches[x] = w;
+					}
+				}
+				searching = 1;
+			}
+		}
+		if (!searching)
+			return;
+
+		searchbtn.classList.add("show");
+		searchbtn.firstChild.nodeValue = "Reset Search";
+
+		// calculate percent matched, excluding vertical overlap
+		var count = 0;
+		var lastx = -1;
+		var lastw = 0;
+		var keys = Array();
+		for (k in matches) {
+			if (matches.hasOwnProperty(k))
+				keys.push(k);
+		}
+		// sort the matched frames by their x location
+		// ascending, then width descending
+		keys.sort(function(a, b){
+			return a - b;
+		});
+		// Step through frames saving only the biggest bottom-up frames
+		// thanks to the sort order. This relies on the tree property
+		// where children are always smaller than their parents.
+		var fudge = 0.0001;	// JavaScript floating point
+		for (var k in keys) {
+			var x = parseFloat(keys[k]);
+			var w = matches[keys[k]];
+			if (x >= lastx + lastw - fudge) {
+				count += w;
+				lastx = x;
+				lastw = w;
+			}
+		}
+		// display matched percent
+		matchedtxt.classList.remove("hide");
+		var pct = 100 * count / maxwidth;
+		if (pct != 100) pct = pct.toFixed(1)
+		matchedtxt.firstChild.nodeValue = "Matched: " + pct + "%";
+	}
+]]>
+</script>
+<rect x="0.0" y="0" width="1200.0" height="2086.0" fill="url(#background)"  />
+<text id="title" x="600.00" y="24" >Flame Graph</text>
+<text id="details" x="10.00" y="2069" > </text>
+<text id="unzoom" x="10.00" y="24" class="hide">Reset Zoom</text>
+<text id="search" x="1090.00" y="24" >Search</text>
+<text id="ignorecase" x="1174.00" y="24" >ic</text>
+<text id="matched" x="1090.00" y="2069" > </text>
+<g id="frames">
+<g >
+<title>hrtimer_interrupt (9 samples, 0.01%)</title><rect x="348.5" y="1941" width="0.1" height="15.0" fill="rgb(235,225,6)" rx="2" ry="2" />
+<text  x="351.49" y="1951.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1461" width="0.1" height="15.0" fill="rgb(228,96,16)" rx="2" ry="2" />
+<text  x="20.27" y="1471.5" ></text>
+</g>
+<g >
+<title>x264_trellis_coef0_0 (14 samples, 0.01%)</title><rect x="1161.0" y="2005" width="0.2" height="15.0" fill="rgb(215,188,26)" rx="2" ry="2" />
+<text  x="1164.04" y="2015.5" ></text>
+</g>
+<g >
+<title>nv50_instobj_rd32_slow (24 samples, 0.02%)</title><rect x="1182.8" y="1685" width="0.3" height="15.0" fill="rgb(239,99,33)" rx="2" ry="2" />
+<text  x="1185.84" y="1695.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1781" width="0.1" height="15.0" fill="rgb(217,2,17)" rx="2" ry="2" />
+<text  x="21.93" y="1791.5" ></text>
+</g>
+<g >
+<title>epoll_wait (10 samples, 0.01%)</title><rect x="18.4" y="1989" width="0.1" height="15.0" fill="rgb(243,124,9)" rx="2" ry="2" />
+<text  x="21.36" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1925" width="0.1" height="15.0" fill="rgb(217,176,21)" rx="2" ry="2" />
+<text  x="20.27" y="1935.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (19 samples, 0.02%)</title><rect x="1184.7" y="1589" width="0.2" height="15.0" fill="rgb(210,80,5)" rx="2" ry="2" />
+<text  x="1187.66" y="1599.5" ></text>
+</g>
+<g >
+<title>tick_sched_timer (25 samples, 0.03%)</title><rect x="289.1" y="1925" width="0.3" height="15.0" fill="rgb(228,59,54)" rx="2" ry="2" />
+<text  x="292.15" y="1935.5" ></text>
+</g>
+<g >
+<title>x264_quant_4x4_trellis (19 samples, 0.02%)</title><rect x="665.4" y="1989" width="0.2" height="15.0" fill="rgb(209,78,36)" rx="2" ry="2" />
+<text  x="668.37" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="533" width="0.1" height="15.0" fill="rgb(215,120,31)" rx="2" ry="2" />
+<text  x="20.27" y="543.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1925" width="0.6" height="15.0" fill="rgb(228,96,25)" rx="2" ry="2" />
+<text  x="14.28" y="1935.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1765" width="0.1" height="15.0" fill="rgb(213,226,38)" rx="2" ry="2" />
+<text  x="16.06" y="1775.5" ></text>
+</g>
+<g >
+<title>shrink_page_list (16 samples, 0.02%)</title><rect x="1181.9" y="1893" width="0.2" height="15.0" fill="rgb(226,150,11)" rx="2" ry="2" />
+<text  x="1184.94" y="1903.5" ></text>
+</g>
+<g >
+<title>nvif_client_suspend (63 samples, 0.06%)</title><rect x="1182.4" y="1829" width="0.7" height="15.0" fill="rgb(249,153,4)" rx="2" ry="2" />
+<text  x="1185.38" y="1839.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1381" width="0.1" height="15.0" fill="rgb(240,189,46)" rx="2" ry="2" />
+<text  x="20.27" y="1391.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (43 samples, 0.04%)</title><rect x="1179.3" y="1957" width="0.5" height="15.0" fill="rgb(248,17,6)" rx="2" ry="2" />
+<text  x="1182.28" y="1967.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1765" width="0.1" height="15.0" fill="rgb(211,116,48)" rx="2" ry="2" />
+<text  x="21.93" y="1775.5" ></text>
+</g>
+<g >
+<title>call_cpuidle (80 samples, 0.08%)</title><rect x="1188.7" y="1877" width="0.9" height="15.0" fill="rgb(238,100,49)" rx="2" ry="2" />
+<text  x="1191.69" y="1887.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1941" width="0.3" height="15.0" fill="rgb(243,220,36)" rx="2" ry="2" />
+<text  x="13.71" y="1951.5" ></text>
+</g>
+<g >
+<title>[slack] (32 samples, 0.03%)</title><rect x="1184.5" y="1781" width="0.4" height="15.0" fill="rgb(216,172,22)" rx="2" ry="2" />
+<text  x="1187.53" y="1791.5" ></text>
+</g>
+<g >
+<title>exit_to_usermode_loop (11 samples, 0.01%)</title><rect x="12.2" y="1973" width="0.1" height="15.0" fill="rgb(228,219,27)" rx="2" ry="2" />
+<text  x="15.19" y="1983.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (95 samples, 0.10%)</title><rect x="48.9" y="1989" width="1.1" height="15.0" fill="rgb(230,135,54)" rx="2" ry="2" />
+<text  x="51.92" y="1999.5" ></text>
+</g>
+<g >
+<title>x264_quant_chroma_dc_trellis (100 samples, 0.10%)</title><rect x="1157.5" y="2005" width="1.2" height="15.0" fill="rgb(245,46,14)" rx="2" ry="2" />
+<text  x="1160.52" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (10 samples, 0.01%)</title><rect x="13.1" y="1797" width="0.1" height="15.0" fill="rgb(239,77,6)" rx="2" ry="2" />
+<text  x="16.06" y="1807.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1749" width="0.1" height="15.0" fill="rgb(249,127,34)" rx="2" ry="2" />
+<text  x="20.27" y="1759.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="485" width="0.1" height="15.0" fill="rgb(246,188,31)" rx="2" ry="2" />
+<text  x="20.27" y="495.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1749" width="0.1" height="15.0" fill="rgb(232,192,34)" rx="2" ry="2" />
+<text  x="21.93" y="1759.5" ></text>
+</g>
+<g >
+<title>__x64_sys_writev (11 samples, 0.01%)</title><rect x="17.6" y="1925" width="0.1" height="15.0" fill="rgb(241,106,16)" rx="2" ry="2" />
+<text  x="20.56" y="1935.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (2,602 samples, 2.62%)</title><rect x="19.2" y="2005" width="31.0" height="15.0" fill="rgb(241,146,3)" rx="2" ry="2" />
+<text  x="22.24" y="2015.5" >[f..</text>
+</g>
+<g >
+<title>ext4_da_write_begin (12 samples, 0.01%)</title><rect x="458.0" y="1813" width="0.1" height="15.0" fill="rgb(206,77,30)" rx="2" ry="2" />
+<text  x="460.98" y="1823.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1157" width="0.1" height="15.0" fill="rgb(242,217,3)" rx="2" ry="2" />
+<text  x="20.27" y="1167.5" ></text>
+</g>
+<g >
+<title>[unknown] (165 samples, 0.17%)</title><rect x="16.6" y="2005" width="1.9" height="15.0" fill="rgb(213,5,11)" rx="2" ry="2" />
+<text  x="19.58" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="917" width="0.1" height="15.0" fill="rgb(250,118,54)" rx="2" ry="2" />
+<text  x="20.27" y="927.5" ></text>
+</g>
+<g >
+<title>path_lookupat (13 samples, 0.01%)</title><rect x="1175.5" y="1877" width="0.2" height="15.0" fill="rgb(236,212,18)" rx="2" ry="2" />
+<text  x="1178.54" y="1887.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1941" width="0.4" height="15.0" fill="rgb(205,73,41)" rx="2" ry="2" />
+<text  x="1187.52" y="1951.5" ></text>
+</g>
+<g >
+<title>[slack] (31 samples, 0.03%)</title><rect x="1184.5" y="1717" width="0.4" height="15.0" fill="rgb(243,69,21)" rx="2" ry="2" />
+<text  x="1187.53" y="1727.5" ></text>
+</g>
+<g >
+<title>x264_quant_8x8_trellis (80 samples, 0.08%)</title><rect x="1156.6" y="2005" width="0.9" height="15.0" fill="rgb(221,206,33)" rx="2" ry="2" />
+<text  x="1159.57" y="2015.5" ></text>
+</g>
+<g >
+<title>i915_gem_execbuffer2_ioctl (13 samples, 0.01%)</title><rect x="17.4" y="1845" width="0.1" height="15.0" fill="rgb(213,202,50)" rx="2" ry="2" />
+<text  x="20.39" y="1855.5" ></text>
+</g>
+<g >
+<title>WRScene~ilder#1 (10 samples, 0.01%)</title><rect x="13.9" y="2021" width="0.1" height="15.0" fill="rgb(219,128,24)" rx="2" ry="2" />
+<text  x="16.91" y="2031.5" ></text>
+</g>
+<g >
+<title>alloc_pages_vma (16 samples, 0.02%)</title><rect x="678.0" y="1893" width="0.2" height="15.0" fill="rgb(244,87,4)" rx="2" ry="2" />
+<text  x="681.00" y="1903.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1845" width="0.1" height="15.0" fill="rgb(232,213,7)" rx="2" ry="2" />
+<text  x="20.27" y="1855.5" ></text>
+</g>
+<g >
+<title>x264_frame_deblock_row (104 samples, 0.10%)</title><rect x="1051.3" y="2005" width="1.3" height="15.0" fill="rgb(221,103,13)" rx="2" ry="2" />
+<text  x="1054.32" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="133" width="0.1" height="15.0" fill="rgb(231,26,3)" rx="2" ry="2" />
+<text  x="20.27" y="143.5" ></text>
+</g>
+<g >
+<title>unmap_vmas (11 samples, 0.01%)</title><rect x="12.2" y="1861" width="0.1" height="15.0" fill="rgb(208,191,39)" rx="2" ry="2" />
+<text  x="15.19" y="1871.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="565" width="0.1" height="15.0" fill="rgb(217,90,27)" rx="2" ry="2" />
+<text  x="20.27" y="575.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv_direct16x16 (187 samples, 0.19%)</title><rect x="1105.5" y="2005" width="2.2" height="15.0" fill="rgb(218,20,19)" rx="2" ry="2" />
+<text  x="1108.46" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (45 samples, 0.05%)</title><rect x="11.3" y="1749" width="0.6" height="15.0" fill="rgb(227,96,43)" rx="2" ry="2" />
+<text  x="14.33" y="1759.5" ></text>
+</g>
+<g >
+<title>nvkm_device_init (12 samples, 0.01%)</title><rect x="18.0" y="1669" width="0.2" height="15.0" fill="rgb(254,223,20)" rx="2" ry="2" />
+<text  x="21.03" y="1679.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="421" width="0.1" height="15.0" fill="rgb(247,183,6)" rx="2" ry="2" />
+<text  x="20.27" y="431.5" ></text>
+</g>
+<g >
+<title>[libgobject-2.0.so.0.5600.4] (26 samples, 0.03%)</title><rect x="1176.9" y="1989" width="0.3" height="15.0" fill="rgb(222,10,50)" rx="2" ry="2" />
+<text  x="1179.92" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (41 samples, 0.04%)</title><rect x="1177.6" y="1973" width="0.5" height="15.0" fill="rgb(240,131,5)" rx="2" ry="2" />
+<text  x="1180.64" y="1983.5" ></text>
+</g>
+<g >
+<title>do_writev (10 samples, 0.01%)</title><rect x="17.6" y="1909" width="0.1" height="15.0" fill="rgb(244,213,16)" rx="2" ry="2" />
+<text  x="20.56" y="1919.5" ></text>
+</g>
+<g >
+<title>nvkm_client_resume (12 samples, 0.01%)</title><rect x="18.0" y="1749" width="0.2" height="15.0" fill="rgb(223,109,15)" rx="2" ry="2" />
+<text  x="21.03" y="1759.5" ></text>
+</g>
+<g >
+<title>migrate_pages (58 samples, 0.06%)</title><rect x="611.0" y="1765" width="0.7" height="15.0" fill="rgb(243,88,27)" rx="2" ry="2" />
+<text  x="614.01" y="1775.5" ></text>
+</g>
+<g >
+<title>[Discord] (50 samples, 0.05%)</title><rect x="11.3" y="1989" width="0.6" height="15.0" fill="rgb(243,177,14)" rx="2" ry="2" />
+<text  x="14.28" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1989" width="0.2" height="15.0" fill="rgb(226,81,34)" rx="2" ry="2" />
+<text  x="16.03" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (65 samples, 0.07%)</title><rect x="10.5" y="2005" width="0.7" height="15.0" fill="rgb(212,3,3)" rx="2" ry="2" />
+<text  x="13.45" y="2015.5" ></text>
+</g>
+<g >
+<title>try_to_unmap (9 samples, 0.01%)</title><rect x="611.5" y="1749" width="0.1" height="15.0" fill="rgb(224,2,19)" rx="2" ry="2" />
+<text  x="614.53" y="1759.5" ></text>
+</g>
+<g >
+<title>Renderer (12 samples, 0.01%)</title><rect x="13.2" y="2021" width="0.2" height="15.0" fill="rgb(246,171,30)" rx="2" ry="2" />
+<text  x="16.22" y="2031.5" ></text>
+</g>
+<g >
+<title>cpuidle_enter_state (80 samples, 0.08%)</title><rect x="1188.7" y="1845" width="0.9" height="15.0" fill="rgb(226,176,33)" rx="2" ry="2" />
+<text  x="1191.69" y="1855.5" ></text>
+</g>
+<g >
+<title>git_thread (78 samples, 0.08%)</title><rect x="1174.9" y="2021" width="0.9" height="15.0" fill="rgb(243,210,20)" rx="2" ry="2" />
+<text  x="1177.92" y="2031.5" ></text>
+</g>
+<g >
+<title>[libxul.so] (40 samples, 0.04%)</title><rect x="14.9" y="1989" width="0.5" height="15.0" fill="rgb(216,213,32)" rx="2" ry="2" />
+<text  x="17.90" y="1999.5" ></text>
+</g>
+<g >
+<title>nvkm_devinit_post (10 samples, 0.01%)</title><rect x="18.0" y="1653" width="0.1" height="15.0" fill="rgb(215,180,14)" rx="2" ry="2" />
+<text  x="21.03" y="1663.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="933" width="0.1" height="15.0" fill="rgb(252,169,49)" rx="2" ry="2" />
+<text  x="20.27" y="943.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (10 samples, 0.01%)</title><rect x="13.7" y="1973" width="0.1" height="15.0" fill="rgb(241,26,6)" rx="2" ry="2" />
+<text  x="16.72" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (1,108 samples, 1.12%)</title><rect x="444.6" y="1989" width="13.2" height="15.0" fill="rgb(224,192,23)" rx="2" ry="2" />
+<text  x="447.62" y="1999.5" ></text>
+</g>
+<g >
+<title>drm_ioctl_kernel (13 samples, 0.01%)</title><rect x="17.4" y="1861" width="0.1" height="15.0" fill="rgb(253,193,39)" rx="2" ry="2" />
+<text  x="20.39" y="1871.5" ></text>
+</g>
+<g >
+<title>[perf-1251.map] (9 samples, 0.01%)</title><rect x="1179.3" y="1829" width="0.1" height="15.0" fill="rgb(215,184,45)" rx="2" ry="2" />
+<text  x="1182.33" y="1839.5" ></text>
+</g>
+<g >
+<title>v8::internal::Execution::Call (19 samples, 0.02%)</title><rect x="1184.7" y="1653" width="0.2" height="15.0" fill="rgb(245,106,40)" rx="2" ry="2" />
+<text  x="1187.66" y="1663.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_cache_save (226 samples, 0.23%)</title><rect x="1063.9" y="2005" width="2.7" height="15.0" fill="rgb(231,18,11)" rx="2" ry="2" />
+<text  x="1066.94" y="2015.5" ></text>
+</g>
+<g >
+<title>[libxul.so] (55 samples, 0.06%)</title><rect x="14.2" y="2005" width="0.7" height="15.0" fill="rgb(210,62,21)" rx="2" ry="2" />
+<text  x="17.21" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1701" width="0.1" height="15.0" fill="rgb(242,18,31)" rx="2" ry="2" />
+<text  x="20.27" y="1711.5" ></text>
+</g>
+<g >
+<title>cpu_startup_entry (292 samples, 0.29%)</title><rect x="1185.2" y="1973" width="3.5" height="15.0" fill="rgb(246,210,36)" rx="2" ry="2" />
+<text  x="1188.22" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="469" width="0.1" height="15.0" fill="rgb(231,19,50)" rx="2" ry="2" />
+<text  x="20.27" y="479.5" ></text>
+</g>
+<g >
+<title>[unknown] (72 samples, 0.07%)</title><rect x="14.9" y="2005" width="0.8" height="15.0" fill="rgb(228,179,49)" rx="2" ry="2" />
+<text  x="17.88" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1509" width="0.1" height="15.0" fill="rgb(213,126,30)" rx="2" ry="2" />
+<text  x="20.27" y="1519.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1445" width="0.1" height="15.0" fill="rgb(242,135,27)" rx="2" ry="2" />
+<text  x="20.27" y="1455.5" ></text>
+</g>
+<g >
+<title>[unknown] (13 samples, 0.01%)</title><rect x="1181.4" y="2005" width="0.2" height="15.0" fill="rgb(249,172,31)" rx="2" ry="2" />
+<text  x="1184.44" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="981" width="0.1" height="15.0" fill="rgb(222,62,17)" rx="2" ry="2" />
+<text  x="20.27" y="991.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1877" width="0.1" height="15.0" fill="rgb(219,93,44)" rx="2" ry="2" />
+<text  x="21.93" y="1887.5" ></text>
+</g>
+<g >
+<title>swapgs_restore_regs_and_return_to_usermode (9 samples, 0.01%)</title><rect x="289.9" y="1989" width="0.1" height="15.0" fill="rgb(216,197,16)" rx="2" ry="2" />
+<text  x="292.93" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="389" width="0.1" height="15.0" fill="rgb(206,83,39)" rx="2" ry="2" />
+<text  x="20.27" y="399.5" ></text>
+</g>
+<g >
+<title>do_page_fault (24 samples, 0.02%)</title><rect x="677.9" y="1973" width="0.3" height="15.0" fill="rgb(239,84,29)" rx="2" ry="2" />
+<text  x="680.94" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (230 samples, 0.23%)</title><rect x="345.7" y="1957" width="2.8" height="15.0" fill="rgb(242,185,54)" rx="2" ry="2" />
+<text  x="348.74" y="1967.5" ></text>
+</g>
+<g >
+<title>ondemand_readahead (10 samples, 0.01%)</title><rect x="457.8" y="1813" width="0.2" height="15.0" fill="rgb(228,163,11)" rx="2" ry="2" />
+<text  x="460.85" y="1823.5" ></text>
+</g>
+<g >
+<title>__x64_sys_write (17 samples, 0.02%)</title><rect x="458.0" y="1941" width="0.2" height="15.0" fill="rgb(250,46,20)" rx="2" ry="2" />
+<text  x="460.96" y="1951.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1685" width="0.1" height="15.0" fill="rgb(225,7,33)" rx="2" ry="2" />
+<text  x="20.27" y="1695.5" ></text>
+</g>
+<g >
+<title>[Discord] (10 samples, 0.01%)</title><rect x="13.1" y="1813" width="0.1" height="15.0" fill="rgb(216,87,17)" rx="2" ry="2" />
+<text  x="16.06" y="1823.5" ></text>
+</g>
+<g >
+<title>[unknown] (15 samples, 0.02%)</title><rect x="1174.7" y="2005" width="0.2" height="15.0" fill="rgb(229,184,23)" rx="2" ry="2" />
+<text  x="1177.69" y="2015.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (11 samples, 0.01%)</title><rect x="348.5" y="1973" width="0.1" height="15.0" fill="rgb(219,2,6)" rx="2" ry="2" />
+<text  x="351.48" y="1983.5" ></text>
+</g>
+<g >
+<title>intel_idle (75 samples, 0.08%)</title><rect x="1188.8" y="1829" width="0.8" height="15.0" fill="rgb(210,72,24)" rx="2" ry="2" />
+<text  x="1191.75" y="1839.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1829" width="0.2" height="15.0" fill="rgb(206,60,16)" rx="2" ry="2" />
+<text  x="16.03" y="1839.5" ></text>
+</g>
+<g >
+<title>v8::Function::Call (19 samples, 0.02%)</title><rect x="1184.7" y="1669" width="0.2" height="15.0" fill="rgb(227,43,1)" rx="2" ry="2" />
+<text  x="1187.66" y="1679.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (13 samples, 0.01%)</title><rect x="17.4" y="1957" width="0.1" height="15.0" fill="rgb(226,188,14)" rx="2" ry="2" />
+<text  x="20.39" y="1967.5" ></text>
+</g>
+<g >
+<title>__poll (12 samples, 0.01%)</title><rect x="15.8" y="2005" width="0.1" height="15.0" fill="rgb(217,62,41)" rx="2" ry="2" />
+<text  x="18.79" y="2015.5" ></text>
+</g>
+<g >
+<title>alloc_pages_vma (9 samples, 0.01%)</title><rect x="1050.3" y="1893" width="0.2" height="15.0" fill="rgb(225,17,30)" rx="2" ry="2" />
+<text  x="1053.35" y="1903.5" ></text>
+</g>
+<g >
+<title>pci_pm_runtime_resume (12 samples, 0.01%)</title><rect x="18.0" y="1813" width="0.2" height="15.0" fill="rgb(254,116,37)" rx="2" ry="2" />
+<text  x="21.03" y="1823.5" ></text>
+</g>
+<g >
+<title>[unknown] (13 samples, 0.01%)</title><rect x="1181.0" y="1989" width="0.2" height="15.0" fill="rgb(239,90,13)" rx="2" ry="2" />
+<text  x="1184.01" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1781" width="0.1" height="15.0" fill="rgb(227,199,44)" rx="2" ry="2" />
+<text  x="16.06" y="1791.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1797" width="0.1" height="15.0" fill="rgb(216,185,42)" rx="2" ry="2" />
+<text  x="21.93" y="1807.5" ></text>
+</g>
+<g >
+<title>[unknown] (32,592 samples, 32.85%)</title><rect x="290.0" y="2005" width="387.7" height="15.0" fill="rgb(216,158,21)" rx="2" ry="2" />
+<text  x="293.04" y="2015.5" >[unknown]</text>
+</g>
+<g >
+<title>do_exit (11 samples, 0.01%)</title><rect x="12.2" y="1909" width="0.1" height="15.0" fill="rgb(234,33,27)" rx="2" ry="2" />
+<text  x="15.19" y="1919.5" ></text>
+</g>
+<g >
+<title>generic_file_read_iter (13 samples, 0.01%)</title><rect x="457.8" y="1845" width="0.2" height="15.0" fill="rgb(243,135,17)" rx="2" ry="2" />
+<text  x="460.81" y="1855.5" ></text>
+</g>
+<g >
+<title>[perf-1251.map] (28 samples, 0.03%)</title><rect x="1179.4" y="1877" width="0.4" height="15.0" fill="rgb(218,138,6)" rx="2" ry="2" />
+<text  x="1182.44" y="1887.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (16 samples, 0.02%)</title><rect x="1179.5" y="1765" width="0.2" height="15.0" fill="rgb(248,40,6)" rx="2" ry="2" />
+<text  x="1182.51" y="1775.5" ></text>
+</g>
+<g >
+<title>__rpm_callback (63 samples, 0.06%)</title><rect x="1182.4" y="1893" width="0.7" height="15.0" fill="rgb(250,68,29)" rx="2" ry="2" />
+<text  x="1185.38" y="1903.5" ></text>
+</g>
+<g >
+<title>x264_trellis_coef0_1 (34 samples, 0.03%)</title><rect x="674.5" y="1989" width="0.5" height="15.0" fill="rgb(249,52,17)" rx="2" ry="2" />
+<text  x="677.55" y="1999.5" ></text>
+</g>
+<g >
+<title>Web_Content (165 samples, 0.17%)</title><rect x="14.1" y="2021" width="2.0" height="15.0" fill="rgb(222,113,11)" rx="2" ry="2" />
+<text  x="17.12" y="2031.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (35 samples, 0.04%)</title><rect x="1176.1" y="1925" width="0.4" height="15.0" fill="rgb(217,149,29)" rx="2" ry="2" />
+<text  x="1179.10" y="1935.5" ></text>
+</g>
+<g >
+<title>schedule (9 samples, 0.01%)</title><rect x="458.3" y="1877" width="0.1" height="15.0" fill="rgb(253,102,40)" rx="2" ry="2" />
+<text  x="461.26" y="1887.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1733" width="0.1" height="15.0" fill="rgb(213,226,40)" rx="2" ry="2" />
+<text  x="20.27" y="1743.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1525" width="0.1" height="15.0" fill="rgb(222,106,51)" rx="2" ry="2" />
+<text  x="20.27" y="1535.5" ></text>
+</g>
+<g >
+<title>[unknown] (16 samples, 0.02%)</title><rect x="12.7" y="2005" width="0.2" height="15.0" fill="rgb(243,220,25)" rx="2" ry="2" />
+<text  x="15.68" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (38 samples, 0.04%)</title><rect x="11.4" y="1349" width="0.4" height="15.0" fill="rgb(212,70,6)" rx="2" ry="2" />
+<text  x="14.36" y="1359.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1941" width="0.1" height="15.0" fill="rgb(234,34,33)" rx="2" ry="2" />
+<text  x="20.27" y="1951.5" ></text>
+</g>
+<g >
+<title>__hrtimer_run_queues (42 samples, 0.04%)</title><rect x="1049.6" y="1941" width="0.5" height="15.0" fill="rgb(231,205,4)" rx="2" ry="2" />
+<text  x="1052.60" y="1951.5" ></text>
+</g>
+<g >
+<title>shrink_node (34 samples, 0.03%)</title><rect x="1181.9" y="1941" width="0.4" height="15.0" fill="rgb(217,221,4)" rx="2" ry="2" />
+<text  x="1184.91" y="1951.5" ></text>
+</g>
+<g >
+<title>[Discord] (15 samples, 0.02%)</title><rect x="10.8" y="1717" width="0.2" height="15.0" fill="rgb(217,164,5)" rx="2" ry="2" />
+<text  x="13.79" y="1727.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1349" width="0.1" height="15.0" fill="rgb(239,3,28)" rx="2" ry="2" />
+<text  x="20.27" y="1359.5" ></text>
+</g>
+<g >
+<title>drm_ioctl_kernel (10 samples, 0.01%)</title><rect x="1178.1" y="1861" width="0.2" height="15.0" fill="rgb(246,185,34)" rx="2" ry="2" />
+<text  x="1181.14" y="1871.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1333" width="0.1" height="15.0" fill="rgb(219,184,0)" rx="2" ry="2" />
+<text  x="20.27" y="1343.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (27 samples, 0.03%)</title><rect x="1175.4" y="1973" width="0.4" height="15.0" fill="rgb(208,130,32)" rx="2" ry="2" />
+<text  x="1178.44" y="1983.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (35 samples, 0.04%)</title><rect x="1176.1" y="1893" width="0.4" height="15.0" fill="rgb(213,46,43)" rx="2" ry="2" />
+<text  x="1179.10" y="1903.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1717" width="0.1" height="15.0" fill="rgb(222,182,51)" rx="2" ry="2" />
+<text  x="16.06" y="1727.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_nodemask (10 samples, 0.01%)</title><rect x="610.8" y="1877" width="0.1" height="15.0" fill="rgb(251,121,7)" rx="2" ry="2" />
+<text  x="613.83" y="1887.5" ></text>
+</g>
+<g >
+<title>nvkm_subdev_fini (63 samples, 0.06%)</title><rect x="1182.4" y="1733" width="0.7" height="15.0" fill="rgb(214,228,51)" rx="2" ry="2" />
+<text  x="1185.38" y="1743.5" ></text>
+</g>
+<g >
+<title>[perf-21880.map] (43 samples, 0.04%)</title><rect x="11.3" y="1573" width="0.6" height="15.0" fill="rgb(250,220,41)" rx="2" ry="2" />
+<text  x="14.34" y="1583.5" ></text>
+</g>
+<g >
+<title>do_signal (11 samples, 0.01%)</title><rect x="12.2" y="1957" width="0.1" height="15.0" fill="rgb(214,68,39)" rx="2" ry="2" />
+<text  x="15.19" y="1967.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1829" width="0.1" height="15.0" fill="rgb(235,174,15)" rx="2" ry="2" />
+<text  x="21.93" y="1839.5" ></text>
+</g>
+<g >
+<title>drm_ioctl (13 samples, 0.01%)</title><rect x="17.4" y="1877" width="0.1" height="15.0" fill="rgb(253,128,10)" rx="2" ry="2" />
+<text  x="20.39" y="1887.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1893" width="0.1" height="15.0" fill="rgb(236,24,6)" rx="2" ry="2" />
+<text  x="21.93" y="1903.5" ></text>
+</g>
+<g >
+<title>compact_zone (16 samples, 0.02%)</title><rect x="678.0" y="1797" width="0.2" height="15.0" fill="rgb(237,70,2)" rx="2" ry="2" />
+<text  x="681.00" y="1807.5" ></text>
+</g>
+<g >
+<title>__x64_sys_read (13 samples, 0.01%)</title><rect x="457.8" y="1941" width="0.2" height="15.0" fill="rgb(253,155,40)" rx="2" ry="2" />
+<text  x="460.81" y="1951.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1221" width="0.1" height="15.0" fill="rgb(230,105,23)" rx="2" ry="2" />
+<text  x="20.27" y="1231.5" ></text>
+</g>
+<g >
+<title>kswapd0 (37 samples, 0.04%)</title><rect x="1181.9" y="2021" width="0.5" height="15.0" fill="rgb(218,152,12)" rx="2" ry="2" />
+<text  x="1184.91" y="2031.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1477" width="0.1" height="15.0" fill="rgb(246,32,46)" rx="2" ry="2" />
+<text  x="20.27" y="1487.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1845" width="0.4" height="15.0" fill="rgb(232,72,53)" rx="2" ry="2" />
+<text  x="1187.52" y="1855.5" ></text>
+</g>
+<g >
+<title>[slack] (30 samples, 0.03%)</title><rect x="1184.5" y="1685" width="0.4" height="15.0" fill="rgb(242,10,38)" rx="2" ry="2" />
+<text  x="1187.53" y="1695.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_cache_load_progressive (24 samples, 0.02%)</title><rect x="618.8" y="1989" width="0.2" height="15.0" fill="rgb(249,65,4)" rx="2" ry="2" />
+<text  x="621.76" y="1999.5" ></text>
+</g>
+<g >
+<title>scheduler_tick (18 samples, 0.02%)</title><rect x="1049.9" y="1877" width="0.2" height="15.0" fill="rgb(214,25,50)" rx="2" ry="2" />
+<text  x="1052.87" y="1887.5" ></text>
+</g>
+<g >
+<title>compaction_alloc (21 samples, 0.02%)</title><rect x="611.1" y="1749" width="0.2" height="15.0" fill="rgb(208,77,42)" rx="2" ry="2" />
+<text  x="614.07" y="1759.5" ></text>
+</g>
+<g >
+<title>__pm_runtime_resume (14 samples, 0.01%)</title><rect x="18.0" y="1877" width="0.2" height="15.0" fill="rgb(254,134,46)" rx="2" ry="2" />
+<text  x="21.03" y="1887.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1109" width="0.1" height="15.0" fill="rgb(207,48,5)" rx="2" ry="2" />
+<text  x="20.27" y="1119.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1925" width="0.3" height="15.0" fill="rgb(243,154,54)" rx="2" ry="2" />
+<text  x="13.71" y="1935.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1845" width="0.1" height="15.0" fill="rgb(244,112,28)" rx="2" ry="2" />
+<text  x="21.93" y="1855.5" ></text>
+</g>
+<g >
+<title>InputThread (16 samples, 0.02%)</title><rect x="12.7" y="2021" width="0.2" height="15.0" fill="rgb(242,122,25)" rx="2" ry="2" />
+<text  x="15.68" y="2031.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (10 samples, 0.01%)</title><rect x="13.7" y="1989" width="0.1" height="15.0" fill="rgb(245,107,50)" rx="2" ry="2" />
+<text  x="16.72" y="1999.5" ></text>
+</g>
+<g >
+<title>vfs_statx (21 samples, 0.02%)</title><rect x="1175.5" y="1925" width="0.3" height="15.0" fill="rgb(254,26,35)" rx="2" ry="2" />
+<text  x="1178.51" y="1935.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1317" width="0.1" height="15.0" fill="rgb(213,73,51)" rx="2" ry="2" />
+<text  x="20.27" y="1327.5" ></text>
+</g>
+<g >
+<title>x264_trellis_bnode_1 (19 samples, 0.02%)</title><rect x="672.3" y="1989" width="0.2" height="15.0" fill="rgb(221,50,24)" rx="2" ry="2" />
+<text  x="675.28" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1861" width="0.3" height="15.0" fill="rgb(252,114,11)" rx="2" ry="2" />
+<text  x="13.71" y="1871.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_nodemask (16 samples, 0.02%)</title><rect x="678.0" y="1877" width="0.2" height="15.0" fill="rgb(247,65,19)" rx="2" ry="2" />
+<text  x="681.00" y="1887.5" ></text>
+</g>
+<g >
+<title>[Xorg] (10 samples, 0.01%)</title><rect x="16.8" y="1989" width="0.1" height="15.0" fill="rgb(245,216,4)" rx="2" ry="2" />
+<text  x="19.76" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="357" width="0.1" height="15.0" fill="rgb(223,226,23)" rx="2" ry="2" />
+<text  x="20.27" y="367.5" ></text>
+</g>
+<g >
+<title>[unknown] (13 samples, 0.01%)</title><rect x="17.2" y="1973" width="0.2" height="15.0" fill="rgb(252,114,34)" rx="2" ry="2" />
+<text  x="20.23" y="1983.5" ></text>
+</g>
+<g >
+<title>nvkm_client_suspend (63 samples, 0.06%)</title><rect x="1182.4" y="1813" width="0.7" height="15.0" fill="rgb(206,225,20)" rx="2" ry="2" />
+<text  x="1185.38" y="1823.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (13 samples, 0.01%)</title><rect x="457.8" y="1973" width="0.2" height="15.0" fill="rgb(254,26,18)" rx="2" ry="2" />
+<text  x="460.81" y="1983.5" ></text>
+</g>
+<g >
+<title>prepare_exit_to_usermode (14 samples, 0.01%)</title><rect x="1050.6" y="1973" width="0.2" height="15.0" fill="rgb(249,61,41)" rx="2" ry="2" />
+<text  x="1053.62" y="1983.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (16 samples, 0.02%)</title><rect x="450.6" y="1957" width="0.2" height="15.0" fill="rgb(212,22,45)" rx="2" ry="2" />
+<text  x="453.61" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1861" width="0.1" height="15.0" fill="rgb(207,183,34)" rx="2" ry="2" />
+<text  x="20.27" y="1871.5" ></text>
+</g>
+<g >
+<title>nvkm_device_fini (63 samples, 0.06%)</title><rect x="1182.4" y="1749" width="0.7" height="15.0" fill="rgb(235,161,0)" rx="2" ry="2" />
+<text  x="1185.38" y="1759.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv_ref16x16 (15 samples, 0.02%)</title><rect x="1107.7" y="2005" width="0.2" height="15.0" fill="rgb(246,160,20)" rx="2" ry="2" />
+<text  x="1110.72" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1269" width="0.1" height="15.0" fill="rgb(228,222,48)" rx="2" ry="2" />
+<text  x="20.27" y="1279.5" ></text>
+</g>
+<g >
+<title>__handle_mm_fault (15 samples, 0.02%)</title><rect x="1050.3" y="1925" width="0.2" height="15.0" fill="rgb(228,191,0)" rx="2" ry="2" />
+<text  x="1053.31" y="1935.5" ></text>
+</g>
+<g >
+<title>ffmpeg (97,062 samples, 97.84%)</title><rect x="19.2" y="2021" width="1154.5" height="15.0" fill="rgb(232,73,47)" rx="2" ry="2" />
+<text  x="22.24" y="2031.5" >ffmpeg</text>
+</g>
+<g >
+<title>__alloc_pages_slowpath (16 samples, 0.02%)</title><rect x="678.0" y="1861" width="0.2" height="15.0" fill="rgb(230,18,43)" rx="2" ry="2" />
+<text  x="681.00" y="1871.5" ></text>
+</g>
+<g >
+<title>v8::internal::Execution::Call (44 samples, 0.04%)</title><rect x="11.3" y="1653" width="0.6" height="15.0" fill="rgb(243,70,17)" rx="2" ry="2" />
+<text  x="14.33" y="1663.5" ></text>
+</g>
+<g >
+<title>tick_sched_timer (28 samples, 0.03%)</title><rect x="1049.8" y="1925" width="0.3" height="15.0" fill="rgb(254,223,19)" rx="2" ry="2" />
+<text  x="1052.75" y="1935.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1957" width="0.3" height="15.0" fill="rgb(241,205,44)" rx="2" ry="2" />
+<text  x="13.71" y="1967.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1845" width="0.2" height="15.0" fill="rgb(237,138,37)" rx="2" ry="2" />
+<text  x="16.03" y="1855.5" ></text>
+</g>
+<g >
+<title>[Discord] (48 samples, 0.05%)</title><rect x="11.3" y="1813" width="0.6" height="15.0" fill="rgb(249,59,28)" rx="2" ry="2" />
+<text  x="14.30" y="1823.5" ></text>
+</g>
+<g >
+<title>IPDL_Background (17 samples, 0.02%)</title><rect x="12.4" y="2021" width="0.2" height="15.0" fill="rgb(246,46,31)" rx="2" ry="2" />
+<text  x="15.44" y="2031.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="277" width="0.1" height="15.0" fill="rgb(247,226,22)" rx="2" ry="2" />
+<text  x="20.27" y="287.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1957" width="0.1" height="15.0" fill="rgb(242,94,29)" rx="2" ry="2" />
+<text  x="21.93" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (79 samples, 0.08%)</title><rect x="1177.5" y="1989" width="1.0" height="15.0" fill="rgb(234,55,31)" rx="2" ry="2" />
+<text  x="1180.51" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1541" width="0.1" height="15.0" fill="rgb(209,203,21)" rx="2" ry="2" />
+<text  x="20.27" y="1551.5" ></text>
+</g>
+<g >
+<title>prepare_exit_to_usermode (9 samples, 0.01%)</title><rect x="289.9" y="1973" width="0.1" height="15.0" fill="rgb(214,56,35)" rx="2" ry="2" />
+<text  x="292.93" y="1983.5" ></text>
+</g>
+<g >
+<title>[Discord] (39 samples, 0.04%)</title><rect x="11.3" y="1445" width="0.5" height="15.0" fill="rgb(243,63,8)" rx="2" ry="2" />
+<text  x="14.34" y="1455.5" ></text>
+</g>
+<g >
+<title>do_iter_write (9 samples, 0.01%)</title><rect x="17.6" y="1877" width="0.1" height="15.0" fill="rgb(226,175,51)" rx="2" ry="2" />
+<text  x="20.58" y="1887.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="629" width="0.1" height="15.0" fill="rgb(243,107,43)" rx="2" ry="2" />
+<text  x="20.27" y="639.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="373" width="0.1" height="15.0" fill="rgb(240,50,15)" rx="2" ry="2" />
+<text  x="20.27" y="383.5" ></text>
+</g>
+<g >
+<title>[perf-21880.map] (43 samples, 0.04%)</title><rect x="11.3" y="1493" width="0.6" height="15.0" fill="rgb(208,62,37)" rx="2" ry="2" />
+<text  x="14.34" y="1503.5" ></text>
+</g>
+<g >
+<title>do_futex (11 samples, 0.01%)</title><rect x="458.3" y="1925" width="0.1" height="15.0" fill="rgb(214,46,38)" rx="2" ry="2" />
+<text  x="461.26" y="1935.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (17 samples, 0.02%)</title><rect x="1179.5" y="1813" width="0.2" height="15.0" fill="rgb(228,198,6)" rx="2" ry="2" />
+<text  x="1182.51" y="1823.5" ></text>
+</g>
+<g >
+<title>[slack] (30 samples, 0.03%)</title><rect x="1184.5" y="1701" width="0.4" height="15.0" fill="rgb(248,73,49)" rx="2" ry="2" />
+<text  x="1187.53" y="1711.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1557" width="0.1" height="15.0" fill="rgb(239,83,37)" rx="2" ry="2" />
+<text  x="20.27" y="1567.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1141" width="0.1" height="15.0" fill="rgb(251,143,44)" rx="2" ry="2" />
+<text  x="20.27" y="1151.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="805" width="0.1" height="15.0" fill="rgb(209,50,48)" rx="2" ry="2" />
+<text  x="20.27" y="815.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (283 samples, 0.29%)</title><rect x="342.3" y="1973" width="3.4" height="15.0" fill="rgb(242,116,34)" rx="2" ry="2" />
+<text  x="345.29" y="1983.5" ></text>
+</g>
+<g >
+<title>smp_apic_timer_interrupt (10 samples, 0.01%)</title><rect x="500.8" y="1957" width="0.1" height="15.0" fill="rgb(248,129,5)" rx="2" ry="2" />
+<text  x="503.76" y="1967.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_write_cabac (356 samples, 0.36%)</title><rect x="1080.0" y="2005" width="4.2" height="15.0" fill="rgb(232,3,49)" rx="2" ry="2" />
+<text  x="1082.99" y="2015.5" ></text>
+</g>
+<g >
+<title>x264_me_refine_bidir_satd (422 samples, 0.43%)</title><rect x="1107.9" y="2005" width="5.0" height="15.0" fill="rgb(234,218,12)" rx="2" ry="2" />
+<text  x="1110.89" y="2015.5" ></text>
+</g>
+<g >
+<title>do_huge_pmd_anonymous_page (68 samples, 0.07%)</title><rect x="610.9" y="1893" width="0.9" height="15.0" fill="rgb(232,195,1)" rx="2" ry="2" />
+<text  x="613.95" y="1903.5" ></text>
+</g>
+<g >
+<title>cpuidle_enter (80 samples, 0.08%)</title><rect x="1188.7" y="1861" width="0.9" height="15.0" fill="rgb(234,211,10)" rx="2" ry="2" />
+<text  x="1191.69" y="1871.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1909" width="0.4" height="15.0" fill="rgb(249,73,5)" rx="2" ry="2" />
+<text  x="1187.52" y="1919.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (9 samples, 0.01%)</title><rect x="18.4" y="1973" width="0.1" height="15.0" fill="rgb(233,182,51)" rx="2" ry="2" />
+<text  x="21.37" y="1983.5" ></text>
+</g>
+<g >
+<title>nvkm_object_fini (63 samples, 0.06%)</title><rect x="1182.4" y="1781" width="0.7" height="15.0" fill="rgb(221,134,39)" rx="2" ry="2" />
+<text  x="1185.38" y="1791.5" ></text>
+</g>
+<g >
+<title>[Discord] (50 samples, 0.05%)</title><rect x="11.3" y="1957" width="0.6" height="15.0" fill="rgb(253,195,16)" rx="2" ry="2" />
+<text  x="14.28" y="1967.5" ></text>
+</g>
+<g >
+<title>nvbios_post (10 samples, 0.01%)</title><rect x="18.0" y="1621" width="0.1" height="15.0" fill="rgb(206,27,51)" rx="2" ry="2" />
+<text  x="21.03" y="1631.5" ></text>
+</g>
+<g >
+<title>x264_predict_4x4_h_c (15 samples, 0.02%)</title><rect x="665.2" y="1989" width="0.2" height="15.0" fill="rgb(220,106,39)" rx="2" ry="2" />
+<text  x="668.17" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1813" width="0.1" height="15.0" fill="rgb(211,205,36)" rx="2" ry="2" />
+<text  x="20.27" y="1823.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1253" width="0.1" height="15.0" fill="rgb(231,162,30)" rx="2" ry="2" />
+<text  x="20.27" y="1263.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="949" width="0.1" height="15.0" fill="rgb(245,142,42)" rx="2" ry="2" />
+<text  x="20.27" y="959.5" ></text>
+</g>
+<g >
+<title>ret_from_fork (63 samples, 0.06%)</title><rect x="1182.4" y="2005" width="0.7" height="15.0" fill="rgb(215,120,44)" rx="2" ry="2" />
+<text  x="1185.38" y="2015.5" ></text>
+</g>
+<g >
+<title>IPC_I/O_Parent (10 samples, 0.01%)</title><rect x="12.3" y="2021" width="0.1" height="15.0" fill="rgb(213,28,3)" rx="2" ry="2" />
+<text  x="15.32" y="2031.5" ></text>
+</g>
+<g >
+<title>x264_quant_4x4_trellis (536 samples, 0.54%)</title><rect x="1150.2" y="2005" width="6.4" height="15.0" fill="rgb(236,39,1)" rx="2" ry="2" />
+<text  x="1153.19" y="2015.5" ></text>
+</g>
+<g >
+<title>__libc_write (17 samples, 0.02%)</title><rect x="458.0" y="1989" width="0.2" height="15.0" fill="rgb(228,121,50)" rx="2" ry="2" />
+<text  x="460.96" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (21 samples, 0.02%)</title><rect x="10.7" y="1765" width="0.3" height="15.0" fill="rgb(216,217,51)" rx="2" ry="2" />
+<text  x="13.75" y="1775.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1941" width="0.1" height="15.0" fill="rgb(208,69,0)" rx="2" ry="2" />
+<text  x="21.93" y="1951.5" ></text>
+</g>
+<g >
+<title>[Discord] (50 samples, 0.05%)</title><rect x="11.3" y="1973" width="0.6" height="15.0" fill="rgb(238,15,44)" rx="2" ry="2" />
+<text  x="14.28" y="1983.5" ></text>
+</g>
+<g >
+<title>nvkm_instobj_save (63 samples, 0.06%)</title><rect x="1182.4" y="1701" width="0.7" height="15.0" fill="rgb(206,17,17)" rx="2" ry="2" />
+<text  x="1185.38" y="1711.5" ></text>
+</g>
+<g >
+<title>x86_64_start_kernel (81 samples, 0.08%)</title><rect x="1188.7" y="1989" width="1.0" height="15.0" fill="rgb(214,187,10)" rx="2" ry="2" />
+<text  x="1191.69" y="1999.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (31 samples, 0.03%)</title><rect x="1182.4" y="1685" width="0.3" height="15.0" fill="rgb(210,181,31)" rx="2" ry="2" />
+<text  x="1185.38" y="1695.5" ></text>
+</g>
+<g >
+<title>[Discord] (17 samples, 0.02%)</title><rect x="10.8" y="1733" width="0.2" height="15.0" fill="rgb(247,23,24)" rx="2" ry="2" />
+<text  x="13.76" y="1743.5" ></text>
+</g>
+<g >
+<title>x264_sub8x8_dct8_avx.skip_prologue (188 samples, 0.19%)</title><rect x="667.8" y="1989" width="2.2" height="15.0" fill="rgb(209,60,35)" rx="2" ry="2" />
+<text  x="670.78" y="1999.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1925" width="0.1" height="15.0" fill="rgb(232,164,17)" rx="2" ry="2" />
+<text  x="21.93" y="1935.5" ></text>
+</g>
+<g >
+<title>handle_mm_fault (15 samples, 0.02%)</title><rect x="1050.3" y="1941" width="0.2" height="15.0" fill="rgb(208,90,7)" rx="2" ry="2" />
+<text  x="1053.31" y="1951.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_direct_compact (65 samples, 0.07%)</title><rect x="611.0" y="1829" width="0.7" height="15.0" fill="rgb(213,126,11)" rx="2" ry="2" />
+<text  x="613.96" y="1839.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (9 samples, 0.01%)</title><rect x="1179.3" y="1797" width="0.1" height="15.0" fill="rgb(229,40,13)" rx="2" ry="2" />
+<text  x="1182.33" y="1807.5" ></text>
+</g>
+<g >
+<title>x264_trellis_coef0_0 (172 samples, 0.17%)</title><rect x="672.5" y="1989" width="2.0" height="15.0" fill="rgb(250,165,43)" rx="2" ry="2" />
+<text  x="675.50" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (45 samples, 0.05%)</title><rect x="11.3" y="1717" width="0.6" height="15.0" fill="rgb(239,3,6)" rx="2" ry="2" />
+<text  x="14.33" y="1727.5" ></text>
+</g>
+<g >
+<title>unmap_page_range (11 samples, 0.01%)</title><rect x="12.2" y="1829" width="0.1" height="15.0" fill="rgb(222,181,28)" rx="2" ry="2" />
+<text  x="15.19" y="1839.5" ></text>
+</g>
+<g >
+<title>[libgjs.so.0.0.0] (10 samples, 0.01%)</title><rect x="1176.8" y="1989" width="0.1" height="15.0" fill="rgb(213,25,12)" rx="2" ry="2" />
+<text  x="1179.79" y="1999.5" ></text>
+</g>
+<g >
+<title>page_cache_async_readahead (10 samples, 0.01%)</title><rect x="457.8" y="1829" width="0.2" height="15.0" fill="rgb(222,97,29)" rx="2" ry="2" />
+<text  x="460.85" y="1839.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (19 samples, 0.02%)</title><rect x="1184.7" y="1605" width="0.2" height="15.0" fill="rgb(239,145,32)" rx="2" ry="2" />
+<text  x="1187.66" y="1615.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1813" width="0.1" height="15.0" fill="rgb(247,228,25)" rx="2" ry="2" />
+<text  x="21.93" y="1823.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (14 samples, 0.01%)</title><rect x="444.3" y="1941" width="0.2" height="15.0" fill="rgb(238,130,9)" rx="2" ry="2" />
+<text  x="447.29" y="1951.5" ></text>
+</g>
+<g >
+<title>update_process_times (25 samples, 0.03%)</title><rect x="1049.8" y="1893" width="0.3" height="15.0" fill="rgb(226,151,20)" rx="2" ry="2" />
+<text  x="1052.79" y="1903.5" ></text>
+</g>
+<g >
+<title>node::MakeCallback (45 samples, 0.05%)</title><rect x="11.3" y="1701" width="0.6" height="15.0" fill="rgb(238,79,41)" rx="2" ry="2" />
+<text  x="14.33" y="1711.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1925" width="0.4" height="15.0" fill="rgb(219,2,8)" rx="2" ry="2" />
+<text  x="1187.52" y="1935.5" ></text>
+</g>
+<g >
+<title>rpm_callback (63 samples, 0.06%)</title><rect x="1182.4" y="1909" width="0.7" height="15.0" fill="rgb(229,157,15)" rx="2" ry="2" />
+<text  x="1185.38" y="1919.5" ></text>
+</g>
+<g >
+<title>[perf-1251.map] (23 samples, 0.02%)</title><rect x="1179.5" y="1845" width="0.3" height="15.0" fill="rgb(225,105,4)" rx="2" ry="2" />
+<text  x="1182.50" y="1855.5" ></text>
+</g>
+<g >
+<title>__vfs_write (17 samples, 0.02%)</title><rect x="458.0" y="1893" width="0.2" height="15.0" fill="rgb(210,213,23)" rx="2" ry="2" />
+<text  x="460.96" y="1903.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_encode (1,123 samples, 1.13%)</title><rect x="1066.6" y="2005" width="13.4" height="15.0" fill="rgb(223,39,21)" rx="2" ry="2" />
+<text  x="1069.63" y="2015.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (52 samples, 0.05%)</title><rect x="289.0" y="1989" width="0.6" height="15.0" fill="rgb(210,94,50)" rx="2" ry="2" />
+<text  x="291.99" y="1999.5" ></text>
+</g>
+<g >
+<title>[slack] (11 samples, 0.01%)</title><rect x="1184.5" y="1669" width="0.2" height="15.0" fill="rgb(239,30,38)" rx="2" ry="2" />
+<text  x="1187.53" y="1679.5" ></text>
+</g>
+<g >
+<title>[Discord] (21 samples, 0.02%)</title><rect x="10.7" y="1781" width="0.3" height="15.0" fill="rgb(215,12,42)" rx="2" ry="2" />
+<text  x="13.75" y="1791.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (12 samples, 0.01%)</title><rect x="1184.7" y="1477" width="0.1" height="15.0" fill="rgb(252,152,1)" rx="2" ry="2" />
+<text  x="1187.71" y="1487.5" ></text>
+</g>
+<g >
+<title>__x64_sys_ioctl (34 samples, 0.03%)</title><rect x="17.8" y="1941" width="0.4" height="15.0" fill="rgb(209,136,42)" rx="2" ry="2" />
+<text  x="20.79" y="1951.5" ></text>
+</g>
+<g >
+<title>x264_mb_mc (66 samples, 0.07%)</title><rect x="633.0" y="1989" width="0.8" height="15.0" fill="rgb(250,130,36)" rx="2" ry="2" />
+<text  x="636.00" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (33 samples, 0.03%)</title><rect x="1175.0" y="2005" width="0.4" height="15.0" fill="rgb(246,7,45)" rx="2" ry="2" />
+<text  x="1178.04" y="2015.5" ></text>
+</g>
+<g >
+<title>cpuidle_enter (289 samples, 0.29%)</title><rect x="1185.2" y="1925" width="3.5" height="15.0" fill="rgb(249,168,36)" rx="2" ry="2" />
+<text  x="1188.22" y="1935.5" ></text>
+</g>
+<g >
+<title>do_vfs_ioctl (34 samples, 0.03%)</title><rect x="17.8" y="1909" width="0.4" height="15.0" fill="rgb(244,204,34)" rx="2" ry="2" />
+<text  x="20.79" y="1919.5" ></text>
+</g>
+<g >
+<title>[Discord] (46 samples, 0.05%)</title><rect x="11.3" y="1765" width="0.6" height="15.0" fill="rgb(249,95,25)" rx="2" ry="2" />
+<text  x="14.32" y="1775.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct8_avx.skip_prologue (164 samples, 0.17%)</title><rect x="678.9" y="2005" width="1.9" height="15.0" fill="rgb(225,118,46)" rx="2" ry="2" />
+<text  x="681.89" y="2015.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (13 samples, 0.01%)</title><rect x="17.5" y="1941" width="0.2" height="15.0" fill="rgb(241,71,9)" rx="2" ry="2" />
+<text  x="20.54" y="1951.5" ></text>
+</g>
+<g >
+<title>[slack] (32 samples, 0.03%)</title><rect x="1184.5" y="1797" width="0.4" height="15.0" fill="rgb(238,109,50)" rx="2" ry="2" />
+<text  x="1187.53" y="1807.5" ></text>
+</g>
+<g >
+<title>nvif_client_resume (12 samples, 0.01%)</title><rect x="18.0" y="1765" width="0.2" height="15.0" fill="rgb(238,3,40)" rx="2" ry="2" />
+<text  x="21.03" y="1775.5" ></text>
+</g>
+<g >
+<title>all (99,207 samples, 100%)</title><rect x="10.0" y="2037" width="1180.0" height="15.0" fill="rgb(245,137,10)" rx="2" ry="2" />
+<text  x="13.00" y="2047.5" ></text>
+</g>
+<g >
+<title>rpm_resume (14 samples, 0.01%)</title><rect x="18.0" y="1861" width="0.2" height="15.0" fill="rgb(219,69,42)" rx="2" ry="2" />
+<text  x="21.03" y="1871.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1589" width="0.1" height="15.0" fill="rgb(207,65,41)" rx="2" ry="2" />
+<text  x="20.27" y="1599.5" ></text>
+</g>
+<g >
+<title>x264_trellis_coef1 (744 samples, 0.75%)</title><rect x="1161.2" y="2005" width="8.9" height="15.0" fill="rgb(205,16,13)" rx="2" ry="2" />
+<text  x="1164.22" y="2015.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1973" width="0.1" height="15.0" fill="rgb(209,192,11)" rx="2" ry="2" />
+<text  x="21.93" y="1983.5" ></text>
+</g>
+<g >
+<title>do_page_fault (16 samples, 0.02%)</title><rect x="1050.3" y="1973" width="0.2" height="15.0" fill="rgb(228,210,6)" rx="2" ry="2" />
+<text  x="1053.30" y="1983.5" ></text>
+</g>
+<g >
+<title>[perf-21880.map] (43 samples, 0.04%)</title><rect x="11.3" y="1477" width="0.6" height="15.0" fill="rgb(228,17,43)" rx="2" ry="2" />
+<text  x="14.34" y="1487.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1669" width="0.1" height="15.0" fill="rgb(228,113,42)" rx="2" ry="2" />
+<text  x="16.06" y="1679.5" ></text>
+</g>
+<g >
+<title>cpu_startup_entry (81 samples, 0.08%)</title><rect x="1188.7" y="1909" width="1.0" height="15.0" fill="rgb(231,128,37)" rx="2" ry="2" />
+<text  x="1191.69" y="1919.5" ></text>
+</g>
+<g >
+<title>[Discord] (48 samples, 0.05%)</title><rect x="11.3" y="1781" width="0.6" height="15.0" fill="rgb(241,81,28)" rx="2" ry="2" />
+<text  x="14.30" y="1791.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (45 samples, 0.05%)</title><rect x="1049.6" y="1957" width="0.5" height="15.0" fill="rgb(217,139,46)" rx="2" ry="2" />
+<text  x="1052.60" y="1967.5" ></text>
+</g>
+<g >
+<title>x264_mb_encode_chroma (809 samples, 0.82%)</title><rect x="1084.2" y="2005" width="9.6" height="15.0" fill="rgb(243,148,40)" rx="2" ry="2" />
+<text  x="1087.22" y="2015.5" ></text>
+</g>
+<g >
+<title>prepare_exit_to_usermode (10 samples, 0.01%)</title><rect x="611.9" y="1957" width="0.2" height="15.0" fill="rgb(213,56,42)" rx="2" ry="2" />
+<text  x="614.94" y="1967.5" ></text>
+</g>
+<g >
+<title>i915_gem_do_execbuffer (12 samples, 0.01%)</title><rect x="17.4" y="1829" width="0.1" height="15.0" fill="rgb(234,193,32)" rx="2" ry="2" />
+<text  x="20.40" y="1839.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (9 samples, 0.01%)</title><rect x="678.4" y="1973" width="0.1" height="15.0" fill="rgb(241,57,30)" rx="2" ry="2" />
+<text  x="681.41" y="1983.5" ></text>
+</g>
+<g >
+<title>shrink_node_memcg (18 samples, 0.02%)</title><rect x="1181.9" y="1925" width="0.2" height="15.0" fill="rgb(248,107,21)" rx="2" ry="2" />
+<text  x="1184.91" y="1935.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="85" width="0.1" height="15.0" fill="rgb(219,166,54)" rx="2" ry="2" />
+<text  x="20.27" y="95.5" ></text>
+</g>
+<g >
+<title>__GI___ioctl (39 samples, 0.04%)</title><rect x="17.8" y="1989" width="0.4" height="15.0" fill="rgb(230,111,30)" rx="2" ry="2" />
+<text  x="20.76" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (13 samples, 0.01%)</title><rect x="15.4" y="1989" width="0.1" height="15.0" fill="rgb(215,205,19)" rx="2" ry="2" />
+<text  x="18.39" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="293" width="0.1" height="15.0" fill="rgb(248,21,45)" rx="2" ry="2" />
+<text  x="20.27" y="303.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx2.skip_prologue (23,034 samples, 23.22%)</title><rect x="776.8" y="2005" width="274.0" height="15.0" fill="rgb(232,197,7)" rx="2" ry="2" />
+<text  x="779.82" y="2015.5" >x264_add8x8_idct_avx2.skip_prologue</text>
+</g>
+<g >
+<title>x264_macroblock_write_cabac (160 samples, 0.16%)</title><rect x="628.6" y="1989" width="2.0" height="15.0" fill="rgb(235,149,20)" rx="2" ry="2" />
+<text  x="631.65" y="1999.5" ></text>
+</g>
+<g >
+<title>compact_zone_order (64 samples, 0.06%)</title><rect x="611.0" y="1797" width="0.7" height="15.0" fill="rgb(245,195,8)" rx="2" ry="2" />
+<text  x="613.97" y="1807.5" ></text>
+</g>
+<g >
+<title>kthread (37 samples, 0.04%)</title><rect x="1181.9" y="1989" width="0.5" height="15.0" fill="rgb(240,215,22)" rx="2" ry="2" />
+<text  x="1184.91" y="1999.5" ></text>
+</g>
+<g >
+<title>MemoryInfra (16 samples, 0.02%)</title><rect x="13.0" y="2021" width="0.2" height="15.0" fill="rgb(230,172,39)" rx="2" ry="2" />
+<text  x="15.99" y="2031.5" ></text>
+</g>
+<g >
+<title>[Discord] (13 samples, 0.01%)</title><rect x="10.8" y="1701" width="0.2" height="15.0" fill="rgb(240,65,33)" rx="2" ry="2" />
+<text  x="13.80" y="1711.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1493" width="0.1" height="15.0" fill="rgb(230,125,23)" rx="2" ry="2" />
+<text  x="20.27" y="1503.5" ></text>
+</g>
+<g >
+<title>vfs_read (13 samples, 0.01%)</title><rect x="457.8" y="1909" width="0.2" height="15.0" fill="rgb(213,135,33)" rx="2" ry="2" />
+<text  x="460.81" y="1919.5" ></text>
+</g>
+<g >
+<title>super_cache_scan (9 samples, 0.01%)</title><rect x="1182.2" y="1893" width="0.1" height="15.0" fill="rgb(209,168,37)" rx="2" ry="2" />
+<text  x="1185.20" y="1903.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (35 samples, 0.04%)</title><rect x="17.8" y="1957" width="0.4" height="15.0" fill="rgb(238,75,12)" rx="2" ry="2" />
+<text  x="20.78" y="1967.5" ></text>
+</g>
+<g >
+<title>__GI___writev (13 samples, 0.01%)</title><rect x="17.5" y="1973" width="0.2" height="15.0" fill="rgb(238,193,3)" rx="2" ry="2" />
+<text  x="20.54" y="1983.5" ></text>
+</g>
+<g >
+<title>[Discord] (25 samples, 0.03%)</title><rect x="10.7" y="1845" width="0.3" height="15.0" fill="rgb(230,95,46)" rx="2" ry="2" />
+<text  x="13.71" y="1855.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv_16x16 (69 samples, 0.07%)</title><rect x="636.0" y="1989" width="0.9" height="15.0" fill="rgb(242,8,0)" rx="2" ry="2" />
+<text  x="639.05" y="1999.5" ></text>
+</g>
+<g >
+<title>kworker/0:2 (63 samples, 0.06%)</title><rect x="1182.4" y="2021" width="0.7" height="15.0" fill="rgb(241,31,2)" rx="2" ry="2" />
+<text  x="1185.38" y="2031.5" ></text>
+</g>
+<g >
+<title>__memset_avx2_erms (15 samples, 0.02%)</title><rect x="11.6" y="1317" width="0.2" height="15.0" fill="rgb(215,205,43)" rx="2" ry="2" />
+<text  x="14.63" y="1327.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx.skip_prologue (3,384 samples, 3.41%)</title><rect x="460.6" y="1989" width="40.3" height="15.0" fill="rgb(218,214,17)" rx="2" ry="2" />
+<text  x="463.64" y="1999.5" >x26..</text>
+</g>
+<g >
+<title>unmap_single_vma (11 samples, 0.01%)</title><rect x="12.2" y="1845" width="0.1" height="15.0" fill="rgb(240,80,26)" rx="2" ry="2" />
+<text  x="15.19" y="1855.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (10 samples, 0.01%)</title><rect x="1184.7" y="1461" width="0.1" height="15.0" fill="rgb(205,154,30)" rx="2" ry="2" />
+<text  x="1187.73" y="1471.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1893" width="0.4" height="15.0" fill="rgb(218,164,40)" rx="2" ry="2" />
+<text  x="1187.52" y="1903.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1125" width="0.1" height="15.0" fill="rgb(247,196,26)" rx="2" ry="2" />
+<text  x="20.27" y="1135.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="37" width="0.1" height="15.0" fill="rgb(213,168,10)" rx="2" ry="2" />
+<text  x="20.27" y="47.5" ></text>
+</g>
+<g >
+<title>kthread (63 samples, 0.06%)</title><rect x="1182.4" y="1989" width="0.7" height="15.0" fill="rgb(216,159,29)" rx="2" ry="2" />
+<text  x="1185.38" y="1999.5" ></text>
+</g>
+<g >
+<title>smp_apic_timer_interrupt (51 samples, 0.05%)</title><rect x="289.0" y="1973" width="0.6" height="15.0" fill="rgb(206,16,3)" rx="2" ry="2" />
+<text  x="292.01" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1029" width="0.1" height="15.0" fill="rgb(220,62,52)" rx="2" ry="2" />
+<text  x="20.27" y="1039.5" ></text>
+</g>
+<g >
+<title>alloc_pages_vma (10 samples, 0.01%)</title><rect x="610.8" y="1893" width="0.1" height="15.0" fill="rgb(211,39,29)" rx="2" ry="2" />
+<text  x="613.83" y="1903.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1669" width="0.1" height="15.0" fill="rgb(252,183,7)" rx="2" ry="2" />
+<text  x="20.27" y="1679.5" ></text>
+</g>
+<g >
+<title>task_tick_fair (12 samples, 0.01%)</title><rect x="1049.9" y="1861" width="0.2" height="15.0" fill="rgb(223,112,42)" rx="2" ry="2" />
+<text  x="1052.92" y="1871.5" ></text>
+</g>
+<g >
+<title>x264_sub8x8_dct_avx.skip_prologue (10 samples, 0.01%)</title><rect x="672.1" y="1989" width="0.1" height="15.0" fill="rgb(205,70,42)" rx="2" ry="2" />
+<text  x="675.09" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (18 samples, 0.02%)</title><rect x="450.6" y="1973" width="0.2" height="15.0" fill="rgb(219,79,27)" rx="2" ry="2" />
+<text  x="453.61" y="1983.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (35 samples, 0.04%)</title><rect x="1176.1" y="1941" width="0.4" height="15.0" fill="rgb(252,182,50)" rx="2" ry="2" />
+<text  x="1179.10" y="1951.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1893" width="0.1" height="15.0" fill="rgb(247,199,52)" rx="2" ry="2" />
+<text  x="20.27" y="1903.5" ></text>
+</g>
+<g >
+<title>[libglib-2.0.so.0.5600.4] (10 samples, 0.01%)</title><rect x="1181.4" y="1989" width="0.2" height="15.0" fill="rgb(250,216,54)" rx="2" ry="2" />
+<text  x="1184.44" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="165" width="0.1" height="15.0" fill="rgb(250,84,53)" rx="2" ry="2" />
+<text  x="20.27" y="175.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1861" width="0.4" height="15.0" fill="rgb(244,167,20)" rx="2" ry="2" />
+<text  x="1187.52" y="1871.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1877" width="0.4" height="15.0" fill="rgb(221,195,32)" rx="2" ry="2" />
+<text  x="1187.52" y="1887.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="581" width="0.1" height="15.0" fill="rgb(252,131,13)" rx="2" ry="2" />
+<text  x="20.27" y="591.5" ></text>
+</g>
+<g >
+<title>intel_idle (277 samples, 0.28%)</title><rect x="1185.3" y="1893" width="3.3" height="15.0" fill="rgb(231,110,11)" rx="2" ry="2" />
+<text  x="1188.33" y="1903.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_analyse (504 samples, 0.51%)</title><rect x="1052.7" y="2005" width="6.0" height="15.0" fill="rgb(205,19,23)" rx="2" ry="2" />
+<text  x="1055.70" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (48 samples, 0.05%)</title><rect x="11.3" y="1797" width="0.6" height="15.0" fill="rgb(236,172,44)" rx="2" ry="2" />
+<text  x="14.30" y="1807.5" ></text>
+</g>
+<g >
+<title>new_sync_write (17 samples, 0.02%)</title><rect x="458.0" y="1877" width="0.2" height="15.0" fill="rgb(210,13,4)" rx="2" ry="2" />
+<text  x="460.96" y="1887.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (19 samples, 0.02%)</title><rect x="1184.7" y="1557" width="0.2" height="15.0" fill="rgb(205,98,22)" rx="2" ry="2" />
+<text  x="1187.66" y="1567.5" ></text>
+</g>
+<g >
+<title>vfs_write (17 samples, 0.02%)</title><rect x="458.0" y="1909" width="0.2" height="15.0" fill="rgb(247,34,35)" rx="2" ry="2" />
+<text  x="460.96" y="1919.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1077" width="0.1" height="15.0" fill="rgb(234,203,26)" rx="2" ry="2" />
+<text  x="20.27" y="1087.5" ></text>
+</g>
+<g >
+<title>x264_trellis_coef1 (209 samples, 0.21%)</title><rect x="675.0" y="1989" width="2.4" height="15.0" fill="rgb(212,144,26)" rx="2" ry="2" />
+<text  x="677.95" y="1999.5" ></text>
+</g>
+<g >
+<title>__do_sys_newlstat (23 samples, 0.02%)</title><rect x="1175.5" y="1941" width="0.3" height="15.0" fill="rgb(212,147,38)" rx="2" ry="2" />
+<text  x="1178.49" y="1951.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (14 samples, 0.01%)</title><rect x="1184.7" y="1493" width="0.2" height="15.0" fill="rgb(252,97,22)" rx="2" ry="2" />
+<text  x="1187.70" y="1503.5" ></text>
+</g>
+<g >
+<title>get_signal (11 samples, 0.01%)</title><rect x="12.2" y="1941" width="0.1" height="15.0" fill="rgb(232,127,49)" rx="2" ry="2" />
+<text  x="15.19" y="1951.5" ></text>
+</g>
+<g >
+<title>__vfs_read (13 samples, 0.01%)</title><rect x="457.8" y="1893" width="0.2" height="15.0" fill="rgb(247,39,24)" rx="2" ry="2" />
+<text  x="460.81" y="1903.5" ></text>
+</g>
+<g >
+<title>[slack] (10 samples, 0.01%)</title><rect x="1184.5" y="1653" width="0.2" height="15.0" fill="rgb(206,22,3)" rx="2" ry="2" />
+<text  x="1187.54" y="1663.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (11 samples, 0.01%)</title><rect x="1180.0" y="1973" width="0.1" height="15.0" fill="rgb(222,89,22)" rx="2" ry="2" />
+<text  x="1182.98" y="1983.5" ></text>
+</g>
+<g >
+<title>x264_me_refine_qpel_refdupe (17 samples, 0.02%)</title><rect x="642.3" y="1989" width="0.2" height="15.0" fill="rgb(241,221,6)" rx="2" ry="2" />
+<text  x="645.33" y="1999.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (43 samples, 0.04%)</title><rect x="1179.3" y="1941" width="0.5" height="15.0" fill="rgb(247,91,38)" rx="2" ry="2" />
+<text  x="1182.28" y="1951.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (17 samples, 0.02%)</title><rect x="1179.5" y="1781" width="0.2" height="15.0" fill="rgb(247,56,34)" rx="2" ry="2" />
+<text  x="1182.51" y="1791.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (27 samples, 0.03%)</title><rect x="1175.4" y="1989" width="0.4" height="15.0" fill="rgb(217,144,5)" rx="2" ry="2" />
+<text  x="1178.44" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1909" width="0.2" height="15.0" fill="rgb(245,116,14)" rx="2" ry="2" />
+<text  x="16.03" y="1919.5" ></text>
+</g>
+<g >
+<title>__do_page_fault (87 samples, 0.09%)</title><rect x="610.8" y="1941" width="1.0" height="15.0" fill="rgb(216,82,26)" rx="2" ry="2" />
+<text  x="613.79" y="1951.5" ></text>
+</g>
+<g >
+<title>tick_sched_handle (25 samples, 0.03%)</title><rect x="1049.8" y="1909" width="0.3" height="15.0" fill="rgb(224,177,35)" rx="2" ry="2" />
+<text  x="1052.79" y="1919.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (230 samples, 0.23%)</title><rect x="345.7" y="1941" width="2.8" height="15.0" fill="rgb(253,164,49)" rx="2" ry="2" />
+<text  x="348.74" y="1951.5" ></text>
+</g>
+<g >
+<title>i915_gem_execbuffer2_ioctl (10 samples, 0.01%)</title><rect x="1178.1" y="1845" width="0.2" height="15.0" fill="rgb(223,182,6)" rx="2" ry="2" />
+<text  x="1181.14" y="1855.5" ></text>
+</g>
+<g >
+<title>nvkm_object_init (12 samples, 0.01%)</title><rect x="18.0" y="1733" width="0.2" height="15.0" fill="rgb(231,119,49)" rx="2" ry="2" />
+<text  x="21.03" y="1743.5" ></text>
+</g>
+<g >
+<title>[Discord] (43 samples, 0.04%)</title><rect x="11.3" y="1557" width="0.6" height="15.0" fill="rgb(210,152,18)" rx="2" ry="2" />
+<text  x="14.34" y="1567.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (15 samples, 0.02%)</title><rect x="1176.3" y="1845" width="0.2" height="15.0" fill="rgb(214,214,23)" rx="2" ry="2" />
+<text  x="1179.33" y="1855.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="517" width="0.1" height="15.0" fill="rgb(242,67,23)" rx="2" ry="2" />
+<text  x="20.27" y="527.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="853" width="0.1" height="15.0" fill="rgb(209,105,26)" rx="2" ry="2" />
+<text  x="20.27" y="863.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (11 samples, 0.01%)</title><rect x="1178.1" y="1941" width="0.2" height="15.0" fill="rgb(218,124,7)" rx="2" ry="2" />
+<text  x="1181.13" y="1951.5" ></text>
+</g>
+<g >
+<title>x264_prefetch_fenc (36 samples, 0.04%)</title><rect x="1149.8" y="2005" width="0.4" height="15.0" fill="rgb(250,4,51)" rx="2" ry="2" />
+<text  x="1152.76" y="2015.5" ></text>
+</g>
+<g >
+<title>ext4_file_read_iter (13 samples, 0.01%)</title><rect x="457.8" y="1861" width="0.2" height="15.0" fill="rgb(229,97,25)" rx="2" ry="2" />
+<text  x="460.81" y="1871.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1301" width="0.1" height="15.0" fill="rgb(220,214,22)" rx="2" ry="2" />
+<text  x="20.27" y="1311.5" ></text>
+</g>
+<g >
+<title>__libc_read (14 samples, 0.01%)</title><rect x="457.8" y="1989" width="0.2" height="15.0" fill="rgb(222,85,48)" rx="2" ry="2" />
+<text  x="460.80" y="1999.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (9 samples, 0.01%)</title><rect x="1176.4" y="1829" width="0.1" height="15.0" fill="rgb(219,203,46)" rx="2" ry="2" />
+<text  x="1179.40" y="1839.5" ></text>
+</g>
+<g >
+<title>__generic_file_write_iter (17 samples, 0.02%)</title><rect x="458.0" y="1845" width="0.2" height="15.0" fill="rgb(214,163,15)" rx="2" ry="2" />
+<text  x="460.96" y="1855.5" ></text>
+</g>
+<g >
+<title>[Discord] (44 samples, 0.04%)</title><rect x="11.3" y="1589" width="0.6" height="15.0" fill="rgb(216,113,9)" rx="2" ry="2" />
+<text  x="14.33" y="1599.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="1179.3" y="1845" width="0.1" height="15.0" fill="rgb(209,195,22)" rx="2" ry="2" />
+<text  x="1182.33" y="1855.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="261" width="0.1" height="15.0" fill="rgb(251,186,27)" rx="2" ry="2" />
+<text  x="20.27" y="271.5" ></text>
+</g>
+<g >
+<title>drm_ioctl_kernel (19 samples, 0.02%)</title><rect x="17.8" y="1877" width="0.2" height="15.0" fill="rgb(229,61,36)" rx="2" ry="2" />
+<text  x="20.80" y="1887.5" ></text>
+</g>
+<g >
+<title>drm_ioctl (11 samples, 0.01%)</title><rect x="1178.1" y="1877" width="0.2" height="15.0" fill="rgb(244,143,18)" rx="2" ry="2" />
+<text  x="1181.13" y="1887.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1957" width="0.2" height="15.0" fill="rgb(243,74,40)" rx="2" ry="2" />
+<text  x="16.03" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="677" width="0.1" height="15.0" fill="rgb(206,32,30)" rx="2" ry="2" />
+<text  x="20.27" y="687.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_slowpath (66 samples, 0.07%)</title><rect x="611.0" y="1845" width="0.7" height="15.0" fill="rgb(235,37,52)" rx="2" ry="2" />
+<text  x="613.96" y="1855.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (11 samples, 0.01%)</title><rect x="1178.1" y="1957" width="0.2" height="15.0" fill="rgb(225,32,3)" rx="2" ry="2" />
+<text  x="1181.13" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1013" width="0.1" height="15.0" fill="rgb(228,223,46)" rx="2" ry="2" />
+<text  x="20.27" y="1023.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="725" width="0.1" height="15.0" fill="rgb(254,107,7)" rx="2" ry="2" />
+<text  x="20.27" y="735.5" ></text>
+</g>
+<g >
+<title>__intel_context_do_pin (9 samples, 0.01%)</title><rect x="17.4" y="1813" width="0.1" height="15.0" fill="rgb(232,124,43)" rx="2" ry="2" />
+<text  x="20.40" y="1823.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (11 samples, 0.01%)</title><rect x="458.3" y="1973" width="0.1" height="15.0" fill="rgb(231,111,4)" rx="2" ry="2" />
+<text  x="461.26" y="1983.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (36 samples, 0.04%)</title><rect x="17.8" y="1973" width="0.4" height="15.0" fill="rgb(218,224,19)" rx="2" ry="2" />
+<text  x="20.77" y="1983.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (14 samples, 0.01%)</title><rect x="776.5" y="1989" width="0.1" height="15.0" fill="rgb(230,218,54)" rx="2" ry="2" />
+<text  x="779.48" y="1999.5" ></text>
+</g>
+<g >
+<title>x86_64_start_reservations (81 samples, 0.08%)</title><rect x="1188.7" y="1973" width="1.0" height="15.0" fill="rgb(227,185,27)" rx="2" ry="2" />
+<text  x="1191.69" y="1983.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (18 samples, 0.02%)</title><rect x="444.3" y="1973" width="0.2" height="15.0" fill="rgb(247,224,12)" rx="2" ry="2" />
+<text  x="447.27" y="1983.5" ></text>
+</g>
+<g >
+<title>try_to_compact_pages (64 samples, 0.06%)</title><rect x="611.0" y="1813" width="0.7" height="15.0" fill="rgb(213,126,4)" rx="2" ry="2" />
+<text  x="613.97" y="1823.5" ></text>
+</g>
+<g >
+<title>shrink_slab (16 samples, 0.02%)</title><rect x="1182.1" y="1925" width="0.2" height="15.0" fill="rgb(231,112,38)" rx="2" ry="2" />
+<text  x="1185.13" y="1935.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (17 samples, 0.02%)</title><rect x="1179.5" y="1797" width="0.2" height="15.0" fill="rgb(250,126,50)" rx="2" ry="2" />
+<text  x="1182.51" y="1807.5" ></text>
+</g>
+<g >
+<title>[unknown] (23 samples, 0.02%)</title><rect x="1179.5" y="1861" width="0.3" height="15.0" fill="rgb(212,50,52)" rx="2" ry="2" />
+<text  x="1182.50" y="1871.5" ></text>
+</g>
+<g >
+<title>ksys_read (13 samples, 0.01%)</title><rect x="457.8" y="1925" width="0.2" height="15.0" fill="rgb(241,137,16)" rx="2" ry="2" />
+<text  x="460.81" y="1935.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (10 samples, 0.01%)</title><rect x="500.8" y="1973" width="0.1" height="15.0" fill="rgb(252,195,16)" rx="2" ry="2" />
+<text  x="503.76" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1781" width="0.1" height="15.0" fill="rgb(215,127,28)" rx="2" ry="2" />
+<text  x="20.27" y="1791.5" ></text>
+</g>
+<g >
+<title>drm_ioctl (20 samples, 0.02%)</title><rect x="17.8" y="1893" width="0.2" height="15.0" fill="rgb(237,63,40)" rx="2" ry="2" />
+<text  x="20.79" y="1903.5" ></text>
+</g>
+<g >
+<title>x264_ratecontrol_mb_qp (83 samples, 0.08%)</title><rect x="666.8" y="1989" width="1.0" height="15.0" fill="rgb(242,193,3)" rx="2" ry="2" />
+<text  x="669.79" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="229" width="0.1" height="15.0" fill="rgb(245,74,28)" rx="2" ry="2" />
+<text  x="20.27" y="239.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1893" width="0.2" height="15.0" fill="rgb(218,56,10)" rx="2" ry="2" />
+<text  x="16.03" y="1903.5" ></text>
+</g>
+<g >
+<title>do_huge_pmd_anonymous_page (9 samples, 0.01%)</title><rect x="1050.3" y="1909" width="0.2" height="15.0" fill="rgb(220,56,11)" rx="2" ry="2" />
+<text  x="1053.35" y="1919.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1957" width="0.1" height="15.0" fill="rgb(254,52,22)" rx="2" ry="2" />
+<text  x="20.27" y="1967.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1717" width="0.1" height="15.0" fill="rgb(234,40,31)" rx="2" ry="2" />
+<text  x="21.93" y="1727.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv_16x16 (12 samples, 0.01%)</title><rect x="1105.3" y="2005" width="0.2" height="15.0" fill="rgb(205,78,4)" rx="2" ry="2" />
+<text  x="1108.31" y="2015.5" ></text>
+</g>
+<g >
+<title>cpuidle_enter_state (289 samples, 0.29%)</title><rect x="1185.2" y="1909" width="3.5" height="15.0" fill="rgb(209,160,45)" rx="2" ry="2" />
+<text  x="1188.22" y="1919.5" ></text>
+</g>
+<g >
+<title>__libc_start_main (26 samples, 0.03%)</title><rect x="10.7" y="1989" width="0.3" height="15.0" fill="rgb(214,104,47)" rx="2" ry="2" />
+<text  x="13.71" y="1999.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx.skip_prologue (8,061 samples, 8.13%)</title><rect x="680.9" y="2005" width="95.9" height="15.0" fill="rgb(232,41,44)" rx="2" ry="2" />
+<text  x="683.93" y="2015.5" >x264_add8x8..</text>
+</g>
+<g >
+<title>[unknown] (14 samples, 0.01%)</title><rect x="18.9" y="2005" width="0.2" height="15.0" fill="rgb(223,43,1)" rx="2" ry="2" />
+<text  x="21.90" y="2015.5" ></text>
+</g>
+<g >
+<title>start_thread (12 samples, 0.01%)</title><rect x="13.0" y="2005" width="0.2" height="15.0" fill="rgb(217,220,50)" rx="2" ry="2" />
+<text  x="16.03" y="2015.5" ></text>
+</g>
+<g >
+<title>ret_from_fork (37 samples, 0.04%)</title><rect x="1181.9" y="2005" width="0.5" height="15.0" fill="rgb(225,157,50)" rx="2" ry="2" />
+<text  x="1184.91" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="437" width="0.1" height="15.0" fill="rgb(218,198,48)" rx="2" ry="2" />
+<text  x="20.27" y="447.5" ></text>
+</g>
+<g >
+<title>kswapd (37 samples, 0.04%)</title><rect x="1181.9" y="1973" width="0.5" height="15.0" fill="rgb(227,47,7)" rx="2" ry="2" />
+<text  x="1184.91" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1189" width="0.1" height="15.0" fill="rgb(225,108,30)" rx="2" ry="2" />
+<text  x="20.27" y="1199.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1973" width="0.4" height="15.0" fill="rgb(223,20,0)" rx="2" ry="2" />
+<text  x="1187.52" y="1983.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1685" width="0.1" height="15.0" fill="rgb(223,8,33)" rx="2" ry="2" />
+<text  x="16.06" y="1695.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (12 samples, 0.01%)</title><rect x="1179.3" y="1877" width="0.1" height="15.0" fill="rgb(205,182,30)" rx="2" ry="2" />
+<text  x="1182.30" y="1887.5" ></text>
+</g>
+<g >
+<title>[libx264.so.152] (454 samples, 0.46%)</title><rect x="445.2" y="1973" width="5.4" height="15.0" fill="rgb(222,51,47)" rx="2" ry="2" />
+<text  x="448.21" y="1983.5" ></text>
+</g>
+<g >
+<title>[perf-21880.map] (43 samples, 0.04%)</title><rect x="11.3" y="1461" width="0.6" height="15.0" fill="rgb(223,51,29)" rx="2" ry="2" />
+<text  x="14.34" y="1471.5" ></text>
+</g>
+<g >
+<title>[Discord] (18 samples, 0.02%)</title><rect x="10.8" y="1749" width="0.2" height="15.0" fill="rgb(223,222,53)" rx="2" ry="2" />
+<text  x="13.76" y="1759.5" ></text>
+</g>
+<g >
+<title>__memmove_avx_unaligned_erms (12 samples, 0.01%)</title><rect x="677.7" y="2005" width="0.2" height="15.0" fill="rgb(250,133,0)" rx="2" ry="2" />
+<text  x="680.72" y="2015.5" ></text>
+</g>
+<g >
+<title>nautilus-deskto (17 samples, 0.02%)</title><rect x="1183.5" y="2021" width="0.2" height="15.0" fill="rgb(206,176,46)" rx="2" ry="2" />
+<text  x="1186.52" y="2031.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="53" width="0.1" height="15.0" fill="rgb(219,2,5)" rx="2" ry="2" />
+<text  x="20.27" y="63.5" ></text>
+</g>
+<g >
+<title>gedit (20 samples, 0.02%)</title><rect x="1174.7" y="2021" width="0.2" height="15.0" fill="rgb(248,181,1)" rx="2" ry="2" />
+<text  x="1177.68" y="2031.5" ></text>
+</g>
+<g >
+<title>[Discord] (24 samples, 0.02%)</title><rect x="10.7" y="1797" width="0.3" height="15.0" fill="rgb(231,6,9)" rx="2" ry="2" />
+<text  x="13.71" y="1807.5" ></text>
+</g>
+<g >
+<title>[unknown] (42 samples, 0.04%)</title><rect x="1180.7" y="2005" width="0.5" height="15.0" fill="rgb(208,175,48)" rx="2" ry="2" />
+<text  x="1183.75" y="2015.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (35 samples, 0.04%)</title><rect x="1176.1" y="1909" width="0.4" height="15.0" fill="rgb(217,142,20)" rx="2" ry="2" />
+<text  x="1179.10" y="1919.5" ></text>
+</g>
+<g >
+<title>do_vfs_ioctl (13 samples, 0.01%)</title><rect x="17.4" y="1893" width="0.1" height="15.0" fill="rgb(225,0,45)" rx="2" ry="2" />
+<text  x="20.39" y="1903.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (19 samples, 0.02%)</title><rect x="1184.7" y="1621" width="0.2" height="15.0" fill="rgb(207,229,24)" rx="2" ry="2" />
+<text  x="1187.66" y="1631.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (19 samples, 0.02%)</title><rect x="1184.7" y="1573" width="0.2" height="15.0" fill="rgb(211,167,44)" rx="2" ry="2" />
+<text  x="1187.66" y="1583.5" ></text>
+</g>
+<g >
+<title>scheduler_tick (11 samples, 0.01%)</title><rect x="289.3" y="1877" width="0.1" height="15.0" fill="rgb(250,223,12)" rx="2" ry="2" />
+<text  x="292.31" y="1887.5" ></text>
+</g>
+<g >
+<title>vfs_writev (9 samples, 0.01%)</title><rect x="17.6" y="1893" width="0.1" height="15.0" fill="rgb(247,26,33)" rx="2" ry="2" />
+<text  x="20.58" y="1903.5" ></text>
+</g>
+<g >
+<title>nvkm_udevice_fini (63 samples, 0.06%)</title><rect x="1182.4" y="1765" width="0.7" height="15.0" fill="rgb(218,67,21)" rx="2" ry="2" />
+<text  x="1185.38" y="1775.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (40 samples, 0.04%)</title><rect x="1179.3" y="1893" width="0.5" height="15.0" fill="rgb(224,14,19)" rx="2" ry="2" />
+<text  x="1182.30" y="1903.5" ></text>
+</g>
+<g >
+<title>nvkm_instmem_fini (63 samples, 0.06%)</title><rect x="1182.4" y="1717" width="0.7" height="15.0" fill="rgb(217,150,12)" rx="2" ry="2" />
+<text  x="1185.38" y="1727.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="549" width="0.1" height="15.0" fill="rgb(251,85,10)" rx="2" ry="2" />
+<text  x="20.27" y="559.5" ></text>
+</g>
+<g >
+<title>smp_apic_timer_interrupt (17 samples, 0.02%)</title><rect x="444.3" y="1957" width="0.2" height="15.0" fill="rgb(229,16,41)" rx="2" ry="2" />
+<text  x="447.29" y="1967.5" ></text>
+</g>
+<g >
+<title>gnome-shell (402 samples, 0.41%)</title><rect x="1175.9" y="2021" width="4.8" height="15.0" fill="rgb(221,229,46)" rx="2" ry="2" />
+<text  x="1178.87" y="2031.5" ></text>
+</g>
+<g >
+<title>[Discord] (44 samples, 0.04%)</title><rect x="11.3" y="1621" width="0.6" height="15.0" fill="rgb(237,148,31)" rx="2" ry="2" />
+<text  x="14.33" y="1631.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1429" width="0.1" height="15.0" fill="rgb(239,110,16)" rx="2" ry="2" />
+<text  x="20.27" y="1439.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (13 samples, 0.01%)</title><rect x="17.4" y="1941" width="0.1" height="15.0" fill="rgb(224,13,39)" rx="2" ry="2" />
+<text  x="20.39" y="1951.5" ></text>
+</g>
+<g >
+<title>[perf-21880.map] (43 samples, 0.04%)</title><rect x="11.3" y="1509" width="0.6" height="15.0" fill="rgb(208,157,10)" rx="2" ry="2" />
+<text  x="14.34" y="1519.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1061" width="0.1" height="15.0" fill="rgb(211,148,51)" rx="2" ry="2" />
+<text  x="20.27" y="1071.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1941" width="0.6" height="15.0" fill="rgb(252,109,44)" rx="2" ry="2" />
+<text  x="14.28" y="1951.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1797" width="0.1" height="15.0" fill="rgb(224,215,41)" rx="2" ry="2" />
+<text  x="20.27" y="1807.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="773" width="0.1" height="15.0" fill="rgb(227,205,32)" rx="2" ry="2" />
+<text  x="20.27" y="783.5" ></text>
+</g>
+<g >
+<title>__x64_sys_poll (11 samples, 0.01%)</title><rect x="1180.0" y="1957" width="0.1" height="15.0" fill="rgb(206,195,27)" rx="2" ry="2" />
+<text  x="1182.98" y="1967.5" ></text>
+</g>
+<g >
+<title>get_page_from_freelist (9 samples, 0.01%)</title><rect x="610.8" y="1861" width="0.1" height="15.0" fill="rgb(218,50,49)" rx="2" ry="2" />
+<text  x="613.84" y="1871.5" ></text>
+</g>
+<g >
+<title>nouveau_pmops_runtime_resume (12 samples, 0.01%)</title><rect x="18.0" y="1797" width="0.2" height="15.0" fill="rgb(221,36,25)" rx="2" ry="2" />
+<text  x="21.03" y="1807.5" ></text>
+</g>
+<g >
+<title>__x64_sys_futex (11 samples, 0.01%)</title><rect x="458.3" y="1941" width="0.1" height="15.0" fill="rgb(225,48,4)" rx="2" ry="2" />
+<text  x="461.26" y="1951.5" ></text>
+</g>
+<g >
+<title>__do_page_cache_readahead (10 samples, 0.01%)</title><rect x="457.8" y="1797" width="0.2" height="15.0" fill="rgb(239,177,18)" rx="2" ry="2" />
+<text  x="460.85" y="1807.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1285" width="0.1" height="15.0" fill="rgb(235,91,5)" rx="2" ry="2" />
+<text  x="20.27" y="1295.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1925" width="0.2" height="15.0" fill="rgb(227,181,39)" rx="2" ry="2" />
+<text  x="16.03" y="1935.5" ></text>
+</g>
+<g >
+<title>do_group_exit (11 samples, 0.01%)</title><rect x="12.2" y="1925" width="0.1" height="15.0" fill="rgb(243,60,2)" rx="2" ry="2" />
+<text  x="15.19" y="1935.5" ></text>
+</g>
+<g >
+<title>[unknown] (10 samples, 0.01%)</title><rect x="13.2" y="2005" width="0.2" height="15.0" fill="rgb(233,90,38)" rx="2" ry="2" />
+<text  x="16.25" y="2015.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (9 samples, 0.01%)</title><rect x="15.8" y="1973" width="0.1" height="15.0" fill="rgb(208,66,49)" rx="2" ry="2" />
+<text  x="18.82" y="1983.5" ></text>
+</g>
+<g >
+<title>[slack] (32 samples, 0.03%)</title><rect x="1184.5" y="1765" width="0.4" height="15.0" fill="rgb(248,58,35)" rx="2" ry="2" />
+<text  x="1187.53" y="1775.5" ></text>
+</g>
+<g >
+<title>smp_apic_timer_interrupt (53 samples, 0.05%)</title><rect x="1049.6" y="1973" width="0.6" height="15.0" fill="rgb(220,183,52)" rx="2" ry="2" />
+<text  x="1052.60" y="1983.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1941" width="0.2" height="15.0" fill="rgb(217,220,40)" rx="2" ry="2" />
+<text  x="16.03" y="1951.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1893" width="0.3" height="15.0" fill="rgb(232,52,39)" rx="2" ry="2" />
+<text  x="13.71" y="1903.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (9 samples, 0.01%)</title><rect x="15.8" y="1989" width="0.1" height="15.0" fill="rgb(223,40,8)" rx="2" ry="2" />
+<text  x="18.82" y="1999.5" ></text>
+</g>
+<g >
+<title>move_to_new_page (11 samples, 0.01%)</title><rect x="611.3" y="1749" width="0.1" height="15.0" fill="rgb(245,130,50)" rx="2" ry="2" />
+<text  x="614.32" y="1759.5" ></text>
+</g>
+<g >
+<title>__lxstat64 (29 samples, 0.03%)</title><rect x="1175.4" y="2005" width="0.4" height="15.0" fill="rgb(247,145,17)" rx="2" ry="2" />
+<text  x="1178.43" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="885" width="0.1" height="15.0" fill="rgb(237,219,15)" rx="2" ry="2" />
+<text  x="20.27" y="895.5" ></text>
+</g>
+<g >
+<title>[Discord] (24 samples, 0.02%)</title><rect x="10.7" y="1829" width="0.3" height="15.0" fill="rgb(218,170,53)" rx="2" ry="2" />
+<text  x="13.71" y="1839.5" ></text>
+</g>
+<g >
+<title>pm_runtime_work (63 samples, 0.06%)</title><rect x="1182.4" y="1941" width="0.7" height="15.0" fill="rgb(251,22,19)" rx="2" ry="2" />
+<text  x="1185.38" y="1951.5" ></text>
+</g>
+<g >
+<title>gnome-terminal- (64 samples, 0.06%)</title><rect x="1180.7" y="2021" width="0.7" height="15.0" fill="rgb(237,85,14)" rx="2" ry="2" />
+<text  x="1183.66" y="2031.5" ></text>
+</g>
+<g >
+<title>filename_lookup (13 samples, 0.01%)</title><rect x="1175.5" y="1893" width="0.2" height="15.0" fill="rgb(219,75,6)" rx="2" ry="2" />
+<text  x="1178.54" y="1903.5" ></text>
+</g>
+<g >
+<title>[slack] (19 samples, 0.02%)</title><rect x="1184.7" y="1637" width="0.2" height="15.0" fill="rgb(247,174,23)" rx="2" ry="2" />
+<text  x="1187.66" y="1647.5" ></text>
+</g>
+<g >
+<title>g_main_context_dispatch (50 samples, 0.05%)</title><rect x="11.3" y="2005" width="0.6" height="15.0" fill="rgb(238,66,31)" rx="2" ry="2" />
+<text  x="14.28" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="901" width="0.1" height="15.0" fill="rgb(213,195,6)" rx="2" ry="2" />
+<text  x="20.27" y="911.5" ></text>
+</g>
+<g >
+<title>[Discord] (44 samples, 0.04%)</title><rect x="11.3" y="1685" width="0.6" height="15.0" fill="rgb(212,25,30)" rx="2" ry="2" />
+<text  x="14.33" y="1695.5" ></text>
+</g>
+<g >
+<title>ksys_ioctl (11 samples, 0.01%)</title><rect x="1178.1" y="1909" width="0.2" height="15.0" fill="rgb(235,220,7)" rx="2" ry="2" />
+<text  x="1181.13" y="1919.5" ></text>
+</g>
+<g >
+<title>[Discord] (39 samples, 0.04%)</title><rect x="11.3" y="1397" width="0.5" height="15.0" fill="rgb(219,94,40)" rx="2" ry="2" />
+<text  x="14.34" y="1407.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (57 samples, 0.06%)</title><rect x="1049.6" y="1989" width="0.6" height="15.0" fill="rgb(216,154,35)" rx="2" ry="2" />
+<text  x="1052.55" y="1999.5" ></text>
+</g>
+<g >
+<title>nouveau_drm_ioctl (14 samples, 0.01%)</title><rect x="18.0" y="1893" width="0.2" height="15.0" fill="rgb(254,10,39)" rx="2" ry="2" />
+<text  x="21.03" y="1903.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (40 samples, 0.04%)</title><rect x="289.0" y="1957" width="0.5" height="15.0" fill="rgb(216,9,35)" rx="2" ry="2" />
+<text  x="292.01" y="1967.5" ></text>
+</g>
+<g >
+<title>[libgjs.so.0.0.0] (38 samples, 0.04%)</title><rect x="1176.1" y="2005" width="0.4" height="15.0" fill="rgb(232,151,30)" rx="2" ry="2" />
+<text  x="1179.07" y="2015.5" ></text>
+</g>
+<g >
+<title>ext4_file_write_iter (17 samples, 0.02%)</title><rect x="458.0" y="1861" width="0.2" height="15.0" fill="rgb(217,163,43)" rx="2" ry="2" />
+<text  x="460.96" y="1871.5" ></text>
+</g>
+<g >
+<title>__x64_sys_ioctl (13 samples, 0.01%)</title><rect x="17.4" y="1925" width="0.1" height="15.0" fill="rgb(226,126,49)" rx="2" ry="2" />
+<text  x="20.39" y="1935.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="405" width="0.1" height="15.0" fill="rgb(246,191,22)" rx="2" ry="2" />
+<text  x="20.27" y="415.5" ></text>
+</g>
+<g >
+<title>[perf-21880.map] (43 samples, 0.04%)</title><rect x="11.3" y="1541" width="0.6" height="15.0" fill="rgb(218,65,22)" rx="2" ry="2" />
+<text  x="14.34" y="1551.5" ></text>
+</g>
+<g >
+<title>[Discord] (44 samples, 0.04%)</title><rect x="11.3" y="1637" width="0.6" height="15.0" fill="rgb(207,180,1)" rx="2" ry="2" />
+<text  x="14.33" y="1647.5" ></text>
+</g>
+<g >
+<title>futex_wait_queue_me (9 samples, 0.01%)</title><rect x="458.3" y="1893" width="0.1" height="15.0" fill="rgb(243,92,45)" rx="2" ry="2" />
+<text  x="461.26" y="1903.5" ></text>
+</g>
+<g >
+<title>swapper (373 samples, 0.38%)</title><rect x="1185.2" y="2021" width="4.5" height="15.0" fill="rgb(205,66,52)" rx="2" ry="2" />
+<text  x="1188.22" y="2031.5" ></text>
+</g>
+<g >
+<title>[libmutter-cogl-2.so] (9 samples, 0.01%)</title><rect x="1177.4" y="1989" width="0.1" height="15.0" fill="rgb(228,125,8)" rx="2" ry="2" />
+<text  x="1180.39" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (11 samples, 0.01%)</title><rect x="1177.7" y="1957" width="0.2" height="15.0" fill="rgb(227,102,27)" rx="2" ry="2" />
+<text  x="1180.73" y="1967.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1829" width="0.4" height="15.0" fill="rgb(235,215,38)" rx="2" ry="2" />
+<text  x="1187.52" y="1839.5" ></text>
+</g>
+<g >
+<title>[unknown] (237 samples, 0.24%)</title><rect x="345.7" y="1973" width="2.8" height="15.0" fill="rgb(239,94,32)" rx="2" ry="2" />
+<text  x="348.66" y="1983.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (15 samples, 0.02%)</title><rect x="1184.7" y="1509" width="0.2" height="15.0" fill="rgb(252,42,39)" rx="2" ry="2" />
+<text  x="1187.68" y="1519.5" ></text>
+</g>
+<g >
+<title>[perf-1251.map] (9 samples, 0.01%)</title><rect x="1179.3" y="1861" width="0.1" height="15.0" fill="rgb(250,30,26)" rx="2" ry="2" />
+<text  x="1182.33" y="1871.5" ></text>
+</g>
+<g >
+<title>firefox (61 samples, 0.06%)</title><rect x="1173.8" y="2021" width="0.7" height="15.0" fill="rgb(243,127,51)" rx="2" ry="2" />
+<text  x="1176.75" y="2031.5" ></text>
+</g>
+<g >
+<title>gsd-color (14 samples, 0.01%)</title><rect x="1181.4" y="2021" width="0.2" height="15.0" fill="rgb(251,72,42)" rx="2" ry="2" />
+<text  x="1184.44" y="2031.5" ></text>
+</g>
+<g >
+<title>pthread_cond_timedwait@@GLIBC_2.3.2 (11 samples, 0.01%)</title><rect x="13.7" y="2005" width="0.2" height="15.0" fill="rgb(243,207,7)" rx="2" ry="2" />
+<text  x="16.72" y="2015.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv (190 samples, 0.19%)</title><rect x="633.8" y="1989" width="2.2" height="15.0" fill="rgb(242,154,33)" rx="2" ry="2" />
+<text  x="636.79" y="1999.5" ></text>
+</g>
+<g >
+<title>apic_timer_interrupt (16 samples, 0.02%)</title><rect x="610.5" y="1973" width="0.2" height="15.0" fill="rgb(226,186,13)" rx="2" ry="2" />
+<text  x="613.50" y="1983.5" ></text>
+</g>
+<g >
+<title>__do_page_fault (16 samples, 0.02%)</title><rect x="1050.3" y="1957" width="0.2" height="15.0" fill="rgb(227,168,17)" rx="2" ry="2" />
+<text  x="1053.30" y="1967.5" ></text>
+</g>
+<g >
+<title>[Discord] (19 samples, 0.02%)</title><rect x="11.4" y="1317" width="0.2" height="15.0" fill="rgb(253,171,16)" rx="2" ry="2" />
+<text  x="14.39" y="1327.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (19 samples, 0.02%)</title><rect x="1184.7" y="1525" width="0.2" height="15.0" fill="rgb(223,23,10)" rx="2" ry="2" />
+<text  x="1187.66" y="1535.5" ></text>
+</g>
+<g >
+<title>[libxul.so] (14 samples, 0.01%)</title><rect x="1174.0" y="1989" width="0.1" height="15.0" fill="rgb(220,162,24)" rx="2" ry="2" />
+<text  x="1176.98" y="1999.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (9 samples, 0.01%)</title><rect x="1179.5" y="1733" width="0.1" height="15.0" fill="rgb(208,47,4)" rx="2" ry="2" />
+<text  x="1182.53" y="1743.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1909" width="0.1" height="15.0" fill="rgb(224,64,47)" rx="2" ry="2" />
+<text  x="21.93" y="1919.5" ></text>
+</g>
+<g >
+<title>[libxul.so] (17 samples, 0.02%)</title><rect x="1173.8" y="2005" width="0.2" height="15.0" fill="rgb(221,90,9)" rx="2" ry="2" />
+<text  x="1176.76" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (276 samples, 0.28%)</title><rect x="1176.7" y="2005" width="3.2" height="15.0" fill="rgb(213,46,50)" rx="2" ry="2" />
+<text  x="1179.65" y="2015.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_slowpath (9 samples, 0.01%)</title><rect x="1050.3" y="1861" width="0.2" height="15.0" fill="rgb(234,93,28)" rx="2" ry="2" />
+<text  x="1053.35" y="1871.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv (817 samples, 0.82%)</title><rect x="1095.6" y="2005" width="9.7" height="15.0" fill="rgb(245,216,30)" rx="2" ry="2" />
+<text  x="1098.59" y="2015.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_nodemask (9 samples, 0.01%)</title><rect x="1050.3" y="1877" width="0.2" height="15.0" fill="rgb(238,213,2)" rx="2" ry="2" />
+<text  x="1053.35" y="1887.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1829" width="0.6" height="15.0" fill="rgb(238,100,53)" rx="2" ry="2" />
+<text  x="14.28" y="1839.5" ></text>
+</g>
+<g >
+<title>handle_mm_fault (23 samples, 0.02%)</title><rect x="677.9" y="1941" width="0.3" height="15.0" fill="rgb(249,70,40)" rx="2" ry="2" />
+<text  x="680.94" y="1951.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1045" width="0.1" height="15.0" fill="rgb(251,222,22)" rx="2" ry="2" />
+<text  x="20.27" y="1055.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_cache_save (29 samples, 0.03%)</title><rect x="619.0" y="1989" width="0.4" height="15.0" fill="rgb(208,23,27)" rx="2" ry="2" />
+<text  x="622.05" y="1999.5" ></text>
+</g>
+<g >
+<title>JS_CallFunctionValue (43 samples, 0.04%)</title><rect x="1179.3" y="1973" width="0.5" height="15.0" fill="rgb(246,8,5)" rx="2" ry="2" />
+<text  x="1182.28" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="197" width="0.1" height="15.0" fill="rgb(229,13,42)" rx="2" ry="2" />
+<text  x="20.27" y="207.5" ></text>
+</g>
+<g >
+<title>__memset_avx2_erms (36 samples, 0.04%)</title><rect x="677.9" y="2005" width="0.4" height="15.0" fill="rgb(214,169,16)" rx="2" ry="2" />
+<text  x="680.87" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (19 samples, 0.02%)</title><rect x="1184.2" y="2005" width="0.2" height="15.0" fill="rgb(215,25,13)" rx="2" ry="2" />
+<text  x="1187.20" y="2015.5" ></text>
+</g>
+<g >
+<title>ksys_ioctl (34 samples, 0.03%)</title><rect x="17.8" y="1925" width="0.4" height="15.0" fill="rgb(242,28,37)" rx="2" ry="2" />
+<text  x="20.79" y="1935.5" ></text>
+</g>
+<g >
+<title>x264_me_search_ref (1,904 samples, 1.92%)</title><rect x="642.5" y="1989" width="22.7" height="15.0" fill="rgb(211,161,16)" rx="2" ry="2" />
+<text  x="645.53" y="1999.5" >x..</text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1093" width="0.1" height="15.0" fill="rgb(229,212,43)" rx="2" ry="2" />
+<text  x="20.27" y="1103.5" ></text>
+</g>
+<g >
+<title>process_one_work (63 samples, 0.06%)</title><rect x="1182.4" y="1957" width="0.7" height="15.0" fill="rgb(246,181,14)" rx="2" ry="2" />
+<text  x="1185.38" y="1967.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (11 samples, 0.01%)</title><rect x="12.2" y="2005" width="0.1" height="15.0" fill="rgb(234,163,36)" rx="2" ry="2" />
+<text  x="15.19" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (45 samples, 0.05%)</title><rect x="11.3" y="1733" width="0.6" height="15.0" fill="rgb(233,73,2)" rx="2" ry="2" />
+<text  x="14.33" y="1743.5" ></text>
+</g>
+<g >
+<title>[libgtk-3.so.0.2200.30] (10 samples, 0.01%)</title><rect x="1177.2" y="1989" width="0.1" height="15.0" fill="rgb(225,56,12)" rx="2" ry="2" />
+<text  x="1180.23" y="1999.5" ></text>
+</g>
+<g >
+<title>do_huge_pmd_anonymous_page (16 samples, 0.02%)</title><rect x="678.0" y="1909" width="0.2" height="15.0" fill="rgb(214,41,19)" rx="2" ry="2" />
+<text  x="681.00" y="1919.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (9 samples, 0.01%)</title><rect x="1179.3" y="1813" width="0.1" height="15.0" fill="rgb(240,105,16)" rx="2" ry="2" />
+<text  x="1182.33" y="1823.5" ></text>
+</g>
+<g >
+<title>nouveau_do_suspend (63 samples, 0.06%)</title><rect x="1182.4" y="1845" width="0.7" height="15.0" fill="rgb(207,113,47)" rx="2" ry="2" />
+<text  x="1185.38" y="1855.5" ></text>
+</g>
+<g >
+<title>link_path_walk.part.33 (9 samples, 0.01%)</title><rect x="1175.5" y="1861" width="0.1" height="15.0" fill="rgb(252,8,1)" rx="2" ry="2" />
+<text  x="1178.54" y="1871.5" ></text>
+</g>
+<g >
+<title>new_sync_read (13 samples, 0.01%)</title><rect x="457.8" y="1877" width="0.2" height="15.0" fill="rgb(210,44,42)" rx="2" ry="2" />
+<text  x="460.81" y="1887.5" ></text>
+</g>
+<g >
+<title>[Discord] (24 samples, 0.02%)</title><rect x="10.7" y="1813" width="0.3" height="15.0" fill="rgb(207,170,42)" rx="2" ry="2" />
+<text  x="13.71" y="1823.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (9 samples, 0.01%)</title><rect x="18.4" y="1957" width="0.1" height="15.0" fill="rgb(230,133,8)" rx="2" ry="2" />
+<text  x="21.37" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1877" width="0.1" height="15.0" fill="rgb(237,205,38)" rx="2" ry="2" />
+<text  x="20.27" y="1887.5" ></text>
+</g>
+<g >
+<title>nvkm_udevice_init (12 samples, 0.01%)</title><rect x="18.0" y="1685" width="0.2" height="15.0" fill="rgb(240,151,40)" rx="2" ry="2" />
+<text  x="21.03" y="1695.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (24 samples, 0.02%)</title><rect x="1176.2" y="1861" width="0.3" height="15.0" fill="rgb(233,146,39)" rx="2" ry="2" />
+<text  x="1179.23" y="1871.5" ></text>
+</g>
+<g >
+<title>__GI___ioctl (11 samples, 0.01%)</title><rect x="1178.1" y="1973" width="0.2" height="15.0" fill="rgb(252,171,32)" rx="2" ry="2" />
+<text  x="1181.13" y="1983.5" ></text>
+</g>
+<g >
+<title>nv04_devinit_post (10 samples, 0.01%)</title><rect x="18.0" y="1637" width="0.1" height="15.0" fill="rgb(243,88,35)" rx="2" ry="2" />
+<text  x="21.03" y="1647.5" ></text>
+</g>
+<g >
+<title>worker_thread (63 samples, 0.06%)</title><rect x="1182.4" y="1973" width="0.7" height="15.0" fill="rgb(222,163,9)" rx="2" ry="2" />
+<text  x="1185.38" y="1983.5" ></text>
+</g>
+<g >
+<title>__GI___ioctl (13 samples, 0.01%)</title><rect x="17.4" y="1973" width="0.1" height="15.0" fill="rgb(254,110,52)" rx="2" ry="2" />
+<text  x="20.39" y="1983.5" ></text>
+</g>
+<g >
+<title>[slack] (31 samples, 0.03%)</title><rect x="1184.5" y="1749" width="0.4" height="15.0" fill="rgb(231,202,54)" rx="2" ry="2" />
+<text  x="1187.53" y="1759.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="341" width="0.1" height="15.0" fill="rgb(227,10,25)" rx="2" ry="2" />
+<text  x="20.27" y="351.5" ></text>
+</g>
+<g >
+<title>hrtimer_interrupt (10 samples, 0.01%)</title><rect x="610.5" y="1941" width="0.1" height="15.0" fill="rgb(224,227,47)" rx="2" ry="2" />
+<text  x="613.52" y="1951.5" ></text>
+</g>
+<g >
+<title>user_path_at_empty (17 samples, 0.02%)</title><rect x="1175.5" y="1909" width="0.2" height="15.0" fill="rgb(212,29,25)" rx="2" ry="2" />
+<text  x="1178.54" y="1919.5" ></text>
+</g>
+<g >
+<title>gdbus (17 samples, 0.02%)</title><rect x="1174.5" y="2021" width="0.2" height="15.0" fill="rgb(222,160,45)" rx="2" ry="2" />
+<text  x="1177.48" y="2031.5" ></text>
+</g>
+<g >
+<title>generic_perform_write (17 samples, 0.02%)</title><rect x="458.0" y="1829" width="0.2" height="15.0" fill="rgb(217,225,44)" rx="2" ry="2" />
+<text  x="460.96" y="1839.5" ></text>
+</g>
+<g >
+<title>irq_exit (9 samples, 0.01%)</title><rect x="289.5" y="1957" width="0.1" height="15.0" fill="rgb(209,21,24)" rx="2" ry="2" />
+<text  x="292.49" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="709" width="0.1" height="15.0" fill="rgb(215,88,14)" rx="2" ry="2" />
+<text  x="20.27" y="719.5" ></text>
+</g>
+<g >
+<title>arch_call_rest_init (81 samples, 0.08%)</title><rect x="1188.7" y="1941" width="1.0" height="15.0" fill="rgb(210,140,28)" rx="2" ry="2" />
+<text  x="1191.69" y="1951.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="117" width="0.1" height="15.0" fill="rgb(205,127,43)" rx="2" ry="2" />
+<text  x="20.27" y="127.5" ></text>
+</g>
+<g >
+<title>nvkm_object_init (12 samples, 0.01%)</title><rect x="18.0" y="1717" width="0.2" height="15.0" fill="rgb(230,106,16)" rx="2" ry="2" />
+<text  x="21.03" y="1727.5" ></text>
+</g>
+<g >
+<title>ret_from_intr (12 samples, 0.01%)</title><rect x="289.8" y="1989" width="0.1" height="15.0" fill="rgb(250,88,44)" rx="2" ry="2" />
+<text  x="292.79" y="1999.5" ></text>
+</g>
+<g >
+<title>sublime_text (21 samples, 0.02%)</title><rect x="1185.0" y="2021" width="0.2" height="15.0" fill="rgb(240,26,35)" rx="2" ry="2" />
+<text  x="1187.97" y="2031.5" ></text>
+</g>
+<g >
+<title>x264_trellis_coefn (21 samples, 0.02%)</title><rect x="677.4" y="1989" width="0.3" height="15.0" fill="rgb(220,218,38)" rx="2" ry="2" />
+<text  x="680.44" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1573" width="0.1" height="15.0" fill="rgb(207,77,35)" rx="2" ry="2" />
+<text  x="20.27" y="1583.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (4,934 samples, 4.97%)</title><rect x="290.0" y="1989" width="58.7" height="15.0" fill="rgb(244,98,30)" rx="2" ry="2" />
+<text  x="293.04" y="1999.5" >[ffmpeg]</text>
+</g>
+<g >
+<title>__libc_recvmsg (10 samples, 0.01%)</title><rect x="15.6" y="1989" width="0.1" height="15.0" fill="rgb(241,98,35)" rx="2" ry="2" />
+<text  x="18.59" y="1999.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_analyse (532 samples, 0.54%)</title><rect x="612.4" y="1989" width="6.4" height="15.0" fill="rgb(219,214,41)" rx="2" ry="2" />
+<text  x="615.44" y="1999.5" ></text>
+</g>
+<g >
+<title>IPC_I/O_Child (26 samples, 0.03%)</title><rect x="12.0" y="2021" width="0.3" height="15.0" fill="rgb(234,37,24)" rx="2" ry="2" />
+<text  x="15.01" y="2031.5" ></text>
+</g>
+<g >
+<title>x264_frame_expand_border_lowres (10 samples, 0.01%)</title><rect x="1052.6" y="2005" width="0.1" height="15.0" fill="rgb(226,27,19)" rx="2" ry="2" />
+<text  x="1055.58" y="2015.5" ></text>
+</g>
+<g >
+<title>i915_gem_do_execbuffer (10 samples, 0.01%)</title><rect x="1178.1" y="1829" width="0.2" height="15.0" fill="rgb(215,18,52)" rx="2" ry="2" />
+<text  x="1181.14" y="1839.5" ></text>
+</g>
+<g >
+<title>[Discord] (39 samples, 0.04%)</title><rect x="11.3" y="1429" width="0.5" height="15.0" fill="rgb(247,115,13)" rx="2" ry="2" />
+<text  x="14.34" y="1439.5" ></text>
+</g>
+<g >
+<title>nouveau_pmops_runtime_suspend (63 samples, 0.06%)</title><rect x="1182.4" y="1861" width="0.7" height="15.0" fill="rgb(225,23,48)" rx="2" ry="2" />
+<text  x="1185.38" y="1871.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (43 samples, 0.04%)</title><rect x="1179.3" y="1925" width="0.5" height="15.0" fill="rgb(249,115,16)" rx="2" ry="2" />
+<text  x="1182.28" y="1935.5" ></text>
+</g>
+<g >
+<title>nvbios_exec (10 samples, 0.01%)</title><rect x="18.0" y="1573" width="0.1" height="15.0" fill="rgb(230,203,39)" rx="2" ry="2" />
+<text  x="21.03" y="1583.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="309" width="0.1" height="15.0" fill="rgb(228,98,36)" rx="2" ry="2" />
+<text  x="20.27" y="319.5" ></text>
+</g>
+<g >
+<title>pthread_cond_wait@@GLIBC_2.3.2 (12 samples, 0.01%)</title><rect x="458.3" y="1989" width="0.1" height="15.0" fill="rgb(235,132,30)" rx="2" ry="2" />
+<text  x="461.26" y="1999.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_nodemask (66 samples, 0.07%)</title><rect x="611.0" y="1861" width="0.7" height="15.0" fill="rgb(226,58,33)" rx="2" ry="2" />
+<text  x="613.96" y="1871.5" ></text>
+</g>
+<g >
+<title>rmap_walk (9 samples, 0.01%)</title><rect x="611.5" y="1733" width="0.1" height="15.0" fill="rgb(213,108,46)" rx="2" ry="2" />
+<text  x="614.53" y="1743.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="101" width="0.1" height="15.0" fill="rgb(254,185,33)" rx="2" ry="2" />
+<text  x="20.27" y="111.5" ></text>
+</g>
+<g >
+<title>__hrtimer_run_queues (36 samples, 0.04%)</title><rect x="289.0" y="1941" width="0.4" height="15.0" fill="rgb(232,83,0)" rx="2" ry="2" />
+<text  x="292.02" y="1951.5" ></text>
+</g>
+<g >
+<title>gjs_call_function_value (43 samples, 0.04%)</title><rect x="1179.3" y="1989" width="0.5" height="15.0" fill="rgb(225,199,39)" rx="2" ry="2" />
+<text  x="1182.28" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (16 samples, 0.02%)</title><rect x="1174.1" y="1989" width="0.2" height="15.0" fill="rgb(215,146,47)" rx="2" ry="2" />
+<text  x="1177.14" y="1999.5" ></text>
+</g>
+<g >
+<title>mmput (11 samples, 0.01%)</title><rect x="12.2" y="1893" width="0.1" height="15.0" fill="rgb(234,196,5)" rx="2" ry="2" />
+<text  x="15.19" y="1903.5" ></text>
+</g>
+<g >
+<title>__x64_sys_ioctl (11 samples, 0.01%)</title><rect x="1178.1" y="1925" width="0.2" height="15.0" fill="rgb(210,119,47)" rx="2" ry="2" />
+<text  x="1181.13" y="1935.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="693" width="0.1" height="15.0" fill="rgb(220,169,12)" rx="2" ry="2" />
+<text  x="20.27" y="703.5" ></text>
+</g>
+<g >
+<title>page_fault (18 samples, 0.02%)</title><rect x="1050.3" y="1989" width="0.2" height="15.0" fill="rgb(249,109,36)" rx="2" ry="2" />
+<text  x="1053.28" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1701" width="0.1" height="15.0" fill="rgb(236,194,27)" rx="2" ry="2" />
+<text  x="16.06" y="1711.5" ></text>
+</g>
+<g >
+<title>x264_adaptive_quant_frame (31 samples, 0.03%)</title><rect x="678.5" y="2005" width="0.4" height="15.0" fill="rgb(248,49,31)" rx="2" ry="2" />
+<text  x="681.52" y="2015.5" ></text>
+</g>
+<g >
+<title>do_page_fault (87 samples, 0.09%)</title><rect x="610.8" y="1957" width="1.0" height="15.0" fill="rgb(212,194,9)" rx="2" ry="2" />
+<text  x="613.79" y="1967.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_deblock_strength (29 samples, 0.03%)</title><rect x="619.4" y="1989" width="0.3" height="15.0" fill="rgb(210,205,8)" rx="2" ry="2" />
+<text  x="622.39" y="1999.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (13 samples, 0.01%)</title><rect x="457.8" y="1957" width="0.2" height="15.0" fill="rgb(223,24,34)" rx="2" ry="2" />
+<text  x="460.81" y="1967.5" ></text>
+</g>
+<g >
+<title>x264_me_refine_bidir_satd (121 samples, 0.12%)</title><rect x="640.9" y="1989" width="1.4" height="15.0" fill="rgb(233,220,23)" rx="2" ry="2" />
+<text  x="643.89" y="1999.5" ></text>
+</g>
+<g >
+<title>rest_init (81 samples, 0.08%)</title><rect x="1188.7" y="1925" width="1.0" height="15.0" fill="rgb(223,208,1)" rx="2" ry="2" />
+<text  x="1191.69" y="1935.5" ></text>
+</g>
+<g >
+<title>balance_pgdat (34 samples, 0.03%)</title><rect x="1181.9" y="1957" width="0.4" height="15.0" fill="rgb(228,36,15)" rx="2" ry="2" />
+<text  x="1184.91" y="1967.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx2.skip_prologue (9,347 samples, 9.42%)</title><rect x="500.9" y="1989" width="111.2" height="15.0" fill="rgb(254,98,42)" rx="2" ry="2" />
+<text  x="503.89" y="1999.5" >x264_add8x8_i..</text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1877" width="0.2" height="15.0" fill="rgb(222,65,43)" rx="2" ry="2" />
+<text  x="16.03" y="1887.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="837" width="0.1" height="15.0" fill="rgb(230,10,47)" rx="2" ry="2" />
+<text  x="20.27" y="847.5" ></text>
+</g>
+<g >
+<title>x264_trellis_bnode_0 (149 samples, 0.15%)</title><rect x="1158.7" y="2005" width="1.8" height="15.0" fill="rgb(235,187,6)" rx="2" ry="2" />
+<text  x="1161.72" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="965" width="0.1" height="15.0" fill="rgb(231,70,38)" rx="2" ry="2" />
+<text  x="20.27" y="975.5" ></text>
+</g>
+<g >
+<title>x264_trellis_bnode_1 (46 samples, 0.05%)</title><rect x="1160.5" y="2005" width="0.5" height="15.0" fill="rgb(216,100,37)" rx="2" ry="2" />
+<text  x="1163.49" y="2015.5" ></text>
+</g>
+<g >
+<title>threaded-ml (25 samples, 0.03%)</title><rect x="1189.7" y="2021" width="0.3" height="15.0" fill="rgb(234,19,5)" rx="2" ry="2" />
+<text  x="1192.70" y="2031.5" ></text>
+</g>
+<g >
+<title>[libgjs.so.0.0.0] (35 samples, 0.04%)</title><rect x="1176.1" y="1973" width="0.4" height="15.0" fill="rgb(221,193,46)" rx="2" ry="2" />
+<text  x="1179.10" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1909" width="0.1" height="15.0" fill="rgb(222,224,20)" rx="2" ry="2" />
+<text  x="20.27" y="1919.5" ></text>
+</g>
+<g >
+<title>JS_Helper (10 samples, 0.01%)</title><rect x="12.9" y="2021" width="0.1" height="15.0" fill="rgb(241,136,5)" rx="2" ry="2" />
+<text  x="15.87" y="2031.5" ></text>
+</g>
+<g >
+<title>page_fault (92 samples, 0.09%)</title><rect x="610.7" y="1973" width="1.1" height="15.0" fill="rgb(208,121,50)" rx="2" ry="2" />
+<text  x="613.73" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1621" width="0.1" height="15.0" fill="rgb(238,10,29)" rx="2" ry="2" />
+<text  x="20.27" y="1631.5" ></text>
+</g>
+<g >
+<title>[libxul.so] (12 samples, 0.01%)</title><rect x="10.2" y="2005" width="0.2" height="15.0" fill="rgb(225,2,12)" rx="2" ry="2" />
+<text  x="13.21" y="2015.5" ></text>
+</g>
+<g >
+<title>__handle_mm_fault (85 samples, 0.09%)</title><rect x="610.8" y="1909" width="1.0" height="15.0" fill="rgb(238,217,7)" rx="2" ry="2" />
+<text  x="613.82" y="1919.5" ></text>
+</g>
+<g >
+<title>Discord (122 samples, 0.12%)</title><rect x="10.4" y="2021" width="1.5" height="15.0" fill="rgb(232,119,36)" rx="2" ry="2" />
+<text  x="13.44" y="2031.5" ></text>
+</g>
+<g >
+<title>[sublime_text] (9 samples, 0.01%)</title><rect x="1174.9" y="2005" width="0.1" height="15.0" fill="rgb(222,117,30)" rx="2" ry="2" />
+<text  x="1177.93" y="2015.5" ></text>
+</g>
+<g >
+<title>page_fault (10 samples, 0.01%)</title><rect x="11.7" y="1301" width="0.1" height="15.0" fill="rgb(247,70,38)" rx="2" ry="2" />
+<text  x="14.67" y="1311.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="789" width="0.1" height="15.0" fill="rgb(210,81,17)" rx="2" ry="2" />
+<text  x="20.27" y="799.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1205" width="0.1" height="15.0" fill="rgb(236,86,17)" rx="2" ry="2" />
+<text  x="20.27" y="1215.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (9 samples, 0.01%)</title><rect x="678.4" y="1989" width="0.1" height="15.0" fill="rgb(235,75,20)" rx="2" ry="2" />
+<text  x="681.41" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (52 samples, 0.05%)</title><rect x="17.1" y="1989" width="0.6" height="15.0" fill="rgb(234,77,25)" rx="2" ry="2" />
+<text  x="20.11" y="1999.5" ></text>
+</g>
+<g >
+<title>x264_mb_mc (76 samples, 0.08%)</title><rect x="1093.8" y="2005" width="1.0" height="15.0" fill="rgb(249,107,45)" rx="2" ry="2" />
+<text  x="1096.85" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="325" width="0.1" height="15.0" fill="rgb(213,167,38)" rx="2" ry="2" />
+<text  x="20.27" y="335.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (11 samples, 0.01%)</title><rect x="12.2" y="1989" width="0.1" height="15.0" fill="rgb(207,172,25)" rx="2" ry="2" />
+<text  x="15.19" y="1999.5" ></text>
+</g>
+<g >
+<title>try_to_compact_pages (16 samples, 0.02%)</title><rect x="678.0" y="1829" width="0.2" height="15.0" fill="rgb(208,73,49)" rx="2" ry="2" />
+<text  x="681.00" y="1839.5" ></text>
+</g>
+<g >
+<title>shrink_inactive_list (18 samples, 0.02%)</title><rect x="1181.9" y="1909" width="0.2" height="15.0" fill="rgb(247,223,4)" rx="2" ry="2" />
+<text  x="1184.91" y="1919.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1749" width="0.1" height="15.0" fill="rgb(223,47,15)" rx="2" ry="2" />
+<text  x="16.06" y="1759.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1637" width="0.1" height="15.0" fill="rgb(244,58,18)" rx="2" ry="2" />
+<text  x="20.27" y="1647.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1893" width="0.6" height="15.0" fill="rgb(239,193,0)" rx="2" ry="2" />
+<text  x="14.28" y="1903.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (17 samples, 0.02%)</title><rect x="1179.5" y="1829" width="0.2" height="15.0" fill="rgb(208,128,11)" rx="2" ry="2" />
+<text  x="1182.51" y="1839.5" ></text>
+</g>
+<g >
+<title>[bluejeans-v2] (9 samples, 0.01%)</title><rect x="18.9" y="1861" width="0.1" height="15.0" fill="rgb(244,148,37)" rx="2" ry="2" />
+<text  x="21.93" y="1871.5" ></text>
+</g>
+<g >
+<title>migrate_pages (13 samples, 0.01%)</title><rect x="678.0" y="1781" width="0.2" height="15.0" fill="rgb(217,210,14)" rx="2" ry="2" />
+<text  x="681.03" y="1791.5" ></text>
+</g>
+<g >
+<title>alloc_pages_vma (67 samples, 0.07%)</title><rect x="610.9" y="1877" width="0.8" height="15.0" fill="rgb(222,185,13)" rx="2" ry="2" />
+<text  x="613.95" y="1887.5" ></text>
+</g>
+<g >
+<title>__poll (14 samples, 0.01%)</title><rect x="1180.0" y="2005" width="0.1" height="15.0" fill="rgb(215,37,52)" rx="2" ry="2" />
+<text  x="1182.96" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1173" width="0.1" height="15.0" fill="rgb(218,228,15)" rx="2" ry="2" />
+<text  x="20.27" y="1183.5" ></text>
+</g>
+<g >
+<title>start_secondary (292 samples, 0.29%)</title><rect x="1185.2" y="1989" width="3.5" height="15.0" fill="rgb(236,177,13)" rx="2" ry="2" />
+<text  x="1188.22" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="741" width="0.1" height="15.0" fill="rgb(208,207,51)" rx="2" ry="2" />
+<text  x="20.27" y="751.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="869" width="0.1" height="15.0" fill="rgb(232,32,20)" rx="2" ry="2" />
+<text  x="20.27" y="879.5" ></text>
+</g>
+<g >
+<title>pci_pm_runtime_suspend (63 samples, 0.06%)</title><rect x="1182.4" y="1877" width="0.7" height="15.0" fill="rgb(213,213,6)" rx="2" ry="2" />
+<text  x="1185.38" y="1887.5" ></text>
+</g>
+<g >
+<title>pulseaudio (23 samples, 0.02%)</title><rect x="1184.2" y="2021" width="0.3" height="15.0" fill="rgb(229,73,8)" rx="2" ry="2" />
+<text  x="1187.18" y="2031.5" ></text>
+</g>
+<g >
+<title>__handle_mm_fault (23 samples, 0.02%)</title><rect x="677.9" y="1925" width="0.3" height="15.0" fill="rgb(253,106,31)" rx="2" ry="2" />
+<text  x="680.94" y="1935.5" ></text>
+</g>
+<g >
+<title>bluejeans-v2 (24 samples, 0.02%)</title><rect x="18.9" y="2021" width="0.3" height="15.0" fill="rgb(228,18,21)" rx="2" ry="2" />
+<text  x="21.90" y="2031.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct_avx2.skip_prologue (580 samples, 0.58%)</title><rect x="450.8" y="1973" width="6.9" height="15.0" fill="rgb(240,187,24)" rx="2" ry="2" />
+<text  x="453.83" y="1983.5" ></text>
+</g>
+<g >
+<title>ioread32 (24 samples, 0.02%)</title><rect x="1182.8" y="1669" width="0.3" height="15.0" fill="rgb(244,161,29)" rx="2" ry="2" />
+<text  x="1185.84" y="1679.5" ></text>
+</g>
+<g >
+<title>x264_mb_predict_mv_ref16x16 (338 samples, 0.34%)</title><rect x="636.9" y="1989" width="4.0" height="15.0" fill="rgb(233,129,52)" rx="2" ry="2" />
+<text  x="639.87" y="1999.5" ></text>
+</g>
+<g >
+<title>x264_cabac_mb_skip (12 samples, 0.01%)</title><rect x="612.2" y="1989" width="0.1" height="15.0" fill="rgb(214,196,14)" rx="2" ry="2" />
+<text  x="615.16" y="1999.5" ></text>
+</g>
+<g >
+<title>[sublime_text] (14 samples, 0.01%)</title><rect x="1175.0" y="1973" width="0.2" height="15.0" fill="rgb(205,214,46)" rx="2" ry="2" />
+<text  x="1178.05" y="1983.5" ></text>
+</g>
+<g >
+<title>x264_me_search_ref (3,097 samples, 3.12%)</title><rect x="1112.9" y="2005" width="36.9" height="15.0" fill="rgb(205,215,8)" rx="2" ry="2" />
+<text  x="1115.92" y="2015.5" >x26..</text>
+</g>
+<g >
+<title>do_vfs_ioctl (11 samples, 0.01%)</title><rect x="1178.1" y="1893" width="0.2" height="15.0" fill="rgb(216,26,34)" rx="2" ry="2" />
+<text  x="1181.13" y="1903.5" ></text>
+</g>
+<g >
+<title>x264_trellis_coefn (308 samples, 0.31%)</title><rect x="1170.1" y="2005" width="3.6" height="15.0" fill="rgb(230,68,32)" rx="2" ry="2" />
+<text  x="1173.07" y="2015.5" ></text>
+</g>
+<g >
+<title>compact_zone_order (16 samples, 0.02%)</title><rect x="678.0" y="1813" width="0.2" height="15.0" fill="rgb(248,177,29)" rx="2" ry="2" />
+<text  x="681.00" y="1823.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1829" width="0.1" height="15.0" fill="rgb(211,204,32)" rx="2" ry="2" />
+<text  x="20.27" y="1839.5" ></text>
+</g>
+<g >
+<title>isolate_freepages_block (12 samples, 0.01%)</title><rect x="611.2" y="1733" width="0.1" height="15.0" fill="rgb(238,93,9)" rx="2" ry="2" />
+<text  x="614.17" y="1743.5" ></text>
+</g>
+<g >
+<title>[i965_dri.so] (12 samples, 0.01%)</title><rect x="16.3" y="2005" width="0.1" height="15.0" fill="rgb(220,64,11)" rx="2" ry="2" />
+<text  x="19.26" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (16 samples, 0.02%)</title><rect x="15.2" y="1973" width="0.2" height="15.0" fill="rgb(240,198,51)" rx="2" ry="2" />
+<text  x="18.19" y="1983.5" ></text>
+</g>
+<g >
+<title>handle_mm_fault (86 samples, 0.09%)</title><rect x="610.8" y="1925" width="1.0" height="15.0" fill="rgb(227,226,15)" rx="2" ry="2" />
+<text  x="613.81" y="1935.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1973" width="0.3" height="15.0" fill="rgb(234,93,13)" rx="2" ry="2" />
+<text  x="13.71" y="1983.5" ></text>
+</g>
+<g >
+<title>exit_mmap (11 samples, 0.01%)</title><rect x="12.2" y="1877" width="0.1" height="15.0" fill="rgb(234,131,33)" rx="2" ry="2" />
+<text  x="15.19" y="1887.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (12 samples, 0.01%)</title><rect x="1180.0" y="1989" width="0.1" height="15.0" fill="rgb(245,100,30)" rx="2" ry="2" />
+<text  x="1182.98" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="149" width="0.1" height="15.0" fill="rgb(217,213,11)" rx="2" ry="2" />
+<text  x="20.27" y="159.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="181" width="0.1" height="15.0" fill="rgb(224,111,33)" rx="2" ry="2" />
+<text  x="20.27" y="191.5" ></text>
+</g>
+<g >
+<title>x264_mb_mc_8x8 (71 samples, 0.07%)</title><rect x="1094.8" y="2005" width="0.8" height="15.0" fill="rgb(229,203,4)" rx="2" ry="2" />
+<text  x="1097.75" y="2015.5" ></text>
+</g>
+<g >
+<title>tick_sched_handle (21 samples, 0.02%)</title><rect x="289.2" y="1909" width="0.2" height="15.0" fill="rgb(226,160,7)" rx="2" ry="2" />
+<text  x="292.20" y="1919.5" ></text>
+</g>
+<g >
+<title>smp_apic_timer_interrupt (15 samples, 0.02%)</title><rect x="610.5" y="1957" width="0.2" height="15.0" fill="rgb(247,41,39)" rx="2" ry="2" />
+<text  x="613.51" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="453" width="0.1" height="15.0" fill="rgb(213,119,50)" rx="2" ry="2" />
+<text  x="20.27" y="463.5" ></text>
+</g>
+<g >
+<title>v8::Function::Call (44 samples, 0.04%)</title><rect x="11.3" y="1669" width="0.6" height="15.0" fill="rgb(215,102,6)" rx="2" ry="2" />
+<text  x="14.33" y="1679.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="645" width="0.1" height="15.0" fill="rgb(215,6,36)" rx="2" ry="2" />
+<text  x="20.27" y="655.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (14 samples, 0.01%)</title><rect x="1179.5" y="1749" width="0.2" height="15.0" fill="rgb(236,90,31)" rx="2" ry="2" />
+<text  x="1182.53" y="1759.5" ></text>
+</g>
+<g >
+<title>pthread_cond_broadcast@@GLIBC_2.3.2 (11 samples, 0.01%)</title><rect x="678.4" y="2005" width="0.1" height="15.0" fill="rgb(243,105,27)" rx="2" ry="2" />
+<text  x="681.39" y="2015.5" ></text>
+</g>
+<g >
+<title>rpm_suspend (63 samples, 0.06%)</title><rect x="1182.4" y="1925" width="0.7" height="15.0" fill="rgb(209,112,38)" rx="2" ry="2" />
+<text  x="1185.38" y="1935.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (42 samples, 0.04%)</title><rect x="1179.3" y="1909" width="0.5" height="15.0" fill="rgb(213,76,16)" rx="2" ry="2" />
+<text  x="1182.30" y="1919.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1237" width="0.1" height="15.0" fill="rgb(235,209,36)" rx="2" ry="2" />
+<text  x="20.27" y="1247.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="757" width="0.1" height="15.0" fill="rgb(224,61,25)" rx="2" ry="2" />
+<text  x="20.27" y="767.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_encode (748 samples, 0.75%)</title><rect x="619.7" y="1989" width="8.9" height="15.0" fill="rgb(212,16,46)" rx="2" ry="2" />
+<text  x="622.74" y="1999.5" ></text>
+</g>
+<g >
+<title>[Discord] (39 samples, 0.04%)</title><rect x="11.3" y="1365" width="0.5" height="15.0" fill="rgb(233,49,22)" rx="2" ry="2" />
+<text  x="14.34" y="1375.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="69" width="0.1" height="15.0" fill="rgb(244,126,37)" rx="2" ry="2" />
+<text  x="20.27" y="79.5" ></text>
+</g>
+<g >
+<title>nouveau_do_resume (12 samples, 0.01%)</title><rect x="18.0" y="1781" width="0.2" height="15.0" fill="rgb(251,6,41)" rx="2" ry="2" />
+<text  x="21.03" y="1791.5" ></text>
+</g>
+<g >
+<title>[unknown] (36 samples, 0.04%)</title><rect x="1176.1" y="1989" width="0.4" height="15.0" fill="rgb(247,210,31)" rx="2" ry="2" />
+<text  x="1179.10" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="997" width="0.1" height="15.0" fill="rgb(207,117,7)" rx="2" ry="2" />
+<text  x="20.27" y="1007.5" ></text>
+</g>
+<g >
+<title>do_idle (81 samples, 0.08%)</title><rect x="1188.7" y="1893" width="1.0" height="15.0" fill="rgb(244,177,20)" rx="2" ry="2" />
+<text  x="1191.69" y="1903.5" ></text>
+</g>
+<g >
+<title>smp_apic_timer_interrupt (10 samples, 0.01%)</title><rect x="348.5" y="1957" width="0.1" height="15.0" fill="rgb(217,129,4)" rx="2" ry="2" />
+<text  x="351.49" y="1967.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1861" width="0.6" height="15.0" fill="rgb(210,201,44)" rx="2" ry="2" />
+<text  x="14.28" y="1871.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="213" width="0.1" height="15.0" fill="rgb(218,107,35)" rx="2" ry="2" />
+<text  x="20.27" y="223.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1717" width="0.1" height="15.0" fill="rgb(235,46,49)" rx="2" ry="2" />
+<text  x="20.27" y="1727.5" ></text>
+</g>
+<g >
+<title>[unknown] (11 samples, 0.01%)</title><rect x="12.1" y="2005" width="0.1" height="15.0" fill="rgb(234,37,8)" rx="2" ry="2" />
+<text  x="15.06" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1909" width="0.3" height="15.0" fill="rgb(224,137,26)" rx="2" ry="2" />
+<text  x="13.71" y="1919.5" ></text>
+</g>
+<g >
+<title>rpm_callback (12 samples, 0.01%)</title><rect x="18.0" y="1845" width="0.2" height="15.0" fill="rgb(222,193,22)" rx="2" ry="2" />
+<text  x="21.03" y="1855.5" ></text>
+</g>
+<g >
+<title>do_sys_poll (11 samples, 0.01%)</title><rect x="1180.0" y="1941" width="0.1" height="15.0" fill="rgb(231,11,11)" rx="2" ry="2" />
+<text  x="1182.98" y="1951.5" ></text>
+</g>
+<g >
+<title>x264_cabac_encode_ue_bypass (27 samples, 0.03%)</title><rect x="1050.8" y="2005" width="0.3" height="15.0" fill="rgb(248,126,32)" rx="2" ry="2" />
+<text  x="1053.79" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1877" width="0.6" height="15.0" fill="rgb(221,71,38)" rx="2" ry="2" />
+<text  x="14.28" y="1887.5" ></text>
+</g>
+<g >
+<title>update_process_times (20 samples, 0.02%)</title><rect x="289.2" y="1893" width="0.2" height="15.0" fill="rgb(240,114,0)" rx="2" ry="2" />
+<text  x="292.21" y="1903.5" ></text>
+</g>
+<g >
+<title>[libx264.so.152] (20,165 samples, 20.33%)</title><rect x="50.2" y="2005" width="239.8" height="15.0" fill="rgb(247,28,21)" rx="2" ry="2" />
+<text  x="53.19" y="2015.5" >[libx264.so.152]</text>
+</g>
+<g >
+<title>x264_copy_column8 (18 samples, 0.02%)</title><rect x="1051.1" y="2005" width="0.2" height="15.0" fill="rgb(252,43,13)" rx="2" ry="2" />
+<text  x="1054.11" y="2015.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (11 samples, 0.01%)</title><rect x="458.3" y="1957" width="0.1" height="15.0" fill="rgb(252,206,33)" rx="2" ry="2" />
+<text  x="461.26" y="1967.5" ></text>
+</g>
+<g >
+<title>ksys_write (17 samples, 0.02%)</title><rect x="458.0" y="1925" width="0.2" height="15.0" fill="rgb(239,67,1)" rx="2" ry="2" />
+<text  x="460.96" y="1935.5" ></text>
+</g>
+<g >
+<title>__libc_start_main (33 samples, 0.03%)</title><rect x="1184.5" y="1989" width="0.4" height="15.0" fill="rgb(254,130,33)" rx="2" ry="2" />
+<text  x="1187.52" y="1999.5" ></text>
+</g>
+<g >
+<title>v8::Isolate::LowMemoryNotification (9 samples, 0.01%)</title><rect x="18.9" y="1733" width="0.1" height="15.0" fill="rgb(222,172,45)" rx="2" ry="2" />
+<text  x="21.93" y="1743.5" ></text>
+</g>
+<g >
+<title>[slack] (33 samples, 0.03%)</title><rect x="1184.5" y="1957" width="0.4" height="15.0" fill="rgb(246,58,36)" rx="2" ry="2" />
+<text  x="1187.52" y="1967.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1973" width="0.2" height="15.0" fill="rgb(224,24,9)" rx="2" ry="2" />
+<text  x="16.03" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (33 samples, 0.03%)</title><rect x="1184.5" y="2005" width="0.4" height="15.0" fill="rgb(231,162,28)" rx="2" ry="2" />
+<text  x="1187.52" y="2015.5" ></text>
+</g>
+<g >
+<title>compact_zone (64 samples, 0.06%)</title><rect x="611.0" y="1781" width="0.7" height="15.0" fill="rgb(246,118,30)" rx="2" ry="2" />
+<text  x="613.97" y="1791.5" ></text>
+</g>
+<g >
+<title>start_kernel (81 samples, 0.08%)</title><rect x="1188.7" y="1957" width="1.0" height="15.0" fill="rgb(205,60,50)" rx="2" ry="2" />
+<text  x="1191.69" y="1967.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="821" width="0.1" height="15.0" fill="rgb(240,36,7)" rx="2" ry="2" />
+<text  x="20.27" y="831.5" ></text>
+</g>
+<g >
+<title>do_shrink_slab (15 samples, 0.02%)</title><rect x="1182.1" y="1909" width="0.2" height="15.0" fill="rgb(221,34,51)" rx="2" ry="2" />
+<text  x="1185.13" y="1919.5" ></text>
+</g>
+<g >
+<title>futex_wait (11 samples, 0.01%)</title><rect x="458.3" y="1909" width="0.1" height="15.0" fill="rgb(227,69,47)" rx="2" ry="2" />
+<text  x="461.26" y="1919.5" ></text>
+</g>
+<g >
+<title>[Discord] (9 samples, 0.01%)</title><rect x="13.1" y="1733" width="0.1" height="15.0" fill="rgb(229,109,8)" rx="2" ry="2" />
+<text  x="16.06" y="1743.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (13 samples, 0.01%)</title><rect x="17.5" y="1957" width="0.2" height="15.0" fill="rgb(234,133,34)" rx="2" ry="2" />
+<text  x="20.54" y="1967.5" ></text>
+</g>
+<g >
+<title>__libc_start_main (9 samples, 0.01%)</title><rect x="18.9" y="1989" width="0.1" height="15.0" fill="rgb(235,24,54)" rx="2" ry="2" />
+<text  x="21.93" y="1999.5" ></text>
+</g>
+<g >
+<title>nautilus (32 samples, 0.03%)</title><rect x="1183.7" y="2021" width="0.4" height="15.0" fill="rgb(229,189,50)" rx="2" ry="2" />
+<text  x="1186.72" y="2031.5" ></text>
+</g>
+<g >
+<title>[unknown] (22 samples, 0.02%)</title><rect x="1175.0" y="1989" width="0.3" height="15.0" fill="rgb(219,112,30)" rx="2" ry="2" />
+<text  x="1178.05" y="1999.5" ></text>
+</g>
+<g >
+<title>__x64_sys_newlstat (23 samples, 0.02%)</title><rect x="1175.5" y="1957" width="0.3" height="15.0" fill="rgb(218,149,52)" rx="2" ry="2" />
+<text  x="1178.49" y="1967.5" ></text>
+</g>
+<g >
+<title>nvkm_object_init (12 samples, 0.01%)</title><rect x="18.0" y="1701" width="0.2" height="15.0" fill="rgb(223,127,53)" rx="2" ry="2" />
+<text  x="21.03" y="1711.5" ></text>
+</g>
+<g >
+<title>swapgs_restore_regs_and_return_to_usermode (18 samples, 0.02%)</title><rect x="1050.6" y="1989" width="0.2" height="15.0" fill="rgb(252,198,5)" rx="2" ry="2" />
+<text  x="1053.57" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="613" width="0.1" height="15.0" fill="rgb(234,29,14)" rx="2" ry="2" />
+<text  x="20.27" y="623.5" ></text>
+</g>
+<g >
+<title>[Discord] (37 samples, 0.04%)</title><rect x="11.4" y="1333" width="0.4" height="15.0" fill="rgb(233,58,9)" rx="2" ry="2" />
+<text  x="14.37" y="1343.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (35 samples, 0.04%)</title><rect x="1176.1" y="1957" width="0.4" height="15.0" fill="rgb(205,18,26)" rx="2" ry="2" />
+<text  x="1179.10" y="1967.5" ></text>
+</g>
+<g >
+<title>x264_add8x8_idct8_avx.skip_prologue (183 samples, 0.18%)</title><rect x="458.4" y="1989" width="2.2" height="15.0" fill="rgb(247,162,9)" rx="2" ry="2" />
+<text  x="461.40" y="1999.5" ></text>
+</g>
+<g >
+<title>DOM_Worker (17 samples, 0.02%)</title><rect x="10.2" y="2021" width="0.2" height="15.0" fill="rgb(250,221,1)" rx="2" ry="2" />
+<text  x="13.21" y="2031.5" ></text>
+</g>
+<g >
+<title>[slack] (31 samples, 0.03%)</title><rect x="1184.5" y="1733" width="0.4" height="15.0" fill="rgb(235,148,0)" rx="2" ry="2" />
+<text  x="1187.53" y="1743.5" ></text>
+</g>
+<g >
+<title>do_IRQ (11 samples, 0.01%)</title><rect x="289.8" y="1973" width="0.1" height="15.0" fill="rgb(213,34,16)" rx="2" ry="2" />
+<text  x="292.79" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (36 samples, 0.04%)</title><rect x="1174.0" y="2005" width="0.4" height="15.0" fill="rgb(226,206,31)" rx="2" ry="2" />
+<text  x="1176.97" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="245" width="0.1" height="15.0" fill="rgb(249,44,6)" rx="2" ry="2" />
+<text  x="20.27" y="255.5" ></text>
+</g>
+<g >
+<title>page_fault (28 samples, 0.03%)</title><rect x="677.9" y="1989" width="0.3" height="15.0" fill="rgb(229,169,38)" rx="2" ry="2" />
+<text  x="680.89" y="1999.5" ></text>
+</g>
+<g >
+<title>slack (37 samples, 0.04%)</title><rect x="1184.5" y="2021" width="0.4" height="15.0" fill="rgb(210,186,43)" rx="2" ry="2" />
+<text  x="1187.50" y="2031.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1909" width="0.6" height="15.0" fill="rgb(212,48,52)" rx="2" ry="2" />
+<text  x="14.28" y="1919.5" ></text>
+</g>
+<g >
+<title>__alloc_pages_direct_compact (16 samples, 0.02%)</title><rect x="678.0" y="1845" width="0.2" height="15.0" fill="rgb(254,225,13)" rx="2" ry="2" />
+<text  x="681.00" y="1855.5" ></text>
+</g>
+<g >
+<title>do_syscall_64 (17 samples, 0.02%)</title><rect x="458.0" y="1957" width="0.2" height="15.0" fill="rgb(247,82,5)" rx="2" ry="2" />
+<text  x="460.96" y="1967.5" ></text>
+</g>
+<g >
+<title>[Discord] (43 samples, 0.04%)</title><rect x="11.3" y="1525" width="0.6" height="15.0" fill="rgb(236,220,17)" rx="2" ry="2" />
+<text  x="14.34" y="1535.5" ></text>
+</g>
+<g >
+<title>init_sub_direct (10 samples, 0.01%)</title><rect x="18.0" y="1589" width="0.1" height="15.0" fill="rgb(211,23,37)" rx="2" ry="2" />
+<text  x="21.03" y="1599.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="501" width="0.1" height="15.0" fill="rgb(245,139,47)" rx="2" ry="2" />
+<text  x="20.27" y="511.5" ></text>
+</g>
+<g >
+<title>__hrtimer_run_queues (11 samples, 0.01%)</title><rect x="444.3" y="1925" width="0.1" height="15.0" fill="rgb(246,178,5)" rx="2" ry="2" />
+<text  x="447.29" y="1935.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="661" width="0.1" height="15.0" fill="rgb(235,190,9)" rx="2" ry="2" />
+<text  x="20.27" y="671.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1605" width="0.1" height="15.0" fill="rgb(228,83,46)" rx="2" ry="2" />
+<text  x="20.27" y="1615.5" ></text>
+</g>
+<g >
+<title>[libgirepository-1.0.so.1.0.0] (10 samples, 0.01%)</title><rect x="1176.0" y="2005" width="0.1" height="15.0" fill="rgb(241,24,42)" rx="2" ry="2" />
+<text  x="1178.95" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1653" width="0.1" height="15.0" fill="rgb(217,222,36)" rx="2" ry="2" />
+<text  x="20.27" y="1663.5" ></text>
+</g>
+<g >
+<title>__rpm_callback (12 samples, 0.01%)</title><rect x="18.0" y="1829" width="0.2" height="15.0" fill="rgb(253,177,36)" rx="2" ry="2" />
+<text  x="21.03" y="1839.5" ></text>
+</g>
+<g >
+<title>[Xorg] (10 samples, 0.01%)</title><rect x="16.1" y="2005" width="0.2" height="15.0" fill="rgb(214,36,41)" rx="2" ry="2" />
+<text  x="19.14" y="2015.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1413" width="0.1" height="15.0" fill="rgb(214,198,37)" rx="2" ry="2" />
+<text  x="20.27" y="1423.5" ></text>
+</g>
+<g >
+<title>Xorg (226 samples, 0.23%)</title><rect x="16.1" y="2021" width="2.7" height="15.0" fill="rgb(253,83,41)" rx="2" ry="2" />
+<text  x="19.08" y="2031.5" ></text>
+</g>
+<g >
+<title>[unknown] (11 samples, 0.01%)</title><rect x="1185.0" y="2005" width="0.2" height="15.0" fill="rgb(228,201,7)" rx="2" ry="2" />
+<text  x="1188.04" y="2015.5" ></text>
+</g>
+<g >
+<title>[slack] (32 samples, 0.03%)</title><rect x="1184.5" y="1813" width="0.4" height="15.0" fill="rgb(230,134,15)" rx="2" ry="2" />
+<text  x="1187.53" y="1823.5" ></text>
+</g>
+<g >
+<title>smp_apic_timer_interrupt (13 samples, 0.01%)</title><rect x="776.5" y="1973" width="0.1" height="15.0" fill="rgb(221,229,38)" rx="2" ry="2" />
+<text  x="779.49" y="1983.5" ></text>
+</g>
+<g >
+<title>ksys_ioctl (13 samples, 0.01%)</title><rect x="17.4" y="1909" width="0.1" height="15.0" fill="rgb(246,68,38)" rx="2" ry="2" />
+<text  x="20.39" y="1919.5" ></text>
+</g>
+<g >
+<title>secondary_startup_64 (373 samples, 0.38%)</title><rect x="1185.2" y="2005" width="4.5" height="15.0" fill="rgb(235,15,5)" rx="2" ry="2" />
+<text  x="1188.22" y="2015.5" ></text>
+</g>
+<g >
+<title>[Discord] (39 samples, 0.04%)</title><rect x="11.3" y="1413" width="0.5" height="15.0" fill="rgb(206,126,10)" rx="2" ry="2" />
+<text  x="14.34" y="1423.5" ></text>
+</g>
+<g >
+<title>x264_sub8x8_dct8_xop.skip_prologue (174 samples, 0.18%)</title><rect x="670.0" y="1989" width="2.1" height="15.0" fill="rgb(232,8,29)" rx="2" ry="2" />
+<text  x="673.02" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="597" width="0.1" height="15.0" fill="rgb(218,53,10)" rx="2" ry="2" />
+<text  x="20.27" y="607.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (9 samples, 0.01%)</title><rect x="1179.3" y="1781" width="0.1" height="15.0" fill="rgb(241,227,27)" rx="2" ry="2" />
+<text  x="1182.33" y="1791.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (34 samples, 0.03%)</title><rect x="1176.1" y="1877" width="0.4" height="15.0" fill="rgb(239,21,32)" rx="2" ry="2" />
+<text  x="1179.11" y="1887.5" ></text>
+</g>
+<g >
+<title>[Discord] (10 samples, 0.01%)</title><rect x="11.4" y="1301" width="0.1" height="15.0" fill="rgb(247,8,54)" rx="2" ry="2" />
+<text  x="14.42" y="1311.5" ></text>
+</g>
+<g >
+<title>Timer (24 samples, 0.02%)</title><rect x="13.6" y="2021" width="0.3" height="15.0" fill="rgb(238,19,22)" rx="2" ry="2" />
+<text  x="16.57" y="2031.5" ></text>
+</g>
+<g >
+<title>[Discord] (49 samples, 0.05%)</title><rect x="11.3" y="1845" width="0.6" height="15.0" fill="rgb(213,72,13)" rx="2" ry="2" />
+<text  x="14.28" y="1855.5" ></text>
+</g>
+<g >
+<title>swapgs_restore_regs_and_return_to_usermode (11 samples, 0.01%)</title><rect x="611.9" y="1973" width="0.2" height="15.0" fill="rgb(236,21,3)" rx="2" ry="2" />
+<text  x="614.92" y="1983.5" ></text>
+</g>
+<g >
+<title>[Discord] (39 samples, 0.04%)</title><rect x="11.3" y="1381" width="0.5" height="15.0" fill="rgb(253,45,30)" rx="2" ry="2" />
+<text  x="14.34" y="1391.5" ></text>
+</g>
+<g >
+<title>[Discord] (12 samples, 0.01%)</title><rect x="13.0" y="1861" width="0.2" height="15.0" fill="rgb(243,115,8)" rx="2" ry="2" />
+<text  x="16.03" y="1871.5" ></text>
+</g>
+<g >
+<title>[ffmpeg] (50 samples, 0.05%)</title><rect x="444.6" y="1973" width="0.6" height="15.0" fill="rgb(230,146,50)" rx="2" ry="2" />
+<text  x="447.62" y="1983.5" ></text>
+</g>
+<g >
+<title>[unknown] (14 samples, 0.01%)</title><rect x="1189.7" y="2005" width="0.2" height="15.0" fill="rgb(213,125,29)" rx="2" ry="2" />
+<text  x="1192.74" y="2015.5" ></text>
+</g>
+<g >
+<title>x264_macroblock_cache_load_progressive (440 samples, 0.44%)</title><rect x="1058.7" y="2005" width="5.2" height="15.0" fill="rgb(235,198,39)" rx="2" ry="2" />
+<text  x="1061.71" y="2015.5" ></text>
+</g>
+<g >
+<title>[libmozjs-52.so.0.0.0] (9 samples, 0.01%)</title><rect x="1179.3" y="1765" width="0.1" height="15.0" fill="rgb(224,42,48)" rx="2" ry="2" />
+<text  x="1182.33" y="1775.5" ></text>
+</g>
+<g >
+<title>nvbios_exec (10 samples, 0.01%)</title><rect x="18.0" y="1605" width="0.1" height="15.0" fill="rgb(223,188,31)" rx="2" ry="2" />
+<text  x="21.03" y="1615.5" ></text>
+</g>
+<g >
+<title>do_idle (292 samples, 0.29%)</title><rect x="1185.2" y="1957" width="3.5" height="15.0" fill="rgb(205,166,46)" rx="2" ry="2" />
+<text  x="1188.22" y="1967.5" ></text>
+</g>
+<g >
+<title>x264_ratecontrol_mb (84 samples, 0.08%)</title><rect x="665.8" y="1989" width="1.0" height="15.0" fill="rgb(225,165,32)" rx="2" ry="2" />
+<text  x="668.79" y="1999.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1765" width="0.1" height="15.0" fill="rgb(224,133,40)" rx="2" ry="2" />
+<text  x="20.27" y="1775.5" ></text>
+</g>
+<g >
+<title>[Discord] (26 samples, 0.03%)</title><rect x="10.7" y="1877" width="0.3" height="15.0" fill="rgb(254,160,34)" rx="2" ry="2" />
+<text  x="13.71" y="1887.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1397" width="0.1" height="15.0" fill="rgb(217,193,17)" rx="2" ry="2" />
+<text  x="20.27" y="1407.5" ></text>
+</g>
+<g >
+<title>[unknown] (9 samples, 0.01%)</title><rect x="17.3" y="1365" width="0.1" height="15.0" fill="rgb(217,10,32)" rx="2" ry="2" />
+<text  x="20.27" y="1375.5" ></text>
+</g>
+<g >
+<title>x264_mb_encode_chroma (206 samples, 0.21%)</title><rect x="630.6" y="1989" width="2.4" height="15.0" fill="rgb(214,108,40)" rx="2" ry="2" />
+<text  x="633.55" y="1999.5" ></text>
+</g>
+<g >
+<title>GLXVsyncThread (10 samples, 0.01%)</title><rect x="11.9" y="2021" width="0.1" height="15.0" fill="rgb(238,212,16)" rx="2" ry="2" />
+<text  x="14.89" y="2031.5" ></text>
+</g>
+<g >
+<title>[unknown] (18 samples, 0.02%)</title><rect x="1183.8" y="2005" width="0.2" height="15.0" fill="rgb(236,116,0)" rx="2" ry="2" />
+<text  x="1186.78" y="2015.5" ></text>
+</g>
+<g >
+<title>[perf-12251.map] (19 samples, 0.02%)</title><rect x="1184.7" y="1541" width="0.2" height="15.0" fill="rgb(219,36,37)" rx="2" ry="2" />
+<text  x="1187.66" y="1551.5" ></text>
+</g>
+<g >
+<title>[libxul.so] (13 samples, 0.01%)</title><rect x="15.2" y="1957" width="0.1" height="15.0" fill="rgb(251,10,15)" rx="2" ry="2" />
+<text  x="18.19" y="1967.5" ></text>
+</g>
+<g >
+<title>__do_page_fault (24 samples, 0.02%)</title><rect x="677.9" y="1957" width="0.3" height="15.0" fill="rgb(227,92,21)" rx="2" ry="2" />
+<text  x="680.94" y="1967.5" ></text>
+</g>
+<g >
+<title>call_cpuidle (289 samples, 0.29%)</title><rect x="1185.2" y="1941" width="3.5" height="15.0" fill="rgb(221,135,46)" rx="2" ry="2" />
+<text  x="1188.22" y="1951.5" ></text>
+</g>
+<g >
+<title>entry_SYSCALL_64_after_hwframe (17 samples, 0.02%)</title><rect x="458.0" y="1973" width="0.2" height="15.0" fill="rgb(212,200,11)" rx="2" ry="2" />
+<text  x="460.96" y="1983.5" ></text>
+</g>
+<g >
+<title>nvkm_object_fini (63 samples, 0.06%)</title><rect x="1182.4" y="1797" width="0.7" height="15.0" fill="rgb(243,220,54)" rx="2" ry="2" />
+<text  x="1185.38" y="1807.5" ></text>
+</g>
+<g >
+<title>[Discord] (44 samples, 0.04%)</title><rect x="11.3" y="1605" width="0.6" height="15.0" fill="rgb(235,138,45)" rx="2" ry="2" />
+<text  x="14.33" y="1615.5" ></text>
+</g>
+<g >
+<title>[libx264.so.152] (8,062 samples, 8.13%)</title><rect x="348.7" y="1989" width="95.9" height="15.0" fill="rgb(253,34,22)" rx="2" ry="2" />
+<text  x="351.73" y="1999.5" >[libx264.so..</text>
+</g>
+</g>
+</svg>

@@ -1,217 +1,283 @@
 Url,Format,Duration,Bit rate ,Width,Height,Frame rate,,User time (seconds),System time (seconds),Percent of CPU this job got,Elapsed (wall clock) time (h:mm:ss or m:ss)
-https://streams.videolan.org/samples/3D/20110805-112659-ch0.mkv,V_MPEG4/ISO/AVC,18 s 67 ms,2 737 kb/s,1 920 pixels,480 pixels,15.000 FPS,std_test_1,9.22,0.10,361%,0:02.58
+https://streams.videolan.org/samples/3D/20110805-112659-ch0.mkv,h264 (Baseline),18 s 67 ms,2 737 kb/s,1 920 pixels,480 pixels,15.000 FPS,std_test_1,9.22,0.10,361%,0:02.58
 ,,,,,,,std_test_2,9.51,0.08,365%,0:02.62
 ,,,,,,,std_test_3,9.53,0.06,364%,0:02.63
 ,,,,,,,tcmalloc_test_1,9.38,0.13,348%,0:02.73
 ,,,,,,,tcmalloc_test_2,9.54,0.09,366%,0:02.62
 ,,,,,,,tcmalloc_test_3,9.49,0.09,364%,0:02.63
-https://streams.videolan.org/samples/Matroska/aac-sbr-ffaac-slow.mkv,V_MPEG4/ISO/AVC,20 min 34 s,1 483 kb/s,704 pixels,400 pixels,23.976 FPS,std_test_1,34.18,0.23,359%,0:09.58
+https://streams.videolan.org/samples/Matroska/aac-sbr-ffaac-slow.mkv,h264 (High),20 min 34 s,1 483 kb/s,704 pixels,400 pixels,23.976 FPS,std_test_1,34.18,0.23,359%,0:09.58
 ,,,,,,,std_test_2,34.24,0.20,360%,0:09.56
 ,,,,,,,std_test_3,34.23,0.26,361%,0:09.55
 ,,,,,,,tcmalloc_test_1,24.77,0.20,343%,0:07.27
 ,,,,,,,tcmalloc_test_2,25.14,0.18,359%,0:07.04
 ,,,,,,,tcmalloc_test_3,25.02,0.17,357%,0:07.04
-http://download.opencontent.netflix.com.s3.amazonaws.com/aom_test_materials/aom_overlay_proxy.mp4,avc1,2 s 167 ms,10.6 Mb/s,1 920 pixels,1 080 pixels,60.000 FPS,std_test_1,23.31,0.16,323%,0:07.25
+http://download.opencontent.netflix.com.s3.amazonaws.com/aom_test_materials/aom_overlay_proxy.mp4,h264 (High 10) (avc1 / 0x31637661),2 s 167 ms,10.6 Mb/s,1 920 pixels,1 080 pixels,60.000 FPS,std_test_1,23.31,0.16,323%,0:07.25
 ,,,,,,,std_test_2,24.41,0.13,366%,0:06.69
 ,,,,,,,std_test_3,24.39,0.13,367%,0:06.68
 ,,,,,,,tcmalloc_test_1,26.14,0.15,363%,0:07.24
 ,,,,,,,tcmalloc_test_2,24.77,0.19,366%,0:06.81
 ,,,,,,,tcmalloc_test_3,24.28,0.18,354%,0:06.90
-https://streams.videolan.org/samples/asf-wmv/audio_codec_problem.wmv,WMV1,22 s 638 ms,319 kb/s,320 pixels,240 pixels,24.000 FPS,std_test_1,5.39,0.04,303%,0:01.79
-,,,,,,,std_test_2,5.39,0.09,295%,0:01.85
-,,,,,,,std_test_3,5.38,0.05,301%,0:01.80
-,,,,,,,tcmalloc_test_1,3.47,0.04,285%,0:01.23
-,,,,,,,tcmalloc_test_2,3.41,0.06,292%,0:01.19
-,,,,,,,tcmalloc_test_3,3.43,0.05,283%,0:01.23
-https://download.blender.org/demo/movies/mancandy_lscm.avi,DX50,42 s 500 ms,979 kb/s,712 pixels,490 pixels,10.000 FPS,std_test_1,9.51,0.13,356%,0:02.71
+https://streams.videolan.org/samples/asf-wmv/audio_codec_problem.wmv,wmv1 (WMV1 / 0x31564D57),22 s 638 ms,319 kb/s,320 pixels,240 pixels,24.000 FPS,std_test_1,04.03,0.09,208%,0:01.98
+,,,,,,,std_test_2,4.18,0.07,198%,0:02.14
+,,,,,,,std_test_3,4.17,0.10,204%,0:02.09
+,,,,,,,tcmalloc_test_1,3.48,0.03,287%,0:01.22
+,,,,,,,tcmalloc_test_2,3.71,0.06,300%,0:01.25
+,,,,,,,tcmalloc_test_3,3.71,0.05,301%,0:01.25
+https://download.blender.org/demo/movies/mancandy_lscm.avi,mpeg4 (DX50 / 0x30355844),42 s 500 ms,979 kb/s,712 pixels,490 pixels,10.000 FPS,std_test_1,9.51,0.13,356%,0:02.71
 ,,,,,,,std_test_2,9.45,0.15,352%,0:02.72
 ,,,,,,,std_test_3,9.57,0.10,343%,0:02.81
 ,,,,,,,tcmalloc_test_1,7.11,0.14,325%,0:02.23
 ,,,,,,,tcmalloc_test_2,8.99,0.13,353%,0:02.58
 ,,,,,,,tcmalloc_test_3,6.16,0.06,346%,0:01.79
-http://download.opencontent.netflix.com.s3.amazonaws.com/Chimera/Chimera_DCI4k2398p_HDR_P3PQ.mp4,avc1,6 min 12 s,54.4 Mb/s,4 096 pixels,2 160 pixels,23.976 FPS,std_test_1,16258.13,14.26,394%,1:08:44
-,,,,,,,std_test_2,13542.39,8.13,396%,56:55.18
-,,,,,,,std_test_3,18573.43,13.23,397%,1:17:57
-,,,,,,,tcmalloc_test_1,13778.19,11.59,396%,57:54.41
-,,,,,,,tcmalloc_test_2,13419.33,11.27,373%,59:56.91
-,,,,,,,tcmalloc_test_3,13504.96,9.41,387%,58:06.17
-http://download.opencontent.netflix.com.s3.amazonaws.com/Nocturne/nocturne_60fps/imf/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf,0D01030102060200,11 min 4 s,6 912 kb/s,-,-,-,std_test_1,4.52,0.13,100%,0:04.65
-,,,,,,,std_test_2,4.48,0.09,99%,0:04.58
-,,,,,,,std_test_3,4.36,0.22,96%,0:04.77
-,,,,,,,tcmalloc_test_1,3.14,0.23,81%,0:04.14
-,,,,,,,tcmalloc_test_2,2.80,0.07,100%,0:02.87
-,,,,,,,tcmalloc_test_3,2.78,0.07,99%,0:02.85
-https://streams.videolan.org/samples/aspect_samples/test_aspect_h263_ext.avi,h263,4 s 500 ms,1 220 kb/s,704 pixels,576 pixels,25.000 FPS,std_test_1,5.16,0.04,315%,0:01.65
+http://download.opencontent.netflix.com.s3.amazonaws.com/Chimera/Chimera_DCI4k2398p_HDR_P3PQ.mp4,h264 (High) (avc1 / 0x31637661),6 min 12 s,54.4 Mb/s,4 096 pixels,2 160 pixels,23.976 FPS,std_test_1,14395.12,48.34,354%,1:07:50
+,,,,,,,std_test_2,13863.31,12.49,394%,58:33.85
+,,,,,,,std_test_3,13811.07,12.08,394%,58:22.38
+,,,,,,,tcmalloc_test_1,13843.51,10.42,396%,58:17.63
+,,,,,,,tcmalloc_test_2,13599.47,10.44,366%,1:01:56
+,,,,,,,tcmalloc_test_3,13815.02,8.31,396%,58:04.52
+https://streams.videolan.org/samples/aspect_samples/test_aspect_h263_ext.avi,h263 (h263 / 0x33363268),4 s 500 ms,1 220 kb/s,704 pixels,576 pixels,25.000 FPS,std_test_1,5.16,0.04,315%,0:01.65
 ,,,,,,,std_test_2,3.89,0.06,279%,0:01.41
 ,,,,,,,std_test_3,3.83,0.04,275%,0:01.40
 ,,,,,,,tcmalloc_test_1,3.83,0.05,266%,0:01.45
 ,,,,,,,tcmalloc_test_2,4.00,0.04,302%,0:01.33
 ,,,,,,,tcmalloc_test_3,04.02,0.04,302%,0:01.34
-https://streams.videolan.org/samples/MPEG1/mpeg_demuxer_crash_NSFW.mpg,-,11 s 637 ms,208 kb/s,192 pixels,144 pixels,23.976 FPS,std_test_1,1.54,0.03,177%,0:00.88
-,,,,,,,std_test_2,1.53,0.04,177%,0:00.88
-,,,,,,,std_test_3,1.57,0.04,176%,0:00.91
-,,,,,,,tcmalloc_test_1,1.55,0.05,156%,0:01.02
-,,,,,,,tcmalloc_test_2,1.55,0.03,180%,0:00.87
-,,,,,,,tcmalloc_test_3,1.53,0.04,180%,0:00.87
-https://download.blender.org/demo/movies/Sintel.2010.1080p.mkv,V_MPEG4/ISO/AVC,14 min 48 s,10 000 kb/s,1 920 pixels,818 pixels,24.000 FPS,std_test_1,4736.99,8.88,392%,20:08.67
-,,,,,,,std_test_2,4744.57,8.81,392%,20:12.13
-,,,,,,,std_test_3,4728.05,11.52,314%,25:09.21
+https://streams.videolan.org/samples/MPEG1/mpeg_demuxer_crash_NSFW.mpg,mpeg1video,11 s 637 ms,208 kb/s,192 pixels,144 pixels,23.976 FPS,std_test_1,1.58,0.04,175%,0:00.92
+,,,,,,,std_test_2,1.56,0.01,175%,0:00.90
+,,,,,,,std_test_3,1.58,0.01,179%,0:00.89
+,,,,,,,tcmalloc_test_1,1.55,0.05,174%,0:00.92
+,,,,,,,tcmalloc_test_2,1.51,0.06,176%,0:00.89
+,,,,,,,tcmalloc_test_3,1.53,0.03,176%,0:00.89
+https://download.blender.org/demo/movies/Sintel.2010.1080p.mkv,h264 (High),14 min 48 s,10 000 kb/s,1 920 pixels,818 pixels,24.000 FPS,std_test_1,4728.05,11.52,314%,25:09.21
+,,,,,,,std_test_2,4736.99,8.88,392%,20:08.67
+,,,,,,,std_test_3,4744.57,8.81,392%,20:12.13
 ,,,,,,,tcmalloc_test_1,3574.96,7.95,389%,15:19.49
 ,,,,,,,tcmalloc_test_2,3555.61,07.06,392%,15:06.82
 ,,,,,,,tcmalloc_test_3,3558.40,6.78,392%,15:07.89
-https://streams.videolan.org/samples/Matroska//bug669-withoutsimplebl.mkv,V_MS/VFW/FOURCC / DIV3,9 s 144 ms,2 052 kb/s,576 pixels,432 pixels,29.970 FPS,std_test_1,5.98,0.12,341%,0:01.78
-,,,,,,,std_test_2,5.94,0.08,345%,0:01.74
-,,,,,,,std_test_3,5.99,0.09,326%,0:01.86
+https://streams.videolan.org/samples/Matroska//bug669-withoutsimplebl.mkv,msmpeg4v3 (DIV3 / 0x33564944),9 s 144 ms,2 052 kb/s,576 pixels,432 pixels,29.970 FPS,std_test_1,5.99,0.08,326%,0:01.86
+,,,,,,,std_test_2,5.98,0.12,341%,0:01.78
+,,,,,,,std_test_3,5.94,0.08,345%,0:01.74
 ,,,,,,,tcmalloc_test_1,4.24,0.08,281%,0:01.53
 ,,,,,,,tcmalloc_test_2,5.41,0.08,344%,0:01.59
 ,,,,,,,tcmalloc_test_3,3.80,0.06,334%,0:01.15
-https://download.blender.org/demo/movies/Plumiferos_persecucion_casting.mpg,-,3 min 38 s,1 150 kb/s,352 pixels,288 pixels,25.000 FPS,std_test_1,56.76,0.85,301%,0:19.14
-,,,,,,,std_test_2,57.11,0.75,293%,0:19.73
-,,,,,,,std_test_3,57.18,0.75,299%,0:19.36
-,,,,,,,tcmalloc_test_1,39.08,0.51,290%,0:13.64
-,,,,,,,tcmalloc_test_2,39.20,0.54,294%,0:13.48
-,,,,,,,tcmalloc_test_3,39.20,0.41,294%,0:13.44
-https://www.youtube.com/watch?v=P3lvkEdRafs,V_VP9,31 min 21 s,14.3 Mb/s,3 840 pixels,2 026 pixels,23.976 FPS,std_test_1,33058.67,46.41,379%,2:25:29
-,,,,,,,std_test_2,33097.01,47.91,381%,2:24:48
-,,,,,,,std_test_3,33046.89,49.02,378%,2:25:38
-,,,,,,,tcmalloc_test_1,33124.56,50.53,382%,2:24:38
-,,,,,,,tcmalloc_test_2,33104.77,49.36,382%,2:24:38
-,,,,,,,tcmalloc_test_3,33083.44,51.26,380%,2:25:02
-https://streams.videolan.org/samples/3D/DSCF1928_fish.AVI,MJPG,19 s 0 ms,8 316 kb/s,640 pixels,480 pixels,30.000 FPS,std_test_1,45.00,0.12,385%,0:11.70
-,,,,,,,std_test_2,46.70,0.12,383%,0:12.21
-,,,,,,,std_test_3,46.88,0.16,378%,0:12.41
-,,,,,,,tcmalloc_test_1,44.57,0.14,376%,0:11.86
-,,,,,,,tcmalloc_test_2,43.58,0.12,385%,0:11.32
-,,,,,,,tcmalloc_test_3,43.51,0.11,383%,0:11.37
-https://www.youtube.com/watch?v=soSp8sx6hHc,V_VP9,41 min 55 s,2 518 kb/s,1 920 pixels,1 080 pixels,29.970 FPS,std_test_1,13811.88,25.94,391%,58:55.71
-,,,,,,,std_test_2,13812.54,25.27,391%,58:53.52
-,,,,,,,std_test_3,13791.59,25.88,390%,58:54.38
-,,,,,,,tcmalloc_test_1,13825.34,29.33,388%,59:24.47
-,,,,,,,tcmalloc_test_2,13825.54,27.96,390%,59:10.37
-,,,,,,,tcmalloc_test_3,14190.68,57.10,358%,1:06:12
-http://download.opencontent.netflix.com.s3.amazonaws.com/CosmosLaundromat/CosmosLaundromat_2k24p_HDR_P3PQ.mp4,avc1,12 min 38 s,7 689 kb/s,2 048 pixels,858 pixels,23.976 FPS,std_test_1,3302.78,5.40,395%,13:57.17
-,,,,,,,std_test_2,3307.99,5.38,395%,13:57.89
-,,,,,,,std_test_3,3296.67,5.62,394%,13:56.14
-,,,,,,,tcmalloc_test_1,3307.44,06.02,391%,14:06.23
-,,,,,,,tcmalloc_test_2,3318.83,5.87,393%,14:04.66
-,,,,,,,tcmalloc_test_3,3315.73,5.56,395%,14:00.02
-https://streams.videolan.org/samples/3D/Dracula%20480p.wmv,WVC1,52 s 736 ms,6 000 kb/s,1 440 pixels,480 pixels,30.000 FPS,std_test_1,95.96,0.23,378%,0:25.42
-,,,,,,,std_test_2,95.81,0.27,378%,0:25.38
-,,,,,,,std_test_3,95.61,0.25,377%,0:25.42
-,,,,,,,tcmalloc_test_1,95.85,0.33,376%,0:25.52
-,,,,,,,tcmalloc_test_2,95.91,0.30,378%,0:25.43
-,,,,,,,tcmalloc_test_3,95.83,0.27,378%,0:25.42
-https://streams.videolan.org/samples/Matroska/V_MPEG_ISO/soraya.mkv,V_MPEG2,3 min 57 s,2 164 kb/s,544 pixels,480 pixels,21.533 FPS,std_test_1,244.34,1.35,377%,1:05.15
+https://download.blender.org/demo/movies/Plumiferos_persecucion_casting.mpg,mpeg1video,3 min 38 s,1 150 kb/s,352 pixels,288 pixels,25.000 FPS,std_test_1,42.92,0.78,255%,0:17.11
+,,,,,,,std_test_2,42.84,0.71,259%,0:16.75
+,,,,,,,std_test_3,42.55,0.82,261%,0:16.61
+,,,,,,,tcmalloc_test_1,39.24,0.52,291%,0:13.65
+,,,,,,,tcmalloc_test_2,39.36,0.57,293%,0:13.59
+,,,,,,,tcmalloc_test_3,39.52,0.57,295%,0:13.56
+https://streams.videolan.org/samples/3D/DSCF1928_fish.AVI,mjpeg (MJPG / 0x47504A4D),19 s 0 ms,8 316 kb/s,640 pixels,480 pixels,30.000 FPS,std_test_1,42.99,0.16,376%,0:11.47
+,,,,,,,std_test_2,43.60,0.10,377%,0:11.58
+,,,,,,,std_test_3,43.53,0.12,380%,0:11.46
+,,,,,,,tcmalloc_test_1,43.03,0.19,378%,0:11.42
+,,,,,,,tcmalloc_test_2,43.81,0.13,383%,0:11.46
+,,,,,,,tcmalloc_test_3,43.73,0.12,382%,0:11.46
+https://www.youtube.com/watch?v=soSp8sx6hHc,vp9 (Profile 0),41 min 55 s,2 518 kb/s,1 920 pixels,1 080 pixels,29.970 FPS,std_test_1,13901.06,28.84,389%,59:35.58
+,,,,,,,std_test_2,13923.16,29.32,385%,1:00:17
+,,,,,,,std_test_3,13989.22,35.04,377%,1:01:56
+,,,,,,,tcmalloc_test_1,13833.63,28.03,387%,59:35.20
+,,,,,,,tcmalloc_test_2,13840.06,26.76,389%,59:18.18
+,,,,,,,tcmalloc_test_3,13829.05,26.11,389%,59:12.86
+http://download.opencontent.netflix.com.s3.amazonaws.com/CosmosLaundromat/CosmosLaundromat_2k24p_HDR_P3PQ.mp4,h264 (High) (avc1 / 0x31637661),12 min 38 s,7 689 kb/s,2 048 pixels,858 pixels,23.976 FPS,std_test_1,3330.05,6.40,392%,14:10.21
+,,,,,,,std_test_2,3330.71,5.83,393%,14:08.36
+,,,,,,,std_test_3,3332.22,5.71,393%,14:08.62
+,,,,,,,tcmalloc_test_1,3315.08,5.72,375%,14:45.08
+,,,,,,,tcmalloc_test_2,3320.63,4.97,394%,14:03.84
+,,,,,,,tcmalloc_test_3,3316.95,5.41,393%,14:04.46
+https://streams.videolan.org/samples/3D/Dracula%20480p.wmv,vc1 (Advanced) (WVC1 / 0x31435657),52 s 736 ms,6 000 kb/s,1 440 pixels,480 pixels,30.000 FPS,std_test_1,96.21,0.30,376%,0:25.65
+,,,,,,,std_test_2,96.17,0.23,376%,0:25.58
+,,,,,,,std_test_3,96.21,0.27,375%,0:25.66
+,,,,,,,tcmalloc_test_1,97.30,0.27,375%,0:25.99
+,,,,,,,tcmalloc_test_2,96.27,0.32,377%,0:25.55
+,,,,,,,tcmalloc_test_3,96.35,0.27,377%,0:25.57
+https://streams.videolan.org/samples/Matroska/V_MPEG_ISO/soraya.mkv,mpeg2video (Main),3 min 57 s,2 164 kb/s,544 pixels,480 pixels,21.533 FPS,std_test_1,244.34,1.35,377%,1:05.15
 ,,,,,,,std_test_2,244.67,1.71,356%,1:09.13
 ,,,,,,,std_test_3,243.78,1.32,379%,1:04.58
 ,,,,,,,tcmalloc_test_1,175.57,0.98,373%,0:47.26
 ,,,,,,,tcmalloc_test_2,179.71,1.12,375%,0:48.11
 ,,,,,,,tcmalloc_test_3,180.06,0.84,374%,0:48.25
-https://streams.videolan.org/samples/avi/SHOT0001.AVI,H264,12 s 12 ms,7 936 kb/s,1 280 pixels,720 pixels,29.970 FPS,std_test_1,56.91,0.21,383%,0:14.88
-,,,,,,,std_test_2,53.94,0.16,388%,0:13.91
-,,,,,,,std_test_3,55.29,0.19,367%,0:15.08
-,,,,,,,tcmalloc_test_1,53.97,0.18,383%,0:14.11
-,,,,,,,tcmalloc_test_2,54.21,0.16,388%,0:13.99
-,,,,,,,tcmalloc_test_3,54.18,0.18,386%,0:14.05
-https://streams.videolan.org/samples/Divx4-bugs/divx4b153_badmacroblock.avi,DIV3,44 s 0 ms,128 kb/s,576 pixels,312 pixels,25.000 FPS,std_test_1,29.53,0.19,371%,0:08.00
-,,,,,,,std_test_2,29.55,0.18,371%,0:08.01
-,,,,,,,std_test_3,29.58,0.16,369%,0:08.06
-,,,,,,,tcmalloc_test_1,23.18,0.20,359%,0:06.50
-,,,,,,,tcmalloc_test_2,21.90,0.12,366%,0:06.00
-,,,,,,,tcmalloc_test_3,22.85,0.15,364%,0:06.30
-https://download.blender.org/demo/movies/Sintel.2010.720p.mkv,V_MPEG4/ISO/AVC,14 min 48 s,5 500 kb/s,1 280 pixels,544 pixels,24.000 FPS,std_test_1,1596.50,4.17,387%,6:53.51
-,,,,,,,std_test_2,1601.18,4.18,385%,6:56.71
-,,,,,,,std_test_3,1593.86,4.70,385%,6:54.40
-,,,,,,,tcmalloc_test_1,1604.35,4.95,386%,6:56.58
-,,,,,,,tcmalloc_test_2,1600.67,4.41,387%,6:54.72
-,,,,,,,tcmalloc_test_3,1598.82,4.30,386%,6:54.29
-https://streams.videolan.org/samples/fate-suite/lmlm4/LMLM4_CIFat30fps.divx,-,-,-,320 pixels,240 pixels,-,std_test_1,3.33,0.06,302%,0:01.12
-,,,,,,,std_test_2,3.35,0.05,304%,0:01.11
-,,,,,,,std_test_3,3.45,0.09,161%,0:02.20
-,,,,,,,tcmalloc_test_1,3.47,0.09,149%,0:02.39
-,,,,,,,tcmalloc_test_2,3.31,0.06,300%,0:01.12
-,,,,,,,tcmalloc_test_3,3.37,0.04,306%,0:01.11
-http://download.opencontent.netflix.com.s3.amazonaws.com/ElFuente/Netflix_Boat_4096x2160_60fps_10bit_420.y4m,-,-,-,4 096 pixels,2 160 pixels,60.000 FPS,std_test_1,186.16,5.30,254%,1:15.29
-,,,,,,,std_test_2,186.39,5.38,251%,1:16.36
-,,,,,,,std_test_3,190.55,5.51,263%,1:14.38
-,,,,,,,tcmalloc_test_1,183.39,6.51,257%,1:13.84
-,,,,,,,tcmalloc_test_2,184.97,5.80,245%,1:17.82
-,,,,,,,tcmalloc_test_3,180.16,6.31,234%,1:19.35
-http://download.opencontent.netflix.com.s3.amazonaws.com/ISOBMFF-packages/C_V3_9615614724_7445_2397.mp4,avc1,24 min 49 s,7 444 kb/s,1 920 pixels,1 080 pixels,23.976 FPS,std_test_1,15365.83,17.26,395%,1:04:52
-,,,,,,,std_test_2,15365.72,17.75,395%,1:04:52
-,,,,,,,std_test_3,15368.66,18.14,395%,1:04:48
-,,,,,,,tcmalloc_test_1,11504.32,13.47,396%,48:27.35
-,,,,,,,tcmalloc_test_2,11515.99,13.14,395%,48:35.10
-,,,,,,,tcmalloc_test_3,11546.82,13.13,395%,48:43.35
-https://download.blender.org/demo/movies/esign_2_high.qt,mp4v-20,4 min 1 s,2 458 kb/s,720 pixels,404 pixels,43.066 FPS,std_test_1,367.12,1.31,390%,1:34.27
-,,,,,,,std_test_2,367.43,1.35,393%,1:33.81
-,,,,,,,std_test_3,367.98,1.67,384%,1:36.03
-,,,,,,,tcmalloc_test_1,272.41,0.93,392%,1:09.55
-,,,,,,,tcmalloc_test_2,272.88,0.93,390%,1:10.13
-,,,,,,,tcmalloc_test_3,272.97,0.93,393%,1:09.57
-https://streams.videolan.org/samples/asf-wmv/wmapro-in-wmavoice.wmv,WMV3,56 min 7 s,20.0 kb/s,1 024 pixels,768 pixels,-,std_test_1,48.14,0.25,255%,0:18.91
+https://streams.videolan.org/samples/avi/SHOT0001.AVI,h264 (Main) (H264 / 0x34363248),12 s 12 ms,7 936 kb/s,1 280 pixels,720 pixels,29.970 FPS,std_test_1,54.32,0.20,384%,0:14.17
+,,,,,,,std_test_2,54.45,0.10,386%,0:14.13
+,,,,,,,std_test_3,55.72,0.15,385%,0:14.48
+,,,,,,,tcmalloc_test_1,57.82,0.20,385%,0:15.04
+,,,,,,,tcmalloc_test_2,54.25,0.19,385%,0:14.10
+,,,,,,,tcmalloc_test_3,54.29,0.18,386%,0:14.10
+https://streams.videolan.org/samples/Divx4-bugs/divx4b153_badmacroblock.avi,msmpeg4v3 (DIV3 / 0x33564944),44 s 0 ms,128 kb/s,576 pixels,312 pixels,25.000 FPS,std_test_1,21.01,0.14,364%,0:05.80
+,,,,,,,std_test_2,21.45,0.11,367%,0:05.86
+,,,,,,,std_test_3,21.42,0.11,367%,0:05.86
+,,,,,,,tcmalloc_test_1,21.86,0.16,321%,0:06.84
+,,,,,,,tcmalloc_test_2,21.80,0.18,316%,0:06.95
+,,,,,,,tcmalloc_test_3,21.84,0.14,329%,0:06.66
+https://download.blender.org/demo/movies/Sintel.2010.720p.mkv,h264 (High),14 min 48 s,5 500 kb/s,1 280 pixels,544 pixels,24.000 FPS,std_test_1,1602.45,4.80,383%,6:58.76
+,,,,,,,std_test_2,1600.64,4.65,384%,6:57.50
+,,,,,,,std_test_3,1602.25,4.46,384%,6:57.63
+,,,,,,,tcmalloc_test_1,1603.84,4.48,385%,6:57.73
+,,,,,,,tcmalloc_test_2,1601.90,4.24,385%,6:56.54
+,,,,,,,tcmalloc_test_3,1600.29,4.44,384%,6:57.49
+https://streams.videolan.org/samples/fate-suite/lmlm4/LMLM4_CIFat30fps.divx,mpeg4 (Simple Profile),-,-,320 pixels,240 pixels,29.97 FPS,std_test_1,3.44,0.08,185%,0:01.90
+,,,,,,,std_test_2,3.62,0.04,306%,0:01.19
+,,,,,,,std_test_3,3.66,0.04,306%,0:01.21
+,,,,,,,tcmalloc_test_1,3.39,0.08,241%,0:01.44
+,,,,,,,tcmalloc_test_2,3.59,0.06,304%,0:01.20
+,,,,,,,tcmalloc_test_3,3.64,0.08,306%,0:01.21
+http://download.opencontent.netflix.com.s3.amazonaws.com/ElFuente/Netflix_Boat_4096x2160_60fps_10bit_420.y4m,rawvideo (Y3[11][10] / 0xA0B3359),-,-,4 096 pixels,2 160 pixels,60.000 FPS,std_test_1,187.23,5.63,245%,1:18.60
+,,,,,,,std_test_2,185.96,5.47,244%,1:18.25
+,,,,,,,std_test_3,179.09,5.15,226%,1:21.30
+,,,,,,,tcmalloc_test_1,186.63,5.86,238%,1:20.88
+,,,,,,,tcmalloc_test_2,173.25,06.03,202%,1:28.46
+,,,,,,,tcmalloc_test_3,177.27,4.70,213%,1:25.37
+http://download.opencontent.netflix.com.s3.amazonaws.com/ISOBMFF-packages/C_V3_9615614724_7445_2397.mp4,h264 (High) (avc1 / 0x31637661),24 min 49 s,7 444 kb/s,1 920 pixels,1 080 pixels,23.976 FPS,std_test_1,11977.08,46.33,347%,57:41.72
+,,,,,,,std_test_2,11581.21,13.94,394%,49:00.04
+,,,,,,,std_test_3,11579.57,12.93,395%,48:54.47
+,,,,,,,tcmalloc_test_1,11435.00,14.44,358%,53:11.96
+,,,,,,,tcmalloc_test_2,11536.23,14.03,391%,49:08.43
+,,,,,,,tcmalloc_test_3,11531.69,13.85,392%,49:02.34
+https://download.blender.org/demo/movies/esign_2_high.qt,mpeg4 (Advanced Simple Profile) (mp4v / 0x7634706D),4 min 1 s,2 458 kb/s,720 pixels,404 pixels,43.066 FPS,std_test_1,288.96,2.74,323%,1:30.16
+,,,,,,,std_test_2,290.17,2.76,332%,1:28.21
+,,,,,,,std_test_3,289.85,2.47,337%,1:26.50
+,,,,,,,tcmalloc_test_1,274.37,01.07,391%,1:10.39
+,,,,,,,tcmalloc_test_2,273.19,01.05,391%,1:10.03
+,,,,,,,tcmalloc_test_3,273.15,01.01,391%,1:10.03
+https://streams.videolan.org/samples/asf-wmv/wmapro-in-wmavoice.wmv,wmv3 (Main) (WMV3 / 0x33564D57),56 min 7 s,20.0 kb/s,1 024 pixels,768 pixels,23.98 FPS ,std_test_1,48.14,0.25,255%,0:18.91
 ,,,,,,,std_test_2,47.99,0.26,255%,0:18.91
 ,,,,,,,std_test_3,46.30,0.25,231%,0:20.10
 ,,,,,,,tcmalloc_test_1,48.14,0.27,251%,0:19.25
 ,,,,,,,tcmalloc_test_2,47.97,0.24,256%,0:18.77
 ,,,,,,,tcmalloc_test_3,48.29,0.24,256%,0:18.90
-https://download.blender.org/demo/movies/ton_bug_1999.mpg,-,12 s 512 ms,1 418 kb/s,320 pixels,240 pixels,23.976 FPS,std_test_1,1.77,0.05,266%,0:00.68
+https://download.blender.org/demo/movies/ton_bug_1999.mpg,mpeg1video,12 s 512 ms,1 418 kb/s,320 pixels,240 pixels,23.976 FPS,std_test_1,1.77,0.05,266%,0:00.68
 ,,,,,,,std_test_2,1.85,0.09,279%,0:00.69
 ,,,,,,,std_test_3,1.78,0.04,262%,0:00.69
-,,,,,,,tcmalloc_test_1,1.84,0.07,223%,0:00.85
-,,,,,,,tcmalloc_test_2,1.83,0.06,272%,0:00.69
-,,,,,,,tcmalloc_test_3,1.87,0.07,270%,0:00.71
-https://streams.videolan.org/samples/mobileVideo_3gp/Boaz_explains_reality.3gp,3gp4 (3gp5/3gp4/isom),9 s 890 ms,62.6 kb/s,128 pixels,96 pixels,-,std_test_1,0.57,0.03,177%,0:00.34
+,,,,,,,tcmalloc_test_1,1.73,0.08,261%,0:00.69
+,,,,,,,tcmalloc_test_2,1.87,0.08,273%,0:00.71
+,,,,,,,tcmalloc_test_3,1.93,0.03,265%,0:00.74
+https://streams.videolan.org/samples/mobileVideo_3gp/Boaz_explains_reality.3gp,h263 (s263 / 0x33363273),9 s 890 ms,62.6 kb/s,128 pixels,96 pixels,12.03 FPS,std_test_1,0.57,0.03,177%,0:00.34
 ,,,,,,,std_test_2,0.59,0.01,174%,0:00.35
 ,,,,,,,std_test_3,0.58,0.05,160%,0:00.39
 ,,,,,,,tcmalloc_test_1,0.97,0.06,157%,0:00.65
 ,,,,,,,tcmalloc_test_2,0.39,0.01,173%,0:00.23
 ,,,,,,,tcmalloc_test_3,0.37,0.01,178%,0:00.22
-https://streams.videolan.org/samples/benchmark/testsuite1/matrixbench_mpeg2.mpg,-,3 min 7 s,384 kb/s,720 pixels,576 pixels,41.667 FPS,std_test_1,165.82,0.84,378%,0:44.03
-,,,,,,,std_test_2,165.24,0.77,379%,0:43.71
-,,,,,,,std_test_3,168.60,0.93,368%,0:46.03
-,,,,,,,tcmalloc_test_1,163.90,0.85,372%,0:44.18
-,,,,,,,tcmalloc_test_2,164.99,0.80,381%,0:43.51
-,,,,,,,tcmalloc_test_3,165.39,0.74,382%,0:43.43
-http://download.opencontent.netflix.com.s3.amazonaws.com/Meridian/Meridian_UHD4k5994_HDR_P3PQ.mp4,avc1,11 min 58 s,9 462 kb/s,3 840 pixels,2 160 pixels,59.940 FPS,std_test_1,24393.49,29.74,389%,1:44:34
-,,,,,,,std_test_2,24392.65,29.48,389%,1:44:31
-,,,,,,,std_test_3,24496.17,31.40,387%,1:45:23
-,,,,,,,tcmalloc_test_1,18523.77,21.18,390%,1:19:07
-,,,,,,,tcmalloc_test_2,18386.94,19.51,390%,1:18:29
+https://streams.videolan.org/samples/benchmark/testsuite1/matrixbench_mpeg2.mpg,mpeg2video (Main),3 min 7 s,384 kb/s,720 pixels,576 pixels,41.667 FPS,std_test_1,164.58,0.96,367%, 0:45.07
+,,,,,,,std_test_2,165.53,0.84,379%,0:43.84
+,,,,,,,std_test_3,165.92,0.75,379%,0:43.88
+,,,,,,,tcmalloc_test_1,166.50,0.97,347%,0:48.24
+,,,,,,,tcmalloc_test_2,166.46,0.94,380%,0:44.00
+,,,,,,,tcmalloc_test_3,166.24,0.86,380%,0:43.96
+http://download.opencontent.netflix.com.s3.amazonaws.com/Meridian/Meridian_UHD4k5994_HDR_P3PQ.mp4,h264 (High) (avc1 / 0x31637661),11 min 58 s,9 462 kb/s,3 840 pixels,2 160 pixels,59.940 FPS,std_test_1,18754.75,23.03,389%,1:20:15
+,,,,,,,std_test_2,18613.46,22.01,389%,1:19:39
+,,,,,,,std_test_3,18832.92,54.51,362%,1:26:52
+,,,,,,,tcmalloc_test_1,18634.17,21.66,387%,1:20:11
+,,,,,,,tcmalloc_test_2,18524.93,20.22,388%,1:19:28
 ,,,,,,,tcmalloc_test_3,18383.74,20.06,390%,1:18:38
-https://streams.videolan.org/samples/asf-wmv/demux-asf-assert-failed.wmv,MP43,5 min 46 s,64.0 kb/s,320 pixels,240 pixels,15.000 FPS,std_test_1,39.96,0.34,303%,0:13.29
+https://streams.videolan.org/samples/asf-wmv/demux-asf-assert-failed.wmv,msmpeg4v3 (MP43 / 0x3334504D),5 min 46 s,64.0 kb/s,320 pixels,240 pixels,15.000 FPS,std_test_1,39.96,0.34,303%,0:13.29
 ,,,,,,,std_test_2,39.97,0.30,302%,0:13.30
 ,,,,,,,std_test_3,39.90,0.34,301%,0:13.34
 ,,,,,,,tcmalloc_test_1,39.88,0.37,299%,0:13.44
 ,,,,,,,tcmalloc_test_2,39.85,0.33,303%,0:13.24
 ,,,,,,,tcmalloc_test_3,40.61,0.28,300%,0:13.62
-https://streams.videolan.org/samples/postprocess/BP_Parade_X_FINAL_Video-Thl.mpeg,-,3 min 38 s,1 838 kb/s,480 pixels,576 pixels,25.000 FPS,std_test_1,263.52,0.96,393%,1:07.20
-,,,,,,,std_test_2,263.49,0.97,393%,1:07.24
-,,,,,,,std_test_3,263.64,0.91,390%,1:07.67
-,,,,,,,tcmalloc_test_1,264.59,01.09,380%,1:09.88
-,,,,,,,tcmalloc_test_2,263.33,01.01,393%,1:07.26
-,,,,,,,tcmalloc_test_3,263.83,01.01,393%,1:07.37
-http://samples.ffmpeg.org/MXF/C0023S01.mxf,MPEG-4 Visual,3 s 800 ms,2 483 kb/s,352 pixels,288 pixels,25.000 FPS,std_test_1,0.64,0.04,227%, 0:00.30
+https://streams.videolan.org/samples/postprocess/BP_Parade_X_FINAL_Video-Thl.mpeg,mpeg2video (Main),3 min 38 s,1 838 kb/s,480 pixels,576 pixels,25.000 FPS,std_test_1,265.48,0.98,391%,1:08.05
+,,,,,,,std_test_2,265.43,1.11,390%,1:08.20
+,,,,,,,std_test_3,265.76,0.92,391%,1:08.12
+,,,,,,,tcmalloc_test_1,264.94,0.87,391%,1:07.86
+,,,,,,,tcmalloc_test_2,264.83,0.78,389%,1:08.12
+,,,,,,,tcmalloc_test_3,264.87,0.90,392%,1:07.75
+http://samples.ffmpeg.org/MXF/C0023S01.mxf,mpeg4,3 s 800 ms,2 483 kb/s,352 pixels,288 pixels,25.000 FPS,std_test_1,0.64,0.04,227%,0:00.30
 ,,,,,,,std_test_2,0.66,0.01,224%,0:00.30
 ,,,,,,,std_test_3,0.65,0.02,227%,0:00.29
 ,,,,,,,tcmalloc_test_1,0.70,0.02,215%,0:00.34
 ,,,,,,,tcmalloc_test_2,0.66,0.03,228%,0:00.30
 ,,,,,,,tcmalloc_test_3,0.66,0.02,226%,0:00.30
-http://samples.ffmpeg.org/MPEG2/dvd.mpeg,MPEG Video,29 s 400 ms,6 278 kb/s,720 pixels,576 pixels,25.000 FPS,std_test_1,18.03,0.13,321%,0:05.65
-,,,,,,,std_test_2,17.99,0.13,321%,0:05.63
-,,,,,,,std_test_3,17.95,0.18,319%,0:05.67
-,,,,,,,tcmalloc_test_1,17.89,0.16,320%,0:05.63
-,,,,,,,tcmalloc_test_2,18.01,0.17,320%,0:05.67
-,,,,,,,tcmalloc_test_3,19.37,0.16,313%,0:06.22
-http://samples.ffmpeg.org/MPEG2/res_change_ffmpeg_aspect.ts,MPEG Video,3 s 413 ms,3 833 kb/s,704 pixels,576 pixels,25.000 FPS,std_test_1,2.87,0.06,305%,0:00.96
-,,,,,,,std_test_2,2.80,0.07,301%,0:00.95
-,,,,,,,std_test_3,2.84,0.07,299%,0:00.97
-,,,,,,,tcmalloc_test_1,03.02,0.05,302%,0:01.01
-,,,,,,,tcmalloc_test_2,3.10,0.07,311%,0:01.02
-,,,,,,,tcmalloc_test_3,3.14,0.07,307%,0:01.04
-http://samples.ffmpeg.org/MPEG2/Futurama1-tmp.avi,mpg2,54 s 500 ms,2 500 kb/s,480 pixels,480 pixels,23.976 FPS,std_test_1,0.63,0.05,190%,0:00.36
+http://samples.ffmpeg.org/MPEG2/dvd.mpeg,mpeg2video (Main),29 s 400 ms,6 278 kb/s,720 pixels,576 pixels,25.000 FPS,std_test_1,22.32,0.42,182%,0:12.43
+,,,,,,,std_test_2,22.24,0.30,256%,0:08.78
+,,,,,,,std_test_3,22.14,0.29,255%,0:08.80
+,,,,,,,tcmalloc_test_1,19.64,0.13,320%,0:06.18
+,,,,,,,tcmalloc_test_2,19.75,0.13,316%,0:06.28
+,,,,,,,tcmalloc_test_3,19.79,0.30,314%,0:06.39
+http://samples.ffmpeg.org/MPEG2/res_change_ffmpeg_aspect.ts,mpeg2video (Main) ([2][0][0][0] / 0x0002),3 s 413 ms,3 833 kb/s,704 pixels,576 pixels,25.000 FPS,std_test_1,03.05,0.02,295%,0:01.04
+,,,,,,,std_test_2,3.11,0.08,305%,0:01.04
+,,,,,,,std_test_3,3.15,0.07,298%,0:01.02
+,,,,,,,tcmalloc_test_1,3.00,0.05,302%,0:01.01
+,,,,,,,tcmalloc_test_2,3.16,0.07,314%,0:01.03
+,,,,,,,tcmalloc_test_3,3.14,0.06,307%,0:01.04
+http://samples.ffmpeg.org/MPEG2/Futurama1-tmp.avi,mpeg2video (Main) (mpg2 / 0x3267706D),54 s 500 ms,2 500 kb/s,480 pixels,480 pixels,23.976 FPS,std_test_1,0.63,0.05,190%,0:00.36
 ,,,,,,,std_test_2,0.69,0.03,176%,0:00.41
 ,,,,,,,std_test_3,0.66,0.03,174%,0:00.40
 ,,,,,,,tcmalloc_test_1,0.69,0.03,183%,0:00.39
 ,,,,,,,tcmalloc_test_2,0.64,0.04,188%,0:00.36
 ,,,,,,,tcmalloc_test_3,0.65,0.03,180%,0:00.38
+https://www.youtube.com/watch?v=U-YLFFf4X0A&t=2095s,h264 (High) (avc1 / 0x31637661),1 h 0 min,1 649 kb/s,1 280 pixels,720 pixels,30.000 FPS,std_test_1,7769.80,22.73,382%,33:59.59
+,,,,,,,std_test_2,7766.51,22.77,382%,33:56.80
+,,,,,,,std_test_3,7763.15,24.11,380%,34:06.59
+,,,,,,,tcmalloc_test_1,7807.25,23.17,383%,34:01.90
+,,,,,,,tcmalloc_test_2,7806.27,22.48,383%,34:01.81
+,,,,,,,tcmalloc_test_3,7801.59,22.91,382%,34:05.04
+http://samples.ffmpeg.org/4khdr/Passengers_Breakfast_4K.mkv,hevc (Main 10),30 s 281 ms,38.1 Mb/s,3 840 pixels,2 160 pixels,23.976 FPS,std_test_1,470.17,01.04,381%,2:03.45
+,,,,,,,std_test_2,474.28,0.98,383%,2:03.89
+,,,,,,,std_test_3,475.99,0.87,383%,2:04.22
+,,,,,,,tcmalloc_test_1,472.47,1.00,383%,2:03.36
+,,,,,,,tcmalloc_test_2,477.35,0.96,383%,2:04.57
+,,,,,,,tcmalloc_test_3,472.53,0.99,384%,2:03.11
+http://samples.ffmpeg.org/4khdr/Passengers_Breakfast_1080-sdr.mkv,h264 (High),30 s 281 ms,26.7 Mb/s,1 920 pixels,1 080 pixels,23.976 FPS,std_test_1,112.45,0.37,378%,0:29.79
+,,,,,,,std_test_2,112.76,0.35,380%,0:29.69
+,,,,,,,std_test_3,112.82,0.41,379%,0:29.81
+,,,,,,,tcmalloc_test_1,112.90,0.36,381%,0:29.70
+,,,,,,,tcmalloc_test_2,112.96,0.38,378%,0:29.94
+,,,,,,,tcmalloc_test_3,113.08,0.35,379%,0:29.86
+http://samples.ffmpeg.org/Matroska/wmaproEOF.mkv,wmv3 (Main) (WMV3 / 0x33564D57),25 min 20 s,55.2 kb/s,704 pixels,396 pixels,24.000 FPS,std_test_1,22.39,0.19,312%,0:07.22
+,,,,,,,std_test_2,22.50,0.18,316%,0:07.16
+,,,,,,,std_test_3,22.52,0.18,317%,0:07.15
+,,,,,,,tcmalloc_test_1,22.34,0.15,308%,0:07.30
+,,,,,,,tcmalloc_test_2,23.51,0.19,317%,0:07.46
+,,,,,,,tcmalloc_test_3,22.32,0.14,316%,0:07.11
+http://samples.ffmpeg.org/Matroska/theora.mkv,theora,6 s 381 ms,12.4 Mb/s,1 280 pixels,720 pixels,23.976 FPS,std_test_1,12.03,0.09,367%,0:03.29
+,,,,,,,std_test_2,12.44,0.11,371%,0:03.38
+,,,,,,,std_test_3,12.43,0.12,369%,0:03.39
+,,,,,,,tcmalloc_test_1,12.47,0.13,369%,0:03.40
+,,,,,,,tcmalloc_test_2,12.49,0.11,366%,0:03.43
+,,,,,,,tcmalloc_test_3,12.46,0.11,363%,0:03.45
+https://streams.videolan.org/benchmark/8_AVC_8bits_3840x2160_25_000fps.mkv,h264 (Main),20 s 0 ms,114 Mb/s,3 840 pixels,2 160 pixels,25.000 FPS,std_test_1,1057.25,8.36,292%,6:03.92
+,,,,,,,std_test_2,1022.13,7.58,284%,6:02.08
+,,,,,,,std_test_3,1025.80,6.42,272%,6:19.24
+,,,,,,,tcmalloc_test_1,985.59,2.43,385%,4:16.21
+,,,,,,,tcmalloc_test_2,981.20,1.87,385%,4:14.96
+,,,,,,,tcmalloc_test_3,975.63,1.28,392%,4:08.94
+https://streams.videolan.org/benchmark/9_AVC_8bits_3840x2160_60_000fps.mkv,h264 (Main),20 s 0 ms,114 Mb/s,3 840 pixels,2 160 pixels,60.000 FPS,std_test_1,751.29,4.46,334%,3:45.74
+,,,,,,,std_test_2,752.33,4.89,346%,3:38.57
+,,,,,,,std_test_3,753.54,4.42,347%,3:38.34
+,,,,,,,tcmalloc_test_1,723.42,4.24,339%,3:34.21
+,,,,,,,tcmalloc_test_2,702.83,0.98,390%,3:00.20
+,,,,,,,tcmalloc_test_3,700.96,0.82,391%,2:59.03
+http://samples.ffmpeg.org/archive/video/wmv2/asf+wmv2+wmav2++juli_warum_300.wmv,wmv2 (WMV2 / 0x32564D57),3 min 58 s,274 kb/s,352 pixels,288 pixels,12.000 FPS,std_test_1,42.34,0.24,328%,0:12.96
+,,,,,,,std_test_2,43.13,0.23,323%,0:13.40
+,,,,,,,std_test_3,43.06,0.22,322%,0:13.41
+,,,,,,,tcmalloc_test_1,43.61,0.31,312%,0:14.04
+,,,,,,,tcmalloc_test_2,43.30,0.24,327%,0:13.30
+,,,,,,,tcmalloc_test_3,43.51,0.31,307%,0:14.24
+http://samples.ffmpeg.org/archive/video/wmv2/asf+wmv2+wmav2++juli_geilezeit_r300.wmv,wmv2 (WMV2 / 0x32564D57),3 min 42 s,274 kb/s,352 pixels,288 pixels,12.000 FPS,std_test_1,41.00,0.26,344%,0:11.99
+,,,,,,,std_test_2,41.07,0.20,356%,0:11.58
+,,,,,,,std_test_3,41.62,0.29,314%,0:13.31
+,,,,,,,tcmalloc_test_1,41.29,0.42,312%,0:13.33
+,,,,,,,tcmalloc_test_2,41.25,0.29,336%,0:12.34
+,,,,,,,tcmalloc_test_3,41.33,0.30,333%,0:12.46
+https://streams.videolan.org/benchmark/29_VP8_1280x720_30_068fps.webm,vp8,16 s 666 ms,832 kb/s,1 280 pixels,720 pixels,30.068 FPS,std_test_1,52.80,0.23,382%,0:13.87
+,,,,,,,std_test_2,53.13,0.16,387%,0:13.77
+,,,,,,,std_test_3,53.13,0.15,386%,0:13.78
+,,,,,,,tcmalloc_test_1,53.50,0.43,345%,0:15.60
+,,,,,,,tcmalloc_test_2,53.46,0.50,356%,0:15.12
+,,,,,,,tcmalloc_test_3,53.69,0.24,356%,0:15.13
+https://streams.videolan.org/benchmark/60_HEVC_10bits_3840x2160_60_000fps.mkv,hevc (Main 10),8 s 334 ms,10.8 Mb/s,3 840 pixels,2 160 pixels,60.000 FPS,std_test_1,419.98,2.71,370%,1:54.06
+,,,,,,,std_test_2,413.92,2.35,355%,1:56.94
+,,,,,,,std_test_3,415.28,1.44,364%,1:54.32
+,,,,,,,tcmalloc_test_1,418.06,1.97,332%,2:06.48
+,,,,,,,tcmalloc_test_2,418.00,1.72,336%,2:04.90
+,,,,,,,tcmalloc_test_3,416.99,1.36,367%,1:53.88
+https://streams.videolan.org/benchmark/118_MPEG_2V_8bits_1280x720_59_940fps.mpg,mpeg2video (Main) ([2][0][0][0] / 0x0002),16 s 884 ms,17.9 Mb/s,1 280 pixels,720 pixels,60.000 FPS,std_test_1,77.39,0.50,350%,0:22.22
+,,,,,,,std_test_2,75.45,0.64,338%,0:22.46
+,,,,,,,std_test_3,75.95,0.39,325%,0:23.45
+,,,,,,,tcmalloc_test_1,75.28,0.41,373%,0:20.26
+,,,,,,,tcmalloc_test_2,75.48,0.30,371%,0:20.40
+,,,,,,,tcmalloc_test_3,75.08,0.28,381%,0:19.77
+https://streams.videolan.org/benchmark/129_VC-1_8bits_1280x720_29_970fps.wmv,vc1 (Advanced) (WVC1 / 0x31435657),15 s 148 ms,5 942 kb/s,1 280 pixels,720 pixels,30.000 FPS,std_test_1,54.47,0.27,368%,0:14.86
+,,,,,,,std_test_2,54.80,0.12,380%,0:14.42
+,,,,,,,std_test_3,54.81,0.17,379%,0:14.48
+,,,,,,,tcmalloc_test_1,54.91,0.18,358%,0:15.37
+,,,,,,,tcmalloc_test_2,55.65,0.20,318%,0:17.56
+,,,,,,,tcmalloc_test_3,55.81,0.32,326%,0:17.21

@@ -10,8 +10,8 @@ ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
   libswscale      4.  8.100 /  4.  8.100
   libswresample   2.  9.100 /  2.  9.100
   libpostproc    54.  7.100 / 54.  7.100
-[mxf @ 0x5569c0c92000] OPAtom misinterpreted as OP1a? KLV for edit unit 0 extending into next edit unit is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
-[mxf @ 0x5569c0c92000] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
+[mxf @ 0x55a84f3a6000] OPAtom misinterpreted as OP1a? KLV for edit unit 0 extending into next edit unit is not implemented. Update your FFmpeg version to the newest one from Git. If the problem still occurs, it means that your file has a feature which has not been implemented.
+[mxf @ 0x55a84f3a6000] If you want to help, upload a sample of this file to ftp://upload.ffmpeg.org/incoming/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)
 Guessed Channel Layout for Input Stream #0.0 : 5.1
 Input #0, mxf, from '../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf':
   Metadata:
@@ -54,22 +54,22 @@ Output #0, mov, to '/home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_
       encoder         : Lavc57.107.100 aac
 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    
 video:0kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
-[aac @ 0x5569c0cafe00] Qavg: -nan
+[aac @ 0x55a84f3c3e00] Qavg: -nan
 	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf -c:v libx264 -f mov /home/aleksandr/Pract/Samples/nocturne_60fps_s01e03_vdm_hdr_p3d65_pq_20180307_02_3840x2160_dovi_4000nit_imf_ml8_3200Mbps_51_Mixdown.mxf_tc/output_tc2.mov"
-	User time (seconds): 2.80
-	System time (seconds): 0.07
-	Percent of CPU this job got: 100%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.87
+	User time (seconds): 3.42
+	System time (seconds): 0.17
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.61
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 46016
+	Maximum resident set size (kbytes): 45112
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 4119
-	Voluntary context switches: 10
-	Involuntary context switches: 5
+	Minor (reclaiming a frame) page faults: 4101
+	Voluntary context switches: 11
+	Involuntary context switches: 242
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 24

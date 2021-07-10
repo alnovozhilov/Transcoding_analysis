@@ -1,0 +1,97 @@
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Guessed Channel Layout for Input Stream #0.0 : stereo
+Input #0, asf, from '../.././Samples/asf+wmv2+wmav2++juli_warum_300.wmv':
+  Metadata:
+    WMFSDKNeeded    : 0.0.0.0000
+    DeviceConformanceTemplate: @
+    WM/WMADRCPeakReference: 18116
+    WM/WMADRCAverageReference: 3940
+    WMFSDKVersion   : 10.00.00.3646
+    IsVBR           : 0
+    copyright       : by Universal Records 2004
+  Duration: 00:03:58.17, start: 0.000000, bitrate: 313 kb/s
+    Stream #0:0: Audio: wmav2 (a[1][0][0] / 0x0161), 44100 Hz, stereo, fltp, 31 kb/s
+    Stream #0:1: Video: wmv2 (WMV2 / 0x32564D57), yuv420p, 352x288, 274 kb/s, 12 fps, 12 tbr, 1k tbn, 1k tbc
+Stream mapping:
+  Stream #0:1 -> #0:0 (wmv2 (native) -> h264 (libx264))
+  Stream #0:0 -> #0:1 (wmav2 (native) -> aac (native))
+Press [q] to stop, [?] for help
+[aac @ 0x55884db75700] Queue input is backward in time
+[libx264 @ 0x55884db74800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55884db74800] profile High, level 1.2
+[libx264 @ 0x55884db74800] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=12 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Pract/Samples/asf+wmv2+wmav2++juli_warum_300.wmv_tc/output_tc2.mov':
+  Metadata:
+    WMFSDKNeeded    : 0.0.0.0000
+    DeviceConformanceTemplate: @
+    WM/WMADRCPeakReference: 18116
+    WM/WMADRCAverageReference: 3940
+    WMFSDKVersion   : 10.00.00.3646
+    IsVBR           : 0
+    copyright       : by Universal Records 2004
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264) (avc1 / 0x31637661), yuv420p, 352x288, q=-1--1, 12 fps, 12288 tbn, 12 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+    Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc57.107.100 aac
+[mov @ 0x55884db2a600] Non-monotonous DTS in output stream 0:1; previous: 7168, current: 6130; changing to 7169. This may result in incorrect timestamps in the output file.
+[mov @ 0x55884db2a600] Non-monotonous DTS in output stream 0:1; previous: 7169, current: 7154; changing to 7170. This may result in incorrect timestamps in the output file.
+frame=  130 fps=0.0 q=26.0 size=     256kB time=00:00:09.56 bitrate= 219.3kbits/s speed=19.1x    frame=  240 fps=239 q=26.0 size=     768kB time=00:00:18.68 bitrate= 336.8kbits/s speed=18.6x    frame=  349 fps=232 q=26.0 size=    1280kB time=00:00:27.68 bitrate= 378.7kbits/s speed=18.4x    frame=  462 fps=230 q=26.0 size=    2048kB time=00:00:37.70 bitrate= 444.9kbits/s speed=18.8x    frame=  578 fps=230 q=26.0 size=    2560kB time=00:00:47.46 bitrate= 441.9kbits/s speed=18.9x    frame=  706 fps=234 q=26.0 size=    3072kB time=00:00:57.64 bitrate= 436.6kbits/s speed=19.1x    frame=  831 fps=236 q=26.0 size=    3584kB time=00:01:07.75 bitrate= 433.3kbits/s speed=19.3x    frame=  941 fps=234 q=23.0 size=    4096kB time=00:01:17.60 bitrate= 432.4kbits/s speed=19.3x    frame= 1044 fps=231 q=26.0 size=    4608kB time=00:01:26.93 bitrate= 434.2kbits/s speed=19.2x    frame= 1168 fps=232 q=26.0 size=    5120kB time=00:01:36.17 bitrate= 436.1kbits/s speed=19.1x    frame= 1290 fps=233 q=26.0 size=    5632kB time=00:01:46.39 bitrate= 433.7kbits/s speed=19.2x    frame= 1397 fps=231 q=26.0 size=    6144kB time=00:01:54.98 bitrate= 437.7kbits/s speed=19.1x    frame= 1512 fps=231 q=26.0 size=    6912kB time=00:02:04.73 bitrate= 453.9kbits/s speed=19.1x    frame= 1631 fps=232 q=23.0 size=    7168kB time=00:02:14.58 bitrate= 436.3kbits/s speed=19.1x    frame= 1743 fps=231 q=26.0 size=    7680kB time=00:02:24.65 bitrate= 434.9kbits/s speed=19.2x    frame= 1863 fps=232 q=26.0 size=    8448kB time=00:02:34.64 bitrate= 447.5kbits/s speed=19.2x    frame= 1978 fps=232 q=26.0 size=    8704kB time=00:02:43.60 bitrate= 435.8kbits/s speed=19.2x    frame= 2110 fps=233 q=26.0 size=    9216kB time=00:02:54.47 bitrate= 432.7kbits/s speed=19.3x    frame= 2226 fps=233 q=26.0 size=    9728kB time=00:03:04.31 bitrate= 432.4kbits/s speed=19.3x    frame= 2339 fps=233 q=26.0 size=   10240kB time=00:03:13.56 bitrate= 433.4kbits/s speed=19.3x    frame= 2455 fps=233 q=26.0 size=   10752kB time=00:03:23.45 bitrate= 432.9kbits/s speed=19.3x    frame= 2566 fps=232 q=26.0 size=   11264kB time=00:03:32.69 bitrate= 433.8kbits/s speed=19.2x    frame= 2672 fps=231 q=26.0 size=   12032kB time=00:03:41.62 bitrate= 444.7kbits/s speed=19.2x    frame= 2785 fps=231 q=26.0 size=   12544kB time=00:03:50.52 bitrate= 445.8kbits/s speed=19.1x    frame= 2853 fps=226 q=-1.0 Lsize=   13491kB time=00:03:57.72 bitrate= 464.9kbits/s speed=18.8x    
+video:9616kB audio:3754kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.904984%
+[libx264 @ 0x55884db74800] frame I:255   Avg QP:17.66  size:  7360
+[libx264 @ 0x55884db74800] frame P:1867  Avg QP:22.55  size:  3255
+[libx264 @ 0x55884db74800] frame B:731   Avg QP:24.31  size:  2590
+[libx264 @ 0x55884db74800] consecutive B-frames: 61.7%  9.1% 10.3% 18.9%
+[libx264 @ 0x55884db74800] mb I  I16..4: 24.6% 68.7%  6.7%
+[libx264 @ 0x55884db74800] mb P  I16..4:  2.5% 13.1%  2.1%  P16..4: 35.5% 12.8%  5.1%  0.0%  0.0%    skip:28.9%
+[libx264 @ 0x55884db74800] mb B  I16..4:  0.8%  6.6%  1.9%  B16..8: 36.8% 12.8%  2.9%  direct: 3.1%  skip:35.1%  L0:55.1% L1:30.1% BI:14.8%
+[libx264 @ 0x55884db74800] 8x8 transform intra:71.5% inter:65.4%
+[libx264 @ 0x55884db74800] coded y,uvDC,uvAC intra: 64.5% 73.4% 32.6% inter: 26.9% 18.7% 1.4%
+[libx264 @ 0x55884db74800] i16 v,h,dc,p: 48% 25% 16% 12%
+[libx264 @ 0x55884db74800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 20% 19%  4%  5%  7%  5%  7%  9%
+[libx264 @ 0x55884db74800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 27% 23% 14%  5%  6%  8%  6%  6%  5%
+[libx264 @ 0x55884db74800] i8c dc,h,v,p: 43% 26% 23%  9%
+[libx264 @ 0x55884db74800] Weighted P-Frames: Y:3.5% UV:1.8%
+[libx264 @ 0x55884db74800] ref P L0: 74.4% 15.8%  7.1%  2.6%  0.1%
+[libx264 @ 0x55884db74800] ref B L0: 90.9%  7.7%  1.5%
+[libx264 @ 0x55884db74800] ref B L1: 97.5%  2.5%
+[libx264 @ 0x55884db74800] kb/s:331.32
+[aac @ 0x55884db75700] Qavg: 457.308
+	Command being timed: "/usr/bin/ffmpeg -i ../.././Samples/asf+wmv2+wmav2++juli_warum_300.wmv -c:v libx264 -f mov /home/aleksandr/Pract/Samples/asf+wmv2+wmav2++juli_warum_300.wmv_tc/output_tc2.mov"
+	User time (seconds): 43.19
+	System time (seconds): 0.17
+	Percent of CPU this job got: 342%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 84732
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 13703
+	Voluntary context switches: 16802
+	Involuntary context switches: 3065
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 27008
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
