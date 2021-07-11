@@ -41,4 +41,4 @@ done < ${file:2}
 done
 echo -e "\n"
 cd ../../
-done >> release_results.txt
+done >> ./Parsed_results/release_results.txt

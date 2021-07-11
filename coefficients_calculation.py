@@ -43,7 +43,6 @@ def rows_processing(reader):
         if row[0] == "Url":
             continue
         if row[0][0] == 'h':
-            print(row[0] + "\n")
             file_info.append(row[0] + ", " + row[1] + ", " + row[2] + ", " + row[3] + ", " + row[4].split(" pixels")[0] + "x" + row[5].split(" pixels")[0] + ", " + row[6])
             for i in range(0, 7):
                 row.pop(0)
@@ -64,7 +63,6 @@ def rows_processing(reader):
             count_std = 0
 
         if count_std == experiments_count:
-            print(str(average_elapsed_time_std) + "\n") 
             average_user_time_std = average_user_time_std / experiments_count
             average_system_time_std = average_system_time_std / experiments_count
             average_elapsed_time_std = average_elapsed_time_std / experiments_count
@@ -156,7 +154,9 @@ def prepare_outputs(list_user_time, list_system_time, list_elapsed_time):
     else:
         count = output_count
 
-    f = open('best_bad_results_info.txt', 'a')
+    f = open('./Parsed_results/best_bad_results_info.txt', 'w')
+    f.close()
+    f = open('./Parsed_results/best_bad_results_info.txt', 'a')
 
     print("\nUser Time\n")
     f.write("----------USER TIME----------\n")
@@ -167,6 +167,7 @@ def prepare_outputs(list_user_time, list_system_time, list_elapsed_time):
     print("\nElapsed Time\n")
     f.write("----------ELAPSED TIME----------\n")
     print_result(f, output_count, list_elapsed_time, list(reversed(list_elapsed_time)))
+    f.close()
    
 """
     Вывод результата в консоль
@@ -196,7 +197,8 @@ def save_results(f, results):
     f.write("FPS:" + file_info[5] + "\n")
     f.write("Result: " + str(results[1]) + "\n\n")
 
+
 if __name__ == "__main__":
-    csv_path = "Results.csv"
+    csv_path = "./Parsed_results/Results.csv"
     with open(csv_path, "r") as f_obj:
         csv_reader(f_obj)

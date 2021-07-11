@@ -54,5 +54,5 @@ done < ${file:2}
 done
 echo -e "\n"
 cd ../../
-done >> parsed.txt
+done >> ./Parsed_results/parsed.txt
 
