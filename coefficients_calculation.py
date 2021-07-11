@@ -149,7 +149,7 @@ def calculate_coefficientes(file_info,
 """
 def prepare_outputs(list_user_time, list_system_time, list_elapsed_time):
 
-    output_count = 30
+    output_count = 10
 
     if len(list_user_time) < output_count:
         count = len(list_user_time)

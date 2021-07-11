@@ -1,0 +1,73 @@
+ffmpeg version N-102852-g758e2da289 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/home/aleksandr/ffmpeg_debug_build --pkg-config-flags=--static --extra-cflags=-I/home/aleksandr/ffmpeg_debug_build/include --extra-cflags=-g --extra-ldflags=-L/home/aleksandr/ffmpeg_debug_build/lib --extra-ldflags=-g --extra-libs='-lpthread -lm' --bindir=/home/aleksandr/bin_debug --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-debug --enable-nonfree
+  libavutil      57.  0.100 / 57.  0.100
+  libavcodec     59.  3.101 / 59.  3.101
+  libavformat    59.  4.100 / 59.  4.100
+  libavdevice    59.  0.100 / 59.  0.100
+  libavfilter     8.  0.103 /  8.  0.103
+  libswscale      6.  0.100 /  6.  0.100
+  libswresample   4.  0.100 /  4.  0.100
+  libpostproc    56.  0.100 / 56.  0.100
+[mpegvideo @ 0x55e7db47c400] Estimating duration from bitrate, this may be inaccurate
+Input #0, mpegvideo, from '../.././Samples/ton_bug_1999.mpg':
+  Duration: 00:00:15.32, bitrate: 1157 kb/s
+  Stream #0:0: Video: mpeg1video, yuv420p(tv), 320x240 [SAR 1:1 DAR 4:3], 1158 kb/s, 23.98 fps, 23.98 tbr, 1200k tbn
+Stream mapping:
+  Stream #0:0 -> #0:0 (mpeg1video (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x55e7db4e4b40] using SAR=1/1
+[libx264 @ 0x55e7db4e4b40] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x55e7db4e4b40] profile High, level 1.3
+[libx264 @ 0x55e7db4e4b40] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=23 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Debug-release_tests/Debug/Samples/ton_bug_1999.mpg_tc/output_tc7.mov':
+  Metadata:
+    encoder         : Lavf59.4.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, progressive), 320x240 [SAR 1:1 DAR 4:3], q=2-31, 23.98 fps, 24k tbn
+    Metadata:
+      encoder         : Lavc59.3.101 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    1 fps=0.0 q=0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    frame=  323 fps=0.0 q=28.0 size=     256kB time=00:00:11.26 bitrate= 186.3kbits/s dup=1 drop=0 speed=22.2x    frame=  371 fps=0.0 q=-1.0 Lsize=     380kB time=00:00:15.34 bitrate= 202.8kbits/s dup=2 drop=0 speed=22.8x    
+video:375kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.349919%
+[libx264 @ 0x55e7db4e4b40] frame I:2     Avg QP:21.16  size: 11520
+[libx264 @ 0x55e7db4e4b40] frame P:104   Avg QP:23.73  size:  3050
+[libx264 @ 0x55e7db4e4b40] frame B:265   Avg QP:28.51  size:   162
+[libx264 @ 0x55e7db4e4b40] consecutive B-frames:  1.9%  5.4%  9.7% 83.0%
+[libx264 @ 0x55e7db4e4b40] mb I  I16..4:  6.7% 83.7%  9.7%
+[libx264 @ 0x55e7db4e4b40] mb P  I16..4:  0.9%  6.5%  1.4%  P16..4: 33.9% 17.4% 13.3%  0.0%  0.0%    skip:26.5%
+[libx264 @ 0x55e7db4e4b40] mb B  I16..4:  0.0%  0.4%  0.1%  B16..8:  8.3%  1.0%  0.5%  direct: 0.3%  skip:89.5%  L0:45.6% L1:47.7% BI: 6.7%
+[libx264 @ 0x55e7db4e4b40] 8x8 transform intra:75.3% inter:73.8%
+[libx264 @ 0x55e7db4e4b40] coded y,uvDC,uvAC intra: 85.7% 87.6% 46.7% inter: 12.8% 14.3% 3.5%
+[libx264 @ 0x55e7db4e4b40] i16 v,h,dc,p: 40% 28% 10% 22%
+[libx264 @ 0x55e7db4e4b40] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 19% 26% 14%  5%  6%  7%  7%  7%  8%
+[libx264 @ 0x55e7db4e4b40] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 24% 20% 10%  6%  8%  9%  8%  7%  7%
+[libx264 @ 0x55e7db4e4b40] i8c dc,h,v,p: 47% 23% 23%  8%
+[libx264 @ 0x55e7db4e4b40] Weighted P-Frames: Y:6.7% UV:0.0%
+[libx264 @ 0x55e7db4e4b40] ref P L0: 59.4% 18.5%  9.0% 12.7%  0.5%
+[libx264 @ 0x55e7db4e4b40] ref B L0: 90.3%  7.1%  2.6%
+[libx264 @ 0x55e7db4e4b40] ref B L1: 96.1%  3.9%
+[libx264 @ 0x55e7db4e4b40] kb/s:198.15
+	Command being timed: "/home/aleksandr/bin_debug/ffmpeg -i ../.././Samples/ton_bug_1999.mpg -c:v libx264 -f mov /home/aleksandr/Debug-release_tests/Debug/Samples/ton_bug_1999.mpg_tc/output_tc7.mov"
+	User time (seconds): 1.82
+	System time (seconds): 0.04
+	Percent of CPU this job got: 253%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.73
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 53276
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 8927
+	Voluntary context switches: 5971
+	Involuntary context switches: 703
+	Swaps: 0
+	File system inputs: 2328
+	File system outputs: 784
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

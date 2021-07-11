@@ -1,0 +1,97 @@
+ffmpeg version N-102852-g758e2da289 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/home/aleksandr/ffmpeg_debug_build --pkg-config-flags=--static --extra-cflags=-I/home/aleksandr/ffmpeg_debug_build/include --extra-cflags=-g --extra-ldflags=-L/home/aleksandr/ffmpeg_debug_build/lib --extra-ldflags=-g --extra-libs='-lpthread -lm' --bindir=/home/aleksandr/bin_debug --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-debug --enable-nonfree
+  libavutil      57.  0.100 / 57.  0.100
+  libavcodec     59.  3.101 / 59.  3.101
+  libavformat    59.  4.100 / 59.  4.100
+  libavdevice    59.  0.100 / 59.  0.100
+  libavfilter     8.  0.103 /  8.  0.103
+  libswscale      6.  0.100 /  6.  0.100
+  libswresample   4.  0.100 /  4.  0.100
+  libpostproc    56.  0.100 / 56.  0.100
+Guessed Channel Layout for Input Stream #0.0 : stereo
+Input #0, asf, from '../.././Samples/129_VC-1_8bits_1280x720_29_970fps.wmv':
+  Metadata:
+    SfOriginalFPS   : 299700
+    WMFSDKVersion   : 11.0.6001.7000
+    WMFSDKNeeded    : 0.0.0.0000
+    comment         : Footage: Small World Productions, Inc; Tourism New Zealand | Producer: Gary F. Spradling | Music: Steve Ball
+    title           : Wildlife in HD
+    copyright       : © 2008 Microsoft Corporation
+    IsVBR           : 0
+    DeviceConformanceTemplate: AP@L3
+  Duration: 00:00:15.15, start: 0.000000, bitrate: 7216 kb/s
+  Stream #0:0(eng): Audio: wmav2 (a[1][0][0] / 0x0161), 44100 Hz, stereo, fltp, 192 kb/s
+  Stream #0:1(eng): Video: vc1 (Advanced) (WVC1 / 0x31435657), yuv420p, 1280x720, 5942 kb/s, 29.97 fps, 29.97 tbr, 1k tbn
+Stream mapping:
+  Stream #0:1 -> #0:0 (vc1 (native) -> h264 (libx264))
+  Stream #0:0 -> #0:1 (wmav2 (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0x562bbd588f00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x562bbd588f00] profile High, level 3.1
+[libx264 @ 0x562bbd588f00] 264 - core 152 r2854 e9a5903 - H.264/MPEG-4 AVC codec - Copyleft 2003-2017 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mov, to '/home/aleksandr/Debug-release_tests/Debug/Samples/129_VC-1_8bits_1280x720_29_970fps.wmv_tc/output_tc6.mov':
+  Metadata:
+    SfOriginalFPS   : 299700
+    WMFSDKVersion   : 11.0.6001.7000
+    WMFSDKNeeded    : 0.0.0.0000
+    comment         : Footage: Small World Productions, Inc; Tourism New Zealand | Producer: Gary F. Spradling | Music: Steve Ball
+    title           : Wildlife in HD
+    copyright       : © 2008 Microsoft Corporation
+    IsVBR           : 0
+    DeviceConformanceTemplate: AP@L3
+    encoder         : Lavf59.4.100
+  Stream #0:0(eng): Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 1280x720, q=2-31, 29.97 fps, 30k tbn
+    Metadata:
+      encoder         : Lavc59.3.101 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc59.3.101 aac
+frame=    2 fps=0.0 q=0.0 size=       0kB time=00:00:00.13 bitrate=   2.1kbits/s dup=1 drop=0 speed=2.27x    [aac @ 0x562bbd589a40] Queue input is backward in time
+[mov @ 0x562bbd50ca00] Non-monotonous DTS in output stream 0:1; previous: 7168, current: 6615; changing to 7169. This may result in incorrect timestamps in the output file.
+frame=   47 fps=0.0 q=0.0 size=       0kB time=00:00:01.58 bitrate=   0.2kbits/s dup=1 drop=0 speed= 2.6x    frame=   65 fps= 56 q=29.0 size=     256kB time=00:00:02.15 bitrate= 972.7kbits/s dup=1 drop=0 speed=1.87x    frame=   81 fps= 48 q=29.0 size=     512kB time=00:00:02.65 bitrate=1577.9kbits/s dup=1 drop=0 speed=1.57x    frame=   95 fps= 42 q=29.0 size=     768kB time=00:00:03.21 bitrate=1956.8kbits/s dup=1 drop=0 speed=1.44x    frame=  108 fps= 39 q=29.0 size=    1280kB time=00:00:03.76 bitrate=2788.2kbits/s dup=1 drop=0 speed=1.36x    frame=  122 fps= 37 q=29.0 size=    1536kB time=00:00:04.15 bitrate=3031.9kbits/s dup=1 drop=0 speed=1.27x    frame=  136 fps= 36 q=29.0 size=    1792kB time=00:00:04.51 bitrate=3251.2kbits/s dup=1 drop=0 speed=1.18x    frame=  149 fps= 34 q=29.0 size=    2048kB time=00:00:05.12 bitrate=3270.9kbits/s dup=1 drop=0 speed=1.19x    frame=  164 fps= 34 q=29.0 size=    2560kB time=00:00:05.49 bitrate=3819.1kbits/s dup=1 drop=0 speed=1.13x    frame=  176 fps= 33 q=29.0 size=    2816kB time=00:00:06.03 bitrate=3821.4kbits/s dup=1 drop=0 speed=1.13x    frame=  195 fps= 33 q=29.0 size=    3328kB time=00:00:06.61 bitrate=4121.2kbits/s dup=1 drop=0 speed=1.13x    frame=  215 fps= 34 q=29.0 size=    3584kB time=00:00:07.19 bitrate=4079.1kbits/s dup=1 drop=0 speed=1.13x    frame=  231 fps= 33 q=29.0 size=    4096kB time=00:00:07.77 bitrate=4317.2kbits/s dup=1 drop=0 speed=1.13x    frame=  246 fps= 33 q=29.0 size=    4608kB time=00:00:08.42 bitrate=4479.7kbits/s dup=1 drop=0 speed=1.13x    frame=  264 fps= 33 q=29.0 size=    4864kB time=00:00:08.78 bitrate=4534.1kbits/s dup=1 drop=0 speed= 1.1x    frame=  284 fps= 33 q=29.0 size=    5120kB time=00:00:09.54 bitrate=4396.4kbits/s dup=1 drop=0 speed=1.12x    frame=  303 fps= 34 q=29.0 size=    5376kB time=00:00:10.08 bitrate=4365.6kbits/s dup=1 drop=0 speed=1.12x    frame=  321 fps= 34 q=29.0 size=    5632kB time=00:00:10.70 bitrate=4311.4kbits/s dup=1 drop=0 speed=1.13x    frame=  340 fps= 34 q=29.0 size=    5632kB time=00:00:11.29 bitrate=4084.3kbits/s dup=1 drop=0 speed=1.13x    frame=  359 fps= 34 q=29.0 size=    5888kB time=00:00:12.03 bitrate=4006.5kbits/s dup=1 drop=0 speed=1.14x    frame=  376 fps= 34 q=29.0 size=    6144kB time=00:00:12.68 bitrate=3966.5kbits/s dup=1 drop=0 speed=1.15x    frame=  395 fps= 34 q=29.0 size=    6144kB time=00:00:13.28 bitrate=3789.7kbits/s dup=1 drop=0 speed=1.15x    frame=  413 fps= 34 q=29.0 size=    6656kB time=00:00:13.83 bitrate=3940.2kbits/s dup=1 drop=0 speed=1.15x    frame=  429 fps= 34 q=29.0 size=    6912kB time=00:00:14.34 bitrate=3946.1kbits/s dup=1 drop=0 speed=1.14x    frame=  445 fps= 34 q=29.0 size=    7168kB time=00:00:14.88 bitrate=3945.8kbits/s dup=1 drop=0 speed=1.14x    frame=  450 fps= 31 q=-1.0 Lsize=    8242kB time=00:00:14.92 bitrate=4522.9kbits/s dup=1 drop=0 speed=1.03x    
+video:7987kB audio:239kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.201507%
+[libx264 @ 0x562bbd588f00] frame I:5     Avg QP:19.35  size: 72662
+[libx264 @ 0x562bbd588f00] frame P:278   Avg QP:24.61  size: 20006
+[libx264 @ 0x562bbd588f00] frame B:167   Avg QP:27.49  size: 13489
+[libx264 @ 0x562bbd588f00] consecutive B-frames: 50.0%  1.3%  0.7% 48.0%
+[libx264 @ 0x562bbd588f00] mb I  I16..4: 24.8% 73.4%  1.7%
+[libx264 @ 0x562bbd588f00] mb P  I16..4:  1.0%  7.0%  0.6%  P16..4: 55.8% 10.0%  6.2%  0.0%  0.0%    skip:19.4%
+[libx264 @ 0x562bbd588f00] mb B  I16..4:  1.2%  5.9%  0.3%  B16..8: 44.2%  7.7%  2.6%  direct: 4.0%  skip:34.2%  L0:49.5% L1:40.9% BI: 9.6%
+[libx264 @ 0x562bbd588f00] 8x8 transform intra:80.1% inter:78.5%
+[libx264 @ 0x562bbd588f00] coded y,uvDC,uvAC intra: 66.7% 77.0% 25.5% inter: 24.9% 23.9% 1.4%
+[libx264 @ 0x562bbd588f00] i16 v,h,dc,p: 35% 28% 13% 24%
+[libx264 @ 0x562bbd588f00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 15% 32% 30%  4%  4%  3%  4%  4%  4%
+[libx264 @ 0x562bbd588f00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 12% 39% 14%  5%  7%  6%  8%  4%  5%
+[libx264 @ 0x562bbd588f00] i8c dc,h,v,p: 48% 30% 17%  6%
+[libx264 @ 0x562bbd588f00] Weighted P-Frames: Y:1.4% UV:0.0%
+[libx264 @ 0x562bbd588f00] ref P L0: 68.2% 15.1% 11.6%  5.0%  0.1%
+[libx264 @ 0x562bbd588f00] ref B L0: 90.3%  7.5%  2.2%
+[libx264 @ 0x562bbd588f00] ref B L1: 95.5%  4.5%
+[libx264 @ 0x562bbd588f00] kb/s:4357.01
+[aac @ 0x562bbd589a40] Qavg: 897.478
+	Command being timed: "/home/aleksandr/bin_debug/ffmpeg -i ../.././Samples/129_VC-1_8bits_1280x720_29_970fps.wmv -c:v libx264 -f mov /home/aleksandr/Debug-release_tests/Debug/Samples/129_VC-1_8bits_1280x720_29_970fps.wmv_tc/output_tc6.mov"
+	User time (seconds): 54.96
+	System time (seconds): 0.17
+	Percent of CPU this job got: 377%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.61
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 264588
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 4
+	Minor (reclaiming a frame) page faults: 21204
+	Voluntary context switches: 4400
+	Involuntary context switches: 4469
+	Swaps: 0
+	File system inputs: 11752
+	File system outputs: 16512
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

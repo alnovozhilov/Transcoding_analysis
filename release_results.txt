@@ -1,0 +1,982 @@
+
+./Release_results/Chimera_DCI4k2398p_HDR_P3PQ.mp4_tc
+
+std
+Test 1
+User time (seconds): 13866.84
+System time (seconds): 9.73
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:27.81
+Test 2
+User time (seconds): 13839.21
+System time (seconds): 9.69
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:08.77
+Test 3
+User time (seconds): 14020.73
+System time (seconds): 10.04
+Percent of CPU this job got: 397%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:51.05
+Test 4
+User time (seconds): 14010.57
+System time (seconds): 10.39
+Percent of CPU this job got: 397%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:50.56
+Test 5
+User time (seconds): 13796.42
+System time (seconds): 9.70
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:38.52
+Test 6
+User time (seconds): 13888.37
+System time (seconds): 10.05
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 59:45.19
+Test 7
+User time (seconds): 13532.34
+System time (seconds): 9.75
+Percent of CPU this job got: 371%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:00:44
+Test 8
+User time (seconds): 13968.90
+System time (seconds): 10.79
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:43.39
+Test 9
+User time (seconds): 12893.10
+System time (seconds): 10.75
+Percent of CPU this job got: 309%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09:26
+
+tc_malloc
+Test 1
+User time (seconds): 13212.02
+System time (seconds): 10.73
+Percent of CPU this job got: 332%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:06:18
+Test 2
+User time (seconds): 13885.04
+System time (seconds): 9.33
+Percent of CPU this job got: 381%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:00:39
+Test 3
+User time (seconds): 13145.28
+System time (seconds): 10.35
+Percent of CPU this job got: 317%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:09:06
+Test 4
+User time (seconds): 13987.44
+System time (seconds): 11.18
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:49.04
+Test 5
+User time (seconds): 14015.26
+System time (seconds): 10.74
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:54.75
+Test 6
+User time (seconds): 13952.49
+System time (seconds): 10.37
+Percent of CPU this job got: 397%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:34.46
+Test 7
+User time (seconds): 13698.42
+System time (seconds): 12.24
+Percent of CPU this job got: 373%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:01:09
+Test 8
+User time (seconds): 13857.07
+System time (seconds): 10.82
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:15.83
+Test 9
+User time (seconds): 13944.67
+System time (seconds): 11.01
+Percent of CPU this job got: 397%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 58:32.75
+
+
+
+./Release_results/29_VP8_1280x720_30_068fps.webm_tc
+
+std
+Test 1
+User time (seconds): 46.61
+System time (seconds): 0.45
+Percent of CPU this job got: 379%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.41
+Test 2
+User time (seconds): 48.48
+System time (seconds): 0.21
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.70
+Test 3
+User time (seconds): 53.53
+System time (seconds): 0.17
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.86
+Test 4
+User time (seconds): 54.42
+System time (seconds): 0.19
+Percent of CPU this job got: 386%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.14
+Test 5
+User time (seconds): 50.17
+System time (seconds): 0.28
+Percent of CPU this job got: 378%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.34
+Test 6
+User time (seconds): 53.18
+System time (seconds): 0.19
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.77
+Test 7
+User time (seconds): 46.81
+System time (seconds): 0.43
+Percent of CPU this job got: 379%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.46
+Test 8
+User time (seconds): 53.68
+System time (seconds): 0.18
+Percent of CPU this job got: 387%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.90
+Test 9
+User time (seconds): 48.64
+System time (seconds): 0.32
+Percent of CPU this job got: 372%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.15
+
+tc_malloc
+Test 1
+User time (seconds): 53.55
+System time (seconds): 0.27
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.03
+Test 2
+User time (seconds): 57.36
+System time (seconds): 0.19
+Percent of CPU this job got: 384%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.95
+Test 3
+User time (seconds): 53.46
+System time (seconds): 0.18
+Percent of CPU this job got: 385%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.90
+Test 4
+User time (seconds): 49.02
+System time (seconds): 0.28
+Percent of CPU this job got: 384%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.82
+Test 5
+User time (seconds): 55.81
+System time (seconds): 0.16
+Percent of CPU this job got: 385%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.52
+Test 6
+User time (seconds): 53.29
+System time (seconds): 0.17
+Percent of CPU this job got: 386%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.82
+Test 7
+User time (seconds): 53.42
+System time (seconds): 0.15
+Percent of CPU this job got: 374%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.31
+Test 8
+User time (seconds): 53.55
+System time (seconds): 0.28
+Percent of CPU this job got: 375%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.34
+Test 9
+User time (seconds): 54.38
+System time (seconds): 0.17
+Percent of CPU this job got: 385%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.15
+
+
+
+./Release_results/C0023S01.mxf_tc
+
+std
+Test 1
+User time (seconds): 0.74
+System time (seconds): 0.04
+Percent of CPU this job got: 221%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.35
+Test 2
+User time (seconds): 0.60
+System time (seconds): 0.03
+Percent of CPU this job got: 241%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.26
+Test 3
+User time (seconds): 0.65
+System time (seconds): 0.02
+Percent of CPU this job got: 228%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.29
+Test 4
+User time (seconds): 0.66
+System time (seconds): 0.04
+Percent of CPU this job got: 228%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.30
+Test 5
+User time (seconds): 0.64
+System time (seconds): 0.03
+Percent of CPU this job got: 241%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.28
+Test 6
+User time (seconds): 0.69
+System time (seconds): 0.03
+Percent of CPU this job got: 190%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.38
+Test 7
+User time (seconds): 0.62
+System time (seconds): 0.04
+Percent of CPU this job got: 243%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.27
+Test 8
+User time (seconds): 0.65
+System time (seconds): 0.02
+Percent of CPU this job got: 235%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.28
+Test 9
+User time (seconds): 0.63
+System time (seconds): 0.01
+Percent of CPU this job got: 240%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.26
+
+tc_malloc
+Test 1
+User time (seconds): 0.64
+System time (seconds): 0.03
+Percent of CPU this job got: 234%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.29
+Test 2
+User time (seconds): 0.69
+System time (seconds): 0.07
+Percent of CPU this job got: 205%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.37
+Test 3
+User time (seconds): 0.67
+System time (seconds): 0.01
+Percent of CPU this job got: 241%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.28
+Test 4
+User time (seconds): 0.63
+System time (seconds): 0.03
+Percent of CPU this job got: 240%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.27
+Test 5
+User time (seconds): 0.67
+System time (seconds): 0.02
+Percent of CPU this job got: 214%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.32
+Test 6
+User time (seconds): 0.73
+System time (seconds): 0.06
+Percent of CPU this job got: 161%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.49
+Test 7
+User time (seconds): 0.61
+System time (seconds): 0.02
+Percent of CPU this job got: 239%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.26
+Test 8
+User time (seconds): 0.66
+System time (seconds): 0.03
+Percent of CPU this job got: 238%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.29
+Test 9
+User time (seconds): 0.65
+System time (seconds): 0.03
+Percent of CPU this job got: 240%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.28
+
+
+
+./Release_results/divx4b153_badmacroblock.avi_tc
+
+std
+Test 1
+User time (seconds): 18.73
+System time (seconds): 0.10
+Percent of CPU this job got: 355%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.29
+Test 2
+User time (seconds): 18.64
+System time (seconds): 0.13
+Percent of CPU this job got: 362%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.17
+Test 3
+User time (seconds): 19.82
+System time (seconds): 0.15
+Percent of CPU this job got: 324%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.16
+Test 4
+User time (seconds): 23.23
+System time (seconds): 0.13
+Percent of CPU this job got: 364%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.41
+Test 5
+User time (seconds): 18.65
+System time (seconds): 0.10
+Percent of CPU this job got: 364%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.14
+Test 6
+User time (seconds): 21.06
+System time (seconds): 0.13
+Percent of CPU this job got: 362%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.84
+Test 7
+User time (seconds): 19.41
+System time (seconds): 0.10
+Percent of CPU this job got: 354%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.50
+Test 8
+User time (seconds): 20.90
+System time (seconds): 0.19
+Percent of CPU this job got: 367%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.73
+Test 9
+User time (seconds): 18.65
+System time (seconds): 0.11
+Percent of CPU this job got: 363%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.15
+
+tc_malloc
+Test 1
+User time (seconds): 21.58
+System time (seconds): 0.20
+Percent of CPU this job got: 331%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.57
+Test 2
+User time (seconds): 21.41
+System time (seconds): 0.16
+Percent of CPU this job got: 365%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.90
+Test 3
+User time (seconds): 19.76
+System time (seconds): 0.10
+Percent of CPU this job got: 365%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.43
+Test 4
+User time (seconds): 18.61
+System time (seconds): 0.13
+Percent of CPU this job got: 364%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.14
+Test 5
+User time (seconds): 21.03
+System time (seconds): 0.14
+Percent of CPU this job got: 364%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.81
+Test 6
+User time (seconds): 21.08
+System time (seconds): 0.11
+Percent of CPU this job got: 363%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.84
+Test 7
+User time (seconds): 20.58
+System time (seconds): 0.12
+Percent of CPU this job got: 368%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.62
+Test 8
+User time (seconds): 20.11
+System time (seconds): 0.14
+Percent of CPU this job got: 366%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.52
+Test 9
+User time (seconds): 21.13
+System time (seconds): 0.12
+Percent of CPU this job got: 368%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.77
+
+
+
+./Release_results/129_VC-1_8bits_1280x720_29_970fps.wmv_tc
+
+std
+Test 1
+User time (seconds): 48.41
+System time (seconds): 0.47
+Percent of CPU this job got: 371%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.17
+Test 2
+User time (seconds): 48.31
+System time (seconds): 0.26
+Percent of CPU this job got: 380%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.76
+Test 3
+User time (seconds): 54.82
+System time (seconds): 0.14
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.37
+Test 4
+User time (seconds): 59.18
+System time (seconds): 0.13
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.49
+Test 5
+User time (seconds): 50.89
+System time (seconds): 0.14
+Percent of CPU this job got: 381%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.36
+Test 6
+User time (seconds): 55.19
+System time (seconds): 0.18
+Percent of CPU this job got: 370%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.94
+Test 7
+User time (seconds): 48.44
+System time (seconds): 0.28
+Percent of CPU this job got: 377%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.90
+Test 8
+User time (seconds): 55.72
+System time (seconds): 0.14
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.57
+Test 9
+User time (seconds): 48.31
+System time (seconds): 0.14
+Percent of CPU this job got: 381%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.69
+
+tc_malloc
+Test 1
+User time (seconds): 55.54
+System time (seconds): 0.17
+Percent of CPU this job got: 381%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.60
+Test 2
+User time (seconds): 57.84
+System time (seconds): 0.13
+Percent of CPU this job got: 377%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.34
+Test 3
+User time (seconds): 55.38
+System time (seconds): 0.17
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.52
+Test 4
+User time (seconds): 50.86
+System time (seconds): 0.15
+Percent of CPU this job got: 375%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.57
+Test 5
+User time (seconds): 57.79
+System time (seconds): 0.22
+Percent of CPU this job got: 383%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.13
+Test 6
+User time (seconds): 54.96
+System time (seconds): 0.17
+Percent of CPU this job got: 377%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.61
+Test 7
+User time (seconds): 55.41
+System time (seconds): 0.23
+Percent of CPU this job got: 379%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.68
+Test 8
+User time (seconds): 55.50
+System time (seconds): 0.17
+Percent of CPU this job got: 381%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.58
+Test 9
+User time (seconds): 55.68
+System time (seconds): 0.13
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.57
+
+
+
+./Release_results/C_V3_9615614724_7445_2397.mp4_tc
+
+std
+Test 1
+User time (seconds): 11518.56
+System time (seconds): 13.51
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:38.67
+Test 2
+User time (seconds): 11511.92
+System time (seconds): 11.81
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:29.84
+Test 3
+User time (seconds): 11621.91
+System time (seconds): 13.56
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:59.09
+Test 4
+User time (seconds): 11563.14
+System time (seconds): 12.32
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:42.63
+Test 5
+User time (seconds): 11495.97
+System time (seconds): 14.22
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:27.44
+Test 6
+User time (seconds): 11560.79
+System time (seconds): 13.12
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:41.93
+Test 7
+User time (seconds): 11655.20
+System time (seconds): 14.96
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 49:23.84
+Test 8
+User time (seconds): 11791.32
+System time (seconds): 24.66
+Percent of CPU this job got: 382%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 51:33.17
+Test 9
+User time (seconds): 11431.38
+System time (seconds): 12.76
+Percent of CPU this job got: 375%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 50:43.87
+
+tc_malloc
+Test 1
+User time (seconds): 11480.32
+System time (seconds): 12.23
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:52.01
+Test 2
+User time (seconds): 11595.29
+System time (seconds): 12.54
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:55.43
+Test 3
+User time (seconds): 11504.09
+System time (seconds): 12.73
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:28.18
+Test 4
+User time (seconds): 11552.33
+System time (seconds): 12.72
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 49:03.44
+Test 5
+User time (seconds): 11567.47
+System time (seconds): 12.33
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:43.06
+Test 6
+User time (seconds): 11572.60
+System time (seconds): 13.30
+Percent of CPU this job got: 395%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:46.01
+Test 7
+User time (seconds): 11515.84
+System time (seconds): 12.54
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:31.10
+Test 8
+User time (seconds): 11450.29
+System time (seconds): 13.26
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 49:05.06
+Test 9
+User time (seconds): 11545.81
+System time (seconds): 13.32
+Percent of CPU this job got: 396%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 48:38.28
+
+
+
+./Release_results/ton_bug_1999.mpg_tc
+
+std
+Test 1
+User time (seconds): 1.83
+System time (seconds): 0.06
+Percent of CPU this job got: 234%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.81
+Test 2
+User time (seconds): 1.77
+System time (seconds): 0.05
+Percent of CPU this job got: 278%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.65
+Test 3
+User time (seconds): 1.79
+System time (seconds): 0.04
+Percent of CPU this job got: 276%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.66
+Test 4
+User time (seconds): 1.77
+System time (seconds): 0.05
+Percent of CPU this job got: 236%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.77
+Test 5
+User time (seconds): 1.88
+System time (seconds): 0.04
+Percent of CPU this job got: 276%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.69
+Test 6
+User time (seconds): 1.78
+System time (seconds): 0.08
+Percent of CPU this job got: 153%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.21
+Test 7
+User time (seconds): 1.78
+System time (seconds): 0.05
+Percent of CPU this job got: 269%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.68
+Test 8
+User time (seconds): 1.88
+System time (seconds): 0.06
+Percent of CPU this job got: 279%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.69
+Test 9
+User time (seconds): 1.75
+System time (seconds): 0.05
+Percent of CPU this job got: 270%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.66
+
+tc_malloc
+Test 1
+User time (seconds): 1.90
+System time (seconds): 0.08
+Percent of CPU this job got: 281%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.70
+Test 2
+User time (seconds): 1.82
+System time (seconds): 0.04
+Percent of CPU this job got: 253%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.73
+Test 3
+User time (seconds): 1.89
+System time (seconds): 0.07
+Percent of CPU this job got: 279%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.70
+Test 4
+User time (seconds): 1.79
+System time (seconds): 0.04
+Percent of CPU this job got: 269%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.68
+Test 5
+User time (seconds): 1.82
+System time (seconds): 0.06
+Percent of CPU this job got: 261%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.72
+Test 6
+User time (seconds): 1.76
+System time (seconds): 0.05
+Percent of CPU this job got: 264%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.68
+Test 7
+User time (seconds): 1.86
+System time (seconds): 0.06
+Percent of CPU this job got: 260%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.74
+Test 8
+User time (seconds): 1.90
+System time (seconds): 0.05
+Percent of CPU this job got: 275%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.71
+Test 9
+User time (seconds): 1.94
+System time (seconds): 0.04
+Percent of CPU this job got: 278%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.71
+
+
+
+./Release_results/Meridian_UHD4k5994_HDR_P3PQ.mp4_tc
+
+std
+Test 1
+User time (seconds): 18615.75
+System time (seconds): 19.88
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:30
+Test 2
+User time (seconds): 18710.72
+System time (seconds): 21.13
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:55
+Test 3
+User time (seconds): 18921.12
+System time (seconds): 22.72
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:50
+Test 4
+User time (seconds): 18845.02
+System time (seconds): 21.80
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:33
+Test 5
+User time (seconds): 18537.20
+System time (seconds): 20.28
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:23
+Test 6
+User time (seconds): 18783.42
+System time (seconds): 22.01
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:31
+Test 7
+User time (seconds): 18778.78
+System time (seconds): 21.23
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:25
+Test 8
+User time (seconds): 18779.63
+System time (seconds): 22.41
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:18
+Test 9
+User time (seconds): 18577.90
+System time (seconds): 21.43
+Percent of CPU this job got: 388%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:45
+
+tc_malloc
+Test 1
+User time (seconds): 18477.56
+System time (seconds): 19.98
+Percent of CPU this job got: 376%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:21:53
+Test 2
+User time (seconds): 18965.83
+System time (seconds): 21.65
+Percent of CPU this job got: 389%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:21:08
+Test 3
+User time (seconds): 18659.61
+System time (seconds): 19.82
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:46
+Test 4
+User time (seconds): 18798.30
+System time (seconds): 22.04
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:20
+Test 5
+User time (seconds): 18759.90
+System time (seconds): 21.53
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:11
+Test 6
+User time (seconds): 18847.20
+System time (seconds): 21.40
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20:34
+Test 7
+User time (seconds): 18671.65
+System time (seconds): 21.72
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:47
+Test 8
+User time (seconds): 18547.56
+System time (seconds): 21.84
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:16
+Test 9
+User time (seconds): 18711.15
+System time (seconds): 21.38
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19:58
+
+
+
+./Release_results/9_AVC_8bits_3840x2160_60_000fps.mkv_tc
+
+std
+Test 1
+User time (seconds): 709.62
+System time (seconds): 1.53
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:01.37
+Test 2
+User time (seconds): 709.79
+System time (seconds): 1.79
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:01.22
+Test 3
+User time (seconds): 724.03
+System time (seconds): 1.59
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:05.06
+Test 4
+User time (seconds): 730.03
+System time (seconds): 1.71
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:06.10
+Test 5
+User time (seconds): 708.95
+System time (seconds): 1.47
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:01.23
+Test 6
+User time (seconds): 713.79
+System time (seconds): 1.83
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:02.46
+Test 7
+User time (seconds): 743.16
+System time (seconds): 1.25
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:10.31
+Test 8
+User time (seconds): 692.88
+System time (seconds): 1.40
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:57.00
+Test 9
+User time (seconds): 701.66
+System time (seconds): 1.46
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 2:59.12
+
+tc_malloc
+Test 1
+User time (seconds): 667.58
+System time (seconds): 1.47
+Percent of CPU this job got: 306%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:37.94
+Test 2
+User time (seconds): 719.70
+System time (seconds): 1.85
+Percent of CPU this job got: 359%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:20.94
+Test 3
+User time (seconds): 764.22
+System time (seconds): 1.83
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:15.66
+Test 4
+User time (seconds): 715.27
+System time (seconds): 1.95
+Percent of CPU this job got: 391%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:03.23
+Test 5
+User time (seconds): 757.65
+System time (seconds): 1.63
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:13.44
+Test 6
+User time (seconds): 714.87
+System time (seconds): 1.64
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:02.71
+Test 7
+User time (seconds): 709.62
+System time (seconds): 1.76
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:01.35
+Test 8
+User time (seconds): 741.13
+System time (seconds): 2.10
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:10.17
+Test 9
+User time (seconds): 675.81
+System time (seconds): 1.69
+Percent of CPU this job got: 328%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 3:26.44
+
+
+
+./Release_results/8_AVC_8bits_3840x2160_25_000fps.mkv_tc
+
+std
+Test 1
+User time (seconds): 978.68
+System time (seconds): 1.40
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:08.45
+Test 2
+User time (seconds): 980.66
+System time (seconds): 1.67
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:09.36
+Test 3
+User time (seconds): 974.50
+System time (seconds): 2.24
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:10.43
+Test 4
+User time (seconds): 967.28
+System time (seconds): 1.25
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:05.28
+Test 5
+User time (seconds): 971.17
+System time (seconds): 1.19
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:06.71
+Test 6
+User time (seconds): 961.92
+System time (seconds): 1.17
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:04.02
+Test 7
+User time (seconds): 960.84
+System time (seconds): 2.88
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:05.13
+Test 8
+User time (seconds): 981.12
+System time (seconds): 5.30
+Percent of CPU this job got: 368%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:27.87
+Test 9
+User time (seconds): 963.79
+System time (seconds): 1.15
+Percent of CPU this job got: 390%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:07.18
+
+tc_malloc
+Test 1
+User time (seconds): 973.33
+System time (seconds): 1.11
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:06.77
+Test 2
+User time (seconds): 985.42
+System time (seconds): 1.40
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:10.17
+Test 3
+User time (seconds): 976.98
+System time (seconds): 1.26
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:08.09
+Test 4
+User time (seconds): 986.27
+System time (seconds): 1.58
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:10.53
+Test 5
+User time (seconds): 998.98
+System time (seconds): 1.86
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:14.18
+Test 6
+User time (seconds): 1001.22
+System time (seconds): 1.97
+Percent of CPU this job got: 392%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:15.68
+Test 7
+User time (seconds): 971.31
+System time (seconds): 1.35
+Percent of CPU this job got: 394%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:06.54
+Test 8
+User time (seconds): 997.31
+System time (seconds): 1.63
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:13.61
+Test 9
+User time (seconds): 962.18
+System time (seconds): 1.47
+Percent of CPU this job got: 393%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 4:04.90
+
+end
+
+
