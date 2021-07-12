@@ -1,0 +1,90 @@
+./Release_results/Chimera_DCI4k2398p_HDR_P3PQ.mp4_tc
+
+Standard deviation std (user time):  320.393394875737
+Standard deviation std (System time):  0.4300744121660809
+Standard deviation std (elapsed time):  193.81151908232906
+Standard deviation tc_malloc (user time):  309.72535096275203
+Standard deviation tc_malloc (System time):  0.6928787772763718
+Standard deviation tc_malloc (elapsed time):  210.55894049173025
+
+ ./Release_results/29_VP8_1280x720_30_068fps.webm_tc
+
+Standard deviation std (user time):  3.24828954990161
+Standard deviation std (System time):  0.10034440691936945
+Standard deviation std (elapsed time):  0.7002206795003987
+Standard deviation tc_malloc (user time):  2.0139932969103937
+Standard deviation tc_malloc (System time):  0.05381449618829485
+Standard deviation tc_malloc (elapsed time):  0.5286444930196471
+
+ ./Release_results/C0023S01.mxf_tc
+
+Standard deviation std (user time):  17.58803866268209
+Standard deviation std (System time):  0.03176476034853718
+Standard deviation std (elapsed time):  4.606149802166664
+Standard deviation tc_malloc (user time):  16.514696606356413
+Standard deviation tc_malloc (System time):  0.026457513110645908
+Standard deviation tc_malloc (elapsed time):  4.282495067130842
+
+ ./Release_results/divx4b153_badmacroblock.avi_tc
+
+Standard deviation std (user time):  1.616658591045122
+Standard deviation std (System time):  0.027367864366808017
+Standard deviation std (elapsed time):  0.47366760497209437
+Standard deviation tc_malloc (user time):  0.8547098923026453
+Standard deviation tc_malloc (System time):  0.02690724809414742
+Standard deviation tc_malloc (elapsed time):  0.3535548048040079
+
+ ./Release_results/129_VC-1_8bits_1280x720_29_970fps.wmv_tc
+
+Standard deviation std (user time):  4.280577647934914
+Standard deviation std (System time):  0.10367738422626219
+Standard deviation std (elapsed time):  1.0885403070166948
+Standard deviation tc_malloc (user time):  1.8063944751908432
+Standard deviation tc_malloc (System time):  0.03773592452822642
+Standard deviation tc_malloc (elapsed time):  0.43590021793983996
+
+ ./Release_results/C_V3_9615614724_7445_2397.mp4_tc
+
+Standard deviation std (user time):  98.0973701023633
+Standard deviation std (System time):  3.8294570111178947
+Standard deviation std (elapsed time):  63.225733495152085
+Standard deviation tc_malloc (user time):  58.31536625110051
+Standard deviation tc_malloc (System time):  0.4788120716941043
+Standard deviation tc_malloc (elapsed time):  15.676835809563139
+
+ ./Release_results/ton_bug_1999.mpg_tc
+
+Standard deviation std (user time):  0.04340506882842137
+Standard deviation std (System time):  0.0116619037896906
+Standard deviation std (elapsed time):  0.18622566955175648
+Standard deviation tc_malloc (user time):  0.05467174773134653
+Standard deviation tc_malloc (System time):  0.013564659966250538
+Standard deviation tc_malloc (elapsed time):  0.022271057451320072
+
+ ./Release_results/Meridian_UHD4k5994_HDR_P3PQ.mp4_tc
+
+Standard deviation std (user time):  143.93538515945215
+Standard deviation std (System time):  1.4459681877551804
+Standard deviation std (elapsed time):  39.75726348731764
+Standard deviation tc_malloc (user time):  147.0508514256206
+Standard deviation tc_malloc (System time):  0.7682480068311274
+Standard deviation tc_malloc (elapsed time):  45.133247168800075
+
+ ./Release_results/9_AVC_8bits_3840x2160_60_000fps.mkv_tc
+
+Standard deviation std (user time):  19.383227698193092
+Standard deviation std (System time):  0.23942639787625764
+Standard deviation std (elapsed time):  5.131101733546118
+Standard deviation tc_malloc (user time):  29.428385344765353
+Standard deviation tc_malloc (System time):  0.179078195210919
+Standard deviation tc_malloc (elapsed time):  11.312538353526143
+
+ ./Release_results/8_AVC_8bits_3840x2160_25_000fps.mkv_tc
+
+Standard deviation std (user time):  7.415933454393989
+Standard deviation std (System time):  1.2241911615430001
+Standard deviation std (elapsed time):  6.4787660090483286
+Standard deviation tc_malloc (user time):  12.537019143321116
+Standard deviation tc_malloc (System time):  0.25416726775885207
+Standard deviation tc_malloc (elapsed time):  3.484600550995768
+
